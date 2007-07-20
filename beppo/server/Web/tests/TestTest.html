@@ -1,0 +1,29 @@
+<html>
+<head></head>
+<body>
+
+<table>
+<tr><td colspan="3">Test chooseCancelOnNextConfirmation</td></tr>
+<tr><td>open</td>                           <td>/static/Paginas/test.html</td> <td>&nbsp;</td></tr>
+<tr><td>chooseCancelOnNextConfirmation</td> <td>&nbsp;</td>                    <td>&nbsp;</td></tr>
+<tr><td>click</td>                          <td>id=clickme</td>                <td>&nbsp;</td></tr>
+<tr><td>assertConfirmation</td>             <td>glob:*</td>                    <td>&nbsp;</td></tr>
+<tr><td>assertLocation</td>                 <td>/static/Paginas/test.html</td> <td>&nbsp;</td></tr>
+
+<tr><td>chooseCancelOnNextConfirmation</td> <td>&nbsp;</td>                    <td>&nbsp;</td></tr>
+<tr><td>click</td>                          <td>id=link</td>                   <td>&nbsp;</td></tr>
+<tr><td>assertConfirmation</td>             <td>glob:*</td>                    <td>&nbsp;</td></tr>
+<tr><td>assertLocation</td>                 <td>/static/Paginas/test.html</td> <td>&nbsp;</td></tr>
+
+<tr><td>chooseCancelOnNextConfirmation</td> <td>&nbsp;</td>                    <td>&nbsp;</td></tr>
+<tr><td>click</td>                          <td>id=imagen</td>                   <td>&nbsp;</td></tr>
+<tr><td>assertConfirmation</td>             <td>glob:*</td>                    <td>&nbsp;</td></tr>
+<tr><td>assertLocation</td>                 <td>/static/Paginas/test.html</td> <td>&nbsp;</td></tr>
+
+<tr><td>clickAndWait</td>                   <td>id=clickme</td>                <td>&nbsp;</td></tr>
+<tr><td>assertConfirmation</td>             <td>glob:*</td>                    <td>&nbsp;</td></tr>
+<tr><td>assertLocation</td>                 <td>/login</td>                    <td>&nbsp;</td></tr>
+</table>
+
+</body>
+</html>

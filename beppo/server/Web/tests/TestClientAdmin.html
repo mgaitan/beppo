@@ -1,0 +1,124 @@
+<html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test Client Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<!--
+-
+-   Loggeado como Admin
+-
+-->
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>Root</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>root</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+    <!-- Crear Cliente -->
+<tr><td>open</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>ClienteTest</td></tr>
+<tr><td>type</td><td>id=password</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=password2</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=first_name</td><td>Cliente</td></tr>
+<tr><td>type</td><td>id=last_name</td><td>Test</td></tr>
+<tr><td>type</td><td>id=email</td><td>cliente@test.com.ar</td></tr>
+<tr><td>type</td><td>id=organization</td><td>TestCliente SA.</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=username</td><td>ClienteTest</td></tr>
+<tr><td>assertValue</td><td>id=password</td><td>aaa</td></tr>
+<tr><td>assertValue</td><td>id=password2</td><td>aaa</td></tr>
+<tr><td>assertValue</td><td>id=first_name</td><td>Cliente</td></tr>
+<tr><td>assertValue</td><td>id=last_name</td><td>Test</td></tr>
+<tr><td>assertValue</td><td>id=email</td><td>cliente@test.com.ar</td></tr>
+<tr><td>assertValue</td><td>id=organization</td><td>TestCliente SA.</td></tr>
+
+    <!-- Crear Cliente existente -->
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+    <!-- Modificar un cliente existente -->
+<tr><td>open</td><td>/client?user_id=8</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=username</td><td>Cliente</td></tr>
+<tr><td>assertValue</td><td>id=password</td><td>cliente</td></tr>
+<tr><td>assertValue</td><td>id=password2</td><td>cliente</td></tr>
+<tr><td>assertValue</td><td>id=first_name</td><td>Cliente</td></tr>
+<tr><td>assertValue</td><td>id=last_name</td><td>Bueno</td></tr>
+<tr><td>assertValue</td><td>id=email</td><td>a@b.c</td></tr>
+<tr><td>assertValue</td><td>id=organization</td><td>Clientes Buenos SA</td></tr>
+<tr><td>type</td><td>id=email</td><td>cliente@clientesbuenos.com.ar</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=username</td><td>Cliente</td></tr>
+<tr><td>assertValue</td><td>id=password</td><td>cliente</td></tr>
+<tr><td>assertValue</td><td>id=password2</td><td>cliente</td></tr>
+<tr><td>assertValue</td><td>id=first_name</td><td>Cliente</td></tr>
+<tr><td>assertValue</td><td>id=last_name</td><td>Bueno</td></tr>
+<tr><td>assertValue</td><td>id=email</td><td>cliente@clientesbuenos.com.ar</td></tr>
+<tr><td>assertValue</td><td>id=organization</td><td>Clientes Buenos SA</td></tr>
+    <!-- Restaurar -->
+<tr><td>open</td><td>/client?user_id=8</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=email</td><td>a@b.c</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=email</td><td>a@b.c</td></tr>
+    <!-- Crear Cliente con datos requeridos faltantes -->
+<tr><td>open</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>ClienteTest2</td></tr>
+<tr><td>type</td><td>id=password</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=password2</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=last_name</td><td>Test</td></tr>
+<tr><td>type</td><td>id=email</td><td>cliente@test.com.ar</td></tr>
+<tr><td>type</td><td>id=organization</td><td>TestCliente SA.</td></tr>
+<tr><td>click</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertAlert</td><td>glob:*Error*</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+    <!-- Crear Cliente con constraseñas que no coincidan -->
+<tr><td>open</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>ClienteTest2</td></tr>
+<tr><td>type</td><td>id=password</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=password2</td><td>aaa2</td></tr>
+<tr><td>type</td><td>id=first_name</td><td>Cliente</td></tr>
+<tr><td>type</td><td>id=last_name</td><td>Test</td></tr>
+<tr><td>type</td><td>id=email</td><td>cliente@test.com.ar</td></tr>
+<tr><td>type</td><td>id=organization</td><td>TestCliente SA.</td></tr>
+<tr><td>click</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertAlert</td><td>glob:*Error*</td><td>&nbsp;</td></tr>
+    <!-- Modificar un cliente no existente -->
+<tr><td>open</td><td>/client?user_id=878787874545211</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+    <!-- Parametro mal tipado -->
+<tr><td>open</td><td>/client?user_id="Cliente"</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+    <!-- Parametro inexistente -->
+<tr><td>open</td><td>/client?usr_id="Cliente"</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='warning']</td><td>&nbsp;</td></tr>
+    <!-- Parametro de mas -->
+<tr><td>open</td><td>/client?usr_id=8&usr_id=334</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='warning']</td><td>&nbsp;</td></tr>
+    <!-- Borrar el que creamos -->
+<tr><td>open</td><td>/list?kind=4</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[6]//td[2]//a</td><td></td></tr>
+<tr><td>assertConfirmation</td><td>glob:*ClienteTest*</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//table[@id='usersinsystem']//tr[10]</td><td>&nbsp;</td></tr>
+
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+</table>
+</body></html>

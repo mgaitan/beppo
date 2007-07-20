@@ -1,0 +1,102 @@
+<html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test Schedules Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>Achuni</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>achuni</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+
+<!-- Verificar que los horarios estan disponibles desde la barra de navegacion-->
+<tr><td>assertElementPresent</td><td>xpath=//div[@id='metanav']//a[@id='schedules']</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//div[@id='metanav']//a[@id='schedules']</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/schedules</td><td>&nbsp;</td></tr>
+
+<!-- Desseleccionar todo el schedule -->
+<tr><td>open</td><td>/schedules?user_id=3&submit=enviar</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/schedules</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//table[@id='schedule']//input[contains(@value, 'a1') or contains(@value, 'a2')]</td><td>&nbsp;</td></tr>
+<!-- Seleccionar un solo elemento -->
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[28]//td[3]</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//input[@type='submit']</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/schedules</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//input[contains(@value, 'a1')]</td><td>74a1</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[28]//td[3]</td><td>&nbsp;</td></tr>
+
+<!-- Seleccionar una franja -->
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[5]//td[5]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[6]//td[5]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[7]//td[5]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[8]//td[5]</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//input[@type='submit']</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/schedules</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[5]//td[5]//input</td><td>147a1</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[6]//td[5]//input</td><td>148a1</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[7]//td[5]//input</td><td>149a1</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[8]//td[5]//input</td><td>150a1</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[5]//td[5]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[6]//td[5]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[7]//td[5]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[8]//td[5]</td><td>&nbsp;</td></tr>
+
+<!-- Seleccionar una trasnochada -->
+<tr><td>click</td><td>xpath=//input[@id='precoord']</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[49]//td[3]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[2]//td[4]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[3]//td[4]</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//input[@type='submit']</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/schedules</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[49]//td[3]//input</td><td>95a2</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[2]//td[4]//input</td><td>96a2</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[3]//td[4]//input</td><td>97a2</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[49]//td[3]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[2]//td[4]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[3]//td[4]</td><td>&nbsp;</td></tr>
+
+
+<!-- Seleccionar una franja terminando el viernes a la medianoche -->
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[47]//td[8]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[48]//td[8]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[49]//td[8]</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//input[@type='submit']</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/schedules</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[47]//td[8]//input</td><td>333a1</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[48]//td[8]//input</td><td>334a1</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[49]//td[8]//input</td><td>335a1</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[47]//td[8]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[48]//td[8]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[49]//td[8]</td><td>&nbsp;</td></tr>
+
+<!-- Seleccionar una trasnochada de viernes a domingo -->
+<tr><td>click</td><td>xpath=//input[@id='precoord']</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[2]//td[2]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[48]//td[8]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[49]//td[8]</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//input[@type='submit']</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/schedules</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[2]//td[2]//input</td><td>0a2</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[48]//td[8]//input</td><td>334a2</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[49]//td[8]//input</td><td>335a2</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[2]//td[2]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[48]//td[8]</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='schedule']//tr[49]//td[8]</td><td>&nbsp;</td></tr>
+
+<!-- Seleccionar todo el horario PC -->
+<tr><td>open</td><td>/schedules?sch=0a2&sch=48a2&sch=96a2&sch=144a2&sch=192a2&sch=240a2&sch=288a2&sch=1a2&sch=49a2&sch=97a2&sch=145a2&sch=193a2&sch=241a2&sch=289a2&sch=2a2&sch=50a2&sch=98a2&sch=146a2&sch=194a2&sch=242a2&sch=290a2&sch=3a2&sch=51a2&sch=99a2&sch=147a2&sch=195a2&sch=243a2&sch=291a2&sch=4a2&sch=52a2&sch=100a2&sch=148a2&sch=196a2&sch=244a2&sch=292a2&sch=5a2&sch=53a2&sch=101a2&sch=149a2&sch=197a2&sch=245a2&sch=293a2&sch=6a2&sch=54a2&sch=102a2&sch=150a2&sch=198a2&sch=246a2&sch=294a2&sch=7a2&sch=55a2&sch=103a2&sch=151a2&sch=199a2&sch=247a2&sch=295a2&sch=8a2&sch=56a2&sch=104a2&sch=152a2&sch=200a2&sch=248a2&sch=296a2&sch=9a2&sch=57a2&sch=105a2&sch=153a2&sch=201a2&sch=249a2&sch=297a2&sch=10a2&sch=58a2&sch=106a2&sch=154a2&sch=202a2&sch=250a2&sch=298a2&sch=11a2&sch=59a2&sch=107a2&sch=155a2&sch=203a2&sch=251a2&sch=299a2&sch=12a2&sch=60a2&sch=108a2&sch=156a2&sch=204a2&sch=252a2&sch=300a2&sch=13a2&sch=61a2&sch=109a2&sch=157a2&sch=205a2&sch=253a2&sch=301a2&sch=14a2&sch=62a2&sch=110a2&sch=158a2&sch=206a2&sch=254a2&sch=302a2&sch=15a2&sch=63a2&sch=111a2&sch=159a2&sch=207a2&sch=255a2&sch=303a2&sch=16a2&sch=64a2&sch=112a2&sch=160a2&sch=208a2&sch=256a2&sch=304a2&sch=17a2&sch=65a2&sch=113a2&sch=161a2&sch=209a2&sch=257a2&sch=305a2&sch=18a2&sch=66a2&sch=114a2&sch=162a2&sch=210a2&sch=258a2&sch=306a2&sch=19a2&sch=67a2&sch=115a2&sch=163a2&sch=211a2&sch=259a2&sch=307a2&sch=20a2&sch=68a2&sch=116a2&sch=164a2&sch=212a2&sch=260a2&sch=308a2&sch=21a2&sch=69a2&sch=117a2&sch=165a2&sch=213a2&sch=261a2&sch=309a2&sch=22a2&sch=70a2&sch=118a2&sch=166a2&sch=214a2&sch=262a2&sch=310a2&sch=23a2&sch=71a2&sch=119a2&sch=167a2&sch=215a2&sch=263a2&sch=311a2&sch=24a2&sch=72a2&sch=120a2&sch=168a2&sch=216a2&sch=264a2&sch=312a2&sch=25a2&sch=73a2&sch=121a2&sch=169a2&sch=217a2&sch=265a2&sch=313a2&sch=26a2&sch=74a2&sch=122a2&sch=170a2&sch=218a2&sch=266a2&sch=314a2&sch=27a2&sch=75a2&sch=123a2&sch=171a2&sch=219a2&sch=267a2&sch=315a2&sch=28a2&sch=76a2&sch=124a2&sch=172a2&sch=220a2&sch=268a2&sch=316a2&sch=29a2&sch=77a2&sch=125a2&sch=173a2&sch=221a2&sch=269a2&sch=317a2&sch=30a2&sch=78a2&sch=126a2&sch=174a2&sch=222a2&sch=270a2&sch=318a2&sch=31a2&sch=79a2&sch=127a2&sch=175a2&sch=223a2&sch=271a2&sch=319a2&sch=32a2&sch=80a2&sch=128a2&sch=176a2&sch=224a2&sch=272a2&sch=320a2&sch=33a2&sch=81a2&sch=129a2&sch=177a2&sch=225a2&sch=273a2&sch=321a2&sch=34a2&sch=82a2&sch=130a2&sch=178a2&sch=226a2&sch=274a2&sch=322a2&sch=35a2&sch=83a2&sch=131a2&sch=179a2&sch=227a2&sch=275a2&sch=323a2&sch=36a2&sch=84a2&sch=132a2&sch=180a2&sch=228a2&sch=276a2&sch=324a2&sch=37a2&sch=85a2&sch=133a2&sch=181a2&sch=229a2&sch=277a2&sch=325a2&sch=38a2&sch=86a2&sch=134a2&sch=182a2&sch=230a2&sch=278a2&sch=326a2&sch=39a2&sch=87a2&sch=135a2&sch=183a2&sch=231a2&sch=279a2&sch=327a2&sch=40a2&sch=88a2&sch=136a2&sch=184a2&sch=232a2&sch=280a2&sch=328a2&sch=41a2&sch=89a2&sch=137a2&sch=185a2&sch=233a2&sch=281a2&sch=329a2&sch=42a2&sch=90a2&sch=138a2&sch=186a2&sch=234a2&sch=282a2&sch=330a2&sch=43a2&sch=91a2&sch=139a2&sch=187a2&sch=235a2&sch=283a2&sch=331a2&sch=44a2&sch=92a2&sch=140a2&sch=188a2&sch=236a2&sch=284a2&sch=332a2&sch=45a2&sch=93a2&sch=141a2&sch=189a2&sch=237a2&sch=285a2&sch=333a2&sch=46a2&sch=94a2&sch=142a2&sch=190a2&sch=238a2&sch=286a2&sch=334a2&sch=47a2&sch=95a2&sch=143a2&sch=191a2&sch=239a2&sch=287a2&sch=335a2&user_id=3&submit=Enviar</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/schedules</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//table[@id='schedule']//input[contains(@value, 'a1')]</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[2]//td[2]//input</td><td>0a2</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[40]//td[8]//input</td><td>326a2</td></tr>
+
+<!-- Seleccionar todo el horario AI -->
+<tr><td>open</td><td>/schedules?sch=0a1&sch=48a1&sch=96a1&sch=144a1&sch=192a1&sch=240a1&sch=288a1&sch=1a1&sch=49a1&sch=97a1&sch=145a1&sch=193a1&sch=241a1&sch=289a1&sch=2a1&sch=50a1&sch=98a1&sch=146a1&sch=194a1&sch=242a1&sch=290a1&sch=3a1&sch=51a1&sch=99a1&sch=147a1&sch=195a1&sch=243a1&sch=291a1&sch=4a1&sch=52a1&sch=100a1&sch=148a1&sch=196a1&sch=244a1&sch=292a1&sch=5a1&sch=53a1&sch=101a1&sch=149a1&sch=197a1&sch=245a1&sch=293a1&sch=6a1&sch=54a1&sch=102a1&sch=150a1&sch=198a1&sch=246a1&sch=294a1&sch=7a1&sch=55a1&sch=103a1&sch=151a1&sch=199a1&sch=247a1&sch=295a1&sch=8a1&sch=56a1&sch=104a1&sch=152a1&sch=200a1&sch=248a1&sch=296a1&sch=9a1&sch=57a1&sch=105a1&sch=153a1&sch=201a1&sch=249a1&sch=297a1&sch=10a1&sch=58a1&sch=106a1&sch=154a1&sch=202a1&sch=250a1&sch=298a1&sch=11a1&sch=59a1&sch=107a1&sch=155a1&sch=203a1&sch=251a1&sch=299a1&sch=12a1&sch=60a1&sch=108a1&sch=156a1&sch=204a1&sch=252a1&sch=300a1&sch=13a1&sch=61a1&sch=109a1&sch=157a1&sch=205a1&sch=253a1&sch=301a1&sch=14a1&sch=62a1&sch=110a1&sch=158a1&sch=206a1&sch=254a1&sch=302a1&sch=15a1&sch=63a1&sch=111a1&sch=159a1&sch=207a1&sch=255a1&sch=303a1&sch=16a1&sch=64a1&sch=112a1&sch=160a1&sch=208a1&sch=256a1&sch=304a1&sch=17a1&sch=65a1&sch=113a1&sch=161a1&sch=209a1&sch=257a1&sch=305a1&sch=18a1&sch=66a1&sch=114a1&sch=162a1&sch=210a1&sch=258a1&sch=306a1&sch=19a1&sch=67a1&sch=115a1&sch=163a1&sch=211a1&sch=259a1&sch=307a1&sch=20a1&sch=68a1&sch=116a1&sch=164a1&sch=212a1&sch=260a1&sch=308a1&sch=21a1&sch=69a1&sch=117a1&sch=165a1&sch=213a1&sch=261a1&sch=309a1&sch=22a1&sch=70a1&sch=118a1&sch=166a1&sch=214a1&sch=262a1&sch=310a1&sch=23a1&sch=71a1&sch=119a1&sch=167a1&sch=215a1&sch=263a1&sch=311a1&sch=24a1&sch=72a1&sch=120a1&sch=168a1&sch=216a1&sch=264a1&sch=312a1&sch=25a1&sch=73a1&sch=121a1&sch=169a1&sch=217a1&sch=265a1&sch=313a1&sch=26a1&sch=74a1&sch=122a1&sch=170a1&sch=218a1&sch=266a1&sch=314a1&sch=27a1&sch=75a1&sch=123a1&sch=171a1&sch=219a1&sch=267a1&sch=315a1&sch=28a1&sch=76a1&sch=124a1&sch=172a1&sch=220a1&sch=268a1&sch=316a1&sch=29a1&sch=77a1&sch=125a1&sch=173a1&sch=221a1&sch=269a1&sch=317a1&sch=30a1&sch=78a1&sch=126a1&sch=174a1&sch=222a1&sch=270a1&sch=318a1&sch=31a1&sch=79a1&sch=127a1&sch=175a1&sch=223a1&sch=271a1&sch=319a1&sch=32a1&sch=80a1&sch=128a1&sch=176a1&sch=224a1&sch=272a1&sch=320a1&sch=33a1&sch=81a1&sch=129a1&sch=177a1&sch=225a1&sch=273a1&sch=321a1&sch=34a1&sch=82a1&sch=130a1&sch=178a1&sch=226a1&sch=274a1&sch=322a1&sch=35a1&sch=83a1&sch=131a1&sch=179a1&sch=227a1&sch=275a1&sch=323a1&sch=36a1&sch=84a1&sch=132a1&sch=180a1&sch=228a1&sch=276a1&sch=324a1&sch=37a1&sch=85a1&sch=133a1&sch=181a1&sch=229a1&sch=277a1&sch=325a1&sch=38a1&sch=86a1&sch=134a1&sch=182a1&sch=230a1&sch=278a1&sch=326a1&sch=39a1&sch=87a1&sch=135a1&sch=183a1&sch=231a1&sch=279a1&sch=327a1&sch=40a1&sch=88a1&sch=136a1&sch=184a1&sch=232a1&sch=280a1&sch=328a1&sch=41a1&sch=89a1&sch=137a1&sch=185a1&sch=233a1&sch=281a1&sch=329a1&sch=42a1&sch=90a1&sch=138a1&sch=186a1&sch=234a1&sch=282a1&sch=330a1&sch=43a1&sch=91a1&sch=139a1&sch=187a1&sch=235a1&sch=283a1&sch=331a1&sch=44a1&sch=92a1&sch=140a1&sch=188a1&sch=236a1&sch=284a1&sch=332a1&sch=45a1&sch=93a1&sch=141a1&sch=189a1&sch=237a1&sch=285a1&sch=333a1&sch=46a1&sch=94a1&sch=142a1&sch=190a1&sch=238a1&sch=286a1&sch=334a1&sch=47a1&sch=95a1&sch=143a1&sch=191a1&sch=239a1&sch=287a1&sch=335a1&user_id=3&submit=Enviar</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/schedules</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//table[@id='schedule']//input[contains(@value, 'a2')]</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[2]//td[2]//input</td><td>0a1</td></tr>
+<tr><td>assertValue</td><td>xpath=//table[@id='schedule']//tr[40]//td[8]//input</td><td>326a1</td></tr>
+
+</table>
+</body></html>

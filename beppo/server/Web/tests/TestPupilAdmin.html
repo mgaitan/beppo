@@ -1,0 +1,151 @@
+<html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test Pupil Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<!--
+-
+-   Loggeado como Admin
+-
+-->
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>Root</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>root</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+    <!-- Crear Alumno -->
+<tr><td>open</td><td>/new_pupil</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/new_pupil</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/new_pupil?user_id=8</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/new_pupil</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='client_info']</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='client_info']//ul[1]//li[1]</td><td>glob:*99.2*</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='client_info']//ul[1]//li[2]</td><td>glob:*0.0*</td></tr>
+<tr><td>type</td><td>id=username</td><td>AlumnoTest</td></tr>
+<tr><td>type</td><td>id=password</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=password2</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=first_name</td><td>Alumno</td></tr>
+<tr><td>type</td><td>id=last_name</td><td>Test</td></tr>
+<tr><td>type</td><td>id=email</td><td>alumno@test.com.ar</td></tr>
+<tr><td>type</td><td>id=ai_total</td><td>1000</td></tr>
+<tr><td>type</td><td>id=pc_total</td><td>0.0</td></tr>
+<tr><td>click</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertAlert</td><td>glob:*</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/new_pupil</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=ai_total</td><td>10.0</td></tr>
+<tr><td>type</td><td>id=pc_total</td><td>1.0</td></tr>
+<tr><td>click</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertAlert</td><td>glob:*</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/new_pupil</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=email</td><td></td></tr>
+<tr><td>click</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertAlert</td><td>glob:*</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/new_pupil</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=email</td><td>alumno@test.com.ar</td></tr>
+<tr><td>type</td><td>id=password</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=password2</td><td>aaa2</td></tr>
+<tr><td>click</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertAlert</td><td>glob:*</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/new_pupil</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=password2</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=ai_total</td><td>rfdfdsf</td></tr>
+<tr><td>click</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertAlert</td><td>glob:*</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/new_pupil</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=ai_total</td><td>0</td></tr>
+<tr><td>type</td><td>id=pc_total</td><td>0</td></tr>
+<tr><td>click</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertAlert</td><td>glob:*</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/new_pupil</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=ai_total</td><td>10.2</td></tr>
+<tr><td>type</td><td>id=pc_total</td><td>0.0</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/new_pupil</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='client_info']</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='client_info']//ul[1]//li[1]</td><td>glob:*89.0*</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='client_info']//ul[1]//li[2]</td><td>glob:*0.0*</td></tr>
+    <!-- Crear Alumno existente -->
+<tr><td>type</td><td>id=username</td><td>AlumnoTest</td></tr>
+<tr><td>type</td><td>id=password</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=password2</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=first_name</td><td>Alumno</td></tr>
+<tr><td>type</td><td>id=last_name</td><td>Test</td></tr>
+<tr><td>type</td><td>id=email</td><td>alumno@test.com.ar</td></tr>
+<tr><td>type</td><td>id=ai_total</td><td>10.0</td></tr>
+<tr><td>type</td><td>id=pc_total</td><td>0.0</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/new_pupil</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='client_info']</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='client_info']//ul[1]//li[1]</td><td>glob:*89.0*</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='client_info']//ul[1]//li[2]</td><td>glob:*0.0*</td></tr>
+    <!-- Modificar un alumno existente -->
+<tr><td>open</td><td>/pupil_edit?user_id=42&pupil_id=1</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/pupil_edit</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=username</td><td>Waldo</td></tr>
+<tr><td>assertValue</td><td>id=password</td><td>waldo</td></tr>
+<tr><td>assertValue</td><td>id=password2</td><td>waldo</td></tr>
+<tr><td>assertValue</td><td>id=first_name</td><td>Walter</td></tr>
+<tr><td>assertValue</td><td>id=last_name</td><td>Alini</td></tr>
+<tr><td>assertValue</td><td>id=email</td><td>a@b.c</td></tr>
+<tr><td>type</td><td>id=email</td><td>alumno@clientesbuenos.com.ar</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/pupil_edit</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=username</td><td>Waldo</td></tr>
+<tr><td>assertValue</td><td>id=password</td><td>waldo</td></tr>
+<tr><td>assertValue</td><td>id=password2</td><td>waldo</td></tr>
+<tr><td>assertValue</td><td>id=first_name</td><td>Walter</td></tr>
+<tr><td>assertValue</td><td>id=last_name</td><td>Alini</td></tr>
+<tr><td>assertValue</td><td>id=email</td><td>alumno@clientesbuenos.com.ar</td></tr>
+    <!-- Restaurar -->
+<tr><td>open</td><td>/pupil_edit?user_id=42&pupil_id=1</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/pupil_edit</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=email</td><td>a@b.c</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/pupil_edit</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=email</td><td>a@b.c</td></tr>
+    <!-- Modificar un alumno no existente -->
+<tr><td>open</td><td>/pupil_edit?user_id=42&pupil_id=424242424</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/pupil_edit</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+    <!-- Modificar un alumno de un cliente no existente -->
+<tr><td>open</td><td>/pupil_edit?user_id=424242442&pupil_id=1</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/pupil_edit</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+    <!-- Parametro mal tipado -->
+<tr><td>open</td><td>/new_pupil?user_id="Alumno"</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/new_pupil</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+    <!-- Parametro faltante -->
+<tr><td>open</td><td>/pupil_edit?user_id=42</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/pupil_edit</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+    <!-- Parametro inexistente -->
+<tr><td>open</td><td>/pupil_edit?usr_id="Alumno"</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/pupil_edit</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+    <!-- Parametro de mas -->
+<tr><td>open</td><td>/pupil_edit?user_id=42&pupil_id=1&usr_id=334</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/pupil_edit</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='warning']</td><td>&nbsp;</td></tr>
+    <!-- Borrar Alumno creado -->
+<tr><td>open</td><td>/my_pupils?user_id=8</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/my_pupils</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='pupil_info']</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='pupil_info']//tr[2]//td[2]//a</td><td></td></tr>
+<tr><td>assertConfirmation</td><td>glob:*Test*</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//table[@id='pupil_info']</td><td>&nbsp;</td></tr>
+
+
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+</table>
+</body></html>

@@ -1,0 +1,14 @@
+<html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test Login Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>Achuni</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>achuni</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+</table>
+</body></html>

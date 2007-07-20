@@ -1,0 +1,1769 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-12-09 09:51-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../../Web/WebAdmin.py:35
+msgid "Administracion de usuarios"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:58
+msgid ""
+"Listado de materias disponibles y cantidad de tutores que la tienen como "
+"seleccionada para poder dar clases. Tambien se pueden realizar alta y bajas "
+"de materias"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:59
+msgid ""
+"Tiempo que los tutores pasaron en el sistema, dividido por tipos de "
+"conexion. Detalle de las sesiones de cada tutor. Se puede elegir un rango de "
+"fechas para visualizar"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:60
+msgid ""
+"Informacion de las aulas del sistema, cantidad de alumnos en el aula, los "
+"tutores que se encuentran a cargo y las materias que estan brindando. "
+"Listado de aulas que deberian estar abiertas y no lo estan, con la "
+"informacion del tutor correspondiente"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:61
+msgid ""
+"Archivos en formato PostScript que contienen las pizarras de las clases "
+"brindadas por los tutores del sistema"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:62
+msgid "Administrar materias"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:63 ../../../Web/WebPCArrange.py:199
+#: ../../../Web/WebRoomInfo.py:97
+msgid "Materias"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:66 ../../../Web/WebTutorInfo.py:57
+msgid "Informacion de tutores"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:67 ../../../Web/WebAdmin.py:74
+#: ../../../Web/WebAdmin.py:75 ../../../Web/WebAdmin.py:105
+#: ../../../Web/WebPCArrange.py:315
+msgid "Tutores"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:70
+msgid "Informacion de aulas"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:71
+msgid "Aulas"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:74 ../../../Web/WebListUsers.py:156
+msgid "Agregar tutores"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:75
+msgid "Agregar nuevos tutores al sistema"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:78 ../../../Web/WebListUsers.py:241
+msgid "Agregar clientes"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:78 ../../../Web/WebAdmin.py:79
+#: ../../../Web/WebAdmin.py:111
+msgid "Clientes"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:79
+msgid "Agregar nuevos clientes al sistema"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:82 ../../../Web/WebArchive.py:37
+msgid "Archivo de pizarras"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:82 ../../../Web/WebAdmin.py:83
+#: ../../../Web/WebArchive.py:45 ../../../Web/WebArchive.py:82
+msgid "Archivo"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:88
+msgid "Administracion del sistema:"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:97
+msgid "Informacion de usuarios en el sistema:"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:105 ../../../Web/WebAdmin.py:108
+#: ../../../Web/WebAdmin.py:111 ../../../Web/WebAdmin.py:114
+msgid "en el sistema"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:108
+msgid "Alumnos"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:114
+msgid "Administradores"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:117
+msgid "Usuarios no categorizados en el sistema"
+msgstr ""
+
+#: ../../../Web/WebAdmin.py:120
+msgid "No hay usuarios en el sistema"
+msgstr ""
+
+#: ../../../Web/WebArchive.py:44
+msgid ""
+"Este es el archivo de las pizarras correspondientes a las clases dadas en el "
+"sistema. Puedes bajar cualquiera de las pizarras haciendo click en el nombre "
+"del archivo. La informacion de la fecha que aparece corresponde a la fecha "
+"de finalizacion de la clase"
+msgstr ""
+
+#: ../../../Web/WebArchive.py:76
+msgid "El archivo esta vacio"
+msgstr ""
+
+#: ../../../Web/WebArchive.py:78
+#, python-format
+msgid "Se encontraron %d archivos:"
+msgstr ""
+
+#: ../../../Web/WebArchive.py:83 ../../../Web/WebPCArrange.py:512
+#: ../../../Web/WebRoomInfo.py:129 ../../../Web/WebTutorInfo.py:139
+msgid "Tutor"
+msgstr ""
+
+#: ../../../Web/WebArchive.py:84 ../../../Web/WebGetUserInfo.py:148
+#: ../../../Web/WebMyPupils.py:157 ../../../Web/WebTutorSessions.py:115
+msgid "Alumno"
+msgstr ""
+
+#: ../../../Web/WebArchive.py:85
+msgid "Fecha"
+msgstr ""
+
+#: ../../../Web/WebArchive.py:86
+msgid "Comentario"
+msgstr ""
+
+#: ../../../Web/WebArchive.py:92
+msgid "El tutor ya no esta en el sistema"
+msgstr ""
+
+#: ../../../Web/WebArchive.py:95
+msgid "El alumno ya no esta en el sistema"
+msgstr ""
+
+#: ../../../Web/WebClient.py:14 ../../../Web/WebListUsers.py:220
+msgid "Organizacion"
+msgstr ""
+
+#: ../../../Web/WebClient.py:22
+msgid "Pagina del cliente"
+msgstr ""
+
+#: ../../../Web/WebClientReport.py:37
+msgid "Reportes de alumnos"
+msgstr ""
+
+#: ../../../Web/WebClientReport.py:52 ../../../Web/WebMyPupils.py:56
+#: ../../../Web/WebMyPupils.py:87 ../../../Web/WebMyPupilsInfo.py:57
+#: ../../../Web/WebPCArrange.py:81 ../../../Web/WebPerson.py:69
+#: ../../../Web/WebPupilInsert.py:66 ../../../Web/WebSchedules.py:60
+#: ../../../Web/WebSchedules1.py:49 ../../../Web/WebSchedules2.py:49
+#: ../../../Web/WebSubjects.py:52 ../../../Web/WebTutorData.py:53
+#: ../../../Web/WebTutorSessions.py:67
+msgid "user_id deberia ser entero"
+msgstr ""
+
+#: ../../../Web/WebClientReport.py:55 ../../../Web/WebMyPupils.py:59
+#: ../../../Web/WebMyPupilsInfo.py:60 ../../../Web/WebPCArrange.py:83
+#: ../../../Web/WebSchedules.py:62 ../../../Web/WebSchedules1.py:51
+#: ../../../Web/WebSchedules2.py:51 ../../../Web/WebSubjects.py:55
+#: ../../../Web/WebTutorData.py:56 ../../../Web/WebTutorSessions.py:70
+msgid "falta el parametro user_id"
+msgstr ""
+
+#: ../../../Web/WebClientReport.py:86 ../../../Web/WebSendMail.py:112
+msgid "El usuario no existe en el sistema"
+msgstr ""
+
+#: ../../../Web/WebClientReport.py:90
+#, python-format
+msgid "Reportes de alumnos de %s"
+msgstr ""
+
+#: ../../../Web/WebClientReport.py:91
+msgid "Seguimiento de alumnos"
+msgstr ""
+
+#: ../../../Web/WebClientReport.py:94
+msgid "Datos personales:"
+msgstr ""
+
+#: ../../../Web/WebClientReport.py:95
+msgid "Listado de datos personales los alumnos a cargo"
+msgstr ""
+
+#: ../../../Web/WebClientReport.py:96
+msgid "Horas:"
+msgstr ""
+
+#: ../../../Web/WebClientReport.py:97
+msgid "Detalle de las horas usadas y disponibles por alumno"
+msgstr ""
+
+#: ../../../Web/WebClientReport.py:99 ../../../Web/WebGetUserInfo.py:110
+#: ../../../Web/WebListUsers.py:265 ../../../Web/WebMyPupils.py:198
+msgid "Volver"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:36 ../../../Web/WebGetUserInfo.py:40
+#: ../../../Web/WebGetUserInfo.py:43 ../../../Web/WebGetUserInfo.py:45
+msgid "Usuario:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:36 ../../../Web/WebGetUserInfo.py:40
+#: ../../../Web/WebGetUserInfo.py:43 ../../../Web/WebGetUserInfo.py:45
+#: ../../../Web/WebTutorData.py:93
+msgid "Nombre:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:36 ../../../Web/WebGetUserInfo.py:40
+#: ../../../Web/WebGetUserInfo.py:43 ../../../Web/WebGetUserInfo.py:45
+#: ../../../Web/WebTutorData.py:96
+msgid "Apellido:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:36 ../../../Web/WebGetUserInfo.py:40
+#: ../../../Web/WebGetUserInfo.py:43 ../../../Web/WebGetUserInfo.py:45
+msgid "eMail:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:37 ../../../Web/WebGetUserInfo.py:41
+#: ../../../Web/WebGetUserInfo.py:44 ../../../Web/WebGetUserInfo.py:46
+#: ../../../Web/WebSettings.py:175
+msgid "Idioma:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:37 ../../../Web/WebGetUserInfo.py:41
+#: ../../../Web/WebGetUserInfo.py:44 ../../../Web/WebGetUserInfo.py:46
+msgid "Zona horaria:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:37
+msgid "Direccion 1:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:37
+msgid "Direccion 2:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:38
+msgid "Codigo postal:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:38
+msgid "Telefono 1:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:38
+msgid "Telefono 2:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:38
+msgid "Telefono 3:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:39
+msgid "ICQ:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:39
+msgid "MSN:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:39
+msgid "AOL:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:41
+msgid "Organizacion:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:42
+msgid "Horas disponibles (AI):"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:42
+msgid "Horas disponibles (CP):"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:46
+msgid "Organizacion cliente:"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:82
+msgid "El usuario no existe"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:95 ../../../Web/WebGetUserInfo.py:98
+#: ../../../Web/WebGetUserInfo.py:101 ../../../Web/WebGetUserInfo.py:105
+#: ../../../Web/WebGetUserInfo.py:109
+msgid "Modificar datos"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:139
+msgid ""
+"No tienes clases precoodinadas para estos dias. Recuerda revisar "
+"periodicamente tus horarios para no perder ninguna clase."
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:141
+msgid ""
+"Aqui hay una lista de las clases precoordinadas que tienes en estos dias, "
+"junto con los alumnos que la tomaran. Recuerda presentarte con anticipacion "
+"a tus clases."
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:144
+msgid "Tus clases precoordinadas"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:146
+msgid "Fecha inicio"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:147
+msgid "Fecha fin"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:149 ../../../Web/WebPCArrange.py:513
+#: ../../../Web/WebSubjectAdmin.py:108
+msgid "Materia"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:188
+msgid ""
+"Recuerde que sin horas disponibles no puede dar de alta alumnos. Contactese "
+"con el administrador del sistema para solicitarle mas horas. Tenga en cuenta "
+"que las horas de sus alumnos tienen un vencimiento, y que al terminar sus "
+"horas debe darlos de alta como alumnos nuevos."
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:190
+msgid ""
+"Recuerda que sin horas disponibles no puedes tomar clases ni hacer "
+"preguntas. Puedes solicitar mas horas a quien te haya inscripto en el "
+"sistema, pero te deben dar de alta como un nuevo alumno."
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:191
+msgid "No le quedan horas disponibles."
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:195
+msgid ""
+"Recuerde que las horas de sus alumnos tienen un vencimiento. Puede "
+"contactarse con el administrador del sistema para solicitarle horas para sus "
+"alumnos."
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:199
+msgid "Horas de Acceso Instantaneo disponibles"
+msgstr ""
+
+#: ../../../Web/WebGetUserInfo.py:201
+msgid "Horas de Clases Precoordinadas disponibles"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:38
+msgid "Listado de usuarios del sistema"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:53 ../../../Web/WebMyPupils.py:115
+msgid "El usuario ha sido borrado correctamente"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:61
+msgid "Se ha actualizado correctamente la cantidad de horas  disponibles"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:66 ../../../Web/WebSettings.py:52
+#: ../../../Web/WebSettings.py:82 ../../../Web/WebUserInfo.py:50
+msgid "Argumento no valido"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:70
+msgid "Falta el argumento 'kind'"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:124
+msgid "Usuarios del sistema:"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:129
+msgid "Esta seguro de borrar el tutor"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:140 ../../../Web/WebListUsers.py:170
+#: ../../../Web/WebListUsers.py:217 ../../../Web/WebListUsers.py:247
+msgid "Usuario"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:141 ../../../Web/WebListUsers.py:171
+#: ../../../Web/WebListUsers.py:218 ../../../Web/WebListUsers.py:248
+#: ../../../Web/WebMyPupilsInfo.py:111 ../../../Web/WebPerson.py:23
+#: ../../../Web/WebPupilEdit.py:23 ../../../Web/WebPupilInsert.py:25
+msgid "Apellido"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:142 ../../../Web/WebListUsers.py:172
+#: ../../../Web/WebListUsers.py:219 ../../../Web/WebListUsers.py:249
+#: ../../../Web/WebMyPupilsInfo.py:110 ../../../Web/WebPerson.py:21
+#: ../../../Web/WebPupilEdit.py:21 ../../../Web/WebPupilInsert.py:23
+msgid "Nombre"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:147 ../../../Web/WebListUsers.py:178
+#: ../../../Web/WebListUsers.py:228 ../../../Web/WebMyPupils.py:176
+msgid "Modificar"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:148 ../../../Web/WebListUsers.py:179
+#: ../../../Web/WebListUsers.py:229 ../../../Web/WebSubjectAdmin.py:115
+msgid "Borrar"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:149 ../../../Web/WebListUsers.py:236
+#: ../../../Web/WebListUsers.py:239
+msgid "Asignar horas"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:150
+msgid "Asignar materias"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:162 ../../../Web/WebMyPupils.py:148
+msgid "Esta seguro de borrar el alumno"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:173
+msgid "Cliente"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:190
+msgid "Esta seguro de borrar el cliente"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:192
+msgid "Aun tiene"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:192
+msgid "alumno(s) a cargo"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:200
+msgid "Indique la cantidad de horas a asignar:"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:222
+msgid "Horas disponibles (AI)"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:223
+msgid "Horas disponibles (CP)"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:230
+msgid "Agregar alumno"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:231
+msgid "Ver alumnos"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:261
+msgid "Usuarios"
+msgstr ""
+
+#: ../../../Web/WebListUsers.py:264
+msgid "No hay usuarios de este tipo en el sistema"
+msgstr ""
+
+#: ../../../Web/WebLogin.py:32
+msgid "Iniciar Sesion"
+msgstr ""
+
+#: ../../../Web/WebLogin.py:34
+msgid "La sesion ya estaba iniciada"
+msgstr ""
+
+#: ../../../Web/WebLogin.py:44
+msgid "Inicio de Sesion"
+msgstr ""
+
+#: ../../../Web/WebLogin.py:45
+msgid "Nombre de Usuario"
+msgstr ""
+
+#: ../../../Web/WebLogin.py:47 ../../../Web/WebPerson.py:17
+#: ../../../Web/WebPupilEdit.py:17 ../../../Web/WebPupilInsert.py:19
+msgid "Contrasena"
+msgstr ""
+
+#: ../../../Web/WebLogin.py:50
+msgid "Entrar!"
+msgstr ""
+
+#: ../../../Web/WebLogin.py:74
+msgid "Nombre de Usuario o Contrasena incorrecta"
+msgstr ""
+
+#: ../../../Web/WebLogin.py:75
+msgid "Por favor verifique su nombre de usuario y contrasena."
+msgstr ""
+
+#: ../../../Web/WebLogin.py:76
+msgid ""
+"Recuerde que su nombre de usuario y contrasena son sensibles a mayusculas y "
+"minusculas!"
+msgstr ""
+
+#: ../../../Web/WebLogin.py:80
+msgid ""
+"Existen varios usuarios en el sistema con las mismas credenciales. Por favor "
+"notifique al administrador del sistema"
+msgstr ""
+
+#: ../../../Web/WebLogin.py:89
+msgid "Bienvenido"
+msgstr ""
+
+#: ../../../Web/WebLogin.py:118
+msgid "Cerrar Sesion"
+msgstr ""
+
+#: ../../../Web/WebLogin.py:120
+msgid "La sesion ha sido cerrada"
+msgstr ""
+
+#: ../../../Web/WebLogin.py:121
+msgid "Que tenga un buen dia."
+msgstr ""
+
+#: ../../../Web/WebLogin.py:125
+msgid "Sesion inexistente"
+msgstr ""
+
+#: ../../../Web/WebLogin.py:126
+msgid "Debe iniciar una sesion antes de cerrarla!"
+msgstr ""
+
+#: ../../../Web/WebMyPupils.py:40 ../../../Web/WebMyPupilsInfo.py:40
+msgid "Informacion de cuentas de usuarios"
+msgstr ""
+
+#: ../../../Web/WebMyPupils.py:43 ../../../Web/WebMyPupils.py:130
+#: ../../../Web/WebMyPupilsInfo.py:33 ../../../Web/WebMyPupilsInfo.py:84
+msgid "Cuentas de alumnos"
+msgstr ""
+
+#: ../../../Web/WebMyPupils.py:109
+msgid "No es alumno del cliente"
+msgstr ""
+
+#: ../../../Web/WebMyPupils.py:128 ../../../Web/WebMyPupilsInfo.py:87
+#, python-format
+msgid "Cuentas de alumnos de %s"
+msgstr ""
+
+#: ../../../Web/WebMyPupils.py:158
+msgid "Horas AI (restan/total)"
+msgstr ""
+
+#: ../../../Web/WebMyPupils.py:159
+msgid "Horas PC (restan/total)"
+msgstr ""
+
+#: ../../../Web/WebMyPupils.py:160 ../../../Web/WebMyPupilsInfo.py:115
+msgid "Vencimiento"
+msgstr ""
+
+#: ../../../Web/WebMyPupils.py:177
+msgid "Borrar alumno"
+msgstr ""
+
+#: ../../../Web/WebMyPupils.py:197 ../../../Web/WebTemplates.py:57
+msgid "Agregar alumnos"
+msgstr ""
+
+#: ../../../Web/WebMyPupils.py:204
+msgid "Horas AI disponibles"
+msgstr ""
+
+#: ../../../Web/WebMyPupils.py:205
+msgid "Horas CP disponibles"
+msgstr ""
+
+#: ../../../Web/WebMyPupils.py:206
+msgid "Cantidad de alumnos"
+msgstr ""
+
+#: ../../../Web/WebMyPupils.py:208
+msgid "No se registran datos para el usuario"
+msgstr ""
+
+#: ../../../Web/WebMyPupils.py:212
+msgid "Informacion de alumnos y horas:"
+msgstr ""
+
+#: ../../../Web/WebMyPupilsInfo.py:108 ../../../Web/WebPerson.py:15
+#: ../../../Web/WebPupilEdit.py:15 ../../../Web/WebPupilInsert.py:17
+msgid "Nombre de usuario"
+msgstr ""
+
+#: ../../../Web/WebMyPupilsInfo.py:109
+msgid "Constrasena"
+msgstr ""
+
+#: ../../../Web/WebMyPupilsInfo.py:112 ../../../Web/WebPerson.py:25
+#: ../../../Web/WebPupilEdit.py:25 ../../../Web/WebPupilInsert.py:27
+#: ../../../Web/WebSendMail.py:124
+msgid "eMail"
+msgstr ""
+
+#: ../../../Web/WebMyPupilsInfo.py:113
+msgid "Hs. AI restantes"
+msgstr ""
+
+#: ../../../Web/WebMyPupilsInfo.py:114
+msgid "Hs. CP restantes"
+msgstr ""
+
+#: ../../../Web/WebMyPupilsInfo.py:119
+msgid "No se registran alumnos a cargo"
+msgstr ""
+
+#: ../../../Web/WebMyPupilsInfo.py:121
+#, python-format
+msgid "Informacion de %d alumnos"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:59
+msgid "Pasos para precoordinar una clase"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:60 ../../../Web/WebPCArrange.py:217
+msgid "Elige la materia"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:61
+msgid "Elige el tutor"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:62 ../../../Web/WebPCArrange.py:334
+msgid "Elige el horario"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:67 ../../../Web/WebSchedules.py:45
+#: ../../../Web/WebSchedules1.py:34 ../../../Web/WebSchedules2.py:34
+msgid "Modificacion de horarios"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:175
+msgid "Debes seleccionar una materia"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:185
+msgid "Ninguno"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:186
+msgid "Tutores que dan esta materia"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:206 ../../../Web/WebPCArrange.py:319
+#: ../../../Web/WebPCArrange.py:456 ../../../Web/WebSchedules.py:225
+#: ../../../Web/WebSchedules1.py:206 ../../../Web/WebSchedules2.py:209
+#: ../../../Web/WebSendMail.py:131 ../../../Web/WebSubjects.py:116
+msgid "Enviar"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:218
+msgid ""
+"Primero elige la materia para la que necesites ayuda de la siguiente lista"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:230
+msgid "Falta el argumento requerido 'sbj'"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:237
+msgid "sbj deberia ser entero"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:249
+msgid "Elige el Tutor"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:250
+msgid ""
+"Selecciona el tutor de la lista a continuacion.  Cada tutor indica los "
+"horarios en los que esta disponible para dar clases."
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:260 ../../../Web/WebPCArrange.py:532
+msgid "domingo"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:260 ../../../Web/WebPCArrange.py:532
+msgid "lunes"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:260 ../../../Web/WebPCArrange.py:532
+msgid "martes"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:260 ../../../Web/WebPCArrange.py:532
+msgid "miercoles"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:260 ../../../Web/WebPCArrange.py:532
+msgid "jueves"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:260 ../../../Web/WebPCArrange.py:532
+msgid "viernes"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:260 ../../../Web/WebPCArrange.py:532
+msgid "sabado"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:264 ../../../Web/WebPCArrange.py:268
+#: ../../../Web/WebPCArrange.py:537 ../../../Web/WebPCArrange.py:540
+#: ../../../Web/WebTutorData.py:153
+msgid "de"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:265 ../../../Web/WebPCArrange.py:269
+#: ../../../Web/WebPCArrange.py:538 ../../../Web/WebPCArrange.py:541
+#: ../../../Web/WebTutorData.py:154
+msgid "a"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:307
+msgid "Debes seleccionar un tutor"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:335
+msgid "Finalmente elige el horario en el que necesitas tener la clase."
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:344 ../../../Web/WebPCArrange.py:478
+#: ../../../Web/WebPCArrange.py:637 ../../../Web/WebPupilEdit.py:64
+#: ../../../Web/WebPupilEdit.py:78
+msgid "Faltan argumentos requeridos"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:398 ../../../Web/WebSchedules.py:162
+#: ../../../Web/WebSchedules1.py:150 ../../../Web/WebSchedules2.py:146
+#: ../../../Web/WebTutorData.py:16
+msgid "Lunes"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:398 ../../../Web/WebSchedules.py:162
+#: ../../../Web/WebSchedules1.py:150 ../../../Web/WebSchedules2.py:146
+#: ../../../Web/WebTutorData.py:16
+msgid "Martes"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:398 ../../../Web/WebSchedules.py:162
+#: ../../../Web/WebSchedules1.py:150 ../../../Web/WebSchedules2.py:146
+#: ../../../Web/WebTutorData.py:16
+msgid "Miercoles"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:398 ../../../Web/WebSchedules.py:162
+#: ../../../Web/WebSchedules1.py:150 ../../../Web/WebSchedules2.py:146
+#: ../../../Web/WebTutorData.py:16
+msgid "Jueves"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:398 ../../../Web/WebSchedules.py:162
+#: ../../../Web/WebSchedules1.py:150 ../../../Web/WebSchedules2.py:146
+#: ../../../Web/WebTutorData.py:16
+msgid "Viernes"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:398 ../../../Web/WebSchedules.py:162
+#: ../../../Web/WebSchedules1.py:150 ../../../Web/WebSchedules2.py:146
+#: ../../../Web/WebTutorData.py:16
+msgid "Sabado"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:398 ../../../Web/WebSchedules.py:162
+#: ../../../Web/WebSchedules1.py:150 ../../../Web/WebSchedules2.py:146
+#: ../../../Web/WebTutorData.py:16
+msgid "Domingo"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:400 ../../../Web/WebSchedules.py:164
+#: ../../../Web/WebSchedules.py:176 ../../../Web/WebSchedules1.py:164
+#: ../../../Web/WebSchedules1.py:169 ../../../Web/WebSchedules1.py:202
+#: ../../../Web/WebSchedules2.py:148 ../../../Web/WebSchedules2.py:160
+msgid "No disponible"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:400 ../../../Web/WebSchedules.py:164
+#: ../../../Web/WebSchedules.py:177 ../../../Web/WebSchedules2.py:148
+#: ../../../Web/WebSchedules2.py:161
+msgid "Disponible para acceso instantaneo"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:401 ../../../Web/WebPCArrange.py:424
+#: ../../../Web/WebSchedules.py:165 ../../../Web/WebSchedules.py:178
+#: ../../../Web/WebSchedules2.py:149 ../../../Web/WebSchedules2.py:162
+msgid "Disponible para clases precoordinadas"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:401
+msgid "Ya esta reservado"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:411
+msgid "Debes seleccionar al menos un horario"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:421
+msgid "Coordinado para este horario"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:434
+msgid "Horarios disponibles"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:468 ../../../Web/WebPCArrange.py:551
+msgid "Una ultima confirmacion"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:505
+msgid "Tutor o materia inexistente"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:509
+msgid "Confirmacion"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:510
+msgid "Estas por coordinar una tutoria"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:515
+msgid "Fecha y horario"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:523
+msgid "Confirmar!"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:659
+msgid ""
+"Tutor, alumno o materia inexistente, o ese tutor no esta habilitado para dar "
+"esa materia"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:660
+msgid "El tutor no esta disponible en algun horario seleccionado"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:661
+msgid "El tutor ya tiene compromisos previos para algun horario seleccionado"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:662
+msgid "No cuentas con suficientes horas Pre-Coordinadas para esta tutoria"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:665
+msgid "Hubo algun problema."
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:666
+msgid "Vuelve a intentarlo"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:666
+msgid "O"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:668
+msgid "Clase coordinada con exito"
+msgstr ""
+
+#: ../../../Web/WebPCArrange.py:669
+msgid "Regresa a la pagina principal"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:19 ../../../Web/WebPupilEdit.py:19
+#: ../../../Web/WebPupilInsert.py:21
+msgid "Repita contrasena"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:63 ../../../Web/WebTemplates.py:75
+msgid "Datos personales"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:64 ../../../Web/WebPupilInsert.py:55
+msgid "Recuerde que los campos indicados con <sup>*</sup> son obligatorios"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:73
+msgid "Tus Datos personales"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:74 ../../../Web/WebPupilEdit.py:49
+msgid "Recuerda que los campos indicados con <sup>*</sup> son obligatorios"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:96 ../../../Web/WebPupilEdit.py:99
+#: ../../../Web/WebPupilInsert.py:93 ../../../Web/WebSendMail.py:73
+#, python-format
+msgid "Falta el argumento '%s'"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:101 ../../../Web/WebPupilEdit.py:104
+#: ../../../Web/WebPupilInsert.py:98 ../../../Web/WebSendMail.py:78
+#, python-format
+msgid "Longitud excesiva del argumento '%s'"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:104 ../../../Web/WebPerson.py:234
+#: ../../../Web/WebPupilEdit.py:107 ../../../Web/WebPupilEdit.py:183
+#: ../../../Web/WebPupilInsert.py:101 ../../../Web/WebPupilInsert.py:238
+msgid "Las contrasenas no coinciden"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:128 ../../../Web/WebPupilEdit.py:137
+#: ../../../Web/WebSettings.py:72
+msgid "Datos actualizados con exito"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:189 ../../../Web/WebPupilEdit.py:139
+#, python-format
+msgid "El usuario %s ya existe en el sistema"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:212 ../../../Web/WebPupilInsert.py:213
+msgid "Usuario ingresado con exito"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:232 ../../../Web/WebPupilEdit.py:181
+#: ../../../Web/WebPupilInsert.py:236
+#, python-format
+msgid "El campo %s es obligatorio"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:232 ../../../Web/WebPerson.py:267
+#: ../../../Web/WebPupilEdit.py:181 ../../../Web/WebPupilEdit.py:219
+#: ../../../Web/WebPupilInsert.py:236 ../../../Web/WebPupilInsert.py:293
+#: ../../../Web/WebTutorInfo.py:141
+msgid "desc"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:235 ../../../Web/WebPupilEdit.py:185
+#: ../../../Web/WebPupilInsert.py:265 ../../../Web/WebSendMail.py:146
+msgid "Error en el ingreso de datos:"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:253 ../../../Web/WebPupilEdit.py:204
+#: ../../../Web/WebSettings.py:129 ../../../Web/WebTutorData.py:87
+msgid "El usuario solicitado no existe"
+msgstr ""
+
+#: ../../../Web/WebPerson.py:268 ../../../Web/WebPupilEdit.py:222
+#: ../../../Web/WebPupilInsert.py:296 ../../../Web/WebSettings.py:142
+msgid "Guardar"
+msgstr ""
+
+#: ../../../Web/WebPupilEdit.py:46 ../../../Web/WebPupilInsert.py:52
+msgid "Pagina del Alumno"
+msgstr ""
+
+#: ../../../Web/WebPupilEdit.py:48
+msgid "Informacion de alumno"
+msgstr ""
+
+#: ../../../Web/WebPupilEdit.py:61
+msgid "user_id y pupil_id deberian ser enteros"
+msgstr ""
+
+#: ../../../Web/WebPupilEdit.py:75
+msgid "pupil_id deberia ser entero"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:29
+msgid "Horas de AI"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:31
+msgid "Horas de CP"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:54
+msgid "Nuevo alumno"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:69
+msgid "Falta el argumento user_id"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:107
+msgid "El argumento de Hora debe ser numerico"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:124
+msgid "Detalle de horas disponibles:"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:125
+msgid "Horas AI disponibles:"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:126
+msgid "Horas CP disponibles:"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:159
+msgid "Ha solicitado mas horas de las que dispone"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:163
+msgid "El cliente solicitado no existe"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:172
+msgid "El usuario ya existe en el sistema"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:242
+msgid "El campo Horas AI disponibles debe ser numerico"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:245
+msgid "Se ha excedido en las Horas AI asignadas"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:248
+msgid "El campo Horas de AI debe ser positivo"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:253
+msgid "El campo Horas PC disponibles debe ser numerico"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:256
+msgid "Se ha excedido en las Horas PC asignadas"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:259
+msgid "El campo Horas de PC debe ser positivo"
+msgstr ""
+
+#: ../../../Web/WebPupilInsert.py:262
+msgid "Debe asignarle horas al alumno"
+msgstr ""
+
+#: ../../../Web/WebRoomInfo.py:39
+msgid "Informacion de Pizarras en el sistema"
+msgstr ""
+
+#: ../../../Web/WebRoomInfo.py:45 ../../../Web/WebRoomInfo.py:49
+msgid "Estado del sistema"
+msgstr ""
+
+#: ../../../Web/WebRoomInfo.py:46
+msgid ""
+"Aqui se muestran las aulas que se encuentran abiertas, una descripcion de "
+"ellas y la lista de aulas que deberian estar abiertas."
+msgstr ""
+
+#: ../../../Web/WebRoomInfo.py:50
+msgid ""
+"Aqui se muestran las aulas que se encuentran abiertas y una descripcion de "
+"ellas"
+msgstr ""
+
+#: ../../../Web/WebRoomInfo.py:92
+msgid "Aulas abiertas:"
+msgstr ""
+
+#: ../../../Web/WebRoomInfo.py:94 ../../../Web/WebRoomInfo.py:128
+msgid "Aula"
+msgstr ""
+
+#: ../../../Web/WebRoomInfo.py:95
+msgid "Usuarios conectados"
+msgstr ""
+
+#: ../../../Web/WebRoomInfo.py:96
+msgid "Tutor a cargo"
+msgstr ""
+
+#: ../../../Web/WebRoomInfo.py:101
+msgid "Ningun aula abierta"
+msgstr ""
+
+#: ../../../Web/WebRoomInfo.py:115
+msgid "Usuarios en la cola general:"
+msgstr ""
+
+#: ../../../Web/WebRoomInfo.py:126
+msgid "Aulas que deberian estar abiertas y no estan:"
+msgstr ""
+
+#: ../../../Web/WebRoomInfo.py:134
+msgid "No hay tutores ausentes"
+msgstr ""
+
+#: ../../../Web/WebRoot.py:81 ../../../Web/WebRoot.py:116
+msgid "Beppo - Sistema de educacion a distancia"
+msgstr ""
+
+#: ../../../Web/WebRoot.py:89
+msgid "Bienvenido!"
+msgstr ""
+
+#: ../../../Web/WebRoot.py:91
+msgid ""
+"Aqui podra conocer todas las ventajas de utilizar el sistema Beppo, y lo "
+"intentaremos convencer de que lo compre."
+msgstr ""
+
+#: ../../../Web/WebSchedules.py:56 ../../../Web/WebSchedules1.py:45
+#: ../../../Web/WebSchedules2.py:45
+msgid "Administracion de horarios"
+msgstr ""
+
+#: ../../../Web/WebSchedules.py:56 ../../../Web/WebSchedules2.py:45
+msgid "Selecciona las horas en las que el tutor se encuentra disponible."
+msgstr ""
+
+#: ../../../Web/WebSchedules.py:66 ../../../Web/WebSchedules1.py:55
+#: ../../../Web/WebSchedules2.py:55
+msgid "Seleccion de horarios"
+msgstr ""
+
+#: ../../../Web/WebSchedules.py:66 ../../../Web/WebSchedules2.py:55
+msgid "Indica los horarios en los que te encuentras disponible."
+msgstr ""
+
+#: ../../../Web/WebSchedules.py:90 ../../../Web/WebSchedules1.py:79
+#: ../../../Web/WebSchedules2.py:79 ../../../Web/WebSubjects.py:87
+msgid "Cambios guardados."
+msgstr ""
+
+#: ../../../Web/WebSchedules.py:90 ../../../Web/WebSchedules1.py:79
+#: ../../../Web/WebSchedules2.py:79 ../../../Web/WebSubjects.py:88
+msgid "Se guardaron los cambios correctamente"
+msgstr ""
+
+#: ../../../Web/WebSchedules.py:189 ../../../Web/WebSchedules2.py:173
+msgid "No ha seleccionado un tipo de horario!"
+msgstr ""
+
+#: ../../../Web/WebSchedules.py:201 ../../../Web/WebSchedules1.py:179
+#: ../../../Web/WebSchedules2.py:186
+msgid "Tipo de horarios"
+msgstr ""
+
+#: ../../../Web/WebSchedules.py:203 ../../../Web/WebSchedules1.py:180
+#: ../../../Web/WebSchedules2.py:188
+msgid "Acceso instantaneo"
+msgstr ""
+
+#: ../../../Web/WebSchedules.py:205 ../../../Web/WebSchedules2.py:190
+msgid "Clases precoordinadas"
+msgstr ""
+
+#: ../../../Web/WebSchedules1.py:45
+msgid "Selecciona las horarios de acceso instantaneo para el tutor."
+msgstr ""
+
+#: ../../../Web/WebSchedules1.py:55
+msgid ""
+"Selecciona los horarios en los que estas disponible para horas de acceso "
+"instantaneo."
+msgstr ""
+
+#: ../../../Web/WebSchedules1.py:166 ../../../Web/WebSchedules1.py:200
+msgid "Disponible"
+msgstr ""
+
+#: ../../../Web/WebSchedules1.py:181
+msgid "Clases Precoordinadas"
+msgstr ""
+
+#: ../../../Web/WebSendMail.py:47 ../../../Web/WebSendMail.py:50
+msgid "Criticas y sugerencias"
+msgstr ""
+
+#: ../../../Web/WebSendMail.py:51
+msgid "Desde aqui puede mandar sus criticas, sugerencias y comentarios."
+msgstr ""
+
+#: ../../../Web/WebSendMail.py:52
+msgid ""
+"La comunicacion se realizara mediante la casilla de mail con la cual se ha "
+"registrado."
+msgstr ""
+
+#: ../../../Web/WebSendMail.py:105
+msgid "Mail enviado correctamente"
+msgstr ""
+
+#: ../../../Web/WebSendMail.py:106
+msgid "Agradecemos su colaboracion"
+msgstr ""
+
+#: ../../../Web/WebSendMail.py:109
+msgid "El texto del mail no debe ser vacio"
+msgstr ""
+
+#: ../../../Web/WebSendMail.py:125
+msgid "Asunto"
+msgstr ""
+
+#: ../../../Web/WebSendMail.py:127
+msgid "Texto"
+msgstr ""
+
+#: ../../../Web/WebSendMail.py:143
+msgid "El texto es obligatorio"
+msgstr ""
+
+#: ../../../Web/WebSendMail.py:150
+msgid "Enviar el mensaje sin asunto?"
+msgstr ""
+
+#: ../../../Web/WebSettings.py:69 ../../../Web/WebSettings.py:96
+#: ../../../Web/WebTemplates.py:50
+msgid "Preferencias"
+msgstr ""
+
+#: ../../../Web/WebSettings.py:97
+msgid "Indica tu preferencia de idioma y zona horaria"
+msgstr ""
+
+#: ../../../Web/WebSettings.py:156
+msgid "Zona Horaria:"
+msgstr ""
+
+#: ../../../Web/WebSubjectAdmin.py:35 ../../../Web/WebSubjects.py:46
+msgid "Administracion de materias"
+msgstr ""
+
+#: ../../../Web/WebSubjectAdmin.py:42
+msgid "Administracion de Materias"
+msgstr ""
+
+#: ../../../Web/WebSubjectAdmin.py:42
+msgid ""
+"Estas son las materias disponibles en el sistema. Desde aqui se pueden "
+"agregar y borrar materias"
+msgstr ""
+
+#: ../../../Web/WebSubjectAdmin.py:62
+msgid "Materia agregada"
+msgstr ""
+
+#: ../../../Web/WebSubjectAdmin.py:63
+msgid "La materia ha sido guardada correctamente"
+msgstr ""
+
+#: ../../../Web/WebSubjectAdmin.py:93
+msgid "Esta seguro de borrar la materia"
+msgstr ""
+
+#: ../../../Web/WebSubjectAdmin.py:95
+msgid "1 tutor la tiene como seleccionada"
+msgstr ""
+
+#: ../../../Web/WebSubjectAdmin.py:98
+msgid "tutores la tienen como seleccionada"
+msgstr ""
+
+#: ../../../Web/WebSubjectAdmin.py:109
+msgid "# Tutores"
+msgstr ""
+
+#: ../../../Web/WebSubjectAdmin.py:125
+msgid "El nombre de la materia no puede ser vacio"
+msgstr ""
+
+#: ../../../Web/WebSubjectAdmin.py:134
+msgid "Insertar"
+msgstr ""
+
+#: ../../../Web/WebSubjectAdmin.py:147
+msgid "Materia no borrada"
+msgstr ""
+
+#: ../../../Web/WebSubjectAdmin.py:148
+msgid "Existen clases por darse o preguntas por contestarse para esta materia"
+msgstr ""
+
+#: ../../../Web/WebSubjectAdmin.py:151
+msgid "Materia borrada"
+msgstr ""
+
+#: ../../../Web/WebSubjectAdmin.py:152
+msgid "La materia ha sido borrada correctamente"
+msgstr ""
+
+#: ../../../Web/WebSubjects.py:35
+msgid "Modificacion de materias"
+msgstr ""
+
+#: ../../../Web/WebSubjects.py:47
+msgid ""
+"Selecciona las materias que el tutor sepa ensenar, para actualizar los datos "
+"en el sistema."
+msgstr ""
+
+#: ../../../Web/WebSubjects.py:59
+msgid "Seleccion de materias"
+msgstr ""
+
+#: ../../../Web/WebSubjects.py:60
+msgid ""
+"Selecciona las materias que sepas ensenar, para actualizar tus datos en el "
+"sistema."
+msgstr ""
+
+#: ../../../Web/WebSubjects.py:85
+msgid "sbj deberia tomar valores enteros."
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:46
+msgid "Cerrar sesion"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:48
+msgid "Inicio"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:51
+msgid "Mis horarios"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:53
+msgid "Mis materias"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:55
+msgid "Mis sesiones"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:59
+msgid "Reportes"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:61
+msgid "Precoordinar una clase"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:63
+msgid "Administrar"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:66
+msgid "Contactenos"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:68
+msgid "Navegacion"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:71
+#, python-format
+msgid "Sesion iniciada como %s"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:87
+msgid "Iniciar sesion"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:89
+msgid "Ayuda/Instrucciones"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:129
+msgid "Usuario no autenticado"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:130
+msgid "Esta intentando acceder a una pagina restringida."
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:131
+msgid "Debe autenticarse ante el sistema antes de acceder a esta pagina."
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:137
+msgid "No autorizado"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:138
+msgid "Usted no esta autorizado a utilizar esta pagina."
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:144
+msgid "No juegues con la URL"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:145
+msgid "Se recibieron parametros inesperados en la URL: "
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:152
+#, python-format
+msgid "La pagina de %s %s"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:155
+msgid "Usted es el administrador de este sitio"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:167
+msgid ""
+"Aqui se muestra alguna informacion general como horas disponibles u horarios "
+"en los que se tienen clases, y algunos links utiles.  Por ejemplo, se puede "
+"ver la lista de"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:168
+msgid "salas disponibles."
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:168
+msgid "o las"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:170
+msgid "Tarifas actuales"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:177
+msgid "La pagina solicitada no existe"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:182 ../../../Web/WebTemplates.py:184
+msgid "Aqui"
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:183
+msgid ""
+"podra acceder a nuestro archivo, el cual consiste de las pizarras virtuales "
+"en formato PostScript (PS). Puede consultar todas las clases que nuestros "
+"tutores han dado en el sistema."
+msgstr ""
+
+#: ../../../Web/WebTemplates.py:185
+msgid ""
+"se pueden ver la lista de aulas abiertas; es decir, aquellas en las que se "
+"estan dando clase en este momento. Tambien se incluyen las materias que se "
+"estan ofreciendo, la cantidad de alumnos en clase y los tutores a cargo"
+msgstr ""
+
+#: ../../../Web/WebTutor.py:14
+msgid "Direccion 1"
+msgstr ""
+
+#: ../../../Web/WebTutor.py:15
+msgid "Direccion 2"
+msgstr ""
+
+#: ../../../Web/WebTutor.py:17
+msgid "Codigo postal"
+msgstr ""
+
+#: ../../../Web/WebTutor.py:19
+msgid "Telefono 1"
+msgstr ""
+
+#: ../../../Web/WebTutor.py:21
+msgid "Telefono 2"
+msgstr ""
+
+#: ../../../Web/WebTutor.py:23
+msgid "Telefono 3"
+msgstr ""
+
+#: ../../../Web/WebTutor.py:25
+msgid "ICQ"
+msgstr ""
+
+#: ../../../Web/WebTutor.py:27
+msgid "MSN"
+msgstr ""
+
+#: ../../../Web/WebTutor.py:29
+msgid "Aol"
+msgstr ""
+
+#: ../../../Web/WebTutor.py:38
+msgid "Pagina del tutor"
+msgstr ""
+
+#: ../../../Web/WebTutorData.py:38
+msgid "Datos del tutor"
+msgstr ""
+
+#: ../../../Web/WebTutorData.py:45
+msgid "Informacion del tutor"
+msgstr ""
+
+#: ../../../Web/WebTutorData.py:108
+msgid "Materias que sabe ensenar:"
+msgstr ""
+
+#: ../../../Web/WebTutorData.py:129
+msgid "Horarios en los que da clases de Acceso Instantaneo:"
+msgstr ""
+
+#: ../../../Web/WebTutorData.py:135
+msgid "Horarios en los que da clases de Clase Precoordinada:"
+msgstr ""
+
+#: ../../../Web/WebTutorData.py:157
+msgid "Desde"
+msgstr ""
+
+#: ../../../Web/WebTutorData.py:157 ../../../Web/WebTutorData.py:159
+msgid "a las"
+msgstr ""
+
+#: ../../../Web/WebTutorData.py:158
+msgid "hasta"
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:18
+msgid "A.I."
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:19
+msgid "C.P."
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:20
+msgid "Sin turno"
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:21
+msgid "Preguntas offline"
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:22 ../../../Web/WebTutorSessions.py:22
+msgid "En espera"
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:23
+msgid "En espera (Sin turno)"
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:24 ../../../Web/WebTutorSessions.py:22
+msgid "Ausente"
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:25 ../../../Web/WebTutorSessions.py:22
+#: ../../../Web/WebTutorSessions.py:26
+msgid "Postprocesado"
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:64
+msgid "Informacion de los tutores del sistema"
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:107
+msgid "No hay resultados disponibles"
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:137
+#, python-format
+msgid "Informacion de %d tutores:"
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:155
+msgid "Totales"
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:197
+msgid "Fecha Inicio:"
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:199 ../../../Web/WebTutorInfo.py:205
+msgid "Elegir fecha"
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:200 ../../../Web/WebTutorInfo.py:206
+msgid "(dd/mm/aaaa)"
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:203
+msgid "Fecha Fin:"
+msgstr ""
+
+#: ../../../Web/WebTutorInfo.py:209
+msgid "Actualizar"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:22
+msgid "Acceso Instantaneo"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:22
+msgid "Clase Precoordinada"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:22
+msgid "Pregunta offline"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:22
+msgid "AI (Fuera de turno)"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:22
+msgid "Espera (Fuera de turno)"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:22
+msgid "Analizando pregunta"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:26
+msgid "Fin horario"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:26
+msgid "Arribo"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:26
+msgid "Alumno aceptado"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:26
+msgid "Terminada por Tutor"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:26
+msgid "Terminada por alumno"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:26
+msgid "Desconeccion Tutor"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:26
+msgid "Reconexion servidor"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:26
+msgid "Pregunta contestada"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:26
+msgid "Pregunta no contestada"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:26
+msgid "Pregunta aceptada"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:26
+msgid "Pregunta no aceptada"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:26
+msgid "No postprocesado"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:52
+msgid "Historial de sesiones del tutor"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:62
+msgid "Sesiones del tutor"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:74
+msgid "Tus sesiones"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:75
+msgid "Este es el detalle de tus sesiones en el sistema:"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:104
+msgid "No se registran sesiones"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:106
+#, python-format
+msgid "Informacion de %d sesiones:"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:110
+msgid "Tipo de sesion"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:111
+msgid "Comienzo"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:112
+msgid "Fin"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:113
+msgid "Duracion"
+msgstr ""
+
+#: ../../../Web/WebTutorSessions.py:114
+msgid "Razon cierre"
+msgstr ""
+
+#: ../../../Web/WebUserInfo.py:36 ../../../Web/WebUserInfo.py:46
+msgid "Informacion de usuario"
+msgstr ""
+
+#: ../../../Web/WebUserInfo.py:56
+msgid "Falta algun argumento"
+msgstr ""

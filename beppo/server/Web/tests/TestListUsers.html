@@ -1,0 +1,148 @@
+<html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test ListUsers Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+
+<!-- Iniciar como Admin -->
+<tr><td>type</td><td>id=username</td><td>Root</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>root</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//div[@id='metanav']//a[@id='admin']</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/admin</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//ul[@id='systemusers']//li[1]//a</td><td>&nbsp;</td></tr>
+    <!-- Ver tutores -->
+<tr><td>clickAndWait</td><td>xpath=//ul[@id='systemusers']//li[1]//a</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[1]//img</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[2]//img</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[3]//img</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[4]//img</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[5]//a</td><td>Achuni</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[6]</td><td>Lenton</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[7]</td><td>Anthony</td></tr>
+    <!-- Ver un tutor en particular -->
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[5]//a</td><td></td></tr>
+<tr><td>assertLocation</td><td>/userinfo</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=userInfoModify</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=back</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>id=back</td><td></td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=back</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>id=back</td><td></td></tr>
+<tr><td>assertLocation</td><td>/admin</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//ul[@id='systemusers']//li[4]//a</td><td>&nbsp;</td></tr>
+    <!-- Ver clientes -->
+<tr><td>clickAndWait</td><td>xpath=//ul[@id='systemusers']//li[4]//a</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[3]//td[1]//img</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[3]//td[2]//img</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[3]//td[3]//img</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[3]//td[4]//img</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[3]//td[5]//a</td><td>Cliente</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[3]//td[6]</td><td>Bue</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[3]//td[7]</td><td>Cli</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[3]//td[8]</td><td>Clientes Buenos SA</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[3]//td[9]//img</td><td></td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[3]//td[10]</td><td>90.5</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[3]//td[11]</td><td>0.0</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[3]//td[12]//img</td><td></td></tr>
+    <!-- Ver un cliente en particular -->
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[3]//td[4]//a</td><td></td></tr>
+<tr><td>assertLocation</td><td>/report</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=back</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>id=back</td><td></td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=back</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>id=back</td><td></td></tr>
+<tr><td>assertLocation</td><td>/admin</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//ul[@id='systemusers']//li[1]//a</td><td>&nbsp;</td></tr>
+    <!-- Ver alumnos -->
+<tr><td>clickAndWait</td><td>xpath=//ul[@id='systemusers']//li[2]//a</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[1]//img</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[2]//img</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[3]//a</td><td>Waldo</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[4]</td><td>Alini</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[5]</td><td>Walter</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[6]</td><td>Nestor</td></tr>
+    <!-- Ver un tutor en particular -->
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[3]//a</td><td></td></tr>
+<tr><td>assertLocation</td><td>/userinfo</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=userInfoModify</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=back</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>id=back</td><td></td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=back</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>id=back</td><td></td></tr>
+<tr><td>assertLocation</td><td>/admin</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//ul[@id='systemusers']//li[1]//a</td><td>&nbsp;</td></tr>
+    <!-- Ver administradores -->
+<tr><td>clickAndWait</td><td>xpath=//ul[@id='systemusers']//li[3]//a</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[1]//a</td><td>Root</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[2]</td><td>Sys</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[3]</td><td>Admin</td></tr>
+    <!-- Ver un administrador en particular -->
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[2]//td[1]//a</td><td></td></tr>
+<tr><td>assertLocation</td><td>/userinfo</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>id=userInfoModify</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=back</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>id=back</td><td></td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=back</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>id=back</td><td></td></tr>
+<tr><td>assertLocation</td><td>/admin</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+    <!--Abrir las listas por barra de direcciones-->
+<tr><td>open</td><td>/list?kind=1</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?kind=2</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?kind=3</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?kind=4</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+    <!--Abrir cosas que anden mal-->
+<tr><td>open</td><td>/list?kind=144</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//table[@id='usersinsystem']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?kind="ddfdr</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?facundo=4</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?facu="fjadkfj"</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+</table>
+</body></html>

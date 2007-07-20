@@ -1,0 +1,49 @@
+<html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test SubjectsAdmin Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>Root</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>root</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+
+
+<tr><td>open</td><td>/subject_admin</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/subject_admin</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=subjects</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='subjects']//tr[2]//td[1]//img</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='subjects']//tr[2]//td[2]</td><td>Combinatorias</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='subjects']//tr[2]//td[3]</td><td>2</td></tr>
+    <!-- Agregar una materia -->
+<tr><td>type</td><td>id=name</td><td>Ballet</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/subject_admin</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=subjects</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='subjects']//tr[2]//td[1]//img</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='subjects']//tr[2]//td[2]</td><td>Ballet</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='subjects']//tr[2]//td[3]</td><td>0</td></tr>
+    <!-- Borrar una materia -->
+<tr><td>chooseCancelOnNextConfirmation</td><td></td><td></td></tr>
+<tr><td>click</td><td>xpath=//table[@id='subjects']//tr[2]//td[1]//a</td><td></td></tr>
+<tr><td>assertConfirmation</td><td>glob:*?*</td><td></td></tr>
+<tr><td>assertLocation</td><td>/subject_admin</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='subjects']//tr[2]//td[2]</td><td>Ballet</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='subjects']//tr[2]//td[1]//a</td><td></td></tr>
+<tr><td>assertConfirmation</td><td>glob:*?*</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='subjects']//tr[2]//td[2]</td><td>Combinatorias</td></tr>
+    <!-- Borrar una materia con preguntas offline -->
+<tr><td>click</td><td>xpath=//table[@id='subjects']//tr[2]//td[1]//a</td><td></td></tr>
+<tr><td>assertConfirmation</td><td>glob:*(*</td><td></td></tr>
+<tr><td>assertLocation</td><td>/subject_admin</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='subjects']//tr[2]//td[2]</td><td>Combinatorias</td></tr>
+
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+</table>
+</body></html>

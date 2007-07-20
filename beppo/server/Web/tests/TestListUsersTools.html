@@ -1,0 +1,161 @@
+    <html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test ListUsersTools Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+
+<!-- Iniciar como Admin -->
+<tr><td>type</td><td>id=username</td><td>Root</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>root</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+
+    <!--Uso de las herramientas de la izquierda para Tutores-->
+<tr><td>open</td><td>/tutor?username=ATutorTest&password=tutortest&password2=tutortest&first_name=Tutor&last_name=Test&email=tt%40beppo.com&language=1&fk_timezone=1&address1=Gral+Paz+458&address2=Bolivar+377&zip=5152&phone1=05412222&phone2=&phone3=&icq=&msn=msn%40msn.com&aol=&submit=Guardar</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/tutor?username=AATutorTest&password=tutortest&password2=tutortest&first_name=Tutor&last_name=Test&email=tt%40beppo.com&language=1&fk_timezone=1&address1=Gral+Paz+458&address2=Bolivar+377&zip=5152&phone1=05412222&phone2=&phone3=&icq=&msn=msn%40msn.com&aol=&submit=Guardar</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?kind=1</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[9]//td[5]</td><td>ATutorTest</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[10]//td[5]</td><td>AATutorTest</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[9]//td[2]//img</td><td>&nbsp;</td></tr>
+        <!--Borrado -->
+<tr><td>chooseCancelOnNextConfirmation</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>xpath=//table[@id='usersinsystem']//tr[9]//td[2]//a</td><td>&nbsp;</td></tr>
+<tr><td>assertConfirmation</td><td>glob:*ATutorTest*</td><td></td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[10]//td[2]//img</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[9]//td[2]//a</td><td></td></tr>
+<tr><td>assertConfirmation</td><td>glob:*ATutorTest*</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//table[@id='usersinsystem']//tr[10]</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[9]//td[2]//a</td><td></td></tr>
+<tr><td>assertConfirmation</td><td>glob:*ATutorTest*</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+        <!-- Que los demás vayan a donde tienen que ir (ver los demás tests) -->
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[7]//td[1]//a</td><td></td></tr>
+<tr><td>assertLocation</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?kind=1</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[7]//td[3]//a</td><td></td></tr>
+<tr><td>assertLocation</td><td>/schedules</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?kind=1</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[7]//td[4]//a</td><td></td></tr>
+<tr><td>assertLocation</td><td>/subjects</td><td>&nbsp;</td></tr>
+
+    <!--Uso de las herramientas de la izquierda para Alumnos -->
+<tr><td>open</td><td>/new_pupil?username=APupilTest&password=pupiltest&password2=pupiltest&first_name=Pupil&last_name=Test&email=pt%40beppo.com&ai_total=1.0&pc_total=0.0&submit=Guardar&user_id=42</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/new_pupil?username=AAPupilTest&password=pupiltest&password2=pupiltest&first_name=Pupil&last_name=Test&email=pt%40beppo.com&ai_total=1.0&pc_total=0.0&submit=Guardar&user_id=42</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/new_pupil</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?kind=2</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[8]//td[3]</td><td>APupilTest</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[9]//td[3]</td><td>AAPupilTest</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[8]//td[2]//img</td><td>&nbsp;</td></tr>
+        <!-- Que los demás vayan a donde tienen que ir (ver los demás tests) -->
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[8]//td[1]//a</td><td></td></tr>
+<tr><td>assertLocation</td><td>/pupil_edit</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?kind=2</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[8]//td[3]//a</td><td></td></tr>
+<tr><td>assertLocation</td><td>/userinfo</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?kind=2</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+        <!-- Borrado -->
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[8]//td[2]//a</td><td></td></tr>
+<tr><td>assertConfirmation</td><td>glob:*APupilTest*</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[8]//td[2]//a</td><td></td></tr>
+<tr><td>assertConfirmation</td><td>glob:*AAPupilTest*</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+
+ <!--Uso de las herramientas de la izquierda para Clientes -->
+<tr><td>open</td><td>/client?username=AClientTest&password=clienttest&password2=clienttest&first_name=Client&last_name=Test&email=ct%40beppo.com&language=1&fk_timezone=1&organization=Tester+SA&ai_available=100.2&pc_available=0.0&submit=Guardar</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/client?username=AAClientTest&password=clienttest&password2=clienttest&first_name=Client&last_name=Test&email=ct%40beppo.com&language=1&fk_timezone=1&organization=Tester+SA&ai_available=100.2&pc_available=0.0&submit=Guardar</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?kind=4</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[6]//td[5]</td><td>AClientTest</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[7]//td[5]</td><td>AAClientTest</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[6]//td[2]//img</td><td>&nbsp;</td></tr>
+        <!--Borrado -->
+<tr><td>chooseCancelOnNextConfirmation</td><td></td><td></td></tr>
+<tr><td>click</td><td>xpath=//table[@id='usersinsystem']//tr[6]//td[2]//a</td><td></td></tr>
+<tr><td>assertConfirmation</td><td>glob:*AClientTest*</td><td></td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='usersinsystem']//tr[7]//td[2]//img</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[6]//td[2]//a</td><td></td></tr>
+<tr><td>assertConfirmation</td><td>glob:*AClientTest*</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//table[@id='usersinsystem']//tr[7]</td><td>&nbsp;</td></tr>
+        <!--Asignar horas IA-->
+<tr><td>answerOnNextPrompt</td><td>130.2</td><td></td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[9]//a</td><td></td></tr>
+<tr><td>assertPrompt</td><td>glob:*horas*</td><td></td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[10]</td><td>130.2</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[11]</td><td>29.4</td></tr>
+        <!--Asignar horas PC-->
+<tr><td>answerOnNextPrompt</td><td>100.0</td><td></td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[12]//a</td><td></td></tr>
+<tr><td>assertPrompt</td><td>glob:*horas*</td><td></td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[10]</td><td>130.2</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[11]</td><td>100.0</td></tr>
+        <!-- Restaurar -->
+<tr><td>answerOnNextPrompt</td><td>48.8</td><td></td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[9]//a</td><td></td></tr>
+<tr><td>assertPrompt</td><td>glob:*horas*</td><td></td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[10]</td><td>48.8</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[11]</td><td>100.0</td></tr>
+<tr><td>answerOnNextPrompt</td><td>29.4</td><td></td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[12]//a</td><td></td></tr>
+<tr><td>assertPrompt</td><td>glob:*horas*</td><td></td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[10]</td><td>48.8</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[11]</td><td>29.4</td></tr>
+
+        <!-- Que los demás vayan a donde tienen que ir (ver los demás tests) -->
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[1]//a</td><td></td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?kind=4</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[3]//a</td><td></td></tr>
+<tr><td>assertLocation</td><td>/new_pupil</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?kind=4</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[4]//a</td><td></td></tr>
+<tr><td>assertLocation</td><td>/report</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?kind=4</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[5]//td[5]//a</td><td></td></tr>
+<tr><td>assertLocation</td><td>/userinfo</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/list?kind=4</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+        <!-- Borro el otro que me falta -->
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[6]//td[2]//a</td><td></td></tr>
+<tr><td>assertConfirmation</td><td>glob:*AClientTest*</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//table[@id='usersinsystem']//tr[6]</td><td>&nbsp;</td></tr>
+
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+</table>
+</body></html>

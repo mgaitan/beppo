@@ -1,0 +1,36 @@
+<html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test Archive Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+
+<!-- Loggearse como admin -->
+<tr><td>type</td><td>id=username</td><td>Root</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>root</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/archive</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/archive</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='archive']</td><td>&nbsp;</td></tr>
+
+<!-- ver que la tabla tenga los datos que corresponden -->
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='archive']//tr[2]//td[1]//a</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='archive']//tr[2]//td[2]//a</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='archive']//tr[3]//td[1]//a</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='archive']//tr[3]//td[2]//a</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='archive']//tr[3]//td[3]//a</td><td></td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='archive']//tr[2]//td[1]//a</td><td>239.ps</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='archive']//tr[2]//td[2]//a</td><td>Achuni</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='archive']//tr[2]//td[4]</td><td>05/10/2005 17:10:32</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='archive']//tr[2]//td[5]</td><td>se fue antes de lo planeado</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='archive']//tr[3]//td[1]//a</td><td>237.ps</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='archive']//tr[3]//td[2]//a</td><td>Matias</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='archive']//tr[3]//td[3]//a</td><td>Guest</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='archive']//tr[3]//td[4]</td><td>05/10/2005 17:11:02</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='archive']//tr[3]//td[5]</td><td>nunca vino. pizarra en blanco</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+</table>
+</body></html>

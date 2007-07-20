@@ -1,0 +1,41 @@
+BEPPO INTERACTIVE LEARNING SYSTEM:
+---------------------------------
+
+Requirements:
+------------
+
+- postgresql (>= 7.4)
+- python (>= 2.3)
+- python-twisted
+- python-psycopg
+
+Database setup:
+--------------
+
+- With an existant postgresql user (with 'create database' role), create Beppo database:
+	$ createdb Beppo
+- Initialize Beppo database with Beppo.sql file included in this directory:
+	$ psql Beppo < Beppo.sql
+- Modify postgresql's pg_hba.conf (usually in /etc/postgresql/x.x/main/) to allow connections to server. For example, to grant access from localhost without authentication, the following line must be added:
+	all	all	127.0.0.1	255.255.255.255	trust
+- Modify Beppo's settings.py (in beppo directory) to use the appropiate postgresql user
+
+Environment setup:
+-----------------
+
+- Add this directory to your PYTHONPATH environment variable. You may want to add to your ~/.bashrc file:
+	export PYTHONPATH=$PYTHONPATH:/path/to/this/directory
+
+Server run:
+----------
+
+- Set APP_URL in beppo/Constants.py to the right server URL (for local servers, use "http://localhost:8000)
+- From this directory, run:
+	$ twistd -noy beppo/server/WBServer.py
+
+
+Client run:
+----------
+
+- Run:
+	$ python beppo/client/Login.py

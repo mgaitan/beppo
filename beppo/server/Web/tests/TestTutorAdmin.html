@@ -1,0 +1,172 @@
+<html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test Tutor Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<!--
+-
+-   Loggeado como Admin
+-
+-->
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>Root</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>root</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+    <!-- Crear Tutor -->
+<tr><td>open</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>TutorTest</td></tr>
+<tr><td>type</td><td>id=password</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=password2</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=first_name</td><td>Tutor</td></tr>
+<tr><td>type</td><td>id=last_name</td><td>Test</td></tr>
+<tr><td>type</td><td>id=email</td><td>tutor@test.com.ar</td></tr>
+<tr><td>type</td><td>id=address1</td><td>Mendiolaza 10</td></tr>
+<tr><td>type</td><td>id=address2</td><td>Mendiolaza 20</td></tr>
+<tr><td>type</td><td>id=zip</td><td>4500</td></tr>
+<tr><td>type</td><td>id=phone1</td><td>123456</td></tr>
+<tr><td>type</td><td>id=phone2</td><td>654321</td></tr>
+<tr><td>type</td><td>id=phone3</td><td>123123</td></tr>
+<tr><td>type</td><td>id=icq</td><td>icq@tutor.com.ar</td></tr>
+<tr><td>type</td><td>id=msn</td><td>msn@tutor.com.ar</td></tr>
+<tr><td>type</td><td>id=aol</td><td>aol@tutor.com.ar</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=username</td><td>TutorTest</td></tr>
+<tr><td>assertValue</td><td>id=password</td><td>aaa</td></tr>
+<tr><td>assertValue</td><td>id=password2</td><td>aaa</td></tr>
+<tr><td>assertValue</td><td>id=first_name</td><td>Tutor</td></tr>
+<tr><td>assertValue</td><td>id=last_name</td><td>Test</td></tr>
+<tr><td>assertValue</td><td>id=email</td><td>tutor@test.com.ar</td></tr>
+<tr><td>assertValue</td><td>id=address1</td><td>Mendiolaza 10</td></tr>
+<tr><td>assertValue</td><td>id=address2</td><td>Mendiolaza 20</td></tr>
+<tr><td>assertValue</td><td>id=zip</td><td>4500</td></tr>
+<tr><td>assertValue</td><td>id=phone1</td><td>123456</td></tr>
+<tr><td>assertValue</td><td>id=phone2</td><td>654321</td></tr>
+<tr><td>assertValue</td><td>id=phone3</td><td>123123</td></tr>
+<tr><td>assertValue</td><td>id=icq</td><td>icq@tutor.com.ar</td></tr>
+<tr><td>assertValue</td><td>id=msn</td><td>msn@tutor.com.ar</td></tr>
+<tr><td>assertValue</td><td>id=aol</td><td>aol@tutor.com.ar</td></tr>
+    <!-- Crear Tutor existente -->
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+    <!-- Modificar un tutor existente -->
+<tr><td>open</td><td>/tutor?user_id=3</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=username</td><td>Achuni</td></tr>
+<tr><td>assertValue</td><td>id=password</td><td>achuni</td></tr>
+<tr><td>assertValue</td><td>id=password2</td><td>achuni</td></tr>
+<tr><td>assertValue</td><td>id=first_name</td><td>Anthony</td></tr>
+<tr><td>assertValue</td><td>id=last_name</td><td>Lenton</td></tr>
+<tr><td>assertValue</td><td>id=email</td><td>a@b.c</td></tr>
+<tr><td>assertValue</td><td>id=address1</td><td>Av. Leopoldo Lugones 176</td></tr>
+<tr><td>assertValue</td><td>id=address2</td><td></td></tr>
+<tr><td>assertValue</td><td>id=zip</td><td>X5000GHN</td></tr>
+<tr><td>assertValue</td><td>id=phone1</td><td>0351-4584585</td></tr>
+<tr><td>assertValue</td><td>id=phone2</td><td></td></tr>
+<tr><td>assertValue</td><td>id=phone3</td><td></td></tr>
+<tr><td>assertValue</td><td>id=icq</td><td></td></tr>
+<tr><td>assertValue</td><td>id=msn</td><td>achuni@msn.com</td></tr>
+<tr><td>assertValue</td><td>id=aol</td><td></td></tr>
+<tr><td>type</td><td>id=email</td><td>tutor@clientesbuenos.com.ar</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=username</td><td>Achuni</td></tr>
+<tr><td>assertValue</td><td>id=password</td><td>achuni</td></tr>
+<tr><td>assertValue</td><td>id=password2</td><td>achuni</td></tr>
+<tr><td>assertValue</td><td>id=first_name</td><td>Anthony</td></tr>
+<tr><td>assertValue</td><td>id=last_name</td><td>Lenton</td></tr>
+<tr><td>assertValue</td><td>id=email</td><td>tutor@clientesbuenos.com.ar</td></tr>
+<tr><td>assertValue</td><td>id=address1</td><td>Av. Leopoldo Lugones 176</td></tr>
+<tr><td>assertValue</td><td>id=address2</td><td></td></tr>
+<tr><td>assertValue</td><td>id=zip</td><td>X5000GHN</td></tr>
+<tr><td>assertValue</td><td>id=phone1</td><td>0351-4584585</td></tr>
+<tr><td>assertValue</td><td>id=phone2</td><td></td></tr>
+<tr><td>assertValue</td><td>id=phone3</td><td></td></tr>
+<tr><td>assertValue</td><td>id=icq</td><td></td></tr>
+<tr><td>assertValue</td><td>id=msn</td><td>achuni@msn.com</td></tr>
+<tr><td>assertValue</td><td>id=aol</td><td></td></tr>
+    <!-- Restaurar -->
+<tr><td>open</td><td>/tutor?user_id=3</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=email</td><td>a@b.c</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=email</td><td>a@b.c</td></tr>
+    <!-- Crear Tutor con datos requeridos faltantes -->
+<tr><td>open</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>TutorTest2</td></tr>
+<tr><td>type</td><td>id=password</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=password2</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=first_name</td><td>Tutor</td></tr>
+<tr><td>type</td><td>id=last_name</td><td>Test</td></tr>
+<tr><td>type</td><td>id=address1</td><td>Mendiolaza 10</td></tr>
+<tr><td>type</td><td>id=address2</td><td>Mendiolaza 20</td></tr>
+<tr><td>type</td><td>id=zip</td><td>4500</td></tr>
+<tr><td>type</td><td>id=phone1</td><td>123456</td></tr>
+<tr><td>type</td><td>id=phone2</td><td>654321</td></tr>
+<tr><td>type</td><td>id=phone3</td><td>123123</td></tr>
+<tr><td>type</td><td>id=icq</td><td>icq@tutor.com.ar</td></tr>
+<tr><td>type</td><td>id=msn</td><td>msn@tutor.com.ar</td></tr>
+<tr><td>type</td><td>id=aol</td><td>aol@tutor.com.ar</td></tr>
+<tr><td>click</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertAlert</td><td>glob:*Error*</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor</td><td>&nbsp;</td></tr>
+    <!-- Crear Tutor con constraseñas que no coincidan -->
+<tr><td>open</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>TutorTest1</td></tr>
+<tr><td>type</td><td>id=password</td><td>aaa</td></tr>
+<tr><td>type</td><td>id=password2</td><td>aaa2</td></tr>
+<tr><td>type</td><td>id=first_name</td><td>Tutor</td></tr>
+<tr><td>type</td><td>id=last_name</td><td>Test</td></tr>
+<tr><td>type</td><td>id=email</td><td>tutor@test.com.ar</td></tr>
+<tr><td>type</td><td>id=address1</td><td>Mendiolaza 10</td></tr>
+<tr><td>type</td><td>id=address2</td><td>Mendiolaza 20</td></tr>
+<tr><td>type</td><td>id=zip</td><td>4500</td></tr>
+<tr><td>type</td><td>id=phone1</td><td>123456</td></tr>
+<tr><td>type</td><td>id=phone2</td><td>654321</td></tr>
+<tr><td>type</td><td>id=phone3</td><td>123123</td></tr>
+<tr><td>type</td><td>id=icq</td><td>icq@tutor.com.ar</td></tr>
+<tr><td>type</td><td>id=msn</td><td>msn@tutor.com.ar</td></tr>
+<tr><td>type</td><td>id=aol</td><td>aol@tutor.com.ar</td></tr>
+<tr><td>click</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertAlert</td><td>glob:*Error*</td><td>&nbsp;</td></tr>
+    <!-- Modificar un tutor no existente -->
+<tr><td>open</td><td>/tutor?user_id=878787874545211</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+    <!-- Parametro mal tipado -->
+<tr><td>open</td><td>/tutor?user_id="Tutor"</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+    <!-- Parametro inexistente -->
+<tr><td>open</td><td>/tutor?usr_id="Tutor"</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='warning']</td><td>&nbsp;</td></tr>
+    <!-- Parametro de mas -->
+<tr><td>open</td><td>/tutor?usr_id=3&usr_id=334</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='warning']</td><td>&nbsp;</td></tr>
+    <!-- Borrar el que creamos -->
+<tr><td>open</td><td>/list?kind=1</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/list</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//table[@id='usersinsystem']//tr[9]//td[2]//a</td><td></td></tr>
+<tr><td>assertConfirmation</td><td>glob:*TutorTest*</td><td></td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//table[@id='usersinsystem']//tr[10]</td><td>&nbsp;</td></tr>
+
+
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+</table>
+</body></html>

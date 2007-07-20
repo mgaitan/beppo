@@ -1,0 +1,69 @@
+<html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test Client Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<!--
+-
+-   Loggeado como cliente
+-
+-->
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>Cliente</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>cliente</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+    <!-- Acceso a datos del cliente -->
+<tr><td>open</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=username</td><td>Cliente</td></tr>
+<tr><td>assertValue</td><td>id=password</td><td>cliente</td></tr>
+<tr><td>assertValue</td><td>id=password2</td><td>cliente</td></tr>
+<tr><td>assertValue</td><td>id=first_name</td><td>Cliente</td></tr>
+<tr><td>assertValue</td><td>id=last_name</td><td>Bueno</td></tr>
+<tr><td>assertValue</td><td>id=email</td><td>a@b.c</td></tr>
+<tr><td>assertValue</td><td>id=organization</td><td>Clientes Buenos SA</td></tr>
+    <!-- Modificar datos -->
+<tr><td>type</td><td>id=email</td><td>cliente@clientesbuenos.com.ar</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=username</td><td>Cliente</td></tr>
+<tr><td>assertValue</td><td>id=password</td><td>cliente</td></tr>
+<tr><td>assertValue</td><td>id=password2</td><td>cliente</td></tr>
+<tr><td>assertValue</td><td>id=first_name</td><td>Cliente</td></tr>
+<tr><td>assertValue</td><td>id=last_name</td><td>Bueno</td></tr>
+<tr><td>assertValue</td><td>id=email</td><td>cliente@clientesbuenos.com.ar</td></tr>
+<tr><td>assertValue</td><td>id=organization</td><td>Clientes Buenos SA</td></tr>
+    <!-- Restaurar datos -->
+<tr><td>type</td><td>id=email</td><td>a@b.c</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=username</td><td>Cliente</td></tr>
+<tr><td>assertValue</td><td>id=password</td><td>cliente</td></tr>
+<tr><td>assertValue</td><td>id=password2</td><td>cliente</td></tr>
+<tr><td>assertValue</td><td>id=first_name</td><td>Cliente</td></tr>
+<tr><td>assertValue</td><td>id=last_name</td><td>Bueno</td></tr>
+<tr><td>assertValue</td><td>id=email</td><td>a@b.c</td></tr>
+<tr><td>assertValue</td><td>id=organization</td><td>Clientes Buenos SA</td></tr>
+    <!-- No haya acceso a otro cliente -->
+<tr><td>open</td><td>/client?user_id=9</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=username</td><td>Cliente</td></tr>
+    <!-- parametros mal, de mas, etc -->
+<tr><td>open</td><td>/client?id_user=8</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=username</td><td>Cliente</td></tr>
+<tr><td>open</td><td>/client?datos=4</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/client</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=exceptpowered</td><td>&nbsp;</td></tr>
+<tr><td>assertValue</td><td>id=username</td><td>Cliente</td></tr>
+</table>
+</body></html>

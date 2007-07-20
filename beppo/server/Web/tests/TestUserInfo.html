@@ -1,0 +1,138 @@
+<html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test UserInfo Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+
+<!-- Iniciar como Admin -->
+<tr><td>type</td><td>id=username</td><td>Root</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>root</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//div[@id='metanav']//a[@id='userinfo']</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/userinfo</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[1]//td[1]</td><td>Root</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[2]//td[1]</td><td>Sys</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[3]//td[1]</td><td>Admin</td></tr>
+<tr><td>assertElementNotPresent</td><td>id=userInfoModify</td><td>&nbsp;</td></tr>
+    <!-- Ver la pagina de alguien mas y que me deje editarla -->
+<tr><td>open</td><td>/userinfo?user_id=9&kind=4</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/userinfo</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[1]//td[1]</td><td>Cli</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[2]//td[1]</td><td>Cli</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[3]//td[1]</td><td>Bue</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[4]//td[1]</td><td>a@b.c</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[5]//td[1]</td><td>Espa&ntilde;ol (Argentina)</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[6]//td[1]</td><td>GMT +1</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[7]//td[1]</td><td>Clientes Buenos SA</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[8]//td[1]</td><td>90.5</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[9]//td[1]</td><td>0.0</td></tr>
+<tr><td>assertElementPresent</td><td>id=userInfoModify</td><td>&nbsp;</td></tr>
+    <!-- Abrir un usuario con el kind mal -->
+<tr><td>open</td><td>/userinfo?user_id=9&kind=1</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/userinfo</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>id=userInfoModify</td><td>&nbsp;</td></tr>
+    <!-- Abrir un usuario con el kind inexistente -->
+<tr><td>open</td><td>/userinfo?user_id=9&kind=1445</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/userinfo</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>id=userInfoModify</td><td>&nbsp;</td></tr>
+    <!-- Abrir un usuario con el id inexistente y kind existente -->
+<tr><td>open</td><td>/userinfo?user_id=9877854&kind=1</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/userinfo</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>id=userInfoModify</td><td>&nbsp;</td></tr>
+    <!-- Abrir un usuario con el id inexistente y kind inexistente -->
+<tr><td>open</td><td>/userinfo?user_id=9877854&kind=108</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/userinfo</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>id=userInfoModify</td><td>&nbsp;</td></tr>
+<!-- Abrir un usuario con cualquier cosa -->
+<tr><td>open</td><td>/userinfo?user_id="sfdlsfklsd&kind=reroaproap</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/userinfo</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>id=userInfoModify</td><td>&nbsp;</td></tr>
+
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+
+<!-- Iniciar como Cliente -->
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>Cli</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>cli</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//div[@id='metanav']//a[@id='userinfo']</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/userinfo</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[1]//td[1]</td><td>Cli</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[2]//td[1]</td><td>Cli</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[3]//td[1]</td><td>Bue</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[4]//td[1]</td><td>a@b.c</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[5]//td[1]</td><td>Espa&ntilde;ol (Argentina)</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[6]//td[1]</td><td>GMT +1</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[7]//td[1]</td><td>Clientes Buenos SA</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[8]//td[1]</td><td>90.5</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[9]//td[1]</td><td>0.0</td></tr>
+<tr><td>assertElementPresent</td><td>id=userInfoModify</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+
+
+<!-- Iniciar como Alumno -->
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>Mati</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>mati</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//div[@id='metanav']//a[@id='userinfo']</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/userinfo</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[1]//td[1]</td><td>Mati</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[2]//td[1]</td><td>Mati</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[3]//td[1]</td><td>Bor</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[4]//td[1]</td><td>a@b.c</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[5]//td[1]</td><td>Espa&ntilde;ol (Argentina)</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[6]//td[1]</td><td>GMT +1</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[7]//td[1]</td><td>Nestitor</td></tr>
+<tr><td>assertElementNotPresent</td><td>id=userInfoModify</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+
+
+<!-- Iniciar como Tutor -->
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>type</td><td>id=username</td><td>Tutor</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>tutor</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//div[@id='metanav']//a[@id='userinfo']</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/userinfo</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[1]//td[1]</td><td>Tutor</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[2]//td[1]</td><td>Tutor</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[3]//td[1]</td><td>Bueno</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[4]//td[1]</td><td>a@b.c</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[5]//td[1]</td><td>Espa&ntilde;ol (Argentina)</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[6]//td[1]</td><td>GMT +1</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[7]//td[1]</td><td>Tupac Amaru 6877 </td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[8]//td[1]</td><td></td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[9]//td[1]</td><td></td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[10]//td[1]</td><td>0351-4247244</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[11]//td[1]</td><td></td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[12]//td[1]</td><td></td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[13]//td[1]</td><td></td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[14]//td[1]</td><td></td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='userinfo_table']//tr[15]//td[1]</td><td></td></tr>
+<tr><td>assertElementNotPresent</td><td>id=userInfoModify</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+</table>
+</body></html>

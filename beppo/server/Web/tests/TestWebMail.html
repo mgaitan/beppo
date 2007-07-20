@@ -1,0 +1,50 @@
+<html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test WebMail Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+
+<!-- Loggearse como admin -->
+<tr><td>type</td><td>id=username</td><td>Root</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>root</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//div[@id='metanav']//a[@id='mail']</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/mail</td><td>&nbsp;</td></tr>
+    <!-- mandar un mail -->
+<tr><td>type</td><td>id=subject</td><td>Mensaje para el root</td></tr>
+<tr><td>type</td><td>id=body</td><td>Hola Root. Quiero contratar sus servicios</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/mail</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+    <!-- sin texto -->
+<tr><td>type</td><td>id=subject</td><td>Mensaje para el root</td></tr>
+<tr><td>type</td><td>id=body</td><td></td></tr>
+<tr><td>click</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertAlert</td><td>glob:*Error*</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/mail</td><td>&nbsp;</td></tr>
+    <!-- sin asunto -->
+<tr><td>type</td><td>id=subject</td><td></td></tr>
+<tr><td>type</td><td>id=body</td><td>Hola. Quiero contratar sus servicios</td></tr>
+<tr><td>chooseCancelOnNextConfirmation</td><td></td><td></td></tr>
+<tr><td>click</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertConfirmation</td><td>glob:*?*</td><td></td></tr>
+<tr><td>assertLocation</td><td>/mail</td><td>&nbsp;</td></tr>
+<tr><td>click</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertConfirmation</td><td>glob:*?*</td><td></td></tr>
+    <!-- Abrir con parametros malos, faltantes, etc -->
+<tr><td>open</td><td>/mail?subject=&body=&username=&submit=Enviar</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/mail</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/mail?subject=hola&body=holaquetal&username=&user_id=&submit=Enviar</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/mail</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/mail?subject=hola&body=holaquetal&username=Root&user_id=148&submit=Enviar</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/mail</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+</table>
+</body></html>

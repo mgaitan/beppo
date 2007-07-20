@@ -1,0 +1,33 @@
+<html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test TutorData Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+    <!-- Iniciar como Admin -->
+<tr><td>type</td><td>id=username</td><td>Root</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>root</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/tutor_data?user_id=5</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor_data</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='tutordata']</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='tutordata']//tr[1]//td[1]</td><td>Matias</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='tutordata']//tr[2]//td[1]</td><td>Bordese</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='tutordata']//tr[3]//td[1]</td><td>glob:*Matem&aacute;tica B&aacute;sica*</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='tutordata']//tr[4]//td[1]</td><td>glob:*16:00*19:00*</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/tutor_data?user_id=144</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor_data</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/tutor_data?user_id=hola</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor_data</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/tutor_data?user_id=1</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor_data</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+</table>
+</body></html>

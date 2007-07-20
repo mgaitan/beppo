@@ -1,0 +1,46 @@
+<html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test Settings Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+
+<tr><td>type</td><td>id=username</td><td>ForTest</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>f</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@id='metanav']</td><td>&nbsp;</td></tr>
+<tr><td>clickAndWait</td><td>xpath=//div[@id='metanav']//a[@id='settings']</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/settings</td><td>&nbsp;</td></tr>
+
+<tr><td>assertElementPresent</td><td>xpath=//select[@id='fk_timezone']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//select[@id='language']</td><td>&nbsp;</td></tr>
+
+<tr><td>select</td><td>xpath=//select[@id='fk_timezone']</td><td>value=1</td></tr>
+<tr><td>select</td><td>xpath=//select[@id='language']</td><td>value=1</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+
+<tr><td>assertLocation</td><td>/settings</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+
+<tr><td>assertSelected</td><td>xpath=//select[@id='fk_timezone']</td><td>value=1</td></tr>
+<tr><td>assertSelected</td><td>xpath=//select[@id='language']</td><td>value=1</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@id='metanav']//ul[1]//li[1]</td><td>glob:*iniciada como*</td></tr>
+
+<tr><td>select</td><td>xpath=//select[@id='fk_timezone']</td><td>value=2</td></tr>
+<tr><td>select</td><td>xpath=//select[@id='language']</td><td>value=2</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+
+<tr><td>assertLocation</td><td>/settings</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+
+<tr><td>assertSelected</td><td>xpath=//select[@id='fk_timezone']</td><td>value=2</td></tr>
+<tr><td>assertSelected</td><td>xpath=//select[@id='language']</td><td>value=2</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@id='metanav']//ul[1]//li[1]</td><td>glob:*Logged in as*</td></tr>
+
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+</table>
+</body></html>

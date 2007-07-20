@@ -1,0 +1,61 @@
+<html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test My PupilsInfo Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+
+<!-- Iniciar como Cliente -->
+<tr><td>type</td><td>id=username</td><td>ForTest</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>f</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/my_pupils_info</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/my_pupils_info</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='pupil_info'][3]</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='pupil_info'][4]</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[1]</td><td>glob:*: ForTestPupil1</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[2]</td><td>glob:*: f</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[3]</td><td>glob:*: For</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[4]</td><td>glob:*: TestPupil</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[5]</td><td>glob:*: ftp@client.com</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[6]</td><td>glob:*: 10.0</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[7]</td><td>glob:*: 15.0</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[8]</td><td>glob:*: 16/01/2006 08:44:33</td></tr>
+
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+
+<!-- Iniciar como Admin -->
+<tr><td>type</td><td>id=username</td><td>Root</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>root</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/my_pupils_info</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/my_pupils_info?user_id=65</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/my_pupils_info</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='pupil_info'][3]</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='pupil_info'][4]</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[1]</td><td>glob:*: ForTestPupil1</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[2]</td><td>glob:*: f</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[3]</td><td>glob:*: For</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[4]</td><td>glob:*: TestPupil</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[5]</td><td>glob:*: ftp@client.com</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[6]</td><td>glob:*: 10.0</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[7]</td><td>glob:*: 15.0</td></tr>
+<tr><td>assertText</td><td>xpath=//div[@class='pupil_info'][1]//ul[1]//li[8]</td><td>glob:*: 16/01/2006 08:44:33</td></tr>
+<tr><td>open</td><td>/my_pupils_info?user_id=1145</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='message']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>xpath=//div[@class='pupil_info']</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+</table>
+</body></html>
+

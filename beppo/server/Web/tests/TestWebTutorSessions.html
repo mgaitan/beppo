@@ -1,0 +1,55 @@
+<html><header></header><body>
+<table border=1>
+<tr><td colspan=3>Test TutorSessions Screen</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+
+<!-- Como ADMIN -->
+<tr><td>type</td><td>id=username</td><td>Root</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>root</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+
+    <!-- abrir sin argumentos -->
+<tr><td>open</td><td>/tutor_sessions</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor_sessions</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//div[@class='error']</td><td>&nbsp;</td></tr>
+    <!-- abrir usuario inexistente o no tutor -->
+<tr><td>open</td><td>/tutor_sessions?user_id=9</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor_sessions</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>id=sessions</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/tutor_sessions?user_id=2254</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor_sessions</td><td>&nbsp;</td></tr>
+<tr><td>assertElementNotPresent</td><td>id=sessions</td><td>&nbsp;</td></tr>
+    <!-- abrir usuario existente -->
+<tr><td>open</td><td>/tutor_sessions?user_id=3</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor_sessions</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=sessions</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='sessions']//tr[2]//td[2]</td><td>03/10/2005 17:10:37</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='sessions']//tr[2]//td[3]</td><td>03/10/2005 17:10:48</td></tr>
+<tr><td>assertElementPresent</td><td>xpath=//table[@id='sessions']//tr[2]//td[5]</td><td>03/10/2005 17:10:48</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='sessions']//tr[2]//td[4]</td><td>00:00:11</td></tr>
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>open</td><td>/login</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+
+<!-- Como TUTOR -->
+<tr><td>type</td><td>id=username</td><td>Achuni</td></tr>
+<tr><td>type</td><td>id=pwd</td><td>achuni</td></tr>
+<tr><td>clickAndWait</td><td>id=submit</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/login</td><td>&nbsp;</td></tr>
+    <!-- abrir sin argumentos -->
+<tr><td>open</td><td>/tutor_sessions</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/tutor_sessions</td><td>&nbsp;</td></tr>
+<tr><td>assertElementPresent</td><td>id=sessions</td><td>&nbsp;</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='sessions']//tr[2]//td[2]</td><td>03/10/2005 17:10:37</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='sessions']//tr[2]//td[3]</td><td>03/10/2005 17:10:48</td></tr>
+<tr><td>assertText</td><td>xpath=//table[@id='sessions']//tr[2]//td[4]</td><td>00:00:11</td></tr> -->
+
+<tr><td>open</td><td>/logout</td><td>&nbsp;</td></tr>
+<tr><td>assertLocation</td><td>/logout</td><td>&nbsp;</td></tr>
+</table>
+</body></html>
