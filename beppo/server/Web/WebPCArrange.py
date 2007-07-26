@@ -611,7 +611,7 @@ class WebPCArrange5(WebPCArrangeCommon):
             return 4
         d = self.db.db.runOperation("update pupil set pc_available = pc_available - %f where id = %d", (total, pupil))
         d.addCallback(self.finallyArrange, tutor, pupil, sbj, scheds)
-        return self.finallyArrange(None, tutor, pupil, sbj, scheds)
+        return d
 
     def finallyArrange(self, data, tutor, pupil, sbj, scheds):
         if len(scheds) > 0:
