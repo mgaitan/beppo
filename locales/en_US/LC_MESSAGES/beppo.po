@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2005-12-09 09:23-0300\n"
+"POT-Creation-Date: 2007-07-30 10:52-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,548 +15,636 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../../../Web/WebAdmin.py:35
+#: ../../../beppo/server/Web/WebAdmin.py:51
 msgid "Administracion de usuarios"
 msgstr "Users management"
 
-#: ../../../Web/WebAdmin.py:58
+#: ../../../beppo/server/Web/WebAdmin.py:74
 msgid ""
 "Listado de materias disponibles y cantidad de tutores que la tienen como "
 "seleccionada para poder dar clases. Tambien se pueden realizar alta y bajas "
 "de materias"
 msgstr ""
+"Available subjects lists and ammount of tutors that selected them as to be "
+"able to teach them. You can also create and remove subjects"
 
-#: ../../../Web/WebAdmin.py:59
+#: ../../../beppo/server/Web/WebAdmin.py:75
 msgid ""
 "Tiempo que los tutores pasaron en el sistema, dividido por tipos de "
 "conexion. Detalle de las sesiones de cada tutor. Se puede elegir un rango de "
 "fechas para visualizar"
 msgstr ""
+"Time tutors spent in then system, splitted into different connection types. "
+"You can select a display date range"
 
-#: ../../../Web/WebAdmin.py:60
+#: ../../../beppo/server/Web/WebAdmin.py:76
 msgid ""
 "Informacion de las aulas del sistema, cantidad de alumnos en el aula, los "
 "tutores que se encuentran a cargo y las materias que estan brindando. "
 "Listado de aulas que deberian estar abiertas y no lo estan, con la "
 "informacion del tutor correspondiente"
 msgstr ""
+"System's room information, ammount of pupils in each room, tutors in charge "
+"of rooms and the subjects they are teaching. 'Should be opened' room list, "
+"and information about their tutors."
 
-#: ../../../Web/WebAdmin.py:61
-#, fuzzy
+#: ../../../beppo/server/Web/WebAdmin.py:77
 msgid ""
-"Archivos en formato PostScript que contienen las pizarras de las clases "
-"brindadas por los tutores del sistema"
-msgstr "Tutor's sessions information"
+"Archivos en formato PDF (Portable Document Format) que contienen las "
+"pizarras de las clases brindadas por los tutores del sistema"
+msgstr ""
+"PDF (Portable Document Format) format board archive, with classes given in "
+"the system."
 
-#: ../../../Web/WebAdmin.py:62
+#: ../../../beppo/server/Web/WebAdmin.py:78
 msgid "Administrar materias"
 msgstr "Manage subjects"
 
-#: ../../../Web/WebAdmin.py:63 ../../../Web/WebPCArrange.py:199
-#: ../../../Web/WebRoomInfo.py:97
+#: ../../../beppo/server/Web/WebAdmin.py:79
+#: ../../../beppo/server/Web/WebPCArrange.py:244
+#: ../../../beppo/server/Web/WebRoomInfo.py:113
 msgid "Materias"
 msgstr "Subjects"
 
-#: ../../../Web/WebAdmin.py:66 ../../../Web/WebTutorInfo.py:57
+#: ../../../beppo/server/Web/WebAdmin.py:82
+#: ../../../beppo/server/Web/WebTutorInfo.py:73
 msgid "Informacion de tutores"
 msgstr "Tutors information"
 
-#: ../../../Web/WebAdmin.py:67 ../../../Web/WebAdmin.py:74
-#: ../../../Web/WebAdmin.py:75 ../../../Web/WebAdmin.py:105
-#: ../../../Web/WebPCArrange.py:315
+#: ../../../beppo/server/Web/WebAdmin.py:83
+#: ../../../beppo/server/Web/WebAdmin.py:90
+#: ../../../beppo/server/Web/WebAdmin.py:91
+#: ../../../beppo/server/Web/WebAdmin.py:121
+#: ../../../beppo/server/Web/WebPCArrange.py:342
 msgid "Tutores"
 msgstr "Tutors"
 
-#: ../../../Web/WebAdmin.py:70
+#: ../../../beppo/server/Web/WebAdmin.py:86
 msgid "Informacion de aulas"
 msgstr "Rooms information"
 
-#: ../../../Web/WebAdmin.py:71
+#: ../../../beppo/server/Web/WebAdmin.py:87
 msgid "Aulas"
 msgstr "Rooms"
 
-#: ../../../Web/WebAdmin.py:74 ../../../Web/WebListUsers.py:156
+#: ../../../beppo/server/Web/WebAdmin.py:90
+#: ../../../beppo/server/Web/WebListUsers.py:172
 msgid "Agregar tutores"
 msgstr "Add tutors"
 
-#: ../../../Web/WebAdmin.py:75
+#: ../../../beppo/server/Web/WebAdmin.py:91
 msgid "Agregar nuevos tutores al sistema"
 msgstr "Add new tutors to the system"
 
-#: ../../../Web/WebAdmin.py:78 ../../../Web/WebListUsers.py:241
+#: ../../../beppo/server/Web/WebAdmin.py:94
+#: ../../../beppo/server/Web/WebListUsers.py:257
 msgid "Agregar clientes"
 msgstr "Add clients"
 
-#: ../../../Web/WebAdmin.py:78 ../../../Web/WebAdmin.py:79
-#: ../../../Web/WebAdmin.py:111
+#: ../../../beppo/server/Web/WebAdmin.py:94
+#: ../../../beppo/server/Web/WebAdmin.py:95
+#: ../../../beppo/server/Web/WebAdmin.py:127
 msgid "Clientes"
 msgstr "Clients"
 
-#: ../../../Web/WebAdmin.py:79
+#: ../../../beppo/server/Web/WebAdmin.py:95
 msgid "Agregar nuevos clientes al sistema"
 msgstr "Add new clients to the system"
 
-#: ../../../Web/WebAdmin.py:82 ../../../Web/WebArchive.py:37
+#: ../../../beppo/server/Web/WebAdmin.py:98
+#: ../../../beppo/server/Web/WebArchive.py:53
 msgid "Archivo de pizarras"
 msgstr "Whiteboard archive"
 
-#: ../../../Web/WebAdmin.py:82 ../../../Web/WebAdmin.py:83
-#: ../../../Web/WebArchive.py:45 ../../../Web/WebArchive.py:82
+#: ../../../beppo/server/Web/WebAdmin.py:98
+#: ../../../beppo/server/Web/WebAdmin.py:99
+#: ../../../beppo/server/Web/WebArchive.py:61
+#: ../../../beppo/server/Web/WebArchive.py:98
 msgid "Archivo"
 msgstr "Archive"
 
-#: ../../../Web/WebAdmin.py:88
+#: ../../../beppo/server/Web/WebAdmin.py:104
 msgid "Administracion del sistema:"
 msgstr "System management"
 
-#: ../../../Web/WebAdmin.py:97
+#: ../../../beppo/server/Web/WebAdmin.py:113
 msgid "Informacion de usuarios en el sistema:"
 msgstr "Users information:"
 
-#: ../../../Web/WebAdmin.py:105 ../../../Web/WebAdmin.py:108
-#: ../../../Web/WebAdmin.py:111 ../../../Web/WebAdmin.py:114
+#: ../../../beppo/server/Web/WebAdmin.py:121
+#: ../../../beppo/server/Web/WebAdmin.py:124
+#: ../../../beppo/server/Web/WebAdmin.py:127
+#: ../../../beppo/server/Web/WebAdmin.py:130
 msgid "en el sistema"
 msgstr "in the system"
 
-#: ../../../Web/WebAdmin.py:108
+#: ../../../beppo/server/Web/WebAdmin.py:124
 msgid "Alumnos"
 msgstr "Pupils"
 
-#: ../../../Web/WebAdmin.py:114
+#: ../../../beppo/server/Web/WebAdmin.py:130
 msgid "Administradores"
 msgstr "Managers"
 
-#: ../../../Web/WebAdmin.py:117
+#: ../../../beppo/server/Web/WebAdmin.py:133
 msgid "Usuarios no categorizados en el sistema"
 msgstr "Non-categorized users in the system"
 
-#: ../../../Web/WebAdmin.py:120
+#: ../../../beppo/server/Web/WebAdmin.py:136
 msgid "No hay usuarios en el sistema"
 msgstr "There are no users in the system"
 
-#: ../../../Web/WebArchive.py:44
+#: ../../../beppo/server/Web/WebArchive.py:60
 msgid ""
 "Este es el archivo de las pizarras correspondientes a las clases dadas en el "
 "sistema. Puedes bajar cualquiera de las pizarras haciendo click en el nombre "
 "del archivo. La informacion de la fecha que aparece corresponde a la fecha "
 "de finalizacion de la clase"
 msgstr ""
+"This is the . You can download any of this files, by clicking on its name. "
+"Date information stands for class closing time."
 
-#: ../../../Web/WebArchive.py:76
+#: ../../../beppo/server/Web/WebArchive.py:92
 msgid "El archivo esta vacio"
 msgstr "The file is empty"
 
-#: ../../../Web/WebArchive.py:78
+#: ../../../beppo/server/Web/WebArchive.py:94
 #, python-format
 msgid "Se encontraron %d archivos:"
 msgstr "%d files were found:"
 
-#: ../../../Web/WebArchive.py:83 ../../../Web/WebPCArrange.py:512
-#: ../../../Web/WebRoomInfo.py:129 ../../../Web/WebTutorInfo.py:139
+#: ../../../beppo/server/Web/WebArchive.py:99
+#: ../../../beppo/server/Web/WebPCArrange.py:539
+#: ../../../beppo/server/Web/WebRoomInfo.py:145
+#: ../../../beppo/server/Web/WebTutorInfo.py:156
 msgid "Tutor"
 msgstr "Tutor"
 
-#: ../../../Web/WebArchive.py:84 ../../../Web/WebGetUserInfo.py:148
-#: ../../../Web/WebMyPupils.py:157 ../../../Web/WebTutorSessions.py:115
+#: ../../../beppo/server/Web/WebArchive.py:100
+#: ../../../beppo/server/Web/WebGetUserInfo.py:164
+#: ../../../beppo/server/Web/WebMyPupils.py:173
+#: ../../../beppo/server/Web/WebTutorSessions.py:131
 msgid "Alumno"
 msgstr "Pupil"
 
-#: ../../../Web/WebArchive.py:85
+#: ../../../beppo/server/Web/WebArchive.py:101
 msgid "Fecha"
 msgstr "Date"
 
-#: ../../../Web/WebArchive.py:86
+#: ../../../beppo/server/Web/WebArchive.py:102
 msgid "Comentario"
 msgstr "Comment"
 
-#: ../../../Web/WebArchive.py:92
+#: ../../../beppo/server/Web/WebArchive.py:108
 msgid "El tutor ya no esta en el sistema"
 msgstr "The tutor has been deleted from the system"
 
-#: ../../../Web/WebArchive.py:95
+#: ../../../beppo/server/Web/WebArchive.py:111
 msgid "El alumno ya no esta en el sistema"
 msgstr "The pupil has been deleted from the system"
 
-#: ../../../Web/WebClient.py:14 ../../../Web/WebListUsers.py:220
+#: ../../../beppo/server/Web/WebClient.py:30
+#: ../../../beppo/server/Web/WebListUsers.py:236
 msgid "Organizacion"
 msgstr "Institution"
 
-#: ../../../Web/WebClient.py:22
+#: ../../../beppo/server/Web/WebClient.py:38
 msgid "Pagina del cliente"
 msgstr "Client's page"
 
-#: ../../../Web/WebClientReport.py:37
+#: ../../../beppo/server/Web/WebClientReport.py:53
 msgid "Reportes de alumnos"
 msgstr "Pupils reports"
 
-#: ../../../Web/WebClientReport.py:52 ../../../Web/WebMyPupils.py:56
-#: ../../../Web/WebMyPupils.py:87 ../../../Web/WebMyPupilsInfo.py:57
-#: ../../../Web/WebPCArrange.py:81 ../../../Web/WebPerson.py:69
-#: ../../../Web/WebPupilInsert.py:66 ../../../Web/WebSchedules.py:60
-#: ../../../Web/WebSchedules1.py:49 ../../../Web/WebSchedules2.py:49
-#: ../../../Web/WebSubjects.py:52 ../../../Web/WebTutorData.py:53
-#: ../../../Web/WebTutorSessions.py:67
+#: ../../../beppo/server/Web/WebClientReport.py:68
+#: ../../../beppo/server/Web/WebMyPupils.py:72
+#: ../../../beppo/server/Web/WebMyPupils.py:103
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:73
+#: ../../../beppo/server/Web/WebPCArrange.py:97
+#: ../../../beppo/server/Web/WebPerson.py:85
+#: ../../../beppo/server/Web/WebPupilInsert.py:82
+#: ../../../beppo/server/Web/WebSchedules.py:76
+#: ../../../beppo/server/Web/WebSchedules1.py:65
+#: ../../../beppo/server/Web/WebSchedules2.py:65
+#: ../../../beppo/server/Web/WebSubjects.py:68
+#: ../../../beppo/server/Web/WebTutorData.py:69
+#: ../../../beppo/server/Web/WebTutorSessions.py:83
 msgid "user_id deberia ser entero"
 msgstr "user_id should be an integer"
 
-#: ../../../Web/WebClientReport.py:55 ../../../Web/WebMyPupils.py:59
-#: ../../../Web/WebMyPupilsInfo.py:60 ../../../Web/WebPCArrange.py:83
-#: ../../../Web/WebSchedules.py:62 ../../../Web/WebSchedules1.py:51
-#: ../../../Web/WebSchedules2.py:51 ../../../Web/WebSubjects.py:55
-#: ../../../Web/WebTutorData.py:56 ../../../Web/WebTutorSessions.py:70
+#: ../../../beppo/server/Web/WebClientReport.py:71
+#: ../../../beppo/server/Web/WebMyPupils.py:75
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:76
+#: ../../../beppo/server/Web/WebPCArrange.py:99
+#: ../../../beppo/server/Web/WebSchedules.py:78
+#: ../../../beppo/server/Web/WebSchedules1.py:67
+#: ../../../beppo/server/Web/WebSchedules2.py:67
+#: ../../../beppo/server/Web/WebSubjects.py:71
+#: ../../../beppo/server/Web/WebTutorData.py:72
+#: ../../../beppo/server/Web/WebTutorSessions.py:86
 msgid "falta el parametro user_id"
 msgstr "user_id parameter is missing"
 
-#: ../../../Web/WebClientReport.py:86 ../../../Web/WebSendMail.py:112
+#: ../../../beppo/server/Web/WebClientReport.py:102
+#: ../../../beppo/server/Web/WebSendMail.py:133
 msgid "El usuario no existe en el sistema"
 msgstr "This user does not exist in the system"
 
-#: ../../../Web/WebClientReport.py:90
+#: ../../../beppo/server/Web/WebClientReport.py:106
 #, python-format
 msgid "Reportes de alumnos de %s"
 msgstr "%s's pupils reports"
 
-#: ../../../Web/WebClientReport.py:91
+#: ../../../beppo/server/Web/WebClientReport.py:107
 msgid "Seguimiento de alumnos"
 msgstr "Pupils tracking"
 
-#: ../../../Web/WebClientReport.py:94
+#: ../../../beppo/server/Web/WebClientReport.py:110
 msgid "Datos personales:"
 msgstr "Personal information:"
 
-#: ../../../Web/WebClientReport.py:95
+#: ../../../beppo/server/Web/WebClientReport.py:111
 msgid "Listado de datos personales los alumnos a cargo"
 msgstr "List of assigned pupils' personal information"
 
-#: ../../../Web/WebClientReport.py:96
+#: ../../../beppo/server/Web/WebClientReport.py:112
 msgid "Horas:"
 msgstr "Hours:"
 
-#: ../../../Web/WebClientReport.py:97
+#: ../../../beppo/server/Web/WebClientReport.py:113
 msgid "Detalle de las horas usadas y disponibles por alumno"
 msgstr "Detailed list of used and unused hours per pupil"
 
-#: ../../../Web/WebClientReport.py:99 ../../../Web/WebGetUserInfo.py:110
-#: ../../../Web/WebListUsers.py:265 ../../../Web/WebMyPupils.py:198
+#: ../../../beppo/server/Web/WebClientReport.py:115
+#: ../../../beppo/server/Web/WebGetUserInfo.py:126
+#: ../../../beppo/server/Web/WebListUsers.py:281
+#: ../../../beppo/server/Web/WebMyPupils.py:214
 msgid "Volver"
 msgstr "Go Back"
 
-#: ../../../Web/WebGetUserInfo.py:36 ../../../Web/WebGetUserInfo.py:40
-#: ../../../Web/WebGetUserInfo.py:43 ../../../Web/WebGetUserInfo.py:45
+#: ../../../beppo/server/Web/WebGetUserInfo.py:52
+#: ../../../beppo/server/Web/WebGetUserInfo.py:56
+#: ../../../beppo/server/Web/WebGetUserInfo.py:59
+#: ../../../beppo/server/Web/WebGetUserInfo.py:61
 msgid "Usuario:"
 msgstr "Username:"
 
-#: ../../../Web/WebGetUserInfo.py:36 ../../../Web/WebGetUserInfo.py:40
-#: ../../../Web/WebGetUserInfo.py:43 ../../../Web/WebGetUserInfo.py:45
-#: ../../../Web/WebTutorData.py:93
+#: ../../../beppo/server/Web/WebGetUserInfo.py:52
+#: ../../../beppo/server/Web/WebGetUserInfo.py:56
+#: ../../../beppo/server/Web/WebGetUserInfo.py:59
+#: ../../../beppo/server/Web/WebGetUserInfo.py:61
+#: ../../../beppo/server/Web/WebTutorData.py:109
 msgid "Nombre:"
 msgstr "Name:"
 
-#: ../../../Web/WebGetUserInfo.py:36 ../../../Web/WebGetUserInfo.py:40
-#: ../../../Web/WebGetUserInfo.py:43 ../../../Web/WebGetUserInfo.py:45
-#: ../../../Web/WebTutorData.py:96
+#: ../../../beppo/server/Web/WebGetUserInfo.py:52
+#: ../../../beppo/server/Web/WebGetUserInfo.py:56
+#: ../../../beppo/server/Web/WebGetUserInfo.py:59
+#: ../../../beppo/server/Web/WebGetUserInfo.py:61
+#: ../../../beppo/server/Web/WebTutorData.py:112
 msgid "Apellido:"
 msgstr "Last name:"
 
-#: ../../../Web/WebGetUserInfo.py:36 ../../../Web/WebGetUserInfo.py:40
-#: ../../../Web/WebGetUserInfo.py:43 ../../../Web/WebGetUserInfo.py:45
+#: ../../../beppo/server/Web/WebGetUserInfo.py:52
+#: ../../../beppo/server/Web/WebGetUserInfo.py:56
+#: ../../../beppo/server/Web/WebGetUserInfo.py:59
+#: ../../../beppo/server/Web/WebGetUserInfo.py:61
 msgid "eMail:"
 msgstr "eMail address:"
 
-#: ../../../Web/WebGetUserInfo.py:37 ../../../Web/WebGetUserInfo.py:41
-#: ../../../Web/WebGetUserInfo.py:44 ../../../Web/WebGetUserInfo.py:46
-#: ../../../Web/WebSettings.py:175
+#: ../../../beppo/server/Web/WebGetUserInfo.py:53
+#: ../../../beppo/server/Web/WebGetUserInfo.py:57
+#: ../../../beppo/server/Web/WebGetUserInfo.py:60
+#: ../../../beppo/server/Web/WebGetUserInfo.py:62
+#: ../../../beppo/server/Web/WebSettings.py:191
 msgid "Idioma:"
 msgstr "Language:"
 
-#: ../../../Web/WebGetUserInfo.py:37 ../../../Web/WebGetUserInfo.py:41
-#: ../../../Web/WebGetUserInfo.py:44 ../../../Web/WebGetUserInfo.py:46
+#: ../../../beppo/server/Web/WebGetUserInfo.py:53
+#: ../../../beppo/server/Web/WebGetUserInfo.py:57
+#: ../../../beppo/server/Web/WebGetUserInfo.py:60
+#: ../../../beppo/server/Web/WebGetUserInfo.py:62
 msgid "Zona horaria:"
 msgstr "Time zone:"
 
-#: ../../../Web/WebGetUserInfo.py:37
+#: ../../../beppo/server/Web/WebGetUserInfo.py:53
 msgid "Direccion 1:"
 msgstr "Address 1:"
 
-#: ../../../Web/WebGetUserInfo.py:37
+#: ../../../beppo/server/Web/WebGetUserInfo.py:53
 msgid "Direccion 2:"
 msgstr "Address 2:"
 
-#: ../../../Web/WebGetUserInfo.py:38
+#: ../../../beppo/server/Web/WebGetUserInfo.py:54
 msgid "Codigo postal:"
 msgstr "Zip code:"
 
-#: ../../../Web/WebGetUserInfo.py:38
+#: ../../../beppo/server/Web/WebGetUserInfo.py:54
 msgid "Telefono 1:"
 msgstr "Phone number 1:"
 
-#: ../../../Web/WebGetUserInfo.py:38
+#: ../../../beppo/server/Web/WebGetUserInfo.py:54
 msgid "Telefono 2:"
 msgstr "Phone number 2:"
 
-#: ../../../Web/WebGetUserInfo.py:38
+#: ../../../beppo/server/Web/WebGetUserInfo.py:54
 msgid "Telefono 3:"
 msgstr "Phone number 3:"
 
-#: ../../../Web/WebGetUserInfo.py:39
+#: ../../../beppo/server/Web/WebGetUserInfo.py:55
 msgid "ICQ:"
 msgstr "ICQ id number:"
 
-#: ../../../Web/WebGetUserInfo.py:39
+#: ../../../beppo/server/Web/WebGetUserInfo.py:55
 msgid "MSN:"
 msgstr "MSN account:"
 
-#: ../../../Web/WebGetUserInfo.py:39
+#: ../../../beppo/server/Web/WebGetUserInfo.py:55
 msgid "AOL:"
 msgstr "AOL:"
 
-#: ../../../Web/WebGetUserInfo.py:41
+#: ../../../beppo/server/Web/WebGetUserInfo.py:57
 msgid "Organizacion:"
 msgstr "Institution:"
 
-#: ../../../Web/WebGetUserInfo.py:42
+#: ../../../beppo/server/Web/WebGetUserInfo.py:58
 msgid "Horas disponibles (AI):"
 msgstr "Time available (IA):"
 
-#: ../../../Web/WebGetUserInfo.py:42
+#: ../../../beppo/server/Web/WebGetUserInfo.py:58
 msgid "Horas disponibles (CP):"
 msgstr "Time available (PC):"
 
-#: ../../../Web/WebGetUserInfo.py:46
+#: ../../../beppo/server/Web/WebGetUserInfo.py:62
 msgid "Organizacion cliente:"
 msgstr "Client:"
 
-#: ../../../Web/WebGetUserInfo.py:82
+#: ../../../beppo/server/Web/WebGetUserInfo.py:98
 msgid "El usuario no existe"
 msgstr "The user does not exist"
 
-#: ../../../Web/WebGetUserInfo.py:95 ../../../Web/WebGetUserInfo.py:98
-#: ../../../Web/WebGetUserInfo.py:101 ../../../Web/WebGetUserInfo.py:105
-#: ../../../Web/WebGetUserInfo.py:109
+#: ../../../beppo/server/Web/WebGetUserInfo.py:111
+#: ../../../beppo/server/Web/WebGetUserInfo.py:114
+#: ../../../beppo/server/Web/WebGetUserInfo.py:117
+#: ../../../beppo/server/Web/WebGetUserInfo.py:121
+#: ../../../beppo/server/Web/WebGetUserInfo.py:125
 msgid "Modificar datos"
 msgstr "Modify information"
 
-#: ../../../Web/WebGetUserInfo.py:139
+#: ../../../beppo/server/Web/WebGetUserInfo.py:155
 msgid ""
 "No tienes clases precoodinadas para estos dias. Recuerda revisar "
 "periodicamente tus horarios para no perder ninguna clase."
 msgstr ""
+"You don't have any prearrenged class for these days. Remember to "
+"periodically check your schedule, not to loose any arranged class."
 
-#: ../../../Web/WebGetUserInfo.py:141
+#: ../../../beppo/server/Web/WebGetUserInfo.py:157
 msgid ""
 "Aqui hay una lista de las clases precoordinadas que tienes en estos dias, "
 "junto con los alumnos que la tomaran. Recuerda presentarte con anticipacion "
 "a tus clases."
 msgstr ""
+"Here is your prearrenged class list, and the pupils that will take it. "
+"Remember to access to your classes on time."
 
-#: ../../../Web/WebGetUserInfo.py:144
-#, fuzzy
+#: ../../../beppo/server/Web/WebGetUserInfo.py:160
 msgid "Tus clases precoordinadas"
-msgstr "Prearranged classes"
+msgstr "Your prearranged classes"
 
-#: ../../../Web/WebGetUserInfo.py:146
+#: ../../../beppo/server/Web/WebGetUserInfo.py:162
 msgid "Fecha inicio"
-msgstr "Start date:"
+msgstr "Start date"
 
-#: ../../../Web/WebGetUserInfo.py:147
+#: ../../../beppo/server/Web/WebGetUserInfo.py:163
 msgid "Fecha fin"
-msgstr "Finish date:"
+msgstr "Finish date"
 
-#: ../../../Web/WebGetUserInfo.py:149 ../../../Web/WebPCArrange.py:513
-#: ../../../Web/WebSubjectAdmin.py:108
+#: ../../../beppo/server/Web/WebGetUserInfo.py:165
+#: ../../../beppo/server/Web/WebPCArrange.py:540
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:124
 msgid "Materia"
 msgstr "Subject"
 
-#: ../../../Web/WebGetUserInfo.py:188
+#: ../../../beppo/server/Web/WebGetUserInfo.py:204
 msgid ""
 "Recuerde que sin horas disponibles no puede dar de alta alumnos. Contactese "
 "con el administrador del sistema para solicitarle mas horas. Tenga en cuenta "
 "que las horas de sus alumnos tienen un vencimiento, y que al terminar sus "
 "horas debe darlos de alta como alumnos nuevos."
 msgstr ""
+"Remember that with no available hours, you won't be able to add pupils. "
+"Contact your system administrator to acquire classes hours. Keep in mind "
+"that your pupil's hours expire, and that you have to add a new pupil when "
+"they run out of hours."
 
-#: ../../../Web/WebGetUserInfo.py:190
+#: ../../../beppo/server/Web/WebGetUserInfo.py:206
 msgid ""
 "Recuerda que sin horas disponibles no puedes tomar clases ni hacer "
 "preguntas. Puedes solicitar mas horas a quien te haya inscripto en el "
 "sistema, pero te deben dar de alta como un nuevo alumno."
 msgstr ""
+"Remember that with no available hours, you can't take any classes nor make "
+"offline questions. You can ask for hours to you in charge person, but it's "
+"required to add you as a new pupil"
 
-#: ../../../Web/WebGetUserInfo.py:191
-#, fuzzy
+#: ../../../beppo/server/Web/WebGetUserInfo.py:207
 msgid "No le quedan horas disponibles."
 msgstr "You have no hours left"
 
-#: ../../../Web/WebGetUserInfo.py:195
+#: ../../../beppo/server/Web/WebGetUserInfo.py:211
 msgid ""
 "Recuerde que las horas de sus alumnos tienen un vencimiento. Puede "
 "contactarse con el administrador del sistema para solicitarle horas para sus "
 "alumnos."
 msgstr ""
+"Remember that your pupil's hours expire. Contact your system administrator "
+"to acquire more hours."
 
-#: ../../../Web/WebGetUserInfo.py:199
+#: ../../../beppo/server/Web/WebGetUserInfo.py:215
 msgid "Horas de Acceso Instantaneo disponibles"
 msgstr "Intant Access time available"
 
-#: ../../../Web/WebGetUserInfo.py:201
+#: ../../../beppo/server/Web/WebGetUserInfo.py:217
 msgid "Horas de Clases Precoordinadas disponibles"
 msgstr "Prearranged classes time available"
 
-#: ../../../Web/WebListUsers.py:38
+#: ../../../beppo/server/Web/WebListUsers.py:54
 msgid "Listado de usuarios del sistema"
 msgstr "List of users in the system"
 
-#: ../../../Web/WebListUsers.py:53 ../../../Web/WebMyPupils.py:115
+#: ../../../beppo/server/Web/WebListUsers.py:69
+#: ../../../beppo/server/Web/WebMyPupils.py:131
 msgid "El usuario ha sido borrado correctamente"
 msgstr "The user has been successfully deleted"
 
-#: ../../../Web/WebListUsers.py:61
+#: ../../../beppo/server/Web/WebListUsers.py:77
 msgid "Se ha actualizado correctamente la cantidad de horas  disponibles"
 msgstr "Available time has been successfully updated"
 
-#: ../../../Web/WebListUsers.py:66 ../../../Web/WebSettings.py:52
-#: ../../../Web/WebSettings.py:82 ../../../Web/WebUserInfo.py:50
+#: ../../../beppo/server/Web/WebListUsers.py:82
+#: ../../../beppo/server/Web/WebSettings.py:68
+#: ../../../beppo/server/Web/WebSettings.py:98
+#: ../../../beppo/server/Web/WebUserInfo.py:66
 msgid "Argumento no valido"
 msgstr "Invalid argument"
 
-#: ../../../Web/WebListUsers.py:70
+#: ../../../beppo/server/Web/WebListUsers.py:86
 msgid "Falta el argumento 'kind'"
 msgstr "The 'kind' argument is missing"
 
-#: ../../../Web/WebListUsers.py:124
+#: ../../../beppo/server/Web/WebListUsers.py:140
 msgid "Usuarios del sistema:"
 msgstr "Users in the system:"
 
-#: ../../../Web/WebListUsers.py:129
+#: ../../../beppo/server/Web/WebListUsers.py:145
 msgid "Esta seguro de borrar el tutor"
 msgstr "Are you sure you want to delete the tutor"
 
-#: ../../../Web/WebListUsers.py:140 ../../../Web/WebListUsers.py:170
-#: ../../../Web/WebListUsers.py:217 ../../../Web/WebListUsers.py:247
+#: ../../../beppo/server/Web/WebListUsers.py:156
+#: ../../../beppo/server/Web/WebListUsers.py:186
+#: ../../../beppo/server/Web/WebListUsers.py:233
+#: ../../../beppo/server/Web/WebListUsers.py:263
 msgid "Usuario"
 msgstr "Username"
 
-#: ../../../Web/WebListUsers.py:141 ../../../Web/WebListUsers.py:171
-#: ../../../Web/WebListUsers.py:218 ../../../Web/WebListUsers.py:248
-#: ../../../Web/WebMyPupilsInfo.py:111 ../../../Web/WebPerson.py:23
-#: ../../../Web/WebPupilEdit.py:23 ../../../Web/WebPupilInsert.py:25
+#: ../../../beppo/server/Web/WebListUsers.py:157
+#: ../../../beppo/server/Web/WebListUsers.py:187
+#: ../../../beppo/server/Web/WebListUsers.py:234
+#: ../../../beppo/server/Web/WebListUsers.py:264
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:127
+#: ../../../beppo/server/Web/WebPerson.py:39
+#: ../../../beppo/server/Web/WebPupilEdit.py:39
+#: ../../../beppo/server/Web/WebPupilInsert.py:41
 msgid "Apellido"
 msgstr "Last name"
 
-#: ../../../Web/WebListUsers.py:142 ../../../Web/WebListUsers.py:172
-#: ../../../Web/WebListUsers.py:219 ../../../Web/WebListUsers.py:249
-#: ../../../Web/WebMyPupilsInfo.py:110 ../../../Web/WebPerson.py:21
-#: ../../../Web/WebPupilEdit.py:21 ../../../Web/WebPupilInsert.py:23
+#: ../../../beppo/server/Web/WebListUsers.py:158
+#: ../../../beppo/server/Web/WebListUsers.py:188
+#: ../../../beppo/server/Web/WebListUsers.py:235
+#: ../../../beppo/server/Web/WebListUsers.py:265
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:126
+#: ../../../beppo/server/Web/WebPerson.py:37
+#: ../../../beppo/server/Web/WebPupilEdit.py:37
+#: ../../../beppo/server/Web/WebPupilInsert.py:39
 msgid "Nombre"
 msgstr "Name"
 
-#: ../../../Web/WebListUsers.py:147 ../../../Web/WebListUsers.py:178
-#: ../../../Web/WebListUsers.py:228 ../../../Web/WebMyPupils.py:176
+#: ../../../beppo/server/Web/WebListUsers.py:163
+#: ../../../beppo/server/Web/WebListUsers.py:194
+#: ../../../beppo/server/Web/WebListUsers.py:244
+#: ../../../beppo/server/Web/WebMyPupils.py:192
 msgid "Modificar"
 msgstr "Modify"
 
-#: ../../../Web/WebListUsers.py:148 ../../../Web/WebListUsers.py:179
-#: ../../../Web/WebListUsers.py:229 ../../../Web/WebSubjectAdmin.py:115
+#: ../../../beppo/server/Web/WebListUsers.py:164
+#: ../../../beppo/server/Web/WebListUsers.py:195
+#: ../../../beppo/server/Web/WebListUsers.py:245
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:131
 msgid "Borrar"
 msgstr "Delete"
 
-#: ../../../Web/WebListUsers.py:149 ../../../Web/WebListUsers.py:236
-#: ../../../Web/WebListUsers.py:239
+#: ../../../beppo/server/Web/WebListUsers.py:165
+#: ../../../beppo/server/Web/WebListUsers.py:252
+#: ../../../beppo/server/Web/WebListUsers.py:255
 msgid "Asignar horas"
 msgstr "Assign time"
 
-#: ../../../Web/WebListUsers.py:150
+#: ../../../beppo/server/Web/WebListUsers.py:166
 msgid "Asignar materias"
 msgstr "Assign subjects"
 
-#: ../../../Web/WebListUsers.py:162 ../../../Web/WebMyPupils.py:148
+#: ../../../beppo/server/Web/WebListUsers.py:178
+#: ../../../beppo/server/Web/WebMyPupils.py:164
 msgid "Esta seguro de borrar el alumno"
 msgstr "Are you sure you want to delete the pupil"
 
-#: ../../../Web/WebListUsers.py:173
+#: ../../../beppo/server/Web/WebListUsers.py:189
 msgid "Cliente"
 msgstr "Client"
 
-#: ../../../Web/WebListUsers.py:190
+#: ../../../beppo/server/Web/WebListUsers.py:206
 msgid "Esta seguro de borrar el cliente"
 msgstr "Are you sure you want to delete the client"
 
-#: ../../../Web/WebListUsers.py:192
+#: ../../../beppo/server/Web/WebListUsers.py:208
 msgid "Aun tiene"
 msgstr "You still have"
 
-#: ../../../Web/WebListUsers.py:192
+#: ../../../beppo/server/Web/WebListUsers.py:208
 msgid "alumno(s) a cargo"
 msgstr "assigned pupil(s)"
 
-#: ../../../Web/WebListUsers.py:200
+#: ../../../beppo/server/Web/WebListUsers.py:216
 msgid "Indique la cantidad de horas a asignar:"
 msgstr "Specify the amount of time to be assigned:"
 
-#: ../../../Web/WebListUsers.py:222
+#: ../../../beppo/server/Web/WebListUsers.py:238
 msgid "Horas disponibles (AI)"
 msgstr "Time available (IA)"
 
-#: ../../../Web/WebListUsers.py:223
+#: ../../../beppo/server/Web/WebListUsers.py:239
 msgid "Horas disponibles (CP)"
 msgstr "Time available (PC)"
 
-#: ../../../Web/WebListUsers.py:230
+#: ../../../beppo/server/Web/WebListUsers.py:246
 msgid "Agregar alumno"
 msgstr "Add pupil"
 
-#: ../../../Web/WebListUsers.py:231
+#: ../../../beppo/server/Web/WebListUsers.py:247
 msgid "Ver alumnos"
 msgstr "Show pupils"
 
-#: ../../../Web/WebListUsers.py:261
+#: ../../../beppo/server/Web/WebListUsers.py:277
 msgid "Usuarios"
 msgstr "Users"
 
-#: ../../../Web/WebListUsers.py:264
+#: ../../../beppo/server/Web/WebListUsers.py:280
 msgid "No hay usuarios de este tipo en el sistema"
 msgstr "There are no users of this kind in the system"
 
-#: ../../../Web/WebLogin.py:32
+#: ../../../beppo/server/Web/WebLogin.py:48
 msgid "Iniciar Sesion"
 msgstr "Start Session"
 
-#: ../../../Web/WebLogin.py:34
+#: ../../../beppo/server/Web/WebLogin.py:50
 msgid "La sesion ya estaba iniciada"
 msgstr "You had already started a session"
 
-#: ../../../Web/WebLogin.py:44
+#: ../../../beppo/server/Web/WebLogin.py:60
 msgid "Inicio de Sesion"
 msgstr "Start Session"
 
-#: ../../../Web/WebLogin.py:45
+#: ../../../beppo/server/Web/WebLogin.py:61
 msgid "Nombre de Usuario"
 msgstr "Username"
 
-#: ../../../Web/WebLogin.py:47 ../../../Web/WebPerson.py:17
-#: ../../../Web/WebPupilEdit.py:17 ../../../Web/WebPupilInsert.py:19
+#: ../../../beppo/server/Web/WebLogin.py:63
+#: ../../../beppo/server/Web/WebPerson.py:33
+#: ../../../beppo/server/Web/WebPupilEdit.py:33
+#: ../../../beppo/server/Web/WebPupilInsert.py:35
 msgid "Contrasena"
 msgstr "Password"
 
-#: ../../../Web/WebLogin.py:50
+#: ../../../beppo/server/Web/WebLogin.py:66
 msgid "Entrar!"
 msgstr "Enter!"
 
-#: ../../../Web/WebLogin.py:74
+#: ../../../beppo/server/Web/WebLogin.py:90
 msgid "Nombre de Usuario o Contrasena incorrecta"
 msgstr "Bad username or password"
 
-#: ../../../Web/WebLogin.py:75
+#: ../../../beppo/server/Web/WebLogin.py:91
 msgid "Por favor verifique su nombre de usuario y contrasena."
 msgstr "Please verify your username and password."
 
-#: ../../../Web/WebLogin.py:76
+#: ../../../beppo/server/Web/WebLogin.py:92
 msgid ""
 "Recuerde que su nombre de usuario y contrasena son sensibles a mayusculas y "
 "minusculas!"
 msgstr "Remember that your username and password are case sensitive!"
 
-#: ../../../Web/WebLogin.py:80
+#: ../../../beppo/server/Web/WebLogin.py:96
 msgid ""
 "Existen varios usuarios en el sistema con las mismas credenciales. Por favor "
 "notifique al administrador del sistema"
@@ -565,178 +652,240 @@ msgstr ""
 "There are more than one users in the system with the same credentials.  "
 "Please notify the system Administrator."
 
-#: ../../../Web/WebLogin.py:89
+#: ../../../beppo/server/Web/WebLogin.py:105
 msgid "Bienvenido"
 msgstr "Welcome"
 
-#: ../../../Web/WebLogin.py:118
+#: ../../../beppo/server/Web/WebLogin.py:134
 msgid "Cerrar Sesion"
 msgstr "End session"
 
-#: ../../../Web/WebLogin.py:120
+#: ../../../beppo/server/Web/WebLogin.py:136
 msgid "La sesion ha sido cerrada"
 msgstr "Your session has been closed"
 
-#: ../../../Web/WebLogin.py:121
+#: ../../../beppo/server/Web/WebLogin.py:137
 msgid "Que tenga un buen dia."
 msgstr "Have a nice day."
 
-#: ../../../Web/WebLogin.py:125
+#: ../../../beppo/server/Web/WebLogin.py:141
 msgid "Sesion inexistente"
 msgstr "Non-existent session"
 
-#: ../../../Web/WebLogin.py:126
+#: ../../../beppo/server/Web/WebLogin.py:142
 msgid "Debe iniciar una sesion antes de cerrarla!"
 msgstr "You must start a session before closing it!"
 
-#: ../../../Web/WebMyPupils.py:40 ../../../Web/WebMyPupilsInfo.py:40
+#: ../../../beppo/server/Web/WebMyPupils.py:56
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:56
 msgid "Informacion de cuentas de usuarios"
 msgstr "User accounts information"
 
-#: ../../../Web/WebMyPupils.py:43 ../../../Web/WebMyPupils.py:130
-#: ../../../Web/WebMyPupilsInfo.py:33 ../../../Web/WebMyPupilsInfo.py:84
+#: ../../../beppo/server/Web/WebMyPupils.py:59
+#: ../../../beppo/server/Web/WebMyPupils.py:146
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:49
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:100
 msgid "Cuentas de alumnos"
 msgstr "Pupils' accounts"
 
-#: ../../../Web/WebMyPupils.py:109
+#: ../../../beppo/server/Web/WebMyPupils.py:125
 msgid "No es alumno del cliente"
 msgstr "Is not a client's pupil"
 
-#: ../../../Web/WebMyPupils.py:128 ../../../Web/WebMyPupilsInfo.py:87
+#: ../../../beppo/server/Web/WebMyPupils.py:144
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:103
 #, python-format
 msgid "Cuentas de alumnos de %s"
 msgstr "%s's pupils' accounts"
 
-#: ../../../Web/WebMyPupils.py:158
+#: ../../../beppo/server/Web/WebMyPupils.py:174
 msgid "Horas AI (restan/total)"
 msgstr "IA time (available/total)"
 
-#: ../../../Web/WebMyPupils.py:159
+#: ../../../beppo/server/Web/WebMyPupils.py:175
 msgid "Horas PC (restan/total)"
 msgstr "PC time (available/total)"
 
-#: ../../../Web/WebMyPupils.py:160 ../../../Web/WebMyPupilsInfo.py:115
+#: ../../../beppo/server/Web/WebMyPupils.py:176
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:131
 msgid "Vencimiento"
 msgstr "Expiration date"
 
-#: ../../../Web/WebMyPupils.py:177
+#: ../../../beppo/server/Web/WebMyPupils.py:193
 msgid "Borrar alumno"
 msgstr "Delete pupil"
 
-#: ../../../Web/WebMyPupils.py:197 ../../../Web/WebTemplates.py:57
+#: ../../../beppo/server/Web/WebMyPupils.py:213
+#: ../../../beppo/server/Web/WebTemplates.py:72
 msgid "Agregar alumnos"
 msgstr "Add pupils"
 
-#: ../../../Web/WebMyPupils.py:204
+#: ../../../beppo/server/Web/WebMyPupils.py:220
 msgid "Horas AI disponibles"
 msgstr "IA time available"
 
-#: ../../../Web/WebMyPupils.py:205
+#: ../../../beppo/server/Web/WebMyPupils.py:221
 msgid "Horas CP disponibles"
 msgstr "PC time available"
 
-#: ../../../Web/WebMyPupils.py:206
+#: ../../../beppo/server/Web/WebMyPupils.py:222
 msgid "Cantidad de alumnos"
 msgstr "Number of pupils"
 
-#: ../../../Web/WebMyPupils.py:208
+#: ../../../beppo/server/Web/WebMyPupils.py:224
 msgid "No se registran datos para el usuario"
 msgstr "There is no information for this user"
 
-#: ../../../Web/WebMyPupils.py:212
+#: ../../../beppo/server/Web/WebMyPupils.py:228
 msgid "Informacion de alumnos y horas:"
 msgstr "Pupils and time information:"
 
-#: ../../../Web/WebMyPupilsInfo.py:108 ../../../Web/WebPerson.py:15
-#: ../../../Web/WebPupilEdit.py:15 ../../../Web/WebPupilInsert.py:17
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:124
+#: ../../../beppo/server/Web/WebPerson.py:31
+#: ../../../beppo/server/Web/WebPupilEdit.py:31
+#: ../../../beppo/server/Web/WebPupilInsert.py:33
 msgid "Nombre de usuario"
 msgstr "Username"
 
-#: ../../../Web/WebMyPupilsInfo.py:109
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:125
 msgid "Constrasena"
 msgstr "Password"
 
-#: ../../../Web/WebMyPupilsInfo.py:112 ../../../Web/WebPerson.py:25
-#: ../../../Web/WebPupilEdit.py:25 ../../../Web/WebPupilInsert.py:27
-#: ../../../Web/WebSendMail.py:124
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:128
+#: ../../../beppo/server/Web/WebPerson.py:41
+#: ../../../beppo/server/Web/WebPupilEdit.py:41
+#: ../../../beppo/server/Web/WebPupilInsert.py:43
+#: ../../../beppo/server/Web/WebSendMail.py:145
 msgid "eMail"
 msgstr "eMail address"
 
-#: ../../../Web/WebMyPupilsInfo.py:113
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:129
 msgid "Hs. AI restantes"
 msgstr "Unused IA time"
 
-#: ../../../Web/WebMyPupilsInfo.py:114
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:130
 msgid "Hs. CP restantes"
 msgstr "Unused PC time"
 
-#: ../../../Web/WebMyPupilsInfo.py:119
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:135
 msgid "No se registran alumnos a cargo"
 msgstr "There are no pupils assigned"
 
-#: ../../../Web/WebMyPupilsInfo.py:121
+#: ../../../beppo/server/Web/WebMyPupilsInfo.py:137
 #, python-format
 msgid "Informacion de %d alumnos"
 msgstr "Information on %d pupils"
 
-#: ../../../Web/WebPCArrange.py:59
+#: ../../../beppo/server/Web/WebPCArrange.py:75
 msgid "Pasos para precoordinar una clase"
 msgstr "Steps to be taken to prearrange a class"
 
-#: ../../../Web/WebPCArrange.py:60 ../../../Web/WebPCArrange.py:217
+#: ../../../beppo/server/Web/WebPCArrange.py:76
+#: ../../../beppo/server/Web/WebPCArrange.py:262
 msgid "Elige la materia"
 msgstr "Choose a subject"
 
-#: ../../../Web/WebPCArrange.py:61
+#: ../../../beppo/server/Web/WebPCArrange.py:77
 msgid "Elige el tutor"
 msgstr "Choose a tutor"
 
-#: ../../../Web/WebPCArrange.py:62 ../../../Web/WebPCArrange.py:334
+#: ../../../beppo/server/Web/WebPCArrange.py:78
+#: ../../../beppo/server/Web/WebPCArrange.py:361
 msgid "Elige el horario"
 msgstr "Choose a schedule"
 
-#: ../../../Web/WebPCArrange.py:67 ../../../Web/WebSchedules.py:45
-#: ../../../Web/WebSchedules1.py:34 ../../../Web/WebSchedules2.py:34
+#: ../../../beppo/server/Web/WebPCArrange.py:83
+#: ../../../beppo/server/Web/WebSchedules.py:61
+#: ../../../beppo/server/Web/WebSchedules1.py:50
+#: ../../../beppo/server/Web/WebSchedules2.py:50
 msgid "Modificacion de horarios"
 msgstr "Schedule modification"
 
-#: ../../../Web/WebPCArrange.py:175
+#: ../../../beppo/server/Web/WebPCArrange.py:159
+msgid "lunes"
+msgstr "Monday"
+
+#: ../../../beppo/server/Web/WebPCArrange.py:159
+msgid "martes"
+msgstr "Tuesday"
+
+#: ../../../beppo/server/Web/WebPCArrange.py:159
+msgid "miercoles"
+msgstr "Wednesday"
+
+#: ../../../beppo/server/Web/WebPCArrange.py:159
+msgid "jueves"
+msgstr "Thursday"
+
+#: ../../../beppo/server/Web/WebPCArrange.py:159
+msgid "viernes"
+msgstr "Friday"
+
+#: ../../../beppo/server/Web/WebPCArrange.py:159
+msgid "sabado"
+msgstr "Saturday"
+
+#: ../../../beppo/server/Web/WebPCArrange.py:159
+msgid "domingo"
+msgstr "Sunday"
+
+#: ../../../beppo/server/Web/WebPCArrange.py:165
+#: ../../../beppo/server/Web/WebPCArrange.py:168
+#: ../../../beppo/server/Web/WebPCArrange.py:173
+#: ../../../beppo/server/Web/WebPCArrange.py:178
+#: ../../../beppo/server/Web/WebTutorData.py:169
+msgid "de"
+msgstr "from"
+
+#: ../../../beppo/server/Web/WebPCArrange.py:166
+#: ../../../beppo/server/Web/WebPCArrange.py:169
+#: ../../../beppo/server/Web/WebPCArrange.py:174
+#: ../../../beppo/server/Web/WebPCArrange.py:179
+#: ../../../beppo/server/Web/WebTutorData.py:170
+msgid "a"
+msgstr "to"
+
+#: ../../../beppo/server/Web/WebPCArrange.py:220
 msgid "Debes seleccionar una materia"
 msgstr "You must choose a subject"
 
-#: ../../../Web/WebPCArrange.py:185
+#: ../../../beppo/server/Web/WebPCArrange.py:230
 msgid "Ninguno"
 msgstr "None"
 
-#: ../../../Web/WebPCArrange.py:186
+#: ../../../beppo/server/Web/WebPCArrange.py:231
 msgid "Tutores que dan esta materia"
 msgstr "Tutors who teach this subject"
 
-#: ../../../Web/WebPCArrange.py:206 ../../../Web/WebPCArrange.py:319
-#: ../../../Web/WebPCArrange.py:456 ../../../Web/WebSchedules.py:225
-#: ../../../Web/WebSchedules1.py:206 ../../../Web/WebSchedules2.py:209
-#: ../../../Web/WebSendMail.py:131 ../../../Web/WebSubjects.py:116
+#: ../../../beppo/server/Web/WebPCArrange.py:251
+#: ../../../beppo/server/Web/WebPCArrange.py:346
+#: ../../../beppo/server/Web/WebPCArrange.py:483
+#: ../../../beppo/server/Web/WebSchedules.py:241
+#: ../../../beppo/server/Web/WebSchedules1.py:222
+#: ../../../beppo/server/Web/WebSchedules2.py:225
+#: ../../../beppo/server/Web/WebSendMail.py:152
+#: ../../../beppo/server/Web/WebSubjects.py:132
 msgid "Enviar"
 msgstr "Send"
 
-#: ../../../Web/WebPCArrange.py:218
+#: ../../../beppo/server/Web/WebPCArrange.py:263
 msgid ""
 "Primero elige la materia para la que necesites ayuda de la siguiente lista"
 msgstr "First, choose one of the subjects in the following list "
 
-#: ../../../Web/WebPCArrange.py:230
+#: ../../../beppo/server/Web/WebPCArrange.py:275
 msgid "Falta el argumento requerido 'sbj'"
 msgstr "The argument 'sbj' is missing"
 
-#: ../../../Web/WebPCArrange.py:237
+#: ../../../beppo/server/Web/WebPCArrange.py:282
 msgid "sbj deberia ser entero"
 msgstr "sbj should be an integer"
 
-#: ../../../Web/WebPCArrange.py:249
+#: ../../../beppo/server/Web/WebPCArrange.py:294
 msgid "Elige el Tutor"
 msgstr "Choose the tutor"
 
-#: ../../../Web/WebPCArrange.py:250
+#: ../../../beppo/server/Web/WebPCArrange.py:295
 msgid ""
 "Selecciona el tutor de la lista a continuacion.  Cada tutor indica los "
 "horarios en los que esta disponible para dar clases."
@@ -744,380 +893,392 @@ msgstr ""
 "Choose the tutor from the following list. Each tutor specifies the schedule "
 "when she/he is available to teach."
 
-#: ../../../Web/WebPCArrange.py:260 ../../../Web/WebPCArrange.py:532
-msgid "domingo"
-msgstr "Sunday"
-
-#: ../../../Web/WebPCArrange.py:260 ../../../Web/WebPCArrange.py:532
-msgid "lunes"
-msgstr "Monday"
-
-#: ../../../Web/WebPCArrange.py:260 ../../../Web/WebPCArrange.py:532
-msgid "martes"
-msgstr "Tuesday"
-
-#: ../../../Web/WebPCArrange.py:260 ../../../Web/WebPCArrange.py:532
-msgid "miercoles"
-msgstr "Wednesday"
-
-#: ../../../Web/WebPCArrange.py:260 ../../../Web/WebPCArrange.py:532
-msgid "jueves"
-msgstr "Thursday"
-
-#: ../../../Web/WebPCArrange.py:260 ../../../Web/WebPCArrange.py:532
-msgid "viernes"
-msgstr "Friday"
-
-#: ../../../Web/WebPCArrange.py:260 ../../../Web/WebPCArrange.py:532
-msgid "sabado"
-msgstr "Saturday"
-
-#: ../../../Web/WebPCArrange.py:264 ../../../Web/WebPCArrange.py:268
-#: ../../../Web/WebPCArrange.py:537 ../../../Web/WebPCArrange.py:540
-#: ../../../Web/WebTutorData.py:153
-msgid "de"
-msgstr "from"
-
-#: ../../../Web/WebPCArrange.py:265 ../../../Web/WebPCArrange.py:269
-#: ../../../Web/WebPCArrange.py:538 ../../../Web/WebPCArrange.py:541
-#: ../../../Web/WebTutorData.py:154
-msgid "a"
-msgstr "to"
-
-#: ../../../Web/WebPCArrange.py:307
+#: ../../../beppo/server/Web/WebPCArrange.py:334
 msgid "Debes seleccionar un tutor"
 msgstr "You must choose a tutor"
 
-#: ../../../Web/WebPCArrange.py:335
+#: ../../../beppo/server/Web/WebPCArrange.py:362
 msgid "Finalmente elige el horario en el que necesitas tener la clase."
 msgstr "Choose the schedule for your class."
 
-#: ../../../Web/WebPCArrange.py:344 ../../../Web/WebPCArrange.py:478
-#: ../../../Web/WebPCArrange.py:637 ../../../Web/WebPupilEdit.py:64
-#: ../../../Web/WebPupilEdit.py:78
+#: ../../../beppo/server/Web/WebPCArrange.py:371
+#: ../../../beppo/server/Web/WebPCArrange.py:505
+#: ../../../beppo/server/Web/WebPCArrange.py:646
+#: ../../../beppo/server/Web/WebPupilEdit.py:80
+#: ../../../beppo/server/Web/WebPupilEdit.py:94
 msgid "Faltan argumentos requeridos"
 msgstr "There are some required arguments missing"
 
-#: ../../../Web/WebPCArrange.py:398 ../../../Web/WebSchedules.py:162
-#: ../../../Web/WebSchedules1.py:150 ../../../Web/WebSchedules2.py:146
-#: ../../../Web/WebTutorData.py:16
+#: ../../../beppo/server/Web/WebPCArrange.py:425
+#: ../../../beppo/server/Web/WebSchedules.py:178
+#: ../../../beppo/server/Web/WebSchedules1.py:166
+#: ../../../beppo/server/Web/WebSchedules2.py:162
+#: ../../../beppo/server/Web/WebTutorData.py:32
 msgid "Lunes"
 msgstr "Monday"
 
-#: ../../../Web/WebPCArrange.py:398 ../../../Web/WebSchedules.py:162
-#: ../../../Web/WebSchedules1.py:150 ../../../Web/WebSchedules2.py:146
-#: ../../../Web/WebTutorData.py:16
+#: ../../../beppo/server/Web/WebPCArrange.py:425
+#: ../../../beppo/server/Web/WebSchedules.py:178
+#: ../../../beppo/server/Web/WebSchedules1.py:166
+#: ../../../beppo/server/Web/WebSchedules2.py:162
+#: ../../../beppo/server/Web/WebTutorData.py:32
 msgid "Martes"
 msgstr "Tuesday"
 
-#: ../../../Web/WebPCArrange.py:398 ../../../Web/WebSchedules.py:162
-#: ../../../Web/WebSchedules1.py:150 ../../../Web/WebSchedules2.py:146
-#: ../../../Web/WebTutorData.py:16
+#: ../../../beppo/server/Web/WebPCArrange.py:425
+#: ../../../beppo/server/Web/WebSchedules.py:178
+#: ../../../beppo/server/Web/WebSchedules1.py:166
+#: ../../../beppo/server/Web/WebSchedules2.py:162
+#: ../../../beppo/server/Web/WebTutorData.py:32
 msgid "Miercoles"
 msgstr "Wednesday"
 
-#: ../../../Web/WebPCArrange.py:398 ../../../Web/WebSchedules.py:162
-#: ../../../Web/WebSchedules1.py:150 ../../../Web/WebSchedules2.py:146
-#: ../../../Web/WebTutorData.py:16
+#: ../../../beppo/server/Web/WebPCArrange.py:425
+#: ../../../beppo/server/Web/WebSchedules.py:178
+#: ../../../beppo/server/Web/WebSchedules1.py:166
+#: ../../../beppo/server/Web/WebSchedules2.py:162
+#: ../../../beppo/server/Web/WebTutorData.py:32
 msgid "Jueves"
 msgstr "Thursday"
 
-#: ../../../Web/WebPCArrange.py:398 ../../../Web/WebSchedules.py:162
-#: ../../../Web/WebSchedules1.py:150 ../../../Web/WebSchedules2.py:146
-#: ../../../Web/WebTutorData.py:16
+#: ../../../beppo/server/Web/WebPCArrange.py:425
+#: ../../../beppo/server/Web/WebSchedules.py:178
+#: ../../../beppo/server/Web/WebSchedules1.py:166
+#: ../../../beppo/server/Web/WebSchedules2.py:162
+#: ../../../beppo/server/Web/WebTutorData.py:32
 msgid "Viernes"
 msgstr "Friday"
 
-#: ../../../Web/WebPCArrange.py:398 ../../../Web/WebSchedules.py:162
-#: ../../../Web/WebSchedules1.py:150 ../../../Web/WebSchedules2.py:146
-#: ../../../Web/WebTutorData.py:16
+#: ../../../beppo/server/Web/WebPCArrange.py:425
+#: ../../../beppo/server/Web/WebSchedules.py:178
+#: ../../../beppo/server/Web/WebSchedules1.py:166
+#: ../../../beppo/server/Web/WebSchedules2.py:162
+#: ../../../beppo/server/Web/WebTutorData.py:32
 msgid "Sabado"
 msgstr "Saturday"
 
-#: ../../../Web/WebPCArrange.py:398 ../../../Web/WebSchedules.py:162
-#: ../../../Web/WebSchedules1.py:150 ../../../Web/WebSchedules2.py:146
-#: ../../../Web/WebTutorData.py:16
+#: ../../../beppo/server/Web/WebPCArrange.py:425
+#: ../../../beppo/server/Web/WebSchedules.py:178
+#: ../../../beppo/server/Web/WebSchedules1.py:166
+#: ../../../beppo/server/Web/WebSchedules2.py:162
+#: ../../../beppo/server/Web/WebTutorData.py:32
 msgid "Domingo"
 msgstr "Sunday"
 
-#: ../../../Web/WebPCArrange.py:400 ../../../Web/WebSchedules.py:164
-#: ../../../Web/WebSchedules.py:176 ../../../Web/WebSchedules1.py:164
-#: ../../../Web/WebSchedules1.py:169 ../../../Web/WebSchedules1.py:202
-#: ../../../Web/WebSchedules2.py:148 ../../../Web/WebSchedules2.py:160
+#: ../../../beppo/server/Web/WebPCArrange.py:427
+#: ../../../beppo/server/Web/WebSchedules.py:180
+#: ../../../beppo/server/Web/WebSchedules.py:192
+#: ../../../beppo/server/Web/WebSchedules1.py:180
+#: ../../../beppo/server/Web/WebSchedules1.py:185
+#: ../../../beppo/server/Web/WebSchedules1.py:218
+#: ../../../beppo/server/Web/WebSchedules2.py:164
+#: ../../../beppo/server/Web/WebSchedules2.py:176
 msgid "No disponible"
 msgstr "Not available"
 
-#: ../../../Web/WebPCArrange.py:400 ../../../Web/WebSchedules.py:164
-#: ../../../Web/WebSchedules.py:177 ../../../Web/WebSchedules2.py:148
-#: ../../../Web/WebSchedules2.py:161
+#: ../../../beppo/server/Web/WebPCArrange.py:427
+#: ../../../beppo/server/Web/WebSchedules.py:180
+#: ../../../beppo/server/Web/WebSchedules.py:193
+#: ../../../beppo/server/Web/WebSchedules2.py:164
+#: ../../../beppo/server/Web/WebSchedules2.py:177
 msgid "Disponible para acceso instantaneo"
 msgstr "Available for Instant Access"
 
-#: ../../../Web/WebPCArrange.py:401 ../../../Web/WebPCArrange.py:424
-#: ../../../Web/WebSchedules.py:165 ../../../Web/WebSchedules.py:178
-#: ../../../Web/WebSchedules2.py:149 ../../../Web/WebSchedules2.py:162
+#: ../../../beppo/server/Web/WebPCArrange.py:428
+#: ../../../beppo/server/Web/WebPCArrange.py:451
+#: ../../../beppo/server/Web/WebSchedules.py:181
+#: ../../../beppo/server/Web/WebSchedules.py:194
+#: ../../../beppo/server/Web/WebSchedules2.py:165
+#: ../../../beppo/server/Web/WebSchedules2.py:178
 msgid "Disponible para clases precoordinadas"
 msgstr "Available for Prearranged Classes"
 
-#: ../../../Web/WebPCArrange.py:401
+#: ../../../beppo/server/Web/WebPCArrange.py:428
 msgid "Ya esta reservado"
 msgstr "Already reserved"
 
-#: ../../../Web/WebPCArrange.py:411
+#: ../../../beppo/server/Web/WebPCArrange.py:438
 msgid "Debes seleccionar al menos un horario"
 msgstr "You must choose at least one schedule"
 
-#: ../../../Web/WebPCArrange.py:421
+#: ../../../beppo/server/Web/WebPCArrange.py:448
 msgid "Coordinado para este horario"
 msgstr "Schedule arranged!"
 
-#: ../../../Web/WebPCArrange.py:434
+#: ../../../beppo/server/Web/WebPCArrange.py:461
 msgid "Horarios disponibles"
 msgstr "Schedules available"
 
-#: ../../../Web/WebPCArrange.py:468 ../../../Web/WebPCArrange.py:551
+#: ../../../beppo/server/Web/WebPCArrange.py:495
+#: ../../../beppo/server/Web/WebPCArrange.py:560
 msgid "Una ultima confirmacion"
 msgstr "One last confirmation"
 
-#: ../../../Web/WebPCArrange.py:505
+#: ../../../beppo/server/Web/WebPCArrange.py:532
 msgid "Tutor o materia inexistente"
 msgstr "Non-existent tutor or subject"
 
-#: ../../../Web/WebPCArrange.py:509
+#: ../../../beppo/server/Web/WebPCArrange.py:536
 msgid "Confirmacion"
 msgstr "Confirmation"
 
-#: ../../../Web/WebPCArrange.py:510
+#: ../../../beppo/server/Web/WebPCArrange.py:537
 msgid "Estas por coordinar una tutoria"
 msgstr "You're just about to arrange a tutorship"
 
-#: ../../../Web/WebPCArrange.py:515
+#: ../../../beppo/server/Web/WebPCArrange.py:542
 msgid "Fecha y horario"
 msgstr "Date and schedule"
 
-#: ../../../Web/WebPCArrange.py:523
+#: ../../../beppo/server/Web/WebPCArrange.py:550
 msgid "Confirmar!"
 msgstr "Confirm!"
 
-#: ../../../Web/WebPCArrange.py:659
+#: ../../../beppo/server/Web/WebPCArrange.py:668
 msgid ""
 "Tutor, alumno o materia inexistente, o ese tutor no esta habilitado para dar "
 "esa materia"
 msgstr ""
+"Inexistant tutor, pupil or subject; or that tutor is not able to teach that "
+"subject"
 
-#: ../../../Web/WebPCArrange.py:660
-#, fuzzy
+#: ../../../beppo/server/Web/WebPCArrange.py:669
 msgid "El tutor no esta disponible en algun horario seleccionado"
-msgstr "tutors have chosen it"
+msgstr "This tutor is not available at any selected time"
 
-#: ../../../Web/WebPCArrange.py:661
-#, fuzzy
+#: ../../../beppo/server/Web/WebPCArrange.py:670
 msgid "El tutor ya tiene compromisos previos para algun horario seleccionado"
-msgstr "1 tutor has chosen it"
+msgstr "This tutor has previous commitment to some selected time"
 
-#: ../../../Web/WebPCArrange.py:662
+#: ../../../beppo/server/Web/WebPCArrange.py:671
 msgid "No cuentas con suficientes horas Pre-Coordinadas para esta tutoria"
-msgstr ""
+msgstr "You don't have enough prearrenged class hours for this class"
 
-#: ../../../Web/WebPCArrange.py:665
+#: ../../../beppo/server/Web/WebPCArrange.py:674
 msgid "Hubo algun problema."
 msgstr "An error ocurred."
 
-#: ../../../Web/WebPCArrange.py:666
+#: ../../../beppo/server/Web/WebPCArrange.py:675
 msgid "Vuelve a intentarlo"
 msgstr "Please try again"
 
-#: ../../../Web/WebPCArrange.py:666
+#: ../../../beppo/server/Web/WebPCArrange.py:675
 msgid "O"
-msgstr "or"
+msgstr "Or"
 
-#: ../../../Web/WebPCArrange.py:668
+#: ../../../beppo/server/Web/WebPCArrange.py:677
 msgid "Clase coordinada con exito"
 msgstr "Class successfully arranged"
 
-#: ../../../Web/WebPCArrange.py:669
+#: ../../../beppo/server/Web/WebPCArrange.py:678
 msgid "Regresa a la pagina principal"
 msgstr "Go back to the main page"
 
-#: ../../../Web/WebPerson.py:19 ../../../Web/WebPupilEdit.py:19
-#: ../../../Web/WebPupilInsert.py:21
+#: ../../../beppo/server/Web/WebPerson.py:35
+#: ../../../beppo/server/Web/WebPupilEdit.py:35
+#: ../../../beppo/server/Web/WebPupilInsert.py:37
 msgid "Repita contrasena"
 msgstr "Retype password"
 
-#: ../../../Web/WebPerson.py:63 ../../../Web/WebTemplates.py:75
+#: ../../../beppo/server/Web/WebPerson.py:79
+#: ../../../beppo/server/Web/WebTemplates.py:90
 msgid "Datos personales"
 msgstr "Personal information"
 
-#: ../../../Web/WebPerson.py:64 ../../../Web/WebPupilInsert.py:55
+#: ../../../beppo/server/Web/WebPerson.py:80
+#: ../../../beppo/server/Web/WebPupilInsert.py:71
 msgid "Recuerde que los campos indicados con <sup>*</sup> son obligatorios"
 msgstr ""
 "Remember that is mandatory to fill the fields marked with <sup>*</sup> "
 
-#: ../../../Web/WebPerson.py:73
+#: ../../../beppo/server/Web/WebPerson.py:89
 msgid "Tus Datos personales"
 msgstr "Your personal information"
 
-#: ../../../Web/WebPerson.py:74 ../../../Web/WebPupilEdit.py:49
+#: ../../../beppo/server/Web/WebPerson.py:90
+#: ../../../beppo/server/Web/WebPupilEdit.py:65
 msgid "Recuerda que los campos indicados con <sup>*</sup> son obligatorios"
 msgstr "Remember that is mandatory to fill the fields marked with <sup>*</sup>"
 
-#: ../../../Web/WebPerson.py:96 ../../../Web/WebPupilEdit.py:99
-#: ../../../Web/WebPupilInsert.py:93 ../../../Web/WebSendMail.py:73
+#: ../../../beppo/server/Web/WebPerson.py:112
+#: ../../../beppo/server/Web/WebPupilEdit.py:115
+#: ../../../beppo/server/Web/WebPupilInsert.py:109
+#: ../../../beppo/server/Web/WebSendMail.py:89
 #, python-format
 msgid "Falta el argumento '%s'"
 msgstr "The argument '%s' is missing"
 
-#: ../../../Web/WebPerson.py:101 ../../../Web/WebPupilEdit.py:104
-#: ../../../Web/WebPupilInsert.py:98 ../../../Web/WebSendMail.py:78
+#: ../../../beppo/server/Web/WebPerson.py:117
+#: ../../../beppo/server/Web/WebPupilEdit.py:120
+#: ../../../beppo/server/Web/WebPupilInsert.py:114
+#: ../../../beppo/server/Web/WebSendMail.py:94
 #, python-format
 msgid "Longitud excesiva del argumento '%s'"
 msgstr "Argument '%s' is too long"
 
-#: ../../../Web/WebPerson.py:104 ../../../Web/WebPerson.py:234
-#: ../../../Web/WebPupilEdit.py:107 ../../../Web/WebPupilEdit.py:183
-#: ../../../Web/WebPupilInsert.py:101 ../../../Web/WebPupilInsert.py:238
+#: ../../../beppo/server/Web/WebPerson.py:120
+#: ../../../beppo/server/Web/WebPerson.py:250
+#: ../../../beppo/server/Web/WebPupilEdit.py:123
+#: ../../../beppo/server/Web/WebPupilEdit.py:199
+#: ../../../beppo/server/Web/WebPupilInsert.py:117
+#: ../../../beppo/server/Web/WebPupilInsert.py:254
 msgid "Las contrasenas no coinciden"
 msgstr "Passwords don't match"
 
-#: ../../../Web/WebPerson.py:128 ../../../Web/WebPupilEdit.py:137
-#: ../../../Web/WebSettings.py:72
+#: ../../../beppo/server/Web/WebPerson.py:144
+#: ../../../beppo/server/Web/WebPupilEdit.py:153
+#: ../../../beppo/server/Web/WebSettings.py:88
 msgid "Datos actualizados con exito"
 msgstr "Information successfully updated"
 
-#: ../../../Web/WebPerson.py:189 ../../../Web/WebPupilEdit.py:139
+#: ../../../beppo/server/Web/WebPerson.py:205
+#: ../../../beppo/server/Web/WebPupilEdit.py:155
 #, python-format
 msgid "El usuario %s ya existe en el sistema"
 msgstr "User '%s' does already exist in the system"
 
-#: ../../../Web/WebPerson.py:212 ../../../Web/WebPupilInsert.py:213
+#: ../../../beppo/server/Web/WebPerson.py:228
+#: ../../../beppo/server/Web/WebPupilInsert.py:229
 msgid "Usuario ingresado con exito"
 msgstr "User successfully added"
 
-#: ../../../Web/WebPerson.py:232 ../../../Web/WebPupilEdit.py:181
-#: ../../../Web/WebPupilInsert.py:236
+#: ../../../beppo/server/Web/WebPerson.py:248
+#: ../../../beppo/server/Web/WebPupilEdit.py:197
+#: ../../../beppo/server/Web/WebPupilInsert.py:252
 #, python-format
 msgid "El campo %s es obligatorio"
 msgstr "Field '%s' is mandatory"
 
-#: ../../../Web/WebPerson.py:232 ../../../Web/WebPerson.py:267
-#: ../../../Web/WebPupilEdit.py:181 ../../../Web/WebPupilEdit.py:219
-#: ../../../Web/WebPupilInsert.py:236 ../../../Web/WebPupilInsert.py:293
-#: ../../../Web/WebTutorInfo.py:141
+#: ../../../beppo/server/Web/WebPerson.py:248
+#: ../../../beppo/server/Web/WebPerson.py:283
+#: ../../../beppo/server/Web/WebPupilEdit.py:197
+#: ../../../beppo/server/Web/WebPupilEdit.py:235
+#: ../../../beppo/server/Web/WebPupilInsert.py:252
+#: ../../../beppo/server/Web/WebPupilInsert.py:309
+#: ../../../beppo/server/Web/WebTutorInfo.py:158
 msgid "desc"
 msgstr "desc"
 
-#: ../../../Web/WebPerson.py:235 ../../../Web/WebPupilEdit.py:185
-#: ../../../Web/WebPupilInsert.py:265 ../../../Web/WebSendMail.py:146
+#: ../../../beppo/server/Web/WebPerson.py:251
+#: ../../../beppo/server/Web/WebPupilEdit.py:201
+#: ../../../beppo/server/Web/WebPupilInsert.py:281
+#: ../../../beppo/server/Web/WebSendMail.py:167
 msgid "Error en el ingreso de datos:"
 msgstr "Error found in the information entry:"
 
-#: ../../../Web/WebPerson.py:253 ../../../Web/WebPupilEdit.py:204
-#: ../../../Web/WebSettings.py:129 ../../../Web/WebTutorData.py:87
+#: ../../../beppo/server/Web/WebPerson.py:269
+#: ../../../beppo/server/Web/WebPupilEdit.py:220
+#: ../../../beppo/server/Web/WebSettings.py:145
+#: ../../../beppo/server/Web/WebTutorData.py:103
 msgid "El usuario solicitado no existe"
 msgstr "The requested user does not exist"
 
-#: ../../../Web/WebPerson.py:268 ../../../Web/WebPupilEdit.py:222
-#: ../../../Web/WebPupilInsert.py:296 ../../../Web/WebSettings.py:142
+#: ../../../beppo/server/Web/WebPerson.py:284
+#: ../../../beppo/server/Web/WebPupilEdit.py:238
+#: ../../../beppo/server/Web/WebPupilInsert.py:312
+#: ../../../beppo/server/Web/WebSettings.py:158
 msgid "Guardar"
 msgstr "Save"
 
-#: ../../../Web/WebPupilEdit.py:46 ../../../Web/WebPupilInsert.py:52
+#: ../../../beppo/server/Web/WebPupilEdit.py:62
+#: ../../../beppo/server/Web/WebPupilInsert.py:68
 msgid "Pagina del Alumno"
 msgstr "Pupil's page"
 
-#: ../../../Web/WebPupilEdit.py:48
+#: ../../../beppo/server/Web/WebPupilEdit.py:64
 msgid "Informacion de alumno"
 msgstr "Pupil information"
 
-#: ../../../Web/WebPupilEdit.py:61
+#: ../../../beppo/server/Web/WebPupilEdit.py:77
 msgid "user_id y pupil_id deberian ser enteros"
 msgstr "user_id and pupil_id should be integer"
 
-#: ../../../Web/WebPupilEdit.py:75
+#: ../../../beppo/server/Web/WebPupilEdit.py:91
 msgid "pupil_id deberia ser entero"
 msgstr "pupil_id should be an integer"
 
-#: ../../../Web/WebPupilInsert.py:29
+#: ../../../beppo/server/Web/WebPupilInsert.py:45
 msgid "Horas de AI"
 msgstr "IA Time"
 
-#: ../../../Web/WebPupilInsert.py:31
+#: ../../../beppo/server/Web/WebPupilInsert.py:47
 msgid "Horas de CP"
 msgstr "PC Time"
 
-#: ../../../Web/WebPupilInsert.py:54
+#: ../../../beppo/server/Web/WebPupilInsert.py:70
 msgid "Nuevo alumno"
 msgstr "New pupil"
 
-#: ../../../Web/WebPupilInsert.py:69
+#: ../../../beppo/server/Web/WebPupilInsert.py:85
 msgid "Falta el argumento user_id"
 msgstr "The user_id argument is missing"
 
-#: ../../../Web/WebPupilInsert.py:107
+#: ../../../beppo/server/Web/WebPupilInsert.py:123
 msgid "El argumento de Hora debe ser numerico"
 msgstr "The 'time' argument must be numeric"
 
-#: ../../../Web/WebPupilInsert.py:124
+#: ../../../beppo/server/Web/WebPupilInsert.py:140
 msgid "Detalle de horas disponibles:"
 msgstr "Available time:"
 
-#: ../../../Web/WebPupilInsert.py:125
+#: ../../../beppo/server/Web/WebPupilInsert.py:141
 msgid "Horas AI disponibles:"
 msgstr "IA time available:"
 
-#: ../../../Web/WebPupilInsert.py:126
+#: ../../../beppo/server/Web/WebPupilInsert.py:142
 msgid "Horas CP disponibles:"
 msgstr "PC time available:"
 
-#: ../../../Web/WebPupilInsert.py:159
+#: ../../../beppo/server/Web/WebPupilInsert.py:175
 msgid "Ha solicitado mas horas de las que dispone"
 msgstr "You've requested more time than the time you have available"
 
-#: ../../../Web/WebPupilInsert.py:163
+#: ../../../beppo/server/Web/WebPupilInsert.py:179
 msgid "El cliente solicitado no existe"
 msgstr "The requested client does not exist"
 
-#: ../../../Web/WebPupilInsert.py:172
+#: ../../../beppo/server/Web/WebPupilInsert.py:188
 msgid "El usuario ya existe en el sistema"
 msgstr "This user does already exist in the system"
 
-#: ../../../Web/WebPupilInsert.py:242
+#: ../../../beppo/server/Web/WebPupilInsert.py:258
 msgid "El campo Horas AI disponibles debe ser numerico"
 msgstr "The IA time field must be numeric"
 
-#: ../../../Web/WebPupilInsert.py:245
+#: ../../../beppo/server/Web/WebPupilInsert.py:261
 msgid "Se ha excedido en las Horas AI asignadas"
 msgstr "You've exceeded the IA time assigned"
 
-#: ../../../Web/WebPupilInsert.py:248
+#: ../../../beppo/server/Web/WebPupilInsert.py:264
 msgid "El campo Horas de AI debe ser positivo"
 msgstr "The IA time must be positive"
 
-#: ../../../Web/WebPupilInsert.py:253
+#: ../../../beppo/server/Web/WebPupilInsert.py:269
 msgid "El campo Horas PC disponibles debe ser numerico"
 msgstr "The PC time field must be numeric"
 
-#: ../../../Web/WebPupilInsert.py:256
+#: ../../../beppo/server/Web/WebPupilInsert.py:272
 msgid "Se ha excedido en las Horas PC asignadas"
 msgstr "You've exceeded the PC time assigned"
 
-#: ../../../Web/WebPupilInsert.py:259
+#: ../../../beppo/server/Web/WebPupilInsert.py:275
 msgid "El campo Horas de PC debe ser positivo"
 msgstr "The PC time field must be positive"
 
-#: ../../../Web/WebPupilInsert.py:262
+#: ../../../beppo/server/Web/WebPupilInsert.py:278
 msgid "Debe asignarle horas al alumno"
 msgstr "You must assign time to the pupil"
 
-#: ../../../Web/WebRoomInfo.py:39
+#: ../../../beppo/server/Web/WebRoomInfo.py:55
 msgid "Informacion de Pizarras en el sistema"
 msgstr "Whiteboards information"
 
-#: ../../../Web/WebRoomInfo.py:45 ../../../Web/WebRoomInfo.py:49
+#: ../../../beppo/server/Web/WebRoomInfo.py:61
+#: ../../../beppo/server/Web/WebRoomInfo.py:65
 msgid "Estado del sistema"
 msgstr "System status"
 
-#: ../../../Web/WebRoomInfo.py:46
+#: ../../../beppo/server/Web/WebRoomInfo.py:62
 msgid ""
 "Aqui se muestran las aulas que se encuentran abiertas, una descripcion de "
 "ellas y la lista de aulas que deberian estar abiertas."
@@ -1125,188 +1286,208 @@ msgstr ""
 "Here you can find the open rooms, a brief description of them and a list of "
 "rooms that should be open."
 
-#: ../../../Web/WebRoomInfo.py:50
+#: ../../../beppo/server/Web/WebRoomInfo.py:66
 msgid ""
 "Aqui se muestran las aulas que se encuentran abiertas y una descripcion de "
 "ellas"
 msgstr "Here you can find the open rooms and a description of them."
 
-#: ../../../Web/WebRoomInfo.py:92
+#: ../../../beppo/server/Web/WebRoomInfo.py:108
 msgid "Aulas abiertas:"
 msgstr "Open rooms:"
 
-#: ../../../Web/WebRoomInfo.py:94 ../../../Web/WebRoomInfo.py:128
+#: ../../../beppo/server/Web/WebRoomInfo.py:110
+#: ../../../beppo/server/Web/WebRoomInfo.py:144
 msgid "Aula"
 msgstr "Room"
 
-#: ../../../Web/WebRoomInfo.py:95
+#: ../../../beppo/server/Web/WebRoomInfo.py:111
 msgid "Usuarios conectados"
 msgstr "Connected users"
 
-#: ../../../Web/WebRoomInfo.py:96
+#: ../../../beppo/server/Web/WebRoomInfo.py:112
 msgid "Tutor a cargo"
 msgstr "Tutor in charge"
 
-#: ../../../Web/WebRoomInfo.py:101
+#: ../../../beppo/server/Web/WebRoomInfo.py:117
 msgid "Ningun aula abierta"
 msgstr "No room is open"
 
-#: ../../../Web/WebRoomInfo.py:115
+#: ../../../beppo/server/Web/WebRoomInfo.py:131
 msgid "Usuarios en la cola general:"
 msgstr "Users in the general queue:"
 
-#: ../../../Web/WebRoomInfo.py:126
+#: ../../../beppo/server/Web/WebRoomInfo.py:142
 msgid "Aulas que deberian estar abiertas y no estan:"
 msgstr "Rooms that should be open and are closed:"
 
-#: ../../../Web/WebRoomInfo.py:134
+#: ../../../beppo/server/Web/WebRoomInfo.py:150
 msgid "No hay tutores ausentes"
 msgstr "There are no absent tutors"
 
-#: ../../../Web/WebRoot.py:81 ../../../Web/WebRoot.py:116
+#: ../../../beppo/server/Web/WebRoot.py:98
+#: ../../../beppo/server/Web/WebRoot.py:133
 msgid "Beppo - Sistema de educacion a distancia"
 msgstr "Beppo - Distance Education System"
 
-#: ../../../Web/WebRoot.py:89
+#: ../../../beppo/server/Web/WebRoot.py:106
 msgid "Bienvenido!"
 msgstr "Welcome!"
 
-#: ../../../Web/WebRoot.py:91
+#: ../../../beppo/server/Web/WebRoot.py:108
 msgid ""
 "Aqui podra conocer todas las ventajas de utilizar el sistema Beppo, y lo "
 "intentaremos convencer de que lo compre."
 msgstr "Insert page content"
 
-#: ../../../Web/WebSchedules.py:56 ../../../Web/WebSchedules1.py:45
-#: ../../../Web/WebSchedules2.py:45
+#: ../../../beppo/server/Web/WebSchedules.py:72
+#: ../../../beppo/server/Web/WebSchedules1.py:61
+#: ../../../beppo/server/Web/WebSchedules2.py:61
 msgid "Administracion de horarios"
 msgstr "Schedules management"
 
-#: ../../../Web/WebSchedules.py:56 ../../../Web/WebSchedules2.py:45
+#: ../../../beppo/server/Web/WebSchedules.py:72
+#: ../../../beppo/server/Web/WebSchedules2.py:61
 msgid "Selecciona las horas en las que el tutor se encuentra disponible."
 msgstr "Choose the time when the tutor is available"
 
-#: ../../../Web/WebSchedules.py:66 ../../../Web/WebSchedules1.py:55
-#: ../../../Web/WebSchedules2.py:55
+#: ../../../beppo/server/Web/WebSchedules.py:82
+#: ../../../beppo/server/Web/WebSchedules1.py:71
+#: ../../../beppo/server/Web/WebSchedules2.py:71
 msgid "Seleccion de horarios"
 msgstr "Schedules selection"
 
-#: ../../../Web/WebSchedules.py:66 ../../../Web/WebSchedules2.py:55
+#: ../../../beppo/server/Web/WebSchedules.py:82
+#: ../../../beppo/server/Web/WebSchedules2.py:71
 msgid "Indica los horarios en los que te encuentras disponible."
 msgstr "Specify the schedule when you are available"
 
-#: ../../../Web/WebSchedules.py:90 ../../../Web/WebSchedules1.py:79
-#: ../../../Web/WebSchedules2.py:79 ../../../Web/WebSubjects.py:87
+#: ../../../beppo/server/Web/WebSchedules.py:106
+#: ../../../beppo/server/Web/WebSchedules1.py:95
+#: ../../../beppo/server/Web/WebSchedules2.py:95
+#: ../../../beppo/server/Web/WebSubjects.py:103
 msgid "Cambios guardados."
 msgstr "Changes saved"
 
-#: ../../../Web/WebSchedules.py:90 ../../../Web/WebSchedules1.py:79
-#: ../../../Web/WebSchedules2.py:79 ../../../Web/WebSubjects.py:88
+#: ../../../beppo/server/Web/WebSchedules.py:106
+#: ../../../beppo/server/Web/WebSchedules1.py:95
+#: ../../../beppo/server/Web/WebSchedules2.py:95
+#: ../../../beppo/server/Web/WebSubjects.py:104
 msgid "Se guardaron los cambios correctamente"
 msgstr "Changes successfully saved"
 
-#: ../../../Web/WebSchedules.py:189 ../../../Web/WebSchedules2.py:173
+#: ../../../beppo/server/Web/WebSchedules.py:205
+#: ../../../beppo/server/Web/WebSchedules2.py:189
 msgid "No ha seleccionado un tipo de horario!"
 msgstr "There is not schedule specified!"
 
-#: ../../../Web/WebSchedules.py:201 ../../../Web/WebSchedules1.py:179
-#: ../../../Web/WebSchedules2.py:186
+#: ../../../beppo/server/Web/WebSchedules.py:217
+#: ../../../beppo/server/Web/WebSchedules1.py:195
+#: ../../../beppo/server/Web/WebSchedules2.py:202
 msgid "Tipo de horarios"
 msgstr "Kind of schedule"
 
-#: ../../../Web/WebSchedules.py:203 ../../../Web/WebSchedules1.py:180
-#: ../../../Web/WebSchedules2.py:188
+#: ../../../beppo/server/Web/WebSchedules.py:219
+#: ../../../beppo/server/Web/WebSchedules1.py:196
+#: ../../../beppo/server/Web/WebSchedules2.py:204
 msgid "Acceso instantaneo"
 msgstr "Instant access"
 
-#: ../../../Web/WebSchedules.py:205 ../../../Web/WebSchedules2.py:190
+#: ../../../beppo/server/Web/WebSchedules.py:221
+#: ../../../beppo/server/Web/WebSchedules2.py:206
 msgid "Clases precoordinadas"
 msgstr "Prearranged classes"
 
-#: ../../../Web/WebSchedules1.py:45
+#: ../../../beppo/server/Web/WebSchedules1.py:61
 msgid "Selecciona las horarios de acceso instantaneo para el tutor."
 msgstr "Choose the Instant Access schedule for the tutor"
 
-#: ../../../Web/WebSchedules1.py:55
+#: ../../../beppo/server/Web/WebSchedules1.py:71
 msgid ""
 "Selecciona los horarios en los que estas disponible para horas de acceso "
 "instantaneo."
 msgstr "Choose the schedules when you're available for Instant Acess time"
 
-#: ../../../Web/WebSchedules1.py:166 ../../../Web/WebSchedules1.py:200
+#: ../../../beppo/server/Web/WebSchedules1.py:182
+#: ../../../beppo/server/Web/WebSchedules1.py:216
 msgid "Disponible"
 msgstr "Available"
 
-#: ../../../Web/WebSchedules1.py:181
+#: ../../../beppo/server/Web/WebSchedules1.py:197
 msgid "Clases Precoordinadas"
 msgstr "Prearranged classes"
 
-#: ../../../Web/WebSendMail.py:47 ../../../Web/WebSendMail.py:50
+#: ../../../beppo/server/Web/WebSendMail.py:63
+#: ../../../beppo/server/Web/WebSendMail.py:66
 msgid "Criticas y sugerencias"
 msgstr "Reviews and Suggestions"
 
-#: ../../../Web/WebSendMail.py:51
+#: ../../../beppo/server/Web/WebSendMail.py:67
 msgid "Desde aqui puede mandar sus criticas, sugerencias y comentarios."
 msgstr "Here you can send your reviews, suggestions and comments."
 
-#: ../../../Web/WebSendMail.py:52
-#, fuzzy
+#: ../../../beppo/server/Web/WebSendMail.py:68
 msgid ""
 "La comunicacion se realizara mediante la casilla de mail con la cual se ha "
 "registrado."
 msgstr "We will answer the email to the address provided below"
 
-#: ../../../Web/WebSendMail.py:105
+#: ../../../beppo/server/Web/WebSendMail.py:122
+msgid "Error al intentar establecer la comunicacion"
+msgstr "Erro when trying to connect to server"
+
+#: ../../../beppo/server/Web/WebSendMail.py:126
 msgid "Mail enviado correctamente"
 msgstr "Mail has been successfully sent"
 
-#: ../../../Web/WebSendMail.py:106
+#: ../../../beppo/server/Web/WebSendMail.py:127
 msgid "Agradecemos su colaboracion"
 msgstr "Thanks for your comments"
 
-#: ../../../Web/WebSendMail.py:109
-#, fuzzy
+#: ../../../beppo/server/Web/WebSendMail.py:130
 msgid "El texto del mail no debe ser vacio"
 msgstr "The subject name cannot be an empty string"
 
-#: ../../../Web/WebSendMail.py:125
+#: ../../../beppo/server/Web/WebSendMail.py:146
 msgid "Asunto"
 msgstr "Message subject"
 
-#: ../../../Web/WebSendMail.py:127
+#: ../../../beppo/server/Web/WebSendMail.py:148
 msgid "Texto"
 msgstr "Message text"
 
-#: ../../../Web/WebSendMail.py:143
+#: ../../../beppo/server/Web/WebSendMail.py:164
 msgid "El texto es obligatorio"
 msgstr "Message text is mandatory"
 
-#: ../../../Web/WebSendMail.py:150
+#: ../../../beppo/server/Web/WebSendMail.py:171
 msgid "Enviar el mensaje sin asunto?"
 msgstr "Send message with empty subject?"
 
-#: ../../../Web/WebSettings.py:69 ../../../Web/WebSettings.py:96
-#: ../../../Web/WebTemplates.py:50
+#: ../../../beppo/server/Web/WebSettings.py:85
+#: ../../../beppo/server/Web/WebSettings.py:112
+#: ../../../beppo/server/Web/WebTemplates.py:65
 msgid "Preferencias"
 msgstr "Settings"
 
-#: ../../../Web/WebSettings.py:97
+#: ../../../beppo/server/Web/WebSettings.py:113
 msgid "Indica tu preferencia de idioma y zona horaria"
 msgstr "Specify preferred language and time zone"
 
-#: ../../../Web/WebSettings.py:156
+#: ../../../beppo/server/Web/WebSettings.py:172
 msgid "Zona Horaria:"
 msgstr "Time zone:"
 
-#: ../../../Web/WebSubjectAdmin.py:35 ../../../Web/WebSubjects.py:46
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:51
+#: ../../../beppo/server/Web/WebSubjects.py:62
 msgid "Administracion de materias"
 msgstr "Subjects management"
 
-#: ../../../Web/WebSubjectAdmin.py:42
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:58
 msgid "Administracion de Materias"
 msgstr "Subjects management"
 
-#: ../../../Web/WebSubjectAdmin.py:42
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:58
 msgid ""
 "Estas son las materias disponibles en el sistema. Desde aqui se pueden "
 "agregar y borrar materias"
@@ -1314,60 +1495,59 @@ msgstr ""
 "These are the available subjects in the system. Here you can add or delete "
 "subjects"
 
-#: ../../../Web/WebSubjectAdmin.py:62
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:78
 msgid "Materia agregada"
 msgstr "Subject added"
 
-#: ../../../Web/WebSubjectAdmin.py:63
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:79
 msgid "La materia ha sido guardada correctamente"
 msgstr "Subject has been successfully saved"
 
-#: ../../../Web/WebSubjectAdmin.py:93
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:109
 msgid "Esta seguro de borrar la materia"
 msgstr "Are you sure you want to delete the subject"
 
-#: ../../../Web/WebSubjectAdmin.py:95
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:111
 msgid "1 tutor la tiene como seleccionada"
 msgstr "1 tutor has chosen it"
 
-#: ../../../Web/WebSubjectAdmin.py:98
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:114
 msgid "tutores la tienen como seleccionada"
 msgstr "tutors have chosen it"
 
-#: ../../../Web/WebSubjectAdmin.py:109
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:125
 msgid "# Tutores"
 msgstr "# Tutors"
 
-#: ../../../Web/WebSubjectAdmin.py:125
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:141
 msgid "El nombre de la materia no puede ser vacio"
 msgstr "The subject name cannot be an empty string"
 
-#: ../../../Web/WebSubjectAdmin.py:134
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:150
 msgid "Insertar"
 msgstr "Insert"
 
-#: ../../../Web/WebSubjectAdmin.py:147
-#, fuzzy
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:163
 msgid "Materia no borrada"
-msgstr "Subject deleted"
+msgstr "Non deleted subject"
 
-#: ../../../Web/WebSubjectAdmin.py:148
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:164
 msgid "Existen clases por darse o preguntas por contestarse para esta materia"
-msgstr ""
+msgstr "There are remaining classes or unanswered questions for this subject"
 
-#: ../../../Web/WebSubjectAdmin.py:151
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:167
 msgid "Materia borrada"
 msgstr "Subject deleted"
 
-#: ../../../Web/WebSubjectAdmin.py:152
+#: ../../../beppo/server/Web/WebSubjectAdmin.py:168
 msgid "La materia ha sido borrada correctamente"
 msgstr "Subject has been successfully deleted"
 
-#: ../../../Web/WebSubjects.py:35
+#: ../../../beppo/server/Web/WebSubjects.py:51
 msgid "Modificacion de materias"
 msgstr "Subjects modification"
 
-#: ../../../Web/WebSubjects.py:47
+#: ../../../beppo/server/Web/WebSubjects.py:63
 msgid ""
 "Selecciona las materias que el tutor sepa ensenar, para actualizar los datos "
 "en el sistema."
@@ -1375,113 +1555,120 @@ msgstr ""
 "Choose the subjects the tutor can teach so as to update the information in "
 "the system"
 
-#: ../../../Web/WebSubjects.py:59
+#: ../../../beppo/server/Web/WebSubjects.py:75
 msgid "Seleccion de materias"
 msgstr "Subjects selection"
 
-#: ../../../Web/WebSubjects.py:60
+#: ../../../beppo/server/Web/WebSubjects.py:76
 msgid ""
 "Selecciona las materias que sepas ensenar, para actualizar tus datos en el "
 "sistema."
 msgstr ""
 "Choose the subjects you can teach to update your information in the system"
 
-#: ../../../Web/WebSubjects.py:85
+#: ../../../beppo/server/Web/WebSubjects.py:101
 msgid "sbj deberia tomar valores enteros."
 msgstr "sbj should have integer values"
 
-#: ../../../Web/WebTemplates.py:46
+#: ../../../beppo/server/Web/WebTemplates.py:61
 msgid "Cerrar sesion"
 msgstr "End session"
 
-#: ../../../Web/WebTemplates.py:48
-#, fuzzy
+#: ../../../beppo/server/Web/WebTemplates.py:63
 msgid "Inicio"
-msgstr "Start date:"
+msgstr "Start"
 
-#: ../../../Web/WebTemplates.py:51
+#: ../../../beppo/server/Web/WebTemplates.py:66
 msgid "Mis horarios"
 msgstr "My schedules"
 
-#: ../../../Web/WebTemplates.py:53
+#: ../../../beppo/server/Web/WebTemplates.py:68
 msgid "Mis materias"
 msgstr "My subjects"
 
-#: ../../../Web/WebTemplates.py:55
+#: ../../../beppo/server/Web/WebTemplates.py:70
 msgid "Mis sesiones"
 msgstr "My sessions"
 
-#: ../../../Web/WebTemplates.py:59
+#: ../../../beppo/server/Web/WebTemplates.py:74
 msgid "Reportes"
 msgstr "Reports"
 
-#: ../../../Web/WebTemplates.py:61
+#: ../../../beppo/server/Web/WebTemplates.py:76
 msgid "Precoordinar una clase"
 msgstr "Prearrange a class"
 
-#: ../../../Web/WebTemplates.py:63
+#: ../../../beppo/server/Web/WebTemplates.py:78
 msgid "Administrar"
 msgstr "Manage"
 
-#: ../../../Web/WebTemplates.py:66
+#: ../../../beppo/server/Web/WebTemplates.py:81
 msgid "Contactenos"
 msgstr "Contact us"
 
-#: ../../../Web/WebTemplates.py:68
+#: ../../../beppo/server/Web/WebTemplates.py:83
 msgid "Navegacion"
 msgstr "Navigation"
 
-#: ../../../Web/WebTemplates.py:71
+#: ../../../beppo/server/Web/WebTemplates.py:86
 #, python-format
 msgid "Sesion iniciada como %s"
 msgstr "Logged in as %s"
 
-#: ../../../Web/WebTemplates.py:87
+#: ../../../beppo/server/Web/WebTemplates.py:102
 msgid "Iniciar sesion"
 msgstr "Start Session"
 
-#: ../../../Web/WebTemplates.py:89
+#: ../../../beppo/server/Web/WebTemplates.py:104
 msgid "Ayuda/Instrucciones"
 msgstr "Help/Guide"
 
-#: ../../../Web/WebTemplates.py:129
+#: ../../../beppo/server/Web/WebTemplates.py:144
 msgid "Usuario no autenticado"
 msgstr "User not authenticated"
 
-#: ../../../Web/WebTemplates.py:130
+#: ../../../beppo/server/Web/WebTemplates.py:145
 msgid "Esta intentando acceder a una pagina restringida."
 msgstr "You're trying to access a restricted page"
 
-#: ../../../Web/WebTemplates.py:131
+#: ../../../beppo/server/Web/WebTemplates.py:146
 msgid "Debe autenticarse ante el sistema antes de acceder a esta pagina."
 msgstr "You must be authenticated in order to access this page"
 
-#: ../../../Web/WebTemplates.py:137
+#: ../../../beppo/server/Web/WebTemplates.py:152
 msgid "No autorizado"
 msgstr "Not authorized"
 
-#: ../../../Web/WebTemplates.py:138
+#: ../../../beppo/server/Web/WebTemplates.py:153
 msgid "Usted no esta autorizado a utilizar esta pagina."
 msgstr "You're not authorized to use this page"
 
-#: ../../../Web/WebTemplates.py:144
+#: ../../../beppo/server/Web/WebTemplates.py:159
 msgid "No juegues con la URL"
 msgstr "Don't play with the URL"
 
-#: ../../../Web/WebTemplates.py:145
+#: ../../../beppo/server/Web/WebTemplates.py:160
 msgid "Se recibieron parametros inesperados en la URL: "
 msgstr "Unexpected parameters were received in the URL:"
 
-#: ../../../Web/WebTemplates.py:152
+#: ../../../beppo/server/Web/WebTemplates.py:166
+msgid "Error en el servidor"
+msgstr "Server error"
+
+#: ../../../beppo/server/Web/WebTemplates.py:167
+msgid "Ha ocurrido un error en el servidor: "
+msgstr "Server error: "
+
+#: ../../../beppo/server/Web/WebTemplates.py:174
 #, python-format
 msgid "La pagina de %s %s"
 msgstr "%s %s's page"
 
-#: ../../../Web/WebTemplates.py:155
+#: ../../../beppo/server/Web/WebTemplates.py:177
 msgid "Usted es el administrador de este sitio"
 msgstr "You're the administrator of this site"
 
-#: ../../../Web/WebTemplates.py:167
+#: ../../../beppo/server/Web/WebTemplates.py:189
 msgid ""
 "Aqui se muestra alguna informacion general como horas disponibles u horarios "
 "en los que se tienen clases, y algunos links utiles.  Por ejemplo, se puede "
@@ -1491,308 +1678,323 @@ msgstr ""
 "schedules when you can have classes, as well as some useful links. For "
 "example, you can see the list of"
 
-#: ../../../Web/WebTemplates.py:168
+#: ../../../beppo/server/Web/WebTemplates.py:190
 msgid "salas disponibles."
 msgstr "available rooms"
 
-#: ../../../Web/WebTemplates.py:168
-#, fuzzy
+#: ../../../beppo/server/Web/WebTemplates.py:190
 msgid "o las"
-msgstr "at"
+msgstr "or"
 
-#: ../../../Web/WebTemplates.py:170
+#: ../../../beppo/server/Web/WebTemplates.py:192
 msgid "Tarifas actuales"
-msgstr ""
+msgstr "Current price list"
 
-#: ../../../Web/WebTemplates.py:177
-#, fuzzy
+#: ../../../beppo/server/Web/WebTemplates.py:199
 msgid "La pagina solicitada no existe"
-msgstr "The requested client does not exist"
+msgstr "The requested page does not exist"
 
-#: ../../../Web/WebTemplates.py:182 ../../../Web/WebTemplates.py:184
+#: ../../../beppo/server/Web/WebTemplates.py:204
+#: ../../../beppo/server/Web/WebTemplates.py:206
 msgid "Aqui"
-msgstr ""
+msgstr "Here"
 
-#: ../../../Web/WebTemplates.py:183
+#: ../../../beppo/server/Web/WebTemplates.py:205
 msgid ""
 "podra acceder a nuestro archivo, el cual consiste de las pizarras virtuales "
-"en formato PostScript (PS). Puede consultar todas las clases que nuestros "
-"tutores han dado en el sistema."
+"en formato PDF (Portable Document Format). Puede consultar todas las clases "
+"que nuestros tutores han dado en el sistema."
 msgstr ""
+"you can access our archive, which consists of whiteboards in PDF (Portable "
+"Document Format)format. You can check every class given in the system."
 
-#: ../../../Web/WebTemplates.py:185
+#: ../../../beppo/server/Web/WebTemplates.py:207
 msgid ""
 "se pueden ver la lista de aulas abiertas; es decir, aquellas en las que se "
 "estan dando clase en este momento. Tambien se incluyen las materias que se "
 "estan ofreciendo, la cantidad de alumnos en clase y los tutores a cargo"
 msgstr ""
+"you can check open rooms; that is, those rooms where a class is in progress "
+"right now. Available subjects, amount of pupils in class and its tutors are "
+"also included"
 
-#: ../../../Web/WebTutor.py:14
+#: ../../../beppo/server/Web/WebTutor.py:30
 msgid "Direccion 1"
 msgstr "Address 1"
 
-#: ../../../Web/WebTutor.py:15
+#: ../../../beppo/server/Web/WebTutor.py:31
 msgid "Direccion 2"
 msgstr "Address 2"
 
-#: ../../../Web/WebTutor.py:17
+#: ../../../beppo/server/Web/WebTutor.py:33
 msgid "Codigo postal"
 msgstr "Zip code"
 
-#: ../../../Web/WebTutor.py:19
+#: ../../../beppo/server/Web/WebTutor.py:35
 msgid "Telefono 1"
 msgstr "Phone number 1"
 
-#: ../../../Web/WebTutor.py:21
+#: ../../../beppo/server/Web/WebTutor.py:37
 msgid "Telefono 2"
 msgstr "Phone number 2"
 
-#: ../../../Web/WebTutor.py:23
+#: ../../../beppo/server/Web/WebTutor.py:39
 msgid "Telefono 3"
 msgstr "Phone number 3"
 
-#: ../../../Web/WebTutor.py:25
+#: ../../../beppo/server/Web/WebTutor.py:41
 msgid "ICQ"
 msgstr "ICQ id number"
 
-#: ../../../Web/WebTutor.py:27
+#: ../../../beppo/server/Web/WebTutor.py:43
 msgid "MSN"
 msgstr "MSN account"
 
-#: ../../../Web/WebTutor.py:29
+#: ../../../beppo/server/Web/WebTutor.py:45
 msgid "Aol"
 msgstr "AOL"
 
-#: ../../../Web/WebTutor.py:38
+#: ../../../beppo/server/Web/WebTutor.py:54
 msgid "Pagina del tutor"
 msgstr "Tutor's page"
 
-#: ../../../Web/WebTutorData.py:38
+#: ../../../beppo/server/Web/WebTutorData.py:54
 msgid "Datos del tutor"
 msgstr "Tutor's information"
 
-#: ../../../Web/WebTutorData.py:45
+#: ../../../beppo/server/Web/WebTutorData.py:61
 msgid "Informacion del tutor"
 msgstr "Tutor's information"
 
-#: ../../../Web/WebTutorData.py:108
+#: ../../../beppo/server/Web/WebTutorData.py:124
 msgid "Materias que sabe ensenar:"
 msgstr "Subjects she/he can teach:"
 
-#: ../../../Web/WebTutorData.py:129
+#: ../../../beppo/server/Web/WebTutorData.py:145
 msgid "Horarios en los que da clases de Acceso Instantaneo:"
 msgstr "Schedules when she/he is available for Instant Acess:"
 
-#: ../../../Web/WebTutorData.py:135
+#: ../../../beppo/server/Web/WebTutorData.py:151
 msgid "Horarios en los que da clases de Clase Precoordinada:"
 msgstr "Schedules when she/he is available for Prearranged Classes:"
 
-#: ../../../Web/WebTutorData.py:157
+#: ../../../beppo/server/Web/WebTutorData.py:173
 msgid "Desde"
 msgstr "From"
 
-#: ../../../Web/WebTutorData.py:157 ../../../Web/WebTutorData.py:159
+#: ../../../beppo/server/Web/WebTutorData.py:173
+#: ../../../beppo/server/Web/WebTutorData.py:175
 msgid "a las"
 msgstr "at"
 
-#: ../../../Web/WebTutorData.py:158
+#: ../../../beppo/server/Web/WebTutorData.py:174
 msgid "hasta"
 msgstr "to"
 
-#: ../../../Web/WebTutorInfo.py:18
+#: ../../../beppo/server/Web/WebTutorInfo.py:34
 msgid "A.I."
 msgstr "I.A."
 
-#: ../../../Web/WebTutorInfo.py:19
+#: ../../../beppo/server/Web/WebTutorInfo.py:35
 msgid "C.P."
 msgstr "P.C."
 
-#: ../../../Web/WebTutorInfo.py:20
+#: ../../../beppo/server/Web/WebTutorInfo.py:36
 msgid "Sin turno"
 msgstr "Extra schedule"
 
-#: ../../../Web/WebTutorInfo.py:21
+#: ../../../beppo/server/Web/WebTutorInfo.py:37
 msgid "Preguntas offline"
 msgstr "Offline questions"
 
-#: ../../../Web/WebTutorInfo.py:22 ../../../Web/WebTutorSessions.py:22
+#: ../../../beppo/server/Web/WebTutorInfo.py:38
+#: ../../../beppo/server/Web/WebTutorSessions.py:38
 msgid "En espera"
 msgstr "Waiting"
 
-#: ../../../Web/WebTutorInfo.py:23
+#: ../../../beppo/server/Web/WebTutorInfo.py:39
 msgid "En espera (Sin turno)"
 msgstr "Waiting (Extra schedule)"
 
-#: ../../../Web/WebTutorInfo.py:24 ../../../Web/WebTutorSessions.py:22
+#: ../../../beppo/server/Web/WebTutorInfo.py:40
+#: ../../../beppo/server/Web/WebTutorSessions.py:38
 msgid "Ausente"
 msgstr "Absent"
 
-#: ../../../Web/WebTutorInfo.py:25 ../../../Web/WebTutorSessions.py:22
-#: ../../../Web/WebTutorSessions.py:26
+#: ../../../beppo/server/Web/WebTutorInfo.py:41
+#: ../../../beppo/server/Web/WebTutorSessions.py:38
+#: ../../../beppo/server/Web/WebTutorSessions.py:42
 msgid "Postprocesado"
-msgstr ""
+msgstr "Postprocessing"
 
-#: ../../../Web/WebTutorInfo.py:64
+#: ../../../beppo/server/Web/WebTutorInfo.py:80
 msgid "Informacion de los tutores del sistema"
 msgstr "Tutors information"
 
-#: ../../../Web/WebTutorInfo.py:107
+#: ../../../beppo/server/Web/WebTutorInfo.py:124
 msgid "No hay resultados disponibles"
 msgstr "There are no results"
 
-#: ../../../Web/WebTutorInfo.py:137
+#: ../../../beppo/server/Web/WebTutorInfo.py:154
 #, python-format
 msgid "Informacion de %d tutores:"
 msgstr "%d tutors information:"
 
-#: ../../../Web/WebTutorInfo.py:155
+#: ../../../beppo/server/Web/WebTutorInfo.py:172
 msgid "Totales"
 msgstr "Totals"
 
-#: ../../../Web/WebTutorInfo.py:197
+#: ../../../beppo/server/Web/WebTutorInfo.py:214
 msgid "Fecha Inicio:"
 msgstr "Start date:"
 
-#: ../../../Web/WebTutorInfo.py:199 ../../../Web/WebTutorInfo.py:205
+#: ../../../beppo/server/Web/WebTutorInfo.py:216
+#: ../../../beppo/server/Web/WebTutorInfo.py:222
 msgid "Elegir fecha"
 msgstr "Choose date"
 
-#: ../../../Web/WebTutorInfo.py:200 ../../../Web/WebTutorInfo.py:206
+#: ../../../beppo/server/Web/WebTutorInfo.py:217
+#: ../../../beppo/server/Web/WebTutorInfo.py:223
 msgid "(dd/mm/aaaa)"
 msgstr "(dd/mm/yyyy)"
 
-#: ../../../Web/WebTutorInfo.py:203
+#: ../../../beppo/server/Web/WebTutorInfo.py:220
 msgid "Fecha Fin:"
 msgstr "Finish date:"
 
-#: ../../../Web/WebTutorInfo.py:209
+#: ../../../beppo/server/Web/WebTutorInfo.py:226
 msgid "Actualizar"
 msgstr "Update"
 
-#: ../../../Web/WebTutorSessions.py:22
+#: ../../../beppo/server/Web/WebTutorSessions.py:38
 msgid "Acceso Instantaneo"
 msgstr "Instant Access"
 
-#: ../../../Web/WebTutorSessions.py:22
+#: ../../../beppo/server/Web/WebTutorSessions.py:38
 msgid "Clase Precoordinada"
 msgstr "Prearranged Class"
 
-#: ../../../Web/WebTutorSessions.py:22
+#: ../../../beppo/server/Web/WebTutorSessions.py:38
 msgid "Pregunta offline"
 msgstr "Offline question"
 
-#: ../../../Web/WebTutorSessions.py:22
+#: ../../../beppo/server/Web/WebTutorSessions.py:38
 msgid "AI (Fuera de turno)"
 msgstr "IA (Extra schedule)"
 
-#: ../../../Web/WebTutorSessions.py:22
+#: ../../../beppo/server/Web/WebTutorSessions.py:38
 msgid "Espera (Fuera de turno)"
 msgstr "Waiting (Extra schedule)"
 
-#: ../../../Web/WebTutorSessions.py:22
+#: ../../../beppo/server/Web/WebTutorSessions.py:38
 msgid "Analizando pregunta"
 msgstr "Analyzing question"
 
-#: ../../../Web/WebTutorSessions.py:26
+#: ../../../beppo/server/Web/WebTutorSessions.py:42
 msgid "Fin horario"
 msgstr "End of schedule"
 
-#: ../../../Web/WebTutorSessions.py:26
+#: ../../../beppo/server/Web/WebTutorSessions.py:42
 msgid "Arribo"
 msgstr "Arrival"
 
-#: ../../../Web/WebTutorSessions.py:26
-msgid "Alumno aceptado"
-msgstr "I.A. - Pupil connected"
+#: ../../../beppo/server/Web/WebTutorSessions.py:42
+msgid "Entrada de alumno"
+msgstr "Pupil entrance"
 
-#: ../../../Web/WebTutorSessions.py:26
+#: ../../../beppo/server/Web/WebTutorSessions.py:42
 msgid "Terminada por Tutor"
 msgstr "Ended by tutor"
 
-#: ../../../Web/WebTutorSessions.py:26
+#: ../../../beppo/server/Web/WebTutorSessions.py:42
 msgid "Terminada por alumno"
 msgstr "Ended by pupil"
 
-#: ../../../Web/WebTutorSessions.py:26
-msgid "Desconeccion Tutor"
+#: ../../../beppo/server/Web/WebTutorSessions.py:42
+#, fuzzy
+msgid "Desconexion Tutor"
 msgstr "Tutor disconnected"
 
-#: ../../../Web/WebTutorSessions.py:26
+#: ../../../beppo/server/Web/WebTutorSessions.py:42
 msgid "Reconexion servidor"
 msgstr "Server reconnection"
 
-#: ../../../Web/WebTutorSessions.py:26
+#: ../../../beppo/server/Web/WebTutorSessions.py:42
 msgid "Pregunta contestada"
 msgstr "Question answered"
 
-#: ../../../Web/WebTutorSessions.py:26
+#: ../../../beppo/server/Web/WebTutorSessions.py:42
 msgid "Pregunta no contestada"
 msgstr "Question pending "
 
-#: ../../../Web/WebTutorSessions.py:26
+#: ../../../beppo/server/Web/WebTutorSessions.py:42
 msgid "Pregunta aceptada"
 msgstr "Question accepted"
 
-#: ../../../Web/WebTutorSessions.py:26
+#: ../../../beppo/server/Web/WebTutorSessions.py:42
 msgid "Pregunta no aceptada"
 msgstr "Question rejected"
 
-#: ../../../Web/WebTutorSessions.py:26
+#: ../../../beppo/server/Web/WebTutorSessions.py:42
 msgid "No postprocesado"
-msgstr ""
+msgstr "Not postprocessed"
 
-#: ../../../Web/WebTutorSessions.py:52
+#: ../../../beppo/server/Web/WebTutorSessions.py:68
 msgid "Historial de sesiones del tutor"
 msgstr "Tutor's sessions log"
 
-#: ../../../Web/WebTutorSessions.py:62
+#: ../../../beppo/server/Web/WebTutorSessions.py:78
 msgid "Sesiones del tutor"
 msgstr "Tutor's sessions"
 
-#: ../../../Web/WebTutorSessions.py:74
+#: ../../../beppo/server/Web/WebTutorSessions.py:90
 msgid "Tus sesiones"
 msgstr "Your sessions"
 
-#: ../../../Web/WebTutorSessions.py:75
+#: ../../../beppo/server/Web/WebTutorSessions.py:91
 msgid "Este es el detalle de tus sesiones en el sistema:"
 msgstr "This is the log of your sessions in the system:"
 
-#: ../../../Web/WebTutorSessions.py:104
+#: ../../../beppo/server/Web/WebTutorSessions.py:120
 msgid "No se registran sesiones"
 msgstr "No session logged"
 
-#: ../../../Web/WebTutorSessions.py:106
+#: ../../../beppo/server/Web/WebTutorSessions.py:122
 #, python-format
 msgid "Informacion de %d sesiones:"
 msgstr "Information on %d sessions:"
 
-#: ../../../Web/WebTutorSessions.py:110
+#: ../../../beppo/server/Web/WebTutorSessions.py:126
 msgid "Tipo de sesion"
 msgstr "Kind of Session"
 
-#: ../../../Web/WebTutorSessions.py:111
+#: ../../../beppo/server/Web/WebTutorSessions.py:127
 msgid "Comienzo"
 msgstr "Start"
 
-#: ../../../Web/WebTutorSessions.py:112
+#: ../../../beppo/server/Web/WebTutorSessions.py:128
 msgid "Fin"
 msgstr "End"
 
-#: ../../../Web/WebTutorSessions.py:113
+#: ../../../beppo/server/Web/WebTutorSessions.py:129
 msgid "Duracion"
 msgstr "Length"
 
-#: ../../../Web/WebTutorSessions.py:114
+#: ../../../beppo/server/Web/WebTutorSessions.py:130
 msgid "Razon cierre"
 msgstr "Closing reason"
 
-#: ../../../Web/WebUserInfo.py:36 ../../../Web/WebUserInfo.py:46
+#: ../../../beppo/server/Web/WebUserInfo.py:52
+#: ../../../beppo/server/Web/WebUserInfo.py:62
 msgid "Informacion de usuario"
 msgstr "User's information"
 
-#: ../../../Web/WebUserInfo.py:56
+#: ../../../beppo/server/Web/WebUserInfo.py:72
 msgid "Falta algun argumento"
 msgstr "There's some argument missing"
+
+#~ msgid "Alumno aceptado"
+#~ msgstr "I.A. - Pupil connected"
 
 #~ msgid "Listado de materias disponibles"
 #~ msgstr "List of available subjects"

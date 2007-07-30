@@ -39,7 +39,7 @@ class WebTutorSessions(Resource):
 
     typeToStyle = {IACLASS: "ia_row", PACLASS: "pc_row", WAITING: "waiting_row", OFFLINE_QUESTION: "offline_row", EXTRA_IACLASS: "extra_ia_row", EXTRA_WAITING: "extra_waiting_row", DECIDING: "deciding_row", ABSENT: "absent_row", POST_PROCESS: "postprocess_row"}.get
 
-    eCodeToString = {NORMAL: _('Fin horario'), TUTOR_ENTER: _('Arribo'), PUPIL_ENTER: _('Entrada de alumno'), TUTOR_END: _('Terminada por Tutor'), PUPIL_END: _('Terminada por alumno'), TUTOR_QUIT: _('Desconeccion Tutor'), SERVER_RESTART: _('Reconexion servidor'), QUESTION_ANSWERED: _('Pregunta contestada'), QUESTION_NOT_ANSWERED: _('Pregunta no contestada'), ACCEPTED: _('Pregunta aceptada'), REJECTED: _('Pregunta no aceptada'), CORRECTED: _('Postprocesado'), NOT_CORRECTED: _('No postprocesado'), None: '-'}.get
+    eCodeToString = {NORMAL: _('Fin horario'), TUTOR_ENTER: _('Arribo'), PUPIL_ENTER: _('Entrada de alumno'), TUTOR_END: _('Terminada por Tutor'), PUPIL_END: _('Terminada por alumno'), TUTOR_QUIT: _('Desconexion Tutor'), SERVER_RESTART: _('Reconexion servidor'), QUESTION_ANSWERED: _('Pregunta contestada'), QUESTION_NOT_ANSWERED: _('Pregunta no contestada'), ACCEPTED: _('Pregunta aceptada'), REJECTED: _('Pregunta no aceptada'), CORRECTED: _('Postprocesado'), NOT_CORRECTED: _('No postprocesado'), None: '-'}.get
 
     def __init__(self):
         self.db = DBConnect()
