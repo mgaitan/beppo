@@ -37,5 +37,6 @@ Server run:
 Client run:
 ----------
 
+- Set REMOTE_SERVER in beppo/Constants.py to the host where the beppo server is running (use "localhost" if running in the same computer)
 - Run:
 	$ python beppo/client/Login.py

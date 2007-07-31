@@ -81,6 +81,9 @@ MAIL_PORT = 25
 #Configuración web
 APP_URL = 'http://beetroot.except.com.ar:8000/'
 
+#Servidor remoto
+REMOTE_SERVER = 'localhost'
+
 #Cola general
 GENERAL = "GEN"
 

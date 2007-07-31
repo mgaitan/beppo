@@ -23,6 +23,7 @@ from twisted.python import util
 from Tkinter import *
 from Client import Client
 from LoginDialog import LoginDialog
+from beppo.Constants import REMOTE_SERVER
 from beppo.Constants import TUTOR, PUPIL
 from beppo.Constants import EMOTIC, SYMBOL, MATH, APP_URL, APP_NAME
 from beppo.Constants import statusMsg, OUT
@@ -51,7 +52,7 @@ class Login:
 
         self.factory = pb.PBClientFactory()
         self.window.wait_visibility()
-        self.logindialog = LoginDialog(self.window, self.loginSuccess, self.application_quit, "localhost", self.PORTNO, self.factory, self.client.cc)
+        self.logindialog = LoginDialog(self.window, self.loginSuccess, self.application_quit, REMOTE_SERVER, self.PORTNO, self.factory, self.client.cc)
         reactor.callWhenRunning(self.logindialog.run)
         reactor.run()
 
