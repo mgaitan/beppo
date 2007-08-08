@@ -19,7 +19,7 @@ h2 { font-size: 16px }
 
 h3 { font-size: 14px }
 
-hr { border: none;  border-top: 1px solid #ccb; margin: 2em 0 }
+hr { border: none;  border-top: 1px solid #e50049; margin: 2em 0 }
 
 address { font-style: normal }
 
@@ -33,11 +33,11 @@ sup {
 /* Link styles */
 :link, :visited {
  text-decoration: none;
- color: #b80;
+ color: #e50049;
  border-bottom: 1px dotted #bbb;
 }
 :link:hover, :visited:hover {
- background-color: #a70;
+ background-color: #e50049;
  color: #fff;
  border: 0px;
 }

@@ -46,7 +46,7 @@ class WebTemplates:
 
 <div id="header">
   <a id="logo" href="http://localhost:8000/"><img src="/static/graphics/beppo_banner.png"
-      width="236" height="73"
+      width="400" height="48"
       alt="Beppo" /></a>
   <hr />
 </div>
