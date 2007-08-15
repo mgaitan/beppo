@@ -19,7 +19,6 @@ from zope import interface
 from twisted.internet import defer, reactor
 from twisted.python import failure, components
 from twisted.cred import error, credentials
-#from twisted.enterprise import adbapi
 from mx.DateTime import now
 from DBConnect import DBConnect
 from beppo.Constants import TUTOR, PUPIL
@@ -55,11 +54,11 @@ class WBChecker:
             """
             if matches:
                 if str(avatarId) in self.logged.keys():
-                    return failure.Failure(error.UnauthorizedLogin())
+                    return failure.Failure(error.UnauthorizedLogin("El usuario ya esta en el sistema"))
                 else:
                     return avatarId
             else:
-                return failure.Failure(error.UnauthorizedLogin())
+                return failure.Failure(error.UnauthorizedLogin("Nombre de usuario o clave incorrecta"))
 
         def checkValidUser(self, result, credentials):
             """Toma el resultado de una consulta y una credencial y
@@ -71,7 +70,7 @@ class WBChecker:
                 d.addCallback(self._checkPassword, credentials, result)
                 return d
             else: #no autorizado (failure se come un comentario del error)
-                return failure.Failure(error.UnauthorizedLogin())
+                return failure.Failure(error.UnauthorizedLogin("Nombre de usuario o clave incorrecta"))
 
 
         def requestAvatarId(self, credentials):
@@ -87,10 +86,16 @@ class WBChecker:
             elif kind == PUPIL:
                 query = "select expires from pupil where id = %d" % avatarId
                 d = self.db.db.runQuery(query)
-                d.addCallback(lambda res: res[0][0] >= now())
+                d.addCallback(self._checkExpired)
             else:
                 d = defer.maybeDeferred(lambda: False)
             return d
+
+        def _checkExpired (self, result):
+            if len(result) > 0 and result[0][0] >= now():
+                return True
+            else:
+                return failure.Failure(error.UnauthorizedLogin("Sus horas ya expiraron"))
 
         def _checkPassword(self, kindPass, credentials, result):
             if kindPass:
@@ -98,7 +103,7 @@ class WBChecker:
                 d.addCallback(self._passMatches, result[0][0])
                 return d
             else:
-                return failure.Failure(error.UnauthorizedLogin())
+                return failure.Failure(error.UnauthorizedLogin("Nombre de usuario o clave incorrecta"))
 
 #aparentemente, para que pueda usarse con la adaptacion a zope de python
 components.backwardsCompatImplements(WBChecker)
