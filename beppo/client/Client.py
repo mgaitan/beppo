@@ -19,6 +19,7 @@ from ClientConnection import ClientConnection
 from ScrolledWB import ScrolledWB
 from twisted.spread import pb
 from twisted.python import log
+from twisted.internet import defer
 
 class Client:
     def __init__(self, master, selectionGet):
@@ -65,50 +66,52 @@ class Client:
         return self.root.callRemote("removeClient")
 
     def broadcast_copyItems(self, items):
-        def1 = self.root.callRemote("copyItems", items)
-        def1.addErrback(self.check_everything, "Error in broadcast_copyItems")
-        return def1
+        deferred = self.root.callRemote("copyItems", items)
+        deferred.addErrback(self.check_everything, "Error in broadcast_copyItems")
+        return deferred
 
     def broadcast_paste(self):
-        def1 = self.root.callRemote("paste")
-        def1.addErrback(self.check_everything, "Error in broadcast_paste")
-        return def1
+        deferred = self.root.callRemote("paste")
+        deferred.addErrback(self.check_everything, "Error in broadcast_paste")
+        return deferred
 
     def broadcast_addItem(self, itemId, kind, points, outline, fill, width):
-        def1 = self.root.callRemote("addItem", itemId, kind, points, outline, fill, width)
-        def1.addErrback(self.check_everything, "Error in broadcast_addItem")
-        return def1
+        deferred = self.root.callRemote("addItem", itemId, kind, points, outline, fill, width)
+        deferred.addErrback(self.check_everything, "Error in broadcast_addItem")
+        return deferred
 
     def broadcast_moveItems(self, items, dx, dy):
-        def1 = self.root.callRemote("moveItems", items, dx, dy)
-        def1.addErrback(self.check_everything, "Error in broadcast_moveItems")
-        return def1
+        deferred = self.root.callRemote("moveItems", items, dx, dy)
+        deferred.addErrback(self.check_everything, "Error in broadcast_moveItems")
+        return deferred
 
     def broadcast_eraseItem(self, items):
-        def1 = self.root.callRemote("eraseItem", items)
-        def1.addErrback(self.check_everything, "Error in broadcast_eraseItem")
-        return def1
+        deferred = self.root.callRemote("eraseItem", items)
+        deferred.addErrback(self.check_everything, "Error in broadcast_eraseItem")
+        return deferred
 
     def broadcast_fillItem(self, item, color):
-        def1 = self.root.callRemote("fillItem", item, color)
-        def1.addErrback(self.check_everything, "Error in broadcast_fillItem")
-        return def1
+        deferred = self.root.callRemote("fillItem", item, color)
+        deferred.addErrback(self.check_everything, "Error in broadcast_fillItem")
+        return deferred
 
     def broadcast_addTextBox(self, textbox, points, color):
-        def1 = self.root.callRemote("addTextBox", textbox, points, color)
-        def1.addErrback(self.check_everything, "Error in broadcast_addTextBox")
-        return def1
+        if self.root is None:
+            return defer.succeed(None)
+        deferred = self.root.callRemote("addTextBox", textbox, points, color)
+        deferred.addErrback(self.check_everything, "Error in broadcast_addTextBox")
+        return deferred
 
     def broadcast_insertChars(self, textbox, index, string):
         string = string.encode('utf-8')
-        def1 = self.root.callRemote("insertChars", textbox, index, string)
-        def1.addErrback(self.check_everything, "Error in broadcast_insertChars")
-        return def1
-    
+        deferred = self.root.callRemote("insertChars", textbox, index, string)
+        deferred.addErrback(self.check_everything, "Error in broadcast_insertChars")
+        return deferred
+
     def broadcast_deleteChars(self, textbox, startIndex, endIndex):
-        def1 = self.root.callRemote("deleteChars", textbox, startIndex, endIndex)
-        def1.addErrback(self.check_everything, "Error in broadcast_deleteChars")
-        return def1
+        deferred = self.root.callRemote("deleteChars", textbox, startIndex, endIndex)
+        deferred.addErrback(self.check_everything, "Error in broadcast_deleteChars")
+        return deferred
 
     def check_everything(self, failure, msg):
         print msg

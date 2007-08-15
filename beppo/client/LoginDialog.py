@@ -31,11 +31,10 @@ class LoginDialog(Toplevel):
         self.client = client
         self.factory = factory
         self.frame = Frame(self)
-        self.host = host
-        self.port = port
         self.master = master
         self.initialUser = initialUser
         self.initialPassword = initialPassword
+        self.initialPort = port
 
         self.userlabel=Label(self.frame, text=_("Usuario") + ":")
         self.userlabel.pack(side=TOP, padx=5, pady=5)
@@ -50,6 +49,13 @@ class LoginDialog(Toplevel):
         self.password = Entry(self.frame, show='*')
         self.password.insert(0, initialPassword)
         self.password.pack(side=TOP, padx=5, pady=5)
+
+        self.serverlabel = Label (self.frame, text=_("Servidor"))
+        self.serverlabel.pack (side=TOP, padx=5, pady=5)
+
+        self.server = Entry(self.frame)
+        self.server.insert (0, host + ":" + str(port))
+        self.server.pack(side=TOP, padx=5, pady=5)
 
         self.okbutton = Button(self.frame, text=_("Conectarse"))
         self.okbutton.bind("<Button-1>", self.login)
@@ -73,7 +79,12 @@ class LoginDialog(Toplevel):
     def login(self, event):
         user = self.username.get()
         pswd = self.password.get()
-        self.con = reactor.connectTCP(self.host, self.port, self.factory)
+        server = self.server.get().split(':', 1)
+        host = server[0]
+        port = self.initialPort
+        if len(server) == 2 and server[1].isdigit():
+            port = int(server[1])
+        self.con = reactor.connectTCP(host, port, self.factory)
         d = self.factory.login(credentials.UsernamePassword(user, pswd), client=self.client)
         d.addCallback(self.destroySelf)
         d.addCallback(self.callback)
