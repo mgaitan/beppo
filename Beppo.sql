@@ -8,14 +8,15 @@ SET search_path = public, pg_catalog;
 
 CREATE TABLE person (
     username character varying(80) NOT NULL,
-    "password" character varying(80) NOT NULL,
     id integer DEFAULT nextval('pk_seq_person'::text) NOT NULL,
+    "password" character varying(255) NOT NULL	
     kind integer NOT NULL,
     first_name character varying(255) NOT NULL,
     last_name character varying(255) NOT NULL,
     email character varying(255) NOT NULL,
     "language" integer,
-    fk_timezone integer
+    fk_timezone integer,
+   
 );
 
 CREATE TABLE tutor (

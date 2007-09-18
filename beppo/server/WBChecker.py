@@ -22,6 +22,7 @@ from twisted.cred import error, credentials
 from mx.DateTime import now
 from DBConnect import DBConnect
 from beppo.Constants import TUTOR, PUPIL
+import sha
 
 class WBChecker:
         interface.implements(ICredentialsChecker)
@@ -48,7 +49,7 @@ class WBChecker:
             return d
 
         def _passMatches(self, matches, avatarId):
-            """Chequea matches (que lo devuelve checkPassword),
+            """Chequea matches (que lo devuelve _checkPassword),
             para devolver el avatarId (que corresponde con el id del usuario)
             o levantar un error
             """
@@ -97,9 +98,15 @@ class WBChecker:
             else:
                 return failure.Failure(error.UnauthorizedLogin("Sus horas ya expiraron"))
 
-        def _checkPassword(self, kindPass, credentials, result):
+        def _checkPassword(self, kindPass, credent, result):
+
+            #up = credentials.IUsernamePassword(credent, None)
+            #print "pass? ", up.password
+
             if kindPass:
-                d = defer.maybeDeferred(credentials.checkPassword, result[0][2])
+                pas = result[0][2]
+                print "pas db = "+pas
+                d = defer.maybeDeferred(credent.checkPassword, pas)
                 d.addCallback(self._passMatches, result[0][0])
                 return d
             else:

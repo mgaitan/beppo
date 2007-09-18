@@ -22,6 +22,7 @@ from twisted.internet import reactor
 import tkMessageBox
 from beppo.Strings import _
 import sys
+import sha
 
 class LoginDialog(Toplevel):
     def __init__(self, master, callback, cancelCallback, host, port, factory, client, initialUser = "Guest", initialPassword = "guest"):
@@ -79,6 +80,7 @@ class LoginDialog(Toplevel):
     def login(self, event):
         user = self.username.get()
         pswd = self.password.get()
+        pswd = sha.new(pswd).hexdigest() #encrypting with sha-1
         server = self.server.get().split(':', 1)
         host = server[0]
         port = self.initialPort

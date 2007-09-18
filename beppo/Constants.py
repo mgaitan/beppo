@@ -79,7 +79,7 @@ MAIL_HOST = "damned.except.com.ar"
 MAIL_PORT = 25
 
 #Configuración web
-APP_URL = 'http://beetroot.except.com.ar:8000/'
+APP_URL = 'http://localhost:8000/'
 
 #Servidor remoto
 REMOTE_SERVER = 'localhost'

@@ -25,6 +25,7 @@ from psycopg import QuotedString
 from beppo.server.utils import getTranslatorFromSession
 from beppo.server.DBConnect import DBConnect
 import gettext
+import sha
 
 class WebLogin(Resource):
     def __init__(self):
@@ -49,10 +50,12 @@ class WebLogin(Resource):
             request.write('<div class="message">' + \
                 _('La sesion ya estaba iniciada') + '</div>')
         elif "username" in request.args.keys() and "pwd" in request.args.keys():
+
             query = "select username, id, kind, first_name, \
                 last_name from person where username = %s and password = %s"
             username = QuotedString(request.args['username'][0])
-            pwd = QuotedString(request.args['pwd'][0])
+            
+            pwd = sha.new(request.args['pwd'][0]).hexdigest() 	    #hashing sent plain-password in sha-1
             d = self.db.db.runQuery(query, (username, pwd))
             d.addCallback(self.authenticateUser, request)
         else:
