@@ -23,8 +23,9 @@ from twisted.python import log, failure
 from beppo.Constants import TUTOR, ADMIN, CLIENT, PUPIL
 from beppo.server.utils import getTranslatorFromSession, dummyTranslator
 from beppo.server.DBConnect import DBConnect
-
 from psycopg import QuotedString
+import sha
+import re
 
 class WebPerson(Resource):
     _ = dummyTranslator
@@ -118,6 +119,11 @@ class WebPerson(Resource):
             if(args['password'] != args['password2']):
                 request.write(self.template.unexpectedArguments(session, \
                     _('Las contrasenas no coinciden')))
+
+            if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", args['email']) == None:
+                request.write(self.template.unexpectedArguments(session, \
+                    _('El email ingresado es incorrecto')))
+
         return args
 
     def printContent(self, request, d, userId, msg):
@@ -239,6 +245,7 @@ class WebPerson(Resource):
         """
         _ = request.getSession()._
         page = """
+<script type="text/javascript" src="/static/js/valid.js"></script> \n
 <script type="text/javascript">\n function check_args(form){
 message='';"""
 
@@ -246,9 +253,15 @@ message='';"""
             if i['required']:
                 page += 'if(form.%s.value == "") message += "- ' % i['name'] + \
                   _('El campo %s es obligatorio') % _(i['desc']) + '\\n";\n'
-        page += 'if(form.password.value != form.password2.value) message += \"- ' + \
-            _('Las contrasenas no coinciden') + ' \"; if(message){ alert(\" ' + \
-            _('Error en el ingreso de datos:') + """\\n\"+message+\"\\n\");
+        page += """if(form.password.value != form.password2.value)
+        message += \"- """ + _('Las contrasenas no coinciden') + """\";\n"""
+
+        page += """if(!isEmailAddress(form.email))
+        message += \"- """ + _('El email ingresado es incorrecto') + """\";
+
+
+    if(message){
+        alert(" """ + _('Error en el ingreso de datos:') + """\\n"+message+"\\n");
         return false;
     }else{
         return true;

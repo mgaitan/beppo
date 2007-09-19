@@ -26,6 +26,8 @@ from beppo.server.utils import getTranslatorFromSession, dummyTranslator
 from beppo.server.DBConnect import DBConnect
 from beppo.Constants import TUTOR, PUPIL, ADMIN, CLIENT
 from beppo.Constants import EXPIRE_TIME
+import sha
+import re
 
 class WebPupilInsert(Resource):
     def __init__(self):
@@ -115,6 +117,10 @@ class WebPupilInsert(Resource):
             if args['password'] != args['password2']:
                 request.write(self.template.unexpectedArguments(session, \
                     _('Las contrasenas no coinciden')))
+
+            if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", args['email']) == None:
+                request.write(self.template.unexpectedArguments(session, \
+                                    _('El email ingresado es incorrecto')))
             try:
                 args['ai_total'] = float(args['ai_total'])
                 args['pc_total'] = float(args['pc_total'])
@@ -242,6 +248,8 @@ class WebPupilInsert(Resource):
         ai = hours[0][0]
         pc = hours[0][1]
         page = """
+<script type="text/javascript" src="/static/js/valid.js"></script>
+
 <script type="text/javascript">\n function check_args(form){
 message='';"""
 
@@ -277,6 +285,15 @@ if(form.pc_total.value < 0){
 if(form.pc_total.value == 0 && form.ai_total.value == 0){
     message += \"- """ + _('Debe asignarle horas al alumno') + """\\n";
 }
+
+if(!isEmailAddress(form.email)){
+        message += \"- """ + _('El email ingresado es incorrecto') + """\\n";
+}
+
+
+
+
+
 if(message){
     alert(" """ + _('Error en el ingreso de datos:') + """\\n"+message+"\\n");
     return false;

@@ -24,6 +24,8 @@ from psycopg import QuotedString
 from beppo.server.utils import getTranslatorFromSession, dummyTranslator
 from beppo.server.DBConnect import DBConnect
 from beppo.Constants import TUTOR, PUPIL, ADMIN, CLIENT
+import re
+import sha
 
 class WebPupilEdit(Resource):
     def __init__(self):
@@ -121,6 +123,11 @@ class WebPupilEdit(Resource):
             if(args['password'] != args['password2']):
                 request.write(self.template.unexpectedArguments(session, \
                     _('Las contrasenas no coinciden')))
+            
+            if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", args['email']) == None:
+                request.write(self.template.unexpectedArguments(session, \
+                    	_('El email ingresado es incorrecto')))
+
         return args
 
 
@@ -184,9 +191,14 @@ class WebPupilEdit(Resource):
         """Para cada diccionario de la lista fields chequea si el campo es
         obligatorio y arma la funcion de JavaScript para el chequeo de datos.
         Agrega a continuacion el chequeo de que las contraseñas coincidan
+        
+        TO-DO: si las contraseñas estan en blanco, ignorar el update. 
+        
         """
         _ = request.getSession()._
         page = """
+<script type="text/javascript" src="/static/js/valid.js"></script>
+
 <script type="text/javascript">\n function check_args(form){
 message='';"""
 
@@ -196,7 +208,12 @@ message='';"""
                 message += "- """ % i['name'] + \
                 _('El campo %s es obligatorio') % _(i['desc']) + """\\n";\n"""
         page += """if(form.password.value != form.password2.value)
-        message += \"- """ + _('Las contrasenas no coinciden') + """\";
+        message += \"- """ + _('Las contrasenas no coinciden') + """\";\n"""
+
+        page += """if(!isEmailAddress(form.email))
+        message += \"- """ + _('El email ingresado es incorrecto') + """\";
+
+
     if(message){
         alert(" """ + _('Error en el ingreso de datos:') + """\\n"+message+"\\n");
         return false;
