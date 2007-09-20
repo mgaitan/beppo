@@ -195,6 +195,11 @@ class WebPupilInsert(Resource):
         else:
             person_name = []
             person_value = []
+            
+            #encripto el password
+            if args['password']!="":
+                args['password'] = sha.new(args['password']).hexdigest()  
+            
             for field in self.fields:
                 if field['query'] == "person":
                     person_name.append(field['name'])

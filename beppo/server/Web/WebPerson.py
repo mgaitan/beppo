@@ -50,10 +50,12 @@ class WebPerson(Resource):
         self.table = table
         self.title = title
         self.kind = kind
+        
         self.query = query
         self.empty = empty
         self.fields = WebPerson.fields + xtra_fields
         Resource.__init__(self)
+        
 
     def getChild(self, path, request):
         if path == "":
@@ -77,8 +79,11 @@ class WebPerson(Resource):
         elif session.kind == ADMIN:
             try:
                 user_id = int(request.args.get('user_id', [-1])[0])
-                msg = '<h2>' + _('Datos personales') + '</h2> ' + \
-                    _('Recuerde que los campos indicados con <sup>*</sup> son obligatorios')
+                msg = '<h2>' + self.title + ": " + _('Datos personales') + '</h2> ' + \
+                    _('Recuerde que los campos indicados con <sup>*</sup> son obligatorios<br>') 
+                if user_id!=-1: 
+			        msg += _('Si desea conservar la contraseña actual deje los campos en blanco') + '<br/>' 
+                
     # La función que procesa e imprime el contenido de la pagina
                 self.printContent(request, d, user_id, msg)
             except ValueError:
@@ -129,7 +134,19 @@ class WebPerson(Resource):
     def printContent(self, request, d, userId, msg):
         # si se estan enviando datos
         _ = request.getSession()._
+        
+       
+        #si se trata de una edicion las contraseñas no son requeridas. 
+	#Dejarlas en blanco es la forma de no modificarlas 
+
+        if int(request.args.get('user_id', [-1])[0])!=-1:
+            self.fields[1]['required'] = self.fields[2]['required'] = False
+        else:
+            self.fields[1]['required'] = self.fields[2]['required'] = True
+        
+        
         args = self.checkRequest(d, request)
+
         if "submit" in args.keys():
             # si tenemos que actualizar
             if userId > 0:
@@ -137,7 +154,9 @@ class WebPerson(Resource):
                 kind = []
                 for field in self.fields:
                     if field['query'] == "person":
-                        person.append(field['name'] + " = '" + args[field['name']] + "'")
+                        #si los password estan en blanco no se incluyen en la query de actualizacion                       
+                        if not(field['name']=='password' and args['password']==""):
+                            person.append(field['name'] + " = '" + args[field['name']] + "'")
                     elif field['query'] == self.table:
                         kind.append(field['name'] + " = '" + args[field['name']] + "'")
                 person = ", ".join(person)
@@ -191,6 +210,11 @@ class WebPerson(Resource):
         if len(rows) == 0:
             person_name = []
             person_value = []
+            
+            #encripto el password
+            if args['password']!="":
+                args['password'] = sha.new(args['password']).hexdigest()  
+            
             for field in self.fields:
                 if field['query'] == "person":
                     person_name.append(field['name'])
@@ -254,10 +278,10 @@ message='';"""
                 page += 'if(form.%s.value == "") message += "- ' % i['name'] + \
                   _('El campo %s es obligatorio') % _(i['desc']) + '\\n";\n'
         page += """if(form.password.value != form.password2.value)
-        message += \"- """ + _('Las contrasenas no coinciden') + """\";\n"""
+        message += \"- """ + _('Las contraseñas no coinciden') + """\";\n"""
 
         page += """if(!isEmailAddress(form.email))
-        message += \"- """ + _('El email ingresado es incorrecto') + """\";
+        message += \"- """ + _('El email ingresado es incorrecto') + """\n\";
 
 
     if(message){
@@ -289,7 +313,8 @@ message='';"""
             value = args.get(i['name'], row[0][i['pos']])
             required = i['required'] and "<sup>*</sup>" or ""
             text = i['isPass'] and "password" or "text"
-            if value is None:
+            #dejo los campos password en blanco por defecto.
+            if value is None or i['name']=='password' or i['name']=='password2':
                 value = ''
 
             page += """<label for='%s'>%s%s: <input type='%s' name='%s'

@@ -41,6 +41,7 @@ from WebPCArrange import WebPCArrangeRoot
 from WebMyPupils import WebMyPupils
 from WebMyPupilsInfo import WebMyPupilsInfo
 from WebSendMail import WebSendMail
+from WebEditAdmin import WebEditAdmin
 from twisted.web import static, server
 from beppo.server.DBConnect import DBConnect
 from twisted.python import log
@@ -78,6 +79,7 @@ class WebRoot(Resource):
         self.putChild("pupil_edit", WebPupilEdit())
         self.putChild("new_pupil", WebPupilInsert())
         self.putChild("pc_arrange", WebPCArrangeRoot())
+        self.putChild("editadmin", WebEditAdmin())
 
 
     def getChild(self, path, request):

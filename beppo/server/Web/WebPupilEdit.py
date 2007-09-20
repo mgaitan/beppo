@@ -32,9 +32,9 @@ class WebPupilEdit(Resource):
         _ = dummyTranslator
         self.fields = [{'name': 'username', 'pos': 1, 'desc': _('Nombre de usuario'), \
             'required': True, 'type': 'text', 'maxlength': 80, 'query': "person"},
-        {'name': 'password', 'pos': 2, 'desc': _('Contrasena'), 'required': True, \
+        {'name': 'password', 'pos': 2, 'desc': _('Contrasena'), 'required': False, \
             'type': 'password', 'maxlength': 80, 'query': "person"},
-        {'name': 'password2', 'pos': 2, 'desc': _('Repita contrasena'), 'required': True, \
+        {'name': 'password2', 'pos': 2, 'desc': _('Repita contrasena'), 'required': False, \
             'type': 'password', 'maxlength': 80, 'query': ""},
         {'name': 'first_name', 'pos': 3, 'desc': _('Nombre'), 'required': True, \
             'type': 'text', 'maxlength': 255, 'query': "person"},
@@ -64,7 +64,8 @@ class WebPupilEdit(Resource):
         request.write(self.template.startPage(session, _('Pagina del Alumno')))
         d = defer.maybeDeferred(lambda :None)
         msg = '<h2>' + _('Informacion de alumno') + '</h2>' + \
-                  _('Recuerda que los campos indicados con <sup>*</sup> son obligatorios')
+                  _('Recuerda que los campos indicados con <sup>*</sup> son obligatorios<br>') + \
+                 + _('Si desea conservar la contraseña actual deje los campos en blanco')
         if not hasattr(session, 'username'):
             request.write(self.template.notAuthenticated(session))
         elif session.kind == ADMIN:
@@ -150,10 +151,18 @@ class WebPupilEdit(Resource):
         _ = request.getSession()._
         if len(row) == 0:
             person = []
+            
+            #encripto el password
+            if args['password']!="":
+                args['password'] = sha.new(args['password']).hexdigest()  
+            
             for field in self.fields:
                 if field['query'] == "person":
-                    person.append(field['name'] + " = '" + args[field['name']] + "'")
+                    #si los password estan en blanco no se incluyen en la query de actualizacion                       
+                    if not(field['name']=='password' and args['password']==""):
+                        person.append(field['name'] + " = '" + args[field['name']] + "'")
             person = ", ".join(person)
+            
             update_person = "update person set " + person + " where id = %s"
             d = self.db.db.runOperation(update_person, (pupilId,))
             d.addCallback(lambda a: request.write('<div class="message">' + \
@@ -244,7 +253,9 @@ message='';"""
             value = args.get(i['name'], row[0][i['pos']])
             required = i['required'] and "<sup>*</sup>" or ""
             text = i['type']
-            if value is None:
+
+            #dejo los campos password en blanco por defecto.
+            if value is None or i['name']=='password' or i['name']=='password2':
                 value = ''
 
             page += """<label for="%s">%s%s: <input type="%s" name="%s"
