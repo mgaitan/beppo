@@ -30,9 +30,9 @@ class WebEditAdmin(WebPerson):
     print repr(WebPerson.fields)
     
     fields = []
-    query = "select person.id, username, password, first_name, \
+    query = "select id, username, password, first_name, \
                 last_name, email from person where id = %s"
 
     def __init__(self):
         _ = dummyTranslator
-        WebPerson.__init__(self, "person", _('Pagina del Administrador'), ADMIN, WebEditAdmin.query, 7, WebEditAdmin.fields)
+        WebPerson.__init__(self, "admin", _('Pagina del Administrador'), ADMIN, WebEditAdmin.query, 7, WebEditAdmin.fields)

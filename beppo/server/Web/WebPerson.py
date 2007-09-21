@@ -82,8 +82,9 @@ class WebPerson(Resource):
                 msg = '<h2>' + self.title + ": " + _('Datos personales') + '</h2> ' + \
                     _('Recuerde que los campos indicados con <sup>*</sup> son obligatorios<br>') 
                 if user_id!=-1: 
-			        msg += _('Si desea conservar la contraseña actual deje los campos en blanco') + '<br/>' 
+                    msg += _('Si desea conservar la contraseña actual deje los campos en blanco') + '<br/>' 
                 
+
     # La función que procesa e imprime el contenido de la pagina
                 self.printContent(request, d, user_id, msg)
             except ValueError:
@@ -152,6 +153,11 @@ class WebPerson(Resource):
             if userId > 0:
                 person = []
                 kind = []
+    
+                #si se ha modificado, encripto el nuevo password
+                if args['password']!="":
+                    args['password'] = sha.new(args['password']).hexdigest() 
+                
                 for field in self.fields:
                     if field['query'] == "person":
                         #si los password estan en blanco no se incluyen en la query de actualizacion                       
@@ -164,7 +170,8 @@ class WebPerson(Resource):
                 update_person = "update person set " + person + " where id = %s"
                 update_kind = "update " + str(self.table) + " set " + kind + " where id=%s"
                 d.addCallback(lambda a: self.db.db.runOperation(update_person, (userId,)))
-                d.addCallback(lambda a: self.db.db.runOperation(update_kind, (userId,)))
+                if self.table != "admin":
+                    d.addCallback(lambda a: self.db.db.runOperation(update_kind, (userId,)))
                 d.addCallback(lambda a: request.write("""<div class="message">""" + \
                     _('Datos actualizados con exito') + """</div>""") or userId)
             #antes de insertar debemos chequear si el usuario ya existe
@@ -224,12 +231,19 @@ class WebPerson(Resource):
               ", " + str(session.locale_id) + ", 2"
             person_op = "insert into person (kind, " + person_name + ") values \
                 (%d"+ ", " + person_value + ")"
-
-            d = self.db.db.runOperation(person_op, (self.kind,))
-            query = "select id from person where username=%s"
-            username = QuotedString(args['username'])
-            d.addCallback(lambda a: self.db.db.runQuery(query, (username,)))
-            d.addCallback(self.insertKind, request, args)
+            print person_op
+            d = self.db.db.runOperation(person_op, (self.kind,))        
+            
+            if self.table != "admin":
+                query = "select id from person where username=%s"
+                username = QuotedString(args['username'])
+                d.addCallback(lambda a: self.db.db.runQuery(query, (username,)))
+                d.addCallback(self.insertKind, request, args)
+            else:
+                d.addCallback(lambda a: request.write("""<div class="message">""" + \
+                    _('Administrador ingresado con exito') + """</div>"""))
+            
+            
             return d
         else:
             return failure.Failure(_('El usuario %s ya existe en el sistema') % \
@@ -242,17 +256,23 @@ class WebPerson(Resource):
         _ = request.getSession()._
         assert(len(rows) == 1)
 
+
         kind_name = []
         kind_value = []
         for field in self.fields:
             if field['query'] == self.table:
                 kind_name.append(field['name'])
                 kind_value.append("'" + args[field['name']] + "'")
+
         kind_name = ", ".join(kind_name)
         kind_value = ", ".join(kind_value)
 
+  
         kind_op = "insert into " + self.table + "(id, " + kind_name + ") values \
             (%d"+ ", " + kind_value + ")"
+            
+        
+            
         d = self.db.db.runOperation(kind_op, (rows[0][0],))
         d.addCallback(lambda a: request.write("""<div class="message">""" + \
             _('Usuario ingresado con exito') + """</div>""") or rows[0][0])
@@ -281,7 +301,7 @@ message='';"""
         message += \"- """ + _('Las contraseñas no coinciden') + """\";\n"""
 
         page += """if(!isEmailAddress(form.email))
-        message += \"- """ + _('El email ingresado es incorrecto') + """\n\";
+        message += \"\\n- """ + _('El email ingresado es incorrecto') + """\"\n;
 
 
     if(message){

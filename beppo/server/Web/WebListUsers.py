@@ -260,12 +260,14 @@ function ask_hours(client, hour_type){
                 request.write("""
 <table class="table_list" id="usersinsystem">
  <tr>
+  <th class="header_list"></th>
   <th class="header_list">""" + _('Usuario') + """</th>
   <th class="header_list">""" + _('Apellido') + """</th>
   <th class="header_list">""" + _('Nombre') + """</th>
  </tr>""")
                 for i in range(len(rows)):
                     request.write("""<tr>
+<td class="row_list"><a href="editadmin?user_id=%s" class="link_image"><img src="/static/graphics/modify.gif" width="16" height="16" alt=\"""" % (rows[i][0],) + _('Modificar') + """\" title=\"""" + _('Modificar') + """\"/></a></td>                    
 <td class="row_list"><a href="/userinfo?user_id=%s&amp;kind=%d">%s</a></td>
 <td class="row_list">%s</td>
 <td class="row_list">%s</td>
