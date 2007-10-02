@@ -2191,7 +2191,9 @@ class WBToolbar(Frame):
         #self.imgButton("Simbolos", SYMBOL, 7, 1)
 
         self.selectButton(self.tools[0])
-        self.frame.pack(side=TOP)
+        
+    	self.frame.pack(side=TOP)
+    	#self.frame.pack(side=BOTTOM)
 
         self.frame = Frame(self)
         self.frame["bg"] = self.BACKGROUND

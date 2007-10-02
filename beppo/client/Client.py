@@ -112,6 +112,12 @@ class Client:
         deferred = self.root.callRemote("deleteChars", textbox, startIndex, endIndex)
         deferred.addErrback(self.check_everything, "Error in broadcast_deleteChars")
         return deferred
+    
+    def broadcast_sendChatMsg(self, string):
+        string = string.encode('utf-8')
+        deferred = self.root.callRemote("sentChatMsg", string)
+        deferred.addErrback(self.check_everything, "Error in broadcast_sendChatMsg")
+        return deferred
 
     def check_everything(self, failure, msg):
         print msg

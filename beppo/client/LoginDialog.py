@@ -25,7 +25,7 @@ import sys
 import sha
 
 class LoginDialog(Toplevel):
-    def __init__(self, master, callback, cancelCallback, host, port, factory, client, initialUser = "Guest", initialPassword = "guest"):
+    def __init__(self, master, callback, cancelCallback, host, port, factory, client, initialUser = "Achuni", initialPassword = "lala"):
         Toplevel.__init__(self, master=None)
         self.callback = callback
         self.cancelCallback = cancelCallback

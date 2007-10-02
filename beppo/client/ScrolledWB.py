@@ -18,6 +18,7 @@
 from Tkinter import *
 from WBToolbar import WBToolbar
 from WhiteBoard import WhiteBoard
+from ChatBox2 import ChatBox
 
 class ScrolledWB:
     VIEWPORT_WIDTH = 700 # Porción del canvas visible
@@ -27,6 +28,7 @@ class ScrolledWB:
         self.frame = Frame(width=self.VIEWPORT_WIDTH, height=self.VIEWPORT_HEIGHT)
         self.wb = WhiteBoard(self.frame, width=self.VIEWPORT_WIDTH, height=self.VIEWPORT_HEIGHT)
         self.tbar = WBToolbar(self.wb.changeTool, self.wb.changeColor, self.wb.changeWidth, self.wb.imgs, self.wb.putImg)
+        self.chat = ChatBox(self.frame)
         self.vscroll = Scrollbar(self.frame, orient=VERTICAL, command=self.wb.yview)
         self.hscroll = Scrollbar(self.frame, orient=HORIZONTAL, command=self.wb.xview)
         self.wb.config(xscrollcommand=self.hscroll.set, yscrollcommand=self.vscroll.set)
@@ -41,6 +43,7 @@ class ScrolledWB:
     def pack(self):
         self.tbar.pack(side=LEFT)
         self.hscroll.pack(side=BOTTOM, fill=X)
+        self.chat.pack(side=BOTTOM, fill=X)
         self.vscroll.pack(side=RIGHT, fill=Y)
         self.wb.pack(fill=BOTH, expand=YES)
         self.frame.pack(side=LEFT, fill=BOTH, expand=YES)

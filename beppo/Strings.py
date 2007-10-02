@@ -109,7 +109,8 @@ appStrings = {
             "Conectarse":"Conectarse",
             "Error de login":"Error de login",
             "Error al conectarse":"Error al conectarse",
-            "No tiene mas horas disponibles":"No tiene más horas disponibles"
+            "No tiene mas horas disponibles":"No tiene más horas disponibles",
+            "Enviar" : "Enviar"
 }
 
 
