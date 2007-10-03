@@ -113,10 +113,10 @@ class Client:
         deferred.addErrback(self.check_everything, "Error in broadcast_deleteChars")
         return deferred
     
-    def broadcast_sendChatMsg(self, string):
+    def broadcast_sendMsg(self, string):
         string = string.encode('utf-8')
-        deferred = self.root.callRemote("sentChatMsg", string)
-        deferred.addErrback(self.check_everything, "Error in broadcast_sendChatMsg")
+        deferred = self.root.callRemote("sendMsg", string)
+        deferred.addErrback(self.check_everything, "Error in broadcast_sendMsg")
         return deferred
 
     def check_everything(self, failure, msg):

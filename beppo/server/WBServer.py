@@ -354,6 +354,30 @@ class WBServer(pb.Viewable):
                     except (pb.DeadReferenceError):
                         pass
 
+    def view_sendMsg(self, perspective, string):
+        """Envia una linea de texto mediante el chat; se actualiza estado en el servidor y si esta dentro de un
+        room el cambio se guarda en el log de ese room y se difunde a los demas
+        clientes; caso contrario actualiza su status solamente.
+        """
+        #boxId = self.itemId(perspective.avId, tagId)
+        #wbStatus = self.getWorkingStatus(perspective)
+        print string
+        c = string.decode("utf-8")
+        
+        wb = self.wbClients[perspective.avId]
+        d = wb.remote.callRemote("wbSendMsg", string)
+        
+        if perspective.roomId != None:
+            for clientId in self.wbRooms[perspective.roomId].roomListClients():
+                if perspective.avId != clientId:
+                    try:
+                        wb = self.wbClients[clientId]
+                        d = wb.remote.callRemote("wbSendMsg", string)
+                    except (pb.DeadReferenceError):
+                        pass
+
+
+
     def getWorkingStatus(self, perspective):
         if perspective.roomId != None:
             wbStatus = self.wbRooms[perspective.roomId].wbStatus

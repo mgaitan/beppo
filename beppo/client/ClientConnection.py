@@ -62,6 +62,10 @@ class ClientConnection(pb.Referenceable):
     
     def remote_wbDeleteChars(self, tagId, startIndex, endIndex):
         self.wb.deleteChars(None, startIndex, endIndex, foreignId=tagId)
+        
+    def remote_wbSendMsg(self, string):
+        #print tagId, '\n'
+        print string
 
     def remote_wbPSWhiteBoard(self):
         self.wb.clearSelection()

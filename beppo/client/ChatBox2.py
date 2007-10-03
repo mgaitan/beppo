@@ -16,6 +16,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 from Tkinter import *
+from twisted.internet import defer
 from beppo.Strings import _
 
 class ChatBox(Frame):
@@ -25,8 +26,8 @@ class ChatBox(Frame):
     
     def __init__(self, parent):
         Frame.__init__(self)
-        self.frame = Frame(self, parent)
-        self.frame.bg = self.BACKGROUND
+        self.frame = Frame(parent, bg=self.BACKGROUND)
+        self.frame["bg"] = self.BACKGROUND
 
         #log del chat con scroll vertical
         self.scroll = Scrollbar(self.frame)       
@@ -36,17 +37,24 @@ class ChatBox(Frame):
         self.scroll.pack(side=RIGHT, fill=Y)
         self.logbox.pack(side=TOP, expand=YES, fill=Y)
 
-        for i in range(40): 
-             if i!=39:
-                self.logbox.insert(END, "This is line %d\n" % i)
-             else:
-                self.logbox.insert(END, "This is line %d" % i)
+        #for i in range(40): 
+        #     if i!=39:
+        #        self.logbox.insert(END, "This is line %d\n" % i)
+        #     else:
+        #        self.logbox.insert(END, "This is line %d" % i)
 
-        self.lineinput = Entry (self.frame)
+        self.lineinput = Entry (self.frame, textvariable=StringVar())
         self.lineinput.config(font=('courier', 10, 'normal'))
+        #self.lineinput.focus_set()
         self.lineinput.pack(side=LEFT, expand=YES, fill=BOTH)   
 
         self.sendbutton = Button(self.frame, text=_('Enviar'))
+        self.sendbutton.config(command=self.enviar)
         self.sendbutton.pack(side=RIGHT)
 
         self.frame.pack(side=BOTTOM)
+        
+    def enviar(self):
+        s = self.lineinput.get()
+        result = self.client.broadcast_sendMsg(s)   
+        

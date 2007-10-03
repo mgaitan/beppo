@@ -38,12 +38,13 @@ class ScrolledWB:
 
         
     def focus_set(self):
-        self.wb.focus_set()
+        #self.wb.focus_set()
+        pass
     
     def pack(self):
         self.tbar.pack(side=LEFT)
         self.hscroll.pack(side=BOTTOM, fill=X)
-        self.chat.pack(side=BOTTOM, fill=X)
+        self.chat.pack(side=BOTTOM, fill=X, expand=YES)
         self.vscroll.pack(side=RIGHT, fill=Y)
         self.wb.pack(fill=BOTH, expand=YES)
         self.frame.pack(side=LEFT, fill=BOTH, expand=YES)

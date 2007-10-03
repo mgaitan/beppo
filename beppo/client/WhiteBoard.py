@@ -81,6 +81,12 @@ class WhiteBoard(Canvas):
         
     def changeTool(self, tool):
         self.tool = tool
+        if tool==TEXT:
+            self.focus_set()
+        else:
+            self.focus("")
+            
+
 
     def changeColor(self, color):
         self.color = colorPalette[color]
@@ -175,6 +181,8 @@ class WhiteBoard(Canvas):
         y0 = self.canvasy(event.y)
         self.pointList.append(x0)
         self.pointList.append(y0)
+
+        self.sendMsg("lalala")
         self._onClick()
 
     def foreignObjectsCount(self):
@@ -711,6 +719,18 @@ class WhiteBoard(Canvas):
             result = defer.Deferred()
         self.insert(textbox, index, string)
         return result
+
+    def sendMsg(self, string):
+        """
+        envia string al chat cliente
+        """
+        try:
+            string = unicode(string, 'utf-8')
+        except TypeError:
+            pass
+        result = self.client.broadcast_sendMsg(string)        
+        
+        
 
     def addTextBoxFull(self, points, text, color, foreignId=None):
         self.addTextBox(points, color, foreignId)
