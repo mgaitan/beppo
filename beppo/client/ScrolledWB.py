@@ -23,12 +23,12 @@ from ChatBox2 import ChatBox
 class ScrolledWB:
     VIEWPORT_WIDTH = 700 # Porción del canvas visible
     VIEWPORT_HEIGHT = 500
-    def __init__(self, wbWidth=400, wbHeight=400):
+    def __init__(self, wbWidth=400, wbHeight=400, cliente=None):
         
         self.frame = Frame(width=self.VIEWPORT_WIDTH, height=self.VIEWPORT_HEIGHT)
-        self.wb = WhiteBoard(self.frame, width=self.VIEWPORT_WIDTH, height=self.VIEWPORT_HEIGHT)
+        self.wb = WhiteBoard(self.frame, width=self.VIEWPORT_WIDTH, height=self.VIEWPORT_HEIGHT, cliente=cliente)
         self.tbar = WBToolbar(self.wb.changeTool, self.wb.changeColor, self.wb.changeWidth, self.wb.imgs, self.wb.putImg)
-        self.chat = ChatBox(self.frame)
+        self.chat = ChatBox(self.frame, cliente=cliente)
         self.vscroll = Scrollbar(self.frame, orient=VERTICAL, command=self.wb.yview)
         self.hscroll = Scrollbar(self.frame, orient=HORIZONTAL, command=self.wb.xview)
         self.wb.config(xscrollcommand=self.hscroll.set, yscrollcommand=self.vscroll.set)

@@ -23,12 +23,14 @@ from WBQuestions import QuestionAdmin
 from WBSubjects import SubjectAdmin
 import tkMessageBox
 import tkSimpleDialog
+from Tkinter import *
 from beppo.Strings import _
 
 class ClientConnection(pb.Referenceable):
 
-    def __init__(self, master, wb):
-        self.wb = wb
+    def __init__(self, master, scwb):
+        self.wb = scwb.wb
+        self.chat = scwb.chat
         self.master = master
         self.roomAdmin = None
         self.postAdmin = None
@@ -64,8 +66,9 @@ class ClientConnection(pb.Referenceable):
         self.wb.deleteChars(None, startIndex, endIndex, foreignId=tagId)
         
     def remote_wbSendMsg(self, string):
-        #print tagId, '\n'
-        print string
+        string = string
+        self.chat.recibir(string)
+         
 
     def remote_wbPSWhiteBoard(self):
         self.wb.clearSelection()

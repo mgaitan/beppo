@@ -15,6 +15,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 from twisted.spread import pb
+from twisted.internet import defer
 from DBConnect import DBConnect
 
 class ClientAvatar(pb.Avatar):
@@ -25,6 +26,8 @@ class ClientAvatar(pb.Avatar):
         self.roomId = None
         self.selectedSubject = None
         self.mySubjects = {}
+        self.name = None
+
 
     def attached(self, mind):
         """Toma nota de una referencia al clientConnection actual"""
@@ -67,9 +70,19 @@ class ClientAvatar(pb.Avatar):
             else:
                 self.mySubjects[s] = False
 
+    def getName(self, nombre):
+        self.name = nombre
+        return nombre
+
     def perspective_myName(self):
-        d = self._searchClientName()
-        d.addCallback(lambda res: res[0][0])
+        if self.name==None:
+            d = self._searchClientName()
+            d.addCallback(lambda res: res[0][0])
+            d.addCallback(lambda x: self.getName(x))
+            
+        else:
+            d = defer.Deferred()
+            d.addCallback(lambda: self.name) 
         return d
 
     def _searchClientName(self):

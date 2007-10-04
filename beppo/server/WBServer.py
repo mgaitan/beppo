@@ -359,25 +359,29 @@ class WBServer(pb.Viewable):
         room el cambio se guarda en el log de ese room y se difunde a los demas
         clientes; caso contrario actualiza su status solamente.
         """
-        #boxId = self.itemId(perspective.avId, tagId)
-        #wbStatus = self.getWorkingStatus(perspective)
-        print string
+        
         c = string.decode("utf-8")
         
-        wb = self.wbClients[perspective.avId]
-        d = wb.remote.callRemote("wbSendMsg", string)
+        #wb = self.wbClients[perspective.avId]
+        #d = wb.remote.callRemote("wbSendMsg", string)
+        
+        #TODO 
+        #generar log aqui. 
+        
+        #print "avID" + perspective.avId
         
         if perspective.roomId != None:
             for clientId in self.wbRooms[perspective.roomId].roomListClients():
-                if perspective.avId != clientId:
-                    try:
-                        wb = self.wbClients[clientId]
-                        d = wb.remote.callRemote("wbSendMsg", string)
-                    except (pb.DeadReferenceError):
-                        pass
-
-
-
+                try:
+                    wb = self.wbClients[clientId]
+                    string = "[" + perspective.name + "]: " + string
+                    d = wb.remote.callRemote("wbSendMsg", string)
+                except (pb.DeadReferenceError):
+                    pass
+        else:
+            #no está conectado a ninguna sala.
+                pass
+            
     def getWorkingStatus(self, perspective):
         if perspective.roomId != None:
             wbStatus = self.wbRooms[perspective.roomId].wbStatus

@@ -33,7 +33,7 @@ class WhiteBoard(Canvas):
     RW = 1
     RO = 2
 
-    def __init__(self, parent=None, width=450, height=450, color="#FFFFFF"):
+    def __init__(self, parent=None, width=450, height=450, color="#FFFFFF", cliente=None):
         """Inicializa un WhiteBoard con un Canvas de width por height y color de fondo.
         En wbCurrentText se mantiene el id del TextBox de trabajo actual
         Liga los eventos de click del mouse y de presion de teclas a las funciones 
@@ -62,6 +62,7 @@ class WhiteBoard(Canvas):
         self.reset()
         self.font = ('Arial', 14, 'bold')
         self.tk.call('encoding', 'system', 'utf-8')
+        self.client = cliente
 
     def putImg(self, number):
         self.img = number
@@ -86,8 +87,6 @@ class WhiteBoard(Canvas):
         else:
             self.focus("")
             
-
-
     def changeColor(self, color):
         self.color = colorPalette[color]
 
@@ -181,8 +180,6 @@ class WhiteBoard(Canvas):
         y0 = self.canvasy(event.y)
         self.pointList.append(x0)
         self.pointList.append(y0)
-
-        self.sendMsg("lalala")
         self._onClick()
 
     def foreignObjectsCount(self):
@@ -722,7 +719,7 @@ class WhiteBoard(Canvas):
 
     def sendMsg(self, string):
         """
-        envia string al chat cliente
+        envia un mensaje de chat al servidor. 
         """
         try:
             string = unicode(string, 'utf-8')

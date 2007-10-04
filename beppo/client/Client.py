@@ -23,9 +23,9 @@ from twisted.internet import defer
 
 class Client:
     def __init__(self, master, selectionGet):
-        self.swb = ScrolledWB(1120,6000) # Tamaño del board.
-        self.swb.wb.client = self
-        self.cc = ClientConnection(master, self.swb.wb)
+        self.swb = ScrolledWB(1120,6000, self) # Tamaño del board.
+        #self.swb.wb.client = self
+        self.cc = ClientConnection(master, self.swb)
         self.root = None
         self.name = None
         self.selectionGet = selectionGet

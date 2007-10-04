@@ -19,15 +19,20 @@ from Tkinter import *
 from twisted.internet import defer
 from beppo.Strings import _
 
+
+
 class ChatBox(Frame):
     ME_COLOR = "#a9a9a9"
     OTHER_COLOR = "#39b2c2"
     BACKGROUND = "#c098af"
     
-    def __init__(self, parent):
+    def __init__(self, parent, cliente=None):
         Frame.__init__(self)
         self.frame = Frame(parent, bg=self.BACKGROUND)
         self.frame["bg"] = self.BACKGROUND
+        
+        self.client = cliente
+        
 
         #log del chat con scroll vertical
         self.scroll = Scrollbar(self.frame)       
@@ -55,6 +60,9 @@ class ChatBox(Frame):
         self.frame.pack(side=BOTTOM)
         
     def enviar(self):
-        s = self.lineinput.get()
-        result = self.client.broadcast_sendMsg(s)   
+        s =  self.lineinput.get()
+        result = self.client.broadcast_sendMsg(s)
+        
+    def recibir(self, string):
+            self.logbox.insert(END, string + '\n')
         
