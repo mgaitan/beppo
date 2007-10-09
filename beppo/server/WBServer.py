@@ -32,7 +32,8 @@ from beppo.server.cronner import Cronner
 from beppo.server.cronTasks import ClassRoomOpenTask, ClassRoomClosingTask, ClassRoomCloseTask, ClassRoomRemoveTask, ClassRoomTimeTask
 from beppo.Constants import TUTOR, PUPIL, IACLASS, PACLASS, EXTRA_IACLASS, EXTRA_WAITING, DECIDING, WAITING
 from beppo.Constants import IN_QUEUE, IN_CLASS, IN_VIEW, OUT, IN_WAITING, IN_ASKING, IN_DECIDING, POST
-from beppo.Constants import GENERAL
+from beppo.Constants import GENERAL, ARCHIVE_DIR
+import time
 
 class WBServer(pb.Viewable):
     """Servidor que mantiene el estado del WhiteBoard, como asi tambien
@@ -119,6 +120,10 @@ class WBServer(pb.Viewable):
         """
 
         self.setClientWindow(roomId, OUT)
+        
+        #graba el log del chat
+        self.writeLog(None, roomId)
+        
         #si estaba respondiendo pregunta offline
         if self.wbClients[roomId].questionId != None:
             self.sessions.closeSession(roomId)
@@ -359,28 +364,39 @@ class WBServer(pb.Viewable):
         room el cambio se guarda en el log de ese room y se difunde a los demas
         clientes; caso contrario actualiza su status solamente.
         """
-        
         c = string.decode("utf-8")
-        
-        #wb = self.wbClients[perspective.avId]
-        #d = wb.remote.callRemote("wbSendMsg", string)
-        
-        #TODO 
-        #generar log aqui. 
-        
-        #print "avID" + perspective.avId
-        
+
         if perspective.roomId != None:
+            if "[" + perspective.name + "]: " not in string:
+                string = "[" + perspective.name + "]: " + string
+
+            #genero log. 
+            self.wbRooms[perspective.roomId].logChat += string + "\n"
+
+            #envio a todos los clientes en el salon
             for clientId in self.wbRooms[perspective.roomId].roomListClients():
                 try:
                     wb = self.wbClients[clientId]
-                    string = "[" + perspective.name + "]: " + string
                     d = wb.remote.callRemote("wbSendMsg", string)
                 except (pb.DeadReferenceError):
                     pass
         else:
             #no está conectado a ninguna sala.
-                pass
+            #Solo prueba de chat con un solo usuario.
+            wb = self.wbClients[perspective.avId]
+            string = "[" + perspective.name + "]: " + string
+            d = wb.remote.callRemote("wbSendMsg", string)
+
+
+
+    def writeLog(self, roomId):
+        """guarda el log del chat en un archivo"""
+        f = open(ARCHIVE_DIR + str(roomId) + "-chat.txt", "w")
+        f.write(time.strftime('%x %X') + "\n\n")
+        f.write(self.wbRooms[roomId].logChat)
+        f.close()
+
+
             
     def getWorkingStatus(self, perspective):
         if perspective.roomId != None:
@@ -457,6 +473,8 @@ class WBServer(pb.Viewable):
         self.wbRooms[roomId].roomViewersExit()
 
     def closeRoomQueue(self, roomId):
+       
+    
         #Avisa cierre de cola; elimina cola
         for client in self.wbQueues.clientsWaiting(roomId):
             self.notifyClient(client, "El aula se cerro")

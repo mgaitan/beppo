@@ -30,6 +30,7 @@ class WBRoom:
         self.waitingPupil = None
         self.wbRoomType = roomType
         self.endTime = roomDesc[1]
+        self.logChat = ""
 
     def roomPupilCheck(self, clientId):
         """

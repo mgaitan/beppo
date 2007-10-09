@@ -19,8 +19,6 @@ from Tkinter import *
 from twisted.internet import defer
 from beppo.Strings import _
 
-
-
 class ChatBox(Frame):
     ME_COLOR = "#a9a9a9"
     OTHER_COLOR = "#39b2c2"
@@ -40,29 +38,40 @@ class ChatBox(Frame):
         self.scroll.config(command=self.logbox.yview)
         self.logbox.config(font=('courier', 10, 'normal'), height=4, yscrollcommand=self.scroll.set)
         self.scroll.pack(side=RIGHT, fill=Y)
+        
+        self.logbox.bind("<FocusIn>", lambda e: self.lineinput.focus_set())
+        
         self.logbox.pack(side=TOP, expand=YES, fill=Y)
-
-        #for i in range(40): 
-        #     if i!=39:
-        #        self.logbox.insert(END, "This is line %d\n" % i)
-        #     else:
-        #        self.logbox.insert(END, "This is line %d" % i)
 
         self.lineinput = Entry (self.frame, textvariable=StringVar())
         self.lineinput.config(font=('courier', 10, 'normal'))
-        #self.lineinput.focus_set()
+        self.lineinput.bind("<Return>", lambda e: self.enviar())
         self.lineinput.pack(side=LEFT, expand=YES, fill=BOTH)   
 
         self.sendbutton = Button(self.frame, text=_('Enviar'))
         self.sendbutton.config(command=self.enviar)
         self.sendbutton.pack(side=RIGHT)
-
+        
+        self.sendbutton = Button(self.frame, text=_('log'))
+        self.sendbutton.config(command=self.enviarLog)
+        self.sendbutton.pack(side=RIGHT)
+        
+        
         self.frame.pack(side=BOTTOM)
         
     def enviar(self):
-        s =  self.lineinput.get()
-        result = self.client.broadcast_sendMsg(s)
+        """si existe, envia la linea al servidor"""
+        string =  self.lineinput.get()
+        if string != "":
+            result = self.client.broadcast_sendMsg(string)
         
     def recibir(self, string):
-            self.logbox.insert(END, string + '\n')
+        """recibe e imprime la linea"""
+        self.logbox.insert(END, string + '\n')
+        self.logbox.yview(END)
+        self.lineinput.delete(0, END)
+        self.lineinput.focus_set()
+            
+    def limpiarLog(self):   
+        self.logbox.delete(0, END)
         

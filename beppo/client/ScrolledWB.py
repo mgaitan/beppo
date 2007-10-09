@@ -18,7 +18,7 @@
 from Tkinter import *
 from WBToolbar import WBToolbar
 from WhiteBoard import WhiteBoard
-from ChatBox2 import ChatBox
+from ChatBox import ChatBox
 
 class ScrolledWB:
     VIEWPORT_WIDTH = 700 # Porción del canvas visible
