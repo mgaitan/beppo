@@ -22,9 +22,14 @@ from twisted.cred import error, credentials
 from mx.DateTime import now
 from DBConnect import DBConnect
 from beppo.Constants import TUTOR, PUPIL
+from beppo.settings import DEMO_MODE
+from beppo.server.utils import getTranslatorFromSession, dummyTranslator
 import sha
 
+_ = dummyTranslator
+
 class WBChecker:
+        
         interface.implements(ICredentialsChecker)
         credentialInterfaces = (credentials.IUsernamePassword,
         credentials.IUsernameHashedPassword)
@@ -55,11 +60,11 @@ class WBChecker:
             """
             if matches:
                 if str(avatarId) in self.logged.keys():
-                    return failure.Failure(error.UnauthorizedLogin("El usuario ya esta en el sistema"))
+                    return failure.Failure(error.UnauthorizedLogin(_('El usuario ya esta en el sistema')))
                 else:
                     return avatarId
             else:
-                return failure.Failure(error.UnauthorizedLogin("Nombre de usuario o clave incorrecta"))
+                return failure.Failure(error.UnauthorizedLogin(_('Nombre de usuario o clave incorrecta')))
 
         def checkValidUser(self, result, credentials):
             """Toma el resultado de una consulta y una credencial y
@@ -70,8 +75,15 @@ class WBChecker:
                 d = self._checkKind(result[0][0], result[0][3])
                 d.addCallback(self._checkPassword, credentials, result)
                 return d
-            else: #no autorizado (failure se come un comentario del error)
-                return failure.Failure(error.UnauthorizedLogin("Nombre de usuario o clave incorrecta"))
+            else: 
+                #el usuario no existe. 
+                
+                if DEMO_MODE:
+                    #se ofrece crear un usuario temporal. 
+                    print 'modo demo'
+                    
+                    
+                return failure.Failure(error.UnauthorizedLogin(_('Nombre de usuario o clave incorrecta')))
 
 
         def requestAvatarId(self, credentials):
@@ -96,7 +108,7 @@ class WBChecker:
             if len(result) > 0 and result[0][0] >= now():
                 return True
             else:
-                return failure.Failure(error.UnauthorizedLogin("Sus horas ya expiraron"))
+                return failure.Failure(error.UnauthorizedLogin(_('Sus horas ya expiraron')))
 
         def _checkPassword(self, kindPass, credent, result):
 
@@ -105,12 +117,12 @@ class WBChecker:
 
             if kindPass:
                 pas = result[0][2]
-                print "pas db = "+pas
+                #print "pas db = "+pas
                 d = defer.maybeDeferred(credent.checkPassword, pas)
                 d.addCallback(self._passMatches, result[0][0])
                 return d
             else:
-                return failure.Failure(error.UnauthorizedLogin("Nombre de usuario o clave incorrecta"))
+                return failure.Failure(error.UnauthorizedLogin(_('Nombre de usuario o clave incorrecta')))
 
 #aparentemente, para que pueda usarse con la adaptacion a zope de python
 components.backwardsCompatImplements(WBChecker)

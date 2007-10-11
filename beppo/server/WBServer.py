@@ -36,7 +36,7 @@ from beppo.Constants import GENERAL, ARCHIVE_DIR
 import time
 
 class WBServer(pb.Viewable):
-    """Servidor que mantiene el estado del WhiteBoard, como asi tambien
+    """Servidor que mantiene el estado del WhiteBoard y el Chat, como asi tambien
     una lista de clientes conectados al mismo, entre los que difunde
     los cambios realizados sobre el WhiteBoard.
     """
@@ -383,15 +383,17 @@ class WBServer(pb.Viewable):
         else:
             #no está conectado a ninguna sala.
             #Solo prueba de chat con un solo usuario.
-            wb = self.wbClients[perspective.avId]
-            string = "[" + perspective.name + "]: " + string
-            d = wb.remote.callRemote("wbSendMsg", string)
+            #wb = self.wbClients[perspective.avId]
+            #string = "[" + perspective.name + "]: " + string
+            #d = wb.remote.callRemote("wbSendMsg", string)
+            pass
 
 
 
     def writeLog(self, roomId):
         """guarda el log del chat en un archivo"""
-        f = open(ARCHIVE_DIR + str(roomId) + "-chat.txt", "w")
+        sessionId = self.sessions.sessionKey(roomId)
+        f = open(ARCHIVE_DIR + str(sessionId) + "-chat.txt", "w")
         f.write(time.strftime('%x %X') + "\n\n")
         f.write(self.wbRooms[roomId].logChat)
         f.close()

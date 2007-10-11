@@ -44,7 +44,7 @@ class LoginDialog(Toplevel):
         self.username.insert(0, initialUser)
         self.username.pack(side=TOP, padx=5, pady=5)
 
-        self.passlabel=Label(self.frame, text=_("Contraseña"))
+        self.passlabel=Label(self.frame, text=_("Contraseña") + ":")
         self.passlabel.pack(side=TOP, padx=5, pady=5)
 
         self.password = Entry(self.frame, show='*')
@@ -98,5 +98,8 @@ class LoginDialog(Toplevel):
         return data
 
     def loginError(self, failure):
+        self.askDemo()
         tkMessageBox.showerror(_("Error de login"), _("Error al conectarse") + ":\n "+failure.getErrorMessage())
 
+    def askDemo(self):
+        tkMessageBox.askquestion(_("Modo demo"), _("Crear usuario temporal?")) 

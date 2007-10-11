@@ -52,9 +52,9 @@ class ChatBox(Frame):
         self.sendbutton.config(command=self.enviar)
         self.sendbutton.pack(side=RIGHT)
         
-        self.sendbutton = Button(self.frame, text=_('log'))
-        self.sendbutton.config(command=self.enviarLog)
-        self.sendbutton.pack(side=RIGHT)
+        #self.sendbutton = Button(self.frame, text=_('log'))
+        #self.sendbutton.config(command=self.enviarLog)
+        #self.sendbutton.pack(side=RIGHT)
         
         
         self.frame.pack(side=BOTTOM)
@@ -71,7 +71,7 @@ class ChatBox(Frame):
         self.logbox.yview(END)
         self.lineinput.delete(0, END)
         self.lineinput.focus_set()
-            
+                       
     def limpiarLog(self):   
         self.logbox.delete(0, END)
         
