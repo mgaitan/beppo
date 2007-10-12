@@ -15,7 +15,8 @@
 # along with Beppo; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-appStrings = {
+def _(key):
+    appStrings = {
             "Nombre aplicacion":"Beppo",
             "Lista de aulas":"Lista de Aulas",
             "Lista de materias":"Lista de Materias",
@@ -111,8 +112,10 @@ appStrings = {
             "Error al conectarse":"Error al conectarse",
             "No tiene mas horas disponibles":"No tiene más horas disponibles",
             "Enviar" : "Enviar"
-}
-
-
-_ = appStrings.get
+    }
+    value = appStrings.get(key)
+    if value:
+        return value
+    else:
+        return key
 

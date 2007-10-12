@@ -19,6 +19,7 @@ from Tkinter import *
 from Client import Client
 from twisted.cred import credentials
 from twisted.internet import reactor
+from LoginDialogDemo import *
 import tkMessageBox
 from beppo.Strings import _
 import sys
@@ -62,7 +63,7 @@ class LoginDialog(Toplevel):
         self.okbutton.bind("<Button-1>", self.login)
         self.okbutton.pack(side=LEFT, padx=5, pady=5)
 
-        self.exitbutton = Button(self.frame, text=_("Cancelar"))
+        self.exitbutton = Button(self.frame, text=_("Cancelar"), command=self.quit)
         self.exitbutton.bind("<Button-1>", self.cancelCallback)
         self.exitbutton.pack(side=LEFT, padx=5, pady=5)
 
@@ -102,4 +103,9 @@ class LoginDialog(Toplevel):
         tkMessageBox.showerror(_("Error de login"), _("Error al conectarse") + ":\n "+failure.getErrorMessage())
 
     def askDemo(self):
-        tkMessageBox.askquestion(_("Modo demo"), _("Crear usuario temporal?")) 
+        answer = tkMessageBox.askquestion(_("Error de login"), _("El usuario ingresado no existe. \n ¿Desea crear un usuario temporal?"))
+        if answer == "yes":
+            ask = LoginDialogDemo(self.master)
+            ask.run()
+        else:
+            pass
