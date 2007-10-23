@@ -150,3 +150,7 @@ IN_POST_PROCESS = 9
 statusMsg = {IN_QUEUE:_("En cola"), IN_CLASS:_("En clase"), IN_VIEW:_("Observador"), OUT:_("Fuera"), \
              IN_WAITING:_("En espera"), IN_ASKING:_("Preguntando"), IN_DECIDING:_("Decidiendo"), \
              IN_ANSWERING:_("Respondiendo"), IN_POST_PROCESS:_("Postprocesando")}
+
+#Horas de Modo Demo
+DEMO_AI = 20.0
+DEMO_PC = 20.0

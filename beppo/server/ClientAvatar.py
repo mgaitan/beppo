@@ -113,3 +113,9 @@ class ClientAvatar(pb.Avatar):
 
     def unlockWhiteBoard(self):
         self.remote.callRemote("wbUnlockWhiteBoard")
+
+
+
+
+
+

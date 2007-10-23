@@ -105,10 +105,10 @@ class LoginDialog(Toplevel):
         else:
             tkMessageBox.showerror(_("Error de login"), _("Error al conectarse") + ":\n "+failure.getErrorMessage())
 
+
     def askDemo(self):
         answer = tkMessageBox.askquestion(_("Error de login"), _("El usuario ingresado no existe. \n ¿Desea crear un usuario temporal?"))
         if answer == "yes":
-            ask = LoginDialogDemo(self.master)
+            ask = LoginDialogDemo(self.master,self.callback, self.loginError, self.client, self.factory, self.username.get())
             ask.run()
-        else:
-            pass
+            self.destroy()

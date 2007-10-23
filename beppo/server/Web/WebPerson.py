@@ -226,12 +226,13 @@ class WebPerson(Resource):
                 if field['query'] == "person":
                     person_name.append(field['name'])
                     person_value.append("'" + args[field['name']] + "'")
-            person_name = ", ".join(person_name) + ", language, fk_timezone"
+                    
+            person_name = ", ".join(person_name) + ", language, fk_timezone, demo"
             person_value = ", ".join(person_value) + \
-              ", " + str(session.locale_id) + ", 2"
+              ", " + str(session.locale_id) + ", 2, False"
             person_op = "insert into person (kind, " + person_name + ") values \
                 (%d"+ ", " + person_value + ")"
-            print person_op
+                
             d = self.db.db.runOperation(person_op, (self.kind,))        
             
             if self.table != "admin":

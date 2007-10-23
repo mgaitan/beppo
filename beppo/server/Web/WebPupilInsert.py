@@ -149,7 +149,7 @@ class WebPupilInsert(Resource):
           ' %.1f' % row[0][1] + "</li></ul>"
         d = defer.maybeDeferred(lambda: request.write('<div class="client_info">' + \
           string + '</div>') or row)
-        return d
+
 
     def printError(self, failure, request):
         """Imprime el error de failure y genera una fila

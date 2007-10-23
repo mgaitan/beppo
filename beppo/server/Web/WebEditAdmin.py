@@ -26,8 +26,7 @@ from beppo.server.utils import getTranslatorFromSession, dummyTranslator
 from beppo.server.DBConnect import DBConnect
 
 class WebEditAdmin(WebPerson):
-    _ = dummyTranslator
-    print repr(WebPerson.fields)
+    _ = dummyTranslator   
     
     fields = []
     query = "select id, username, password, first_name, \
