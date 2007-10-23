@@ -9,14 +9,14 @@ SET search_path = public, pg_catalog;
 CREATE TABLE person (
     username character varying(80) NOT NULL,
     id integer DEFAULT nextval('pk_seq_person'::text) NOT NULL,
-    "password" character varying(255) NOT NULL	
+    "password" character varying(255) NOT NULL,
     kind integer NOT NULL,
     first_name character varying(255) NOT NULL,
     last_name character varying(255) NOT NULL,
     email character varying(255) NOT NULL,
     "language" integer,
     fk_timezone integer,
-   
+    demo bool NOT NULL DEFAULT false
 );
 
 CREATE TABLE tutor (
@@ -152,7 +152,7 @@ CREATE TABLE "language" (
 );
 
 COPY person (username, "password", id, kind, first_name, last_name, email, "language", fk_timezone) FROM stdin;
-Admin	admin	1	3	System	Administrator	root@mybeppo.com	1	1
+Admin	d033e22ae348aeb5660fc2140aec35850c4da997	1	3	System	Administrator	root@mybeppo.com	1	1
 \.
 
 

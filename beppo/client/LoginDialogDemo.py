@@ -64,6 +64,7 @@ class Radiobar(Frame):
     def __init__(self, parent=None, opciones=[], side=LEFT, anchor=W):
         Frame.__init__(self, parent)
         self.var = StringVar()
+        self.var.set(opciones[0])
         for tipo in opciones:
             rad = Radiobutton(self, text=tipo, value=tipo, variable=self.var)
             rad.pack(side=side, anchor=anchor, expand=YES)

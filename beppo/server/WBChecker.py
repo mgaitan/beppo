@@ -80,10 +80,9 @@ class WBChecker:
                 
                 if DEMO_MODE:
                     #se ofrece crear un usuario temporal. 
-                    print 'modo demo'
-                    
-                    
-                return failure.Failure(error.UnauthorizedLogin(_('Nombre de usuario o clave incorrecta')))
+                    return failure.Failure(error.UnauthorizedLogin('no_existe'))
+                else:     
+                    return failure.Failure(error.UnauthorizedLogin(_('Nombre de usuario o clave incorrecta')))
 
 
         def requestAvatarId(self, credentials):

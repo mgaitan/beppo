@@ -122,7 +122,7 @@ class WBServer(pb.Viewable):
         self.setClientWindow(roomId, OUT)
         
         #graba el log del chat
-        self.writeLog(None, roomId)
+        self.writeLog(roomId)
         
         #si estaba respondiendo pregunta offline
         if self.wbClients[roomId].questionId != None:
@@ -380,13 +380,7 @@ class WBServer(pb.Viewable):
                     d = wb.remote.callRemote("wbSendMsg", string)
                 except (pb.DeadReferenceError):
                     pass
-        else:
-            #no está conectado a ninguna sala.
-            #Solo prueba de chat con un solo usuario.
-            #wb = self.wbClients[perspective.avId]
-            #string = "[" + perspective.name + "]: " + string
-            #d = wb.remote.callRemote("wbSendMsg", string)
-            pass
+
 
 
 
@@ -475,8 +469,6 @@ class WBServer(pb.Viewable):
         self.wbRooms[roomId].roomViewersExit()
 
     def closeRoomQueue(self, roomId):
-       
-    
         #Avisa cierre de cola; elimina cola
         for client in self.wbQueues.clientsWaiting(roomId):
             self.notifyClient(client, "El aula se cerro")
@@ -587,22 +579,6 @@ class WBServer(pb.Viewable):
 
         return (tutor, kind, end, selSubjects)
 
-#        roomId = str(res[0][0])
-#        info = _("Tutor") + ": " + res[0][1] + " " + res[0][2]
-#        if self.wbRooms[roomId].roomType() == IACLASS:
-#            end = self.wbRooms[roomId].endTime
-#            info = info + "\n" + _("Tipo de clase") + ": " + _("Acceso instantaneo") + "\n" + _("Hora de cierre") + ": " + end.strftime("%H:%M")
-#        elif self.wbRooms[roomId].roomType() == PACLASS:
-#            end = self.wbRooms[roomId].endTime
-#            info = info + "\n" + _("Tipo de clase") + ": " + _("Precoordinada") + "\n" + _("Hora de cierre") + ": " + end.strftime("%H:%M")
-#        else:
-#            info = info + "\n" + _("Tipo de clase") + ": " + _("Acceso instantaneo (extra)")
-#        info = info + "\n" + _("Materias") + ":\n"
-#        subjects = self.wbClients[roomId].getSubjects()
-#        for s in subjects.keys():
-#            if subjects[s]:
-#                info = info + "\t" + s + "\n"
-#        return info
 
 wbServer = WBServer()
 realm = WBRealm()

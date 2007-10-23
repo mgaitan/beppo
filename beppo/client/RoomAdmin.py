@@ -23,6 +23,7 @@ from beppo.Constants import TUTOR, GENERAL, IACLASS, PACLASS, EXTRA_IACLASS
 from beppo.Constants import IN_QUEUE, IN_CLASS, IN_VIEW, OUT, IN_WAITING, IN_ASKING, IN_DECIDING
 from Sounds import wav
 
+
 class RoomAdmin:
     def __init__(self, avatar):
         self.avatar = avatar

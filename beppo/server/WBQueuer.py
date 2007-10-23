@@ -19,7 +19,7 @@ from twisted.spread import pb
 from twisted.internet import defer
 from DBConnect import DBConnect
 from Queuer import Queuer
-#from Strings import _
+#from beppo.Strings import _
 from beppo.Constants import GENERAL
 
 class WBQueuer(Queuer):

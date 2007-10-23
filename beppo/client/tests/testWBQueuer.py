@@ -16,7 +16,7 @@
 
 from twisted.trial import unittest
 from WBQueuer import WBQueuer
-from Constants import GENERAL
+from beppo.Constants import GENERAL
 
 class testWBQueuer(unittest.TestCase):
     def setUp(self):

@@ -99,8 +99,11 @@ class LoginDialog(Toplevel):
         return data
 
     def loginError(self, failure):
-        self.askDemo()
-        tkMessageBox.showerror(_("Error de login"), _("Error al conectarse") + ":\n "+failure.getErrorMessage())
+        if failure.getErrorMessage()=='no_existe': 
+            #solo se accede si se está corriendo en modo demo.
+            self.askDemo()
+        else:
+            tkMessageBox.showerror(_("Error de login"), _("Error al conectarse") + ":\n "+failure.getErrorMessage())
 
     def askDemo(self):
         answer = tkMessageBox.askquestion(_("Error de login"), _("El usuario ingresado no existe. \n ¿Desea crear un usuario temporal?"))

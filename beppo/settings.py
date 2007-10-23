@@ -8,5 +8,5 @@
 #DSN="dbname=Beppo host=localhost user=matiasb"
 
 #moss sobre spinach en db en cabbage
-DSN="dbname=Beppo host=cabbage user=anthony"
-
+DSN="dbname=beppo host=localhost user=postgres password=password"
+DEMO_MODE = True
