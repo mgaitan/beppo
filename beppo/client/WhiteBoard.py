@@ -616,50 +616,49 @@ class WhiteBoard(Canvas):
         x1 = points[2]
         y1 = points[3]
         
-        #print x0, x1, y0, y1
-        
         if x0 > x1:
             x0, x1 = x1, x0
         if y0 > y1:
             y0, y1 = y1, y0
-        
-
-
-        #for text, var in [('X max',maxx=0), ('X min', minx), ('Y max', maxy),('Y min', miny)]:
-        #     var = askfloat('Coodenada', text+' = ') #
-        
-        
+        #print [x0,y0,x1,y1]
         #VER! refactoring de esto. 
-        maxx = 10.0 # askfloat('Coodenadas', 'X max = ') #
-        minx = 0.0  #askfloat('Coodenadas', 'X min = ') #
-        maxy = 10.0 #askfloat('Coodenadas', 'Y max = ') #
-        miny = 0.0 #askfloat('Coodenadas', 'Y min = ') #
+        maxx = 5.0 # askfloat('Coodenadas', 'X max = ') #
+        minx = -5.0  #askfloat('Coodenadas', 'X min = ') #
+        maxy = 5.0 #askfloat('Coodenadas', 'Y max = ') #
+        miny = -5.0 #askfloat('Coodenadas', 'Y min = ') #
         
-        f1 = askstring('Funcion en formato python', 'f(x)= ') #
-        #print f1
+        #f1 = 'x**2' 
+        f1 = askstring('Funcion a graficar', 'f(x)= ') 
         f = compile(f1, f1, 'eval')
-        
-        
-        
-        CX = int(x1 - x0)
-        CY = int(y1 - y0)
-        
+        h = y1 - y0
+        w = x1 - x0
+        hs = maxy-miny
+        ws = maxx-minx
+     
         #crear ejes.
-        ejex = self.create_line(x0, CY/(maxy-minx), x0, y0+h/10, fill=color)
-        
-        
-        
-
+        centroy = y0 + maxy*h/hs
+        centrox = x0 + maxx*w/ws
+        ejex = self.create_line(x0, centroy, x1, centroy, fill=color)
+        ejey = self.create_line(centrox, y0, centrox, y1, fill=color)
+   
         coords = []
-        for i in range(int(x0),int(x1),2):
-            coords.append(i)
-            x = minx + ((maxx-minx)*i)/CX 
+        
+        step = 2
+        cant = int(w/step)+1
+        delta = ws/cant
+        
+        print "ancho_canvas = %f | ancho_ejes = %f | segmentos = %d | delta = %f" % (w,ws,cant,delta)
+        
+        for i in range(cant):
+            x = minx + i*delta
+            coords.append(x0+i*step)
             y = eval(f, vars(math), {'x':x})
-            j = CY*(y-miny)/(maxy-miny)
+          
+            j = y0 + h*(-y-miny)/hs
             coords.append(j)
     
         newgraph = self.create_line(*coords)
-        self.itemconfig(newgraph, tags=(GRAPH, f1, CX))
+        self.itemconfig(newgraph, tags=(GRAPH, f1, w))
         return newgraph
 
 
