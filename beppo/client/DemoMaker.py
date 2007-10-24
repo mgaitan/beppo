@@ -4,7 +4,7 @@ from beppo.Constants import EXPIRE_TIME
 from beppo.Constants import DEMO_AI, DEMO_PC
 from twisted.python import failure
 from mx import DateTime
-from twisted.trial.util import deferredResult, deferredError
+#from twisted.trial.util import deferredResult, deferredError
 import sha
 
 class demo:

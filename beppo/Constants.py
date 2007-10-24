@@ -130,6 +130,7 @@ EMOTIC = 19
 SYMBOL = 20
 MATH = 21
 POST = 22
+GRAPH = 23
 
 #Anchos de linea
 FINE = 3

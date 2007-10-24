@@ -579,17 +579,19 @@ class WBServer(pb.Viewable):
 
         return (tutor, kind, end, selSubjects)
 
-
-
-
+    def remote_makeDemoUser(self, st):
+        print 'tipo:', st
+        return st
 
 
 wbServer = WBServer()
+
 realm = WBRealm()
 realm.server = wbServer
 p = portal.Portal(realm)
 c = WBChecker(wbServer.wbClients)
 p.registerChecker(c)
+
 factory = pb.PBServerFactory(p)
 application = service.Application('wb')
 serviceCollection = service.IServiceCollection(application)

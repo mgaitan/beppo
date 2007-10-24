@@ -41,15 +41,23 @@ def plot():
     CX = c.winfo_width()
     CY = c.winfo_height()
 
+    
+    ejex = c.create_line(0, 1, CX, 1)
+
+
     coords = []
-    for i in range(0,CX,5):
+    c.delete(ALL)
+    
+    for i in range(1,CX,5):
         coords.append(i)
-        x = minx + ((maxx-minx)*i)/CX
+
+        x = minx + ((maxx-minx)*i)/CX 
         y = eval(f, vars(math), {'x':x})
-        j = CY*(y-miny)/(maxy-miny)
+        j = -CY*(y-miny)/(maxy-miny)
         coords.append(j)
 
-    c.delete(ALL)
+    print coords
+
     c.create_line(*coords)
 
 butt.config(command=plot)

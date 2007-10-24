@@ -23,7 +23,7 @@ from twisted.spread import pb
 from DemoMaker import demo
 from beppo.Constants import TUTOR, PUPIL
 import sha
-from twisted.trial.util import deferredResult
+#from twisted.trial.util import deferredResult
 
 
 class LoginDialogDemo(Toplevel):
@@ -32,6 +32,7 @@ class LoginDialogDemo(Toplevel):
         self.title(APP_NAME +": " + _("Demo Mode"))
         self.frame = Frame(self)
         self.master = master
+
         self.callback = callback
         self.errback = errback
         self.client = client
@@ -85,8 +86,11 @@ class LoginDialogDemo(Toplevel):
         d.addErrback(self.errback)
         return d
    
+        d = self.factory.getRootObject()
+        d.addCallback(lambda object: object.callRemote("makeDemoUser",  self.opciones.state()))
 
        
+
 class Radiobar(Frame):
     def __init__(self, parent=None, opciones=[], side=LEFT, anchor=W):
         Frame.__init__(self, parent)

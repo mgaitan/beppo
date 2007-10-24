@@ -19,9 +19,13 @@ from Tkinter import *
 from beppo.Constants import FINE, MEDIUM, BIG, XBIG
 from beppo.Constants import RED, YELLOW, BLACK, BLUE, GREEN
 from beppo.Constants import WHITE, BROWN, TRANSPARENT
-from beppo.Constants import TEXT, LINE, RECTANGLE, CIRCLE, SQRT, INTEGRAL, FREEHAND, FILL, HIGHLIGHT
+from beppo.Constants import TEXT, LINE, RECTANGLE, CIRCLE, SQRT, INTEGRAL, FREEHAND, FILL, HIGHLIGHT, GRAPH
 from beppo.Constants import ERASE_ITEM, ERASE_SELECTION, SELECT, ARROW, DARROW, DASH, SYMBOL, EMOTIC, AXES
 from beppo.Constants import colorPalette
+
+
+#Done with imageEmbedder 1.0 utility img2pytk.py from
+#  http://www.3dartist.com/WP/python/pycode.htm#img2pytk
 
 arrow = ('R0lGODlhKgAgAOf/ACQgHyAiICgfIC4dGyUhIC4fISQlIzQfHyklJCYoJTch'
             +'ISsnJjMkJjAmJyUsKD0hIy8qKTslJCUwMEAlJkUkJywwMio0NSs2Nk4nLCc5'
@@ -2148,7 +2152,60 @@ w42 = ('R0lGODlhFQAgAOecAB0aGR4aGSAaFSAhHyErLB89PwtLSg5MTBhJSQ9NTSZD'
             +'Musegmh6CCONTJLsJHhUOiqtxdJqSCGMIDKJI5I0cgkmhwJiCLGC9FErIo8o'
             +'OwkkllRSCSaVzErrH380Qm25jVQiiSSUsKvJvooUW0gjyzpybiX5YoKJJgfz'
             +'e+wijlhbryQGX7KvJptMrAmyk2RsCSXqViKxxRVTrElAADs=')
-            
+
+graph= ('R0lGODlhIgAYAMZ6AB0aGR4aGSAaFR8bGiAcGyEdHCMdGCUeFCQeGSMfHiUf'
+            +'GiggFyAiICUhICchHB8mIygkIyQmJCUnJComJS8mGCcoJisnJjIoFSwoJy8q'
+            +'FjAqJCUwMCEyMScxMiEzMiM0ND0wEzwwGDczIz4yGiU+PCg9QUc5FkQ7HCRB'
+            +'REw8E0c/H00+GyhGSCNJS1NBElFBGCRKTFJCGCxJTE5EHyZMTidNTylPUCVQ'
+            +'VipQUVlIGFxJFCxSU1lNHCNZXmFOGCxXXSlZWSRaX2VRFCddYitgZW1XE2xX'
+            +'Gy5jaDBlanFbF3RdESRsdXdfCiZtdidud3tjGTNydi91fjN4gTV6g4htEi+A'
+            +'iDCBiTKDi5B0EDOEjCuGkyyHlDaHjpd5CjmJkTOMmZx9AJt9ESyTnziQnS6U'
+            +'oDmRnjCWojOYpDmdqTWisyantzOlsLiPAyqpubWSBDqmuCyqujeos0OlsTqr'
+            +'tcCWADKuvjSvvzWwwDmywsabCjqzxNKlCdqsAu68APXCCDqzxCH+EUNyZWF0'
+            +'ZWQgd2l0aCBHSU1QACwAAAAAIgAYAAAH/oB6gniEhYaHhIKKi4yKiI+Fdo2T'
+            +'lHpjQyw4UXiMd5WfengyAiExJgcPXoueoIyFHyBsXUVMYUIIXomsrY54Oyl7'
+            +'FwEcDAJGTw1zobu8oXgLfQo9bZxWCUk5N3OJzYM/bjpEnINrAlgCZXiS3aEF'
+            +'fgSFg3hNPiNIcsy8eBl8S4P/z2awODOOXREwbww5IjBiQ5V8rfAoobJNoZ44'
+            +'SDxgAMDNEBowLgo2e0OkhAUEFQ/JyIOAnaA2R2A00IDikQA6EVzqkbNEBoMK'
+            +'BqAc6qCEhxadd6bYICFBxIAdXspAeQCCSgI7InndIdOjhQQMJygIMKDgxRMH'
+            +'UkK5xAPHiQ0WVBEqqIiRw8eKBDTgqGVHyAsQGzI6TJgAAUKEG+n2dvNU5woR'
+            +'HDVklCjR4kiWbYqbecKTZosTIEF2AEGiRU2irBE54Ykj5ssUK1zMKFPGTaft'
+            +'260CAQA7')
+
+graph2=('R0lGODlhIgAYAOfvAB0aGR4aGSAaFR8bGiAcGyEdHCMdGCUeFCQeGSMfHiUf'
+            +'GiggFyAiICUhICchHB8mIyQlIygkIyQmJCUnJComJRorKicoJisnJjIoFSwo'
+            +'JyQrKC8qFjAqJS8sISYuKiUwMCEyMScxMiEzMj0wEzwwGDczIz4yGiU+PCg9'
+            +'QUc5FkQ7HCRBREw8E0c/H00+GwRPUyhGSA9NTRBOTiNJS1NBElFBGBJPTiRK'
+            +'TFJCGAlSVhNQTyxJTE5EHxRRUAtTVy1KTSZMTidNTxZSUQ1UWBdTUilPUBhU'
+            +'UyVQVhBWWipQUVlIGBlVVBJXWxpWVVxJFBNYXANdYBxXVhVZXShUWgVeYR1Y'
+            +'VxZaXllNHB5ZWAdfYhdbXwlgYiNZXhlcYGFOGClZWQthYxpdYRteYg1iZGVR'
+            +'FBxfYw9jZR5gYxFkZgVobyBhZRNlZxRlaCtgZRZmaRhnam1XE2xXGxloay5j'
+            +'aBtpbBxqbRFtdDBlah1rbnFbFxNudRVudh9sb3RdESBtcBdvdyRsdSFucRhw'
+            +'eCxrb3dfCiZtdiNvchpxeSRwcxxyei9uciVxdB1zeyZydR90fHtjGShzdiB1'
+            +'fSxyeyF2fi1zfCN3fyR4gCx3eiZ5gRx8iSd6gih7gxp/hTN4gRuAhip8hCt9'
+            +'hR2BhxCEkIhuEyx+hh+CiBOFkS1/hyCDiRWGki+AiCKEiheHkyOFixqIlCWG'
+            +'jDKDixyJlZB0ESaHjR2KliiIjh+LlymJjyGMmCuKkCONmZd5CjCKlySOmiaP'
+            +'m5x9ACiQnJt9ESmRnTaOmyuSniyTny6UoC+VoTCWojyToDKXozOYpDWZpTab'
+            +'ph6isjecqCugqyCjszmdqTCfsCKktTqeqi6irTufqySltjOhsjCjrjWiszGk'
+            +'ryantzajtbiPAyiouDektiqpubWSBCyqui2ruy+svDGtvcCWADKuvjSvvzWw'
+            +'wDexwTmywsabCjqzxNKlCdqsAu68APXCCDqzxDqzxDqzxDqzxDqzxDqzxDqz'
+            +'xDqzxDqzxDqzxDqzxDqzxCH+EUNyZWF0ZWQgd2l0aCBHSU1QACwAAAAAIgAY'
+            +'AAAI/gBjCBxIsKBAGzFsKFzIsKHCFzoi9pDYo6KQHkIyatSYQwiRjx99+CBi'
+            +'xMiSIUtSLtHCRMiSJjBjIokSBYlNmkyiMKnyhMlOLFKkPHki9IcAEjhSHKgg'
+            +'xopTLVa0QI0KRUtVqVC6dKESJgzXMEJGfNsFh1AwMgjobFnLdguYt3DBnDnz'
+            +'dozdMWbOsICHIQAIBgLiPGqA5gyaw2vQrFnMuLHjNQvkKeDi582aRgnyKAkj'
+            +'540cOWk+ixZNpzSdOqjrnBnnpA2e168nCZAlQBCf27f93LZjx48eP771BNJD'
+            +'vMA8AnoMEUckSE8hLyYGCZp+6NCi6tixJ9rOfUM8QIzC/otn5GgBjyCTHDmK'
+            +'tD6S+/eRJrmfRH8SnF+TKunfX8kSARMfgGLJgANiYgkmCCKoiYKaNNjHKJts'
+            +'okmEFIJyhwgZBMDJJ59wAsonoICCyi80gOLJiZ6EEgopKrZ4yimlwFhKGyhc'
+            +'gAAqqqCio46rTOEOAqsEuUororRiZCuvJGlKkq+kMsscNzTAwQqssFJLLVWy'
+            +'IgA6H7hSi5e1xCJmLLeMKSYttORCCyA7MGCBAZfQYsuctoTQxxVz4qInLrro'
+            +'qcufgP7Zy6CwFHHCBCUMAIkvvqjywAijJADMpJMKY+mlwhCj6aaaFsPFDBNk'
+            +'oEIHGngAQQ2PONCJMayyesyrwMgcEysytNZaayZFwDCBBS3goIQXLiQAhDLK'
+            +'LFNsscwsw8yyzDbLrDJfFLFDCBRQEEEEExyRjDTSPMOtNNWEGy400FQDzTXn'
+            +'XqPuNNfw0kYSQeyAAgozSLJMNs44Y0022UTj7zbaRBOwv9xs4y81CCMczTCK'
+            +'UKIIJMBgI3E32GzTzcUXg6PxxuKIA47HHYdMzsgkl0xOOSinbM7KLLN8zssw'
+            +'xwxzOjTXrI7N6qizzjo667zzz+20s07QRBdtdNEBAQA7')         
 
 class WBToolbar(Frame):
     BTN_ACTIVE = "#a9a9a9"
@@ -2187,8 +2244,9 @@ class WBToolbar(Frame):
         self.toolButton("Raiz", SQRT, 6, 0, raiz, raiz2)
         self.toolButton("Integral", INTEGRAL, 6, 1, integral, integral2)
         self.toolButton("Rectangulo", AXES, 7, 0, grid, grid2)
+        
         self.imgButton("Emotics", EMOTIC, 7, 1, smiley)
-        #self.imgButton("Simbolos", SYMBOL, 7, 1)
+        self.toolButton("Graficador", GRAPH, 8, 0, graph, graph2)
 
         self.selectButton(self.tools[0])
         

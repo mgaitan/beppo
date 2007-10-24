@@ -16,14 +16,16 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 from Tkinter import *
+from tkSimpleDialog import askstring, askfloat
 from twisted.internet import defer
 from WBClipboard import WBClipboard
 from beppo.Constants import FINE, MEDIUM, BIG, XBIG
 from beppo.Constants import BLACK, SELECTION, STIPPLE
-from beppo.Constants import TEXT, LINE, RECTANGLE, CIRCLE, SQRT, INTEGRAL, FREEHAND, SYMBOL, AXES, DARROW
+from beppo.Constants import TEXT, LINE, RECTANGLE, CIRCLE, SQRT, INTEGRAL, FREEHAND, SYMBOL, AXES, DARROW, GRAPH
 from beppo.Constants import FILL, HIGHLIGHT, ERASE_ITEM, ERASE_SELECTION, SELECT, MOVE, PASTE, ARROW, DASH, POST
 from beppo.Constants import colorPalette
 from ImgsGif import Imgs
+import math
 import tkFont
 
 class WhiteBoard(Canvas):
@@ -130,7 +132,7 @@ class WhiteBoard(Canvas):
         self.pointList.append(y1)
         x0 = self.pointList[0]
         y0 = self.pointList[1]
-        if self.tool == SQRT or self.tool == INTEGRAL or self.tool == AXES:
+        if self.tool == SQRT or self.tool == INTEGRAL or self.tool == AXES or self.tool == GRAPH:
             self.delete(self.wbCurrentObject)
         if self.img != None:
             self.addItem(SYMBOL, self.pointList, self.myColor, "", self.img)
@@ -162,7 +164,7 @@ class WhiteBoard(Canvas):
             self.tool = SELECT
             self.dx = 0
             self.dy = 0
-        elif self.tool == SQRT or self.tool == INTEGRAL or self.tool == AXES:
+        elif self.tool == SQRT or self.tool == INTEGRAL or self.tool == AXES or self.tool == GRAPH:
             self.addItem(self.tool, self.pointList, self.myColor, "", FINE)
         elif self.tool != TEXT and self.tool != FILL:
             self.addItem(self.tool, self.pointList, self.color, "", self.lineWidth)
@@ -229,7 +231,7 @@ class WhiteBoard(Canvas):
             newCircle = self.create_oval(x0, y0, x0, y0, outline=self.color, width=self.lineWidth)
             self.itemconfig(newCircle, tags=self.tool)
             self.wbCurrentObject = newCircle
-        elif self.tool == SQRT or self.tool == INTEGRAL or self.tool == AXES:
+        elif self.tool == SQRT or self.tool == INTEGRAL or self.tool == AXES or self.tool == GRAPH:
             newItem = self.create_rectangle(x0, y0, x0, y0, outline=self.myColor)
             self.wbCurrentObject = newItem
         elif self.tool == FREEHAND:
@@ -341,7 +343,7 @@ class WhiteBoard(Canvas):
                 if kind == INTEGRAL:
                     coords = self._getIntegralCoords(x, float(tags[2]))
                     outline = self.itemcget(x, "fill")
-                if kind == SQRT:
+                if kind == SQRT or kind == GRAPH:
                     coords = self._getSqrtCoords(x, float(tags[2]))
                     outline = self.itemcget(x, "fill")
                 if kind == AXES:
@@ -428,7 +430,7 @@ class WhiteBoard(Canvas):
         ret = None
         itemTag = self.gettags(item)
         kind = self._getItemKind(item)
-        if kind == INTEGRAL or kind == SQRT or kind == AXES:
+        if kind == INTEGRAL or kind == SQRT or kind == AXES or kind == GRAPH:
             res = self.find_withtag(itemTag[1])
             res = list(res)
         else:
@@ -459,7 +461,7 @@ class WhiteBoard(Canvas):
                 isComplete = True
                 itemTag = self.gettags(x)
                 kind = self._getItemKind(x)
-                if kind == INTEGRAL or kind == SQRT or kind == AXES:
+                if kind == INTEGRAL or kind == SQRT or kind == AXES or kind == GRAPH:
                     res = self.find_withtag(itemTag[1])
                     res = list(res)
                     for y in res:
@@ -511,7 +513,7 @@ class WhiteBoard(Canvas):
             itemId = self._getItemId(item)
             kind = self._getItemKind(itemId)
             if kind == INTEGRAL or kind == SQRT or \
-              kind == AXES or kind == TEXT or kind == SYMBOL:
+              kind == AXES or kind == TEXT or kind == SYMBOL or kind == GRAPH:
                 return
             items = self._findItemsTag(item)
             for x in items:
@@ -559,11 +561,14 @@ class WhiteBoard(Canvas):
             self.lower(newItem, self.rBase)
         elif kind == SYMBOL:
             newItem = self.createImg(points, width)
+    	elif kind == GRAPH:
+    	    newItem = self.createGraph(points, outline)
+	    
         return newItem
     
     def addItem(self, kind, points, outline, fill, width, foreignId=None):
         if foreignId == None:
-            if kind == SQRT or kind == INTEGRAL or kind == SYMBOL or kind == AXES:
+            if kind == SQRT or kind == INTEGRAL or kind == SYMBOL or kind == AXES or kind == GRAPH:
                 self.wbCurrentObject = self.createItem(kind, points, outline, fill, width)
             result = self.client.broadcast_addItem(self.wbCurrentObject, kind, points, outline, fill, width)
         elif foreignId == PASTE or foreignId == POST:
@@ -604,6 +609,60 @@ class WhiteBoard(Canvas):
         self.itemconfig(newLine1, tags=(SQRT, tag, x1 - x0))
         self.itemconfig(newLine4, tags=(SQRT, tag, x1 - x0))
         return newLine2
+
+    def createGraph(self, points, color, foreignId=None):
+        x0 = points[0]
+        y0 = points[1]
+        x1 = points[2]
+        y1 = points[3]
+        
+        #print x0, x1, y0, y1
+        
+        if x0 > x1:
+            x0, x1 = x1, x0
+        if y0 > y1:
+            y0, y1 = y1, y0
+        
+
+
+        #for text, var in [('X max',maxx=0), ('X min', minx), ('Y max', maxy),('Y min', miny)]:
+        #     var = askfloat('Coodenada', text+' = ') #
+        
+        
+        #VER! refactoring de esto. 
+        maxx = 10.0 # askfloat('Coodenadas', 'X max = ') #
+        minx = 0.0  #askfloat('Coodenadas', 'X min = ') #
+        maxy = 10.0 #askfloat('Coodenadas', 'Y max = ') #
+        miny = 0.0 #askfloat('Coodenadas', 'Y min = ') #
+        
+        f1 = askstring('Funcion en formato python', 'f(x)= ') #
+        #print f1
+        f = compile(f1, f1, 'eval')
+        
+        
+        
+        CX = int(x1 - x0)
+        CY = int(y1 - y0)
+        
+        #crear ejes.
+        ejex = self.create_line(x0, CY/(maxy-minx), x0, y0+h/10, fill=color)
+        
+        
+        
+
+        coords = []
+        for i in range(int(x0),int(x1),2):
+            coords.append(i)
+            x = minx + ((maxx-minx)*i)/CX 
+            y = eval(f, vars(math), {'x':x})
+            j = CY*(y-miny)/(maxy-miny)
+            coords.append(j)
+    
+        newgraph = self.create_line(*coords)
+        self.itemconfig(newgraph, tags=(GRAPH, f1, CX))
+        return newgraph
+
+
 
     def createIntegral(self, points, color, foreignId=None):
         x0 = points[0]
