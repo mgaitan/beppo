@@ -16,7 +16,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 from Tkinter import *
-from tkSimpleDialog import askstring, askfloat
+import tkSimpleDialog 
 from twisted.internet import defer
 from WBClipboard import WBClipboard
 from beppo.Constants import FINE, MEDIUM, BIG, XBIG
@@ -611,6 +611,10 @@ class WhiteBoard(Canvas):
         return newLine2
 
     def createGraph(self, points, color, foreignId=None):
+        
+        """recibe un area rectangular del canvas (definida en points) 
+        y grafica la funcion respetando las coordenadas dadas""" 
+        
         x0 = points[0]
         y0 = points[1]
         x1 = points[2]
@@ -620,16 +624,18 @@ class WhiteBoard(Canvas):
             x0, x1 = x1, x0
         if y0 > y1:
             y0, y1 = y1, y0
-        #print [x0,y0,x1,y1]
+
         #VER! refactoring de esto. 
         maxx = 5.0 # askfloat('Coodenadas', 'X max = ') #
         minx = -5.0  #askfloat('Coodenadas', 'X min = ') #
         maxy = 5.0 #askfloat('Coodenadas', 'Y max = ') #
         miny = -5.0 #askfloat('Coodenadas', 'Y min = ') #
         
-        #f1 = 'x**2' 
-        f1 = askstring('Funcion a graficar', 'f(x)= ') 
+        f1 = tkSimpleDialog.askstring('Funcion a graficar', 'f(x)= ') 
         f = compile(f1, f1, 'eval')
+        
+        #dialog = GraphDialog(None)
+        
         h = y1 - y0
         w = x1 - x0
         hs = maxy-miny
@@ -638,24 +644,26 @@ class WhiteBoard(Canvas):
         #crear ejes.
         centroy = y0 + maxy*h/hs
         centrox = x0 + maxx*w/ws
-        ejex = self.create_line(x0, centroy, x1, centroy, fill=color)
-        ejey = self.create_line(centrox, y0, centrox, y1, fill=color)
+        
+        if centroy < y1 and centroy > y0:
+            ejex = self.create_line(x0, centroy, x1, centroy, fill=color)
+        if centrox < x1 and centrox > x0:            
+            ejey = self.create_line(centrox, y0, centrox, y1, fill=color)
    
         coords = []
-        
         step = 2
         cant = int(w/step)+1
-        delta = ws/cant
+        deltax = ws/cant
         
-        print "ancho_canvas = %f | ancho_ejes = %f | segmentos = %d | delta = %f" % (w,ws,cant,delta)
+        print "ancho_canvas = %f | ancho_ejes = %f | segmentos = %d | delta = %f" % (w,ws,cant,deltax)
         
         for i in range(cant):
-            x = minx + i*delta
-            coords.append(x0+i*step)
+            x = minx + i*deltax
             y = eval(f, vars(math), {'x':x})
-          
             j = y0 + h*(-y-miny)/hs
-            coords.append(j)
+            if j<y1 and j>y0:
+                coords.append(x0+i*step)
+                coords.append(j)
     
         newgraph = self.create_line(*coords)
         self.itemconfig(newgraph, tags=(GRAPH, f1, w))
@@ -862,15 +870,31 @@ class WhiteBoard(Canvas):
         self.clipboard.clipboardEmpty()
         self.dx = 0
         self.dy = 0
-#        self.mode = self.RW
+        self.mode = self.RW
         self.img = None
 
-#     def insertChar(self, idTextBox, c):
-#         insert(item,index,text)
-#         """
-#         Inserta un caracter al final del TextBox con id idTextBox
-#         """
-#         c = unicode(c, "utf-8")
-#         old = self.itemcget(idTextBox, "text")
-#         print old.encode("utf-8")
-#         self.itemconfig(idTextBox, text=old + c)
+class GraphDialog(tkSimpleDialog.Dialog):
+
+    def body(self, master):
+        Label(master, text="f(x):").grid(row=0, sticky=W)
+        Label(master, text="Min X:").grid(row=1, sticky=W)
+        Label(master, text="Max X:").grid(row=2, sticky=W)
+        Label(master, text="Min Y:").grid(row=3, sticky=W)
+        Label(master, text="Min X:").grid(row=4, sticky=W)
+
+    
+        self.e1 = Entry(master).grid(row=0, column=1)
+        self.e2 = Entry(master).grid(row=1, column=1)
+        self.e3 = Entry(master).grid(row=2, column=1)
+        self.e4 = Entry(master).grid(row=3, column=1)
+        self.e5 = Entry(master).grid(row=4, column=1)
+
+        var = IntVar()
+        self.cb = Checkbutton(master, text="Mostrar Etiquetas", variable=var)
+        self.cb.grid(row=5, columnspan=2, sticky=W)
+            
+    def apply(self):
+
+        print self.e1.get(),self.e2.get(),self.e3.get(),self.e4.get(),self.e5.get(), str(var)
+
+
