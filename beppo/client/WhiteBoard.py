@@ -631,10 +631,15 @@ class WhiteBoard(Canvas):
         maxy = 5.0 #askfloat('Coodenadas', 'Y max = ') #
         miny = -5.0 #askfloat('Coodenadas', 'Y min = ') #
         
-        f1 = tkSimpleDialog.askstring('Funcion a graficar', 'f(x)= ') 
-        f = compile(f1, f1, 'eval')
+        #f1 = tkSimpleDialog.askstring('Funcion a graficar', 'f(x)= ') 
+        #f = compile(f1, f1, 'eval')
+
+        while 1:
+            dialog = GraphDialog(None)
+            f1,minx,maxx,miny,maxy = dialog.ret
+            break
         
-        #dialog = GraphDialog(None)
+        f = compile(f1, f1, 'eval')
         
         h = y1 - y0
         w = x1 - x0
@@ -874,27 +879,19 @@ class WhiteBoard(Canvas):
         self.img = None
 
 class GraphDialog(tkSimpleDialog.Dialog):
-
-    def body(self, master):
-        Label(master, text="f(x):").grid(row=0, sticky=W)
-        Label(master, text="Min X:").grid(row=1, sticky=W)
-        Label(master, text="Max X:").grid(row=2, sticky=W)
-        Label(master, text="Min Y:").grid(row=3, sticky=W)
-        Label(master, text="Min X:").grid(row=4, sticky=W)
-
-    
-        self.e1 = Entry(master).grid(row=0, column=1)
-        self.e2 = Entry(master).grid(row=1, column=1)
-        self.e3 = Entry(master).grid(row=2, column=1)
-        self.e4 = Entry(master).grid(row=3, column=1)
-        self.e5 = Entry(master).grid(row=4, column=1)
-
+    def body(self, master=None):
+        self.entries = []
+        
+        for fila, label,valor in [(0,"f(x):","sin(x)"),(1,"Min X:","-5.0"),(2,"Max X:","5.0"),(3,"Min Y:","-5.0"),(4,"Max Y:","5.0")]:
+            Label(master, text=label).grid(row=fila, sticky=W)
+            self.entries.append(Entry(master).grid(row=fila, column=1))
+            #self.entries[-1].set(valor)
+            
         var = IntVar()
         self.cb = Checkbutton(master, text="Mostrar Etiquetas", variable=var)
         self.cb.grid(row=5, columnspan=2, sticky=W)
             
     def apply(self):
-
-        print self.e1.get(),self.e2.get(),self.e3.get(),self.e4.get(),self.e5.get(), str(var)
+        self.ret = [i.get() for i in self.entries]
 
 
