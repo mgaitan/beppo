@@ -17,6 +17,7 @@
 
 from Tkinter import *
 import tkSimpleDialog 
+import tkMessageBox
 from twisted.internet import defer
 from WBClipboard import WBClipboard
 from beppo.Constants import FINE, MEDIUM, BIG, XBIG
@@ -65,6 +66,7 @@ class WhiteBoard(Canvas):
         self.font = ('Arial', 14, 'bold')
         self.tk.call('encoding', 'system', 'utf-8')
         self.client = cliente
+        self.parent = parent
 
     def putImg(self, number):
         self.img = number
@@ -626,18 +628,26 @@ class WhiteBoard(Canvas):
             y0, y1 = y1, y0
 
         #VER! refactoring de esto. 
-        maxx = 5.0 # askfloat('Coodenadas', 'X max = ') #
-        minx = -5.0  #askfloat('Coodenadas', 'X min = ') #
-        maxy = 5.0 #askfloat('Coodenadas', 'Y max = ') #
-        miny = -5.0 #askfloat('Coodenadas', 'Y min = ') #
+        #maxx = 5.0 
+        #maxx = tkSimpleDialog.askfloat('Coodenadas', 'X max = ') #
+        #minx = -5.0  
+        #minx = tkSimpleDialog.askfloat('Coodenadas', 'X min = ') #
+        #maxy = 5.0 
+        #maxy = tkSimpleDialog.askfloat('Coodenadas', 'Y max = ') #
+        #miny = -5.0 
+        #miny = tkSimpleDialog.askfloat('Coodenadas', 'Y min = ') #
         
         #f1 = tkSimpleDialog.askstring('Funcion a graficar', 'f(x)= ') 
-        #f = compile(f1, f1, 'eval')
 
         while 1:
-            dialog = GraphDialog(None)
+            dialog = GraphDialog(self.parent)
             f1,minx,maxx,miny,maxy = dialog.ret
             break
+        
+        minx = float(minx)
+        maxx = float(maxx)
+        miny = float(miny)                
+        maxy = float(maxy)
         
         f = compile(f1, f1, 'eval')
         
@@ -646,26 +656,34 @@ class WhiteBoard(Canvas):
         hs = maxy-miny
         ws = maxx-minx
      
+        assert(h>0)
+        assert(w>0)
+        assert(hs>0)
+        assert(ws>0)
+    
         #crear ejes.
         centroy = y0 + maxy*h/hs
-        centrox = x0 + maxx*w/ws
+        centrox = x1 - maxx*w/ws
         
         if centroy < y1 and centroy > y0:
             ejex = self.create_line(x0, centroy, x1, centroy, fill=color)
         if centrox < x1 and centrox > x0:            
             ejey = self.create_line(centrox, y0, centrox, y1, fill=color)
-   
+
+        #print "coordenadas = " + repr([x0,y0,x1,y1])
+        #print "h= %f | hs=%f | w= %f | ws=%f | " % (h,hs,w,ws)
+        #print "centro = " + repr([centrox,centroy])
         coords = []
         step = 2
-        cant = int(w/step)+1
+        cant = int(w/step)
         deltax = ws/cant
         
-        print "ancho_canvas = %f | ancho_ejes = %f | segmentos = %d | delta = %f" % (w,ws,cant,deltax)
+        #print "ancho_canvas = %f | ancho_ejes = %f | segmentos = %d | delta = %f" % (w,ws,cant,deltax)
         
         for i in range(cant):
             x = minx + i*deltax
             y = eval(f, vars(math), {'x':x})
-            j = y0 + h*(-y-miny)/hs
+            j = y1 - h*(y-miny)/hs
             if j<y1 and j>y0:
                 coords.append(x0+i*step)
                 coords.append(j)
@@ -879,13 +897,18 @@ class WhiteBoard(Canvas):
         self.img = None
 
 class GraphDialog(tkSimpleDialog.Dialog):
-    def body(self, master=None):
+    def __init__(self, master, title="Graficar funcion"):
+        tkSimpleDialog.Dialog.__init__(self, master,title)
+
+    def body(self, master):
         self.entries = []
         
-        for fila, label,valor in [(0,"f(x):","sin(x)"),(1,"Min X:","-5.0"),(2,"Max X:","5.0"),(3,"Min Y:","-5.0"),(4,"Max Y:","5.0")]:
+        for fila, label,valor in [(0,"f(x):","x"),(1,"Min X:","-5.0"),(2,"Max X:","5.0"),(3,"Min Y:","-5.0"),(4,"Max Y:","5.0")]:
             Label(master, text=label).grid(row=fila, sticky=W)
-            self.entries.append(Entry(master).grid(row=fila, column=1))
-            #self.entries[-1].set(valor)
+            inp = Entry(master)
+            self.entries.append(inp)
+            inp.grid(row=fila, column=1)
+            inp.insert(0,valor)
             
         var = IntVar()
         self.cb = Checkbutton(master, text="Mostrar Etiquetas", variable=var)
@@ -893,5 +916,28 @@ class GraphDialog(tkSimpleDialog.Dialog):
             
     def apply(self):
         self.ret = [i.get() for i in self.entries]
+
+    def validate(self):
+        try:
+            f = compile(self.entries[0].get(),self.entries[0].get(), 'eval')
+        except:
+            tkMessageBox.showwarning("Error","Ingrese una función válida")    
+            return False
+
+        for inp in self.entries[1:]:
+            try:
+                inp = float(inp.get())
+            except:
+                tkMessageBox.showwarning("Error","Al menos una coordenada no es válida")
+                return False
+        if float(self.entries[1].get())>=float(self.entries[2].get()):
+            tkMessageBox.showwarning("Error","minX >= maxX")
+            return False
+        if float(self.entries[3].get())>=float(self.entries[4].get()):
+            tkMessageBox.showwarning("Error","minX >= maxX")
+            return False
+
+        return True
+
 
 
