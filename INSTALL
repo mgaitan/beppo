@@ -13,9 +13,9 @@ Database setup:
 --------------
 
 - With an existant postgresql user (with 'create database' role), create Beppo database:
-	$ createdb Beppo
-- Initialize Beppo database with Beppo.sql file included in this directory:
-	$ psql Beppo < Beppo.sql
+	$ createdb beppo
+- Note that the name should be all lowercase.  Initialize Beppo database with Beppo.sql file included in this directory:
+	$ psql beppo < Beppo.sql
 - Modify postgresql's pg_hba.conf (usually in /etc/postgresql/x.x/main/) to allow connections to server. For example, to grant access from localhost without authentication, the following line must be added:
 	all	all	127.0.0.1	255.255.255.255	trust
 - Modify Beppo's settings.py (in beppo directory) to use the appropiate postgresql user
