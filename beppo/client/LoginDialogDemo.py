@@ -20,11 +20,9 @@ import tkMessageBox
 from beppo.Strings import _
 from beppo.Constants import APP_NAME
 from twisted.spread import pb
-from DemoMaker import demo
 from beppo.Constants import TUTOR, PUPIL
 import sha
-#from twisted.trial.util import deferredResult
-
+from twisted.cred import credentials
 
 class LoginDialogDemo(Toplevel):
     def __init__(self, master, callback, errback, client, factory, username):
@@ -63,33 +61,21 @@ class LoginDialogDemo(Toplevel):
         self.grab_set()
 
     def crear(self, event):
+        user = self.username
         if self.opciones.state()=='Tutor':
-            de = demo(self.username, TUTOR)
+            pswd = "demoCreate:TUTOR"
         else:
-            de = demo(self.username, PUPIL)
-        
-        d = de.run()
-        d.addCallback(lambda a: self.destroy())
-        #d.addCallback(self.callback, None, self.username, 'demo')
-        
-        #self.client.callRemote("makeDemoUser", self.opciones.state())
-        #d = self.factory.getRootObject()
-        #d.addCallback(lambda object: object.callRemote("echo", self.opciones.state()))
-        
-    def login(self, d, user, pswd):
-        #recibe el de def el user y el pass y decuelve el avatar al callback o errback(loginSuccess o loginError)
-        d.addCallback(lambda a: self.factory.login(credentials.UsernamePassword(user, pswd), client=self.client))
-        
-        
-        d.addCallback(lambda a: self.destroy())
+            pswd = "demoCreate:PUPIL"
+        d = self.factory.login(credentials.UsernamePassword(user, pswd), client=self.client)
+        d.addCallback(self.destroySelf)
         d.addCallback(self.callback)
         d.addErrback(self.errback)
         return d
-   
-        d = self.factory.getRootObject()
-        d.addCallback(lambda object: object.callRemote("makeDemoUser",  self.opciones.state()))
 
-       
+
+    def destroySelf(self, data):
+        self.destroy()
+        return data
 
 class Radiobar(Frame):
     def __init__(self, parent=None, opciones=[], side=LEFT, anchor=W):

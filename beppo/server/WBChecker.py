@@ -23,6 +23,7 @@ from mx.DateTime import now
 from DBConnect import DBConnect
 from beppo.Constants import TUTOR, PUPIL
 from beppo.settings import DEMO_MODE
+from beppo.server.DemoMaker import DemoMaker
 from beppo.server.utils import getTranslatorFromSession, dummyTranslator
 import sha
 
@@ -77,10 +78,16 @@ class WBChecker:
                 return d
             else: 
                 #el usuario no existe. 
-                
                 if DEMO_MODE:
-                    #se ofrece crear un usuario temporal. 
-                    return failure.Failure(error.UnauthorizedLogin('no_existe'))
+                    if credentials.checkPassword ('demoCreate:TUTOR'):
+                        kind = TUTOR
+                    elif credentials.checkPassword ('demoCreate:PUPIL'):
+                        kind = PUPIL
+                    else: #se ofrece crear un usuario temporal. 
+                        return failure.Failure(error.UnauthorizedLogin('no_existe'))
+                    demo = DemoMaker(credentials.username, kind, self.db)
+                    d = demo.createDemo()
+                    return d
                 else:     
                     return failure.Failure(error.UnauthorizedLogin(_('Nombre de usuario o clave incorrecta')))
 
