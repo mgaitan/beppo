@@ -92,7 +92,9 @@ class WebSchedules(Resource):
         return d
 
     def printContent(self, request, d, userId, msg):
-        # 1) Si se envían datos, se actualiza la base primero
+        # 1) Si se envían datos, se actualiza la base primero. 
+        # La actualizacion consiste en eliminar todos los horarios previos, 
+        # hace el packSchedule, e insertar los nuevos horarios. 
         _ = request.getSession()._
         if "submit" in request.args.keys():
             op = "delete from tutor_schedule where fk_tutor = %d"
@@ -145,6 +147,8 @@ class WebSchedules(Resource):
             else:
                 scheds.append((start_time, end_time))
         # Convertimos a DateTime
+
+        #print "scheds: " +  repr(scheds[0])
 
         spans = []
         # Elejimos mayo del 2005 porque el 1ero cae domingo.
@@ -234,7 +238,7 @@ function change_cell (tag) {
             for day in enumerate(days):
                 pos = 48 * day[0] + hour
                 val = checks[pos]
-                string += '<td class="%s" title="%s" onclick="change_cell(this)"><input type="text" name="sch" value="%da%s" /></td>\n' % (classes[val], titles[val], pos, val)
+                string += '<td class="%s" title="%s" onpress="alert(this. onclick="change_cell(this)"><input type="text" name="sch" value="%da%s" /></td>\n' % (classes[val], titles[val], pos, val)
         string += """
    </tr><tr><td class="sch_row">24:00hs</td>\n</tr></table>
    <input type="hidden" name="user_id" value="%d"/>

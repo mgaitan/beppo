@@ -63,9 +63,9 @@ class WebLogin(Resource):
             request.write("""<h2>""" + _('Inicio de Sesion') + """</h2> \
             <form action="" method="post"><div>""" + _('Nombre de Usuario') \
             + """: <label for="username"><input type="text" size="5" name="username" \
-            id="username"/></label><br/>""" + _('Contrasena') \
+            id="username" value="Root"/></label><br/>""" + _('Contrasena') \
             + """: <label for="pwd"><input type="password" size="5" name="pwd" \
-            id="pwd"/></label><br/><input id="submit" type="submit" value=\"""" + \
+            id="pwd" value="raizde2"/></label><br/><input id="submit" type="submit" value=\"""" + \
             _('Entrar!') + """\"/></div></form>""")
 
         d.addCallback(lambda a:request.write(self.template.finishPage(session)))

@@ -60,12 +60,12 @@ class WebPupilEdit(Resource):
 
     def doAuthentication(self, trans, request):
         session = request.getSession()
-        _ = trans
+        _ = session._
         request.write(self.template.startPage(session, _('Pagina del Alumno')))
         d = defer.maybeDeferred(lambda :None)
-        msg = '<h2>' + _('Informacion de alumno') + '</h2>' + \
-                  _('Recuerda que los campos indicados con <sup>*</sup> son obligatorios<br>') + \
-                 + _('Si desea conservar la contraseña actual deje los campos en blanco')
+        msg = '<h2>' + _('Informacion de alumno') + '</h2>'
+        msg += _('Recuerda que los campos indicados con <sup>*</sup> son obligatorios<br>')
+        msg += _('Si desea conservar la contraseña actual deje los campos en blanco')
         if not hasattr(session, 'username'):
             request.write(self.template.notAuthenticated(session))
         elif session.kind == ADMIN:

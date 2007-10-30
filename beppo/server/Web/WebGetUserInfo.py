@@ -33,19 +33,19 @@ class WebGetUserInfo:
         ROWS: nombre de las columnas a mostrar para cada tipo de usuario
     """
     QUERY = {TUTOR: "select username, first_name, last_name, email, \
-         language.name, fk_timezone, address1, address2, zip, phone1, \
+         language.name, timezone.gmtoffset, address1, address2, zip, phone1, \
          phone2, phone3, icq, msn, aol from tutor, person, language, \
          timezone where person.id = %d and person.id = tutor.id \
-         and fk_timezone = timezone.id and person.language = language.id",
+         and person.fk_timezone = timezone.id and person.language = language.id",
      CLIENT: "select username, first_name, last_name, email, language.name, \
-          fk_timezone, organization, ai_available, pc_available from client, \
+          timezone.gmtoffset, organization, ai_available, pc_available from client, \
           person, language, timezone where person.id = %d and client.id = person.id \
-          and fk_timezone = timezone.id and person.language = language.id",
+          and person.fk_timezone = timezone.id and person.language = language.id",
      ADMIN: "select username, first_name, last_name, email, language.name, fk_timezone \
           from person, language, timezone where person.id = %d and fk_timezone = timezone.id \
           and person.language = language.id",
      PUPIL: "select username, first_name, last_name, email, language.name, \
-          fk_timezone, organization, client.id from pupil, person, client, language, \
+          timezone.gmtoffset, organization, client.id from pupil, person, client, language, \
           timezone where pupil.id = person.id and client.id = pupil.fk_client and \
           person.id = %d and pupil.id = person.id and person.fk_timezone = timezone.id \
           and person.language = language.id"}
