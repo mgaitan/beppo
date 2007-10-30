@@ -11,9 +11,11 @@ Before you build the executable you need to make sure that:
  - You have Mark Hammond's Python for Windows extensions installed, from
    http://starship.python.net/crew/mhammond/
 
- - PyInstaller's svn head revision is downloaded and configured.  To configure
-   PyInstaller, run in a terminal:
-   C:\Path\to\python.exe C:\Path\to\PyInstaller\Configure.py
+ - PyInstaller's svn head revision is downloaded and configured.
+   You can download PyInstaller's svn head using:
+   svn co http://svn.pyinstaller.python-hosting.com/trunk pyinstaller
+   To configure PyInstaller, run in a terminal:
+   C:\Path\to\python.exe C:\Path\to\pyinstaller\Configure.py
 
  - Beppo's svn trunk is located in C:\svn\beppo (so you have a file called
    C:\svn\beppo\beppo\client\Login.py, for example). If not, edit the
@@ -25,3 +27,12 @@ C:\Path\to\python.exe C:\Path\to\pyinstaller\Build.py C:\svn\beppo\pyinstaller\b
 
 That's it!  You should have an beppo.exe file now.
 
+===================
+Building the spec file is really easy if you don't want to use the one provided.
+
+This README is based on http://pyinstaller.hpcf.upr.edu/docs/Manual_v1.1.html
+
+When you get to the step of creating the spec file, the options that were used
+by me were:
+
+-F -K -w -X -p <path/to/python/libs> -n beppo
