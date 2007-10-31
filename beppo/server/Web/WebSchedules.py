@@ -152,8 +152,12 @@ class WebSchedules(Resource):
 
         spans = []
         # Elejimos mayo del 2005 porque el 1ero cae domingo.
-        mktimestamp = lambda x: DateTime(2005, 5, 1 + x / 48, (x % 48) / 2, (x % 2) * 30)
+        
+        ####VEEEERRRR
+        mktimestamp = lambda x: DateTime(2005, 5, 1 + x / 48, x % 48) / 2, x % ) * 30)
+        
         for sched in scheds:
+            print sched[0],sched[1]
             spans.append((mktimestamp(sched[0]), mktimestamp(sched[1])))
         return spans
 
@@ -169,12 +173,39 @@ class WebSchedules(Resource):
         return checks
 
     def requestScheduleData(self, data, userId):
-        query = 'select extract(dow from time_start), \
-                 extract(hour from time_start), extract(minute from time_start), \
-                 extract(dow from time_end), extract(hour from time_end), \
-                 extract(minute from time_end), schedule_type \
-                 from tutor_schedule where fk_tutor = %d'
-        return self.db.db.runQuery(query, (userId,))
+        d = defer.maybeDeferred(lambda:None)
+        d.addCallback(self.getOffset, userId)
+        d.addCallback(self.addOffset, data, userId)
+        return d
+    
+    def getOffset(self, request, userId):
+         query1 = 'select timezone.gmtoffset from timezone, person where \
+                  timezone.id = person.fk_timezone and person.id = %d'                
+         return self.db.db.runQuery(query1, (userId, ))
+
+
+    def addOffset(self, rows, request, userId):
+        if rows[0][0] >= 0:
+            query = "select extract(dow from time_start + interval '%i hour' ), \
+                     extract(hour from time_start + interval '%i hour'), \
+                     extract(minute from time_start + interval '%i hour'), \
+                     extract(dow from time_end + interval '%i hour'), \
+                     extract(hour from time_end + interval '%i hour'), \
+                     extract(minute from time_end + interval '%i hour'), schedule_type \
+                     from tutor_schedule where fk_tutor = %d"     
+        else:
+            query = "select extract(dow from time_start - interval '%i hour' ), \
+                     extract(hour from time_start - interval '%i hour'), \
+                     extract(minute from time_start - interval '%i hour'), \
+                     extract(dow from time_end - interval '%i hour'), \
+                     extract(hour from time_end - interval '%i hour'), \
+                     extract(minute from time_end - interval '%i hour'), schedule_type \
+                     from tutor_schedule where fk_tutor = %d"
+        of = abs(rows[0][0])
+        return self.db.db.runQuery(query, (of,of,of,of,of,of,userId,))
+
+        
+
 
     def printForm(self, rows, request, userId):
         _ = request.getSession()._
@@ -238,7 +269,7 @@ function change_cell (tag) {
             for day in enumerate(days):
                 pos = 48 * day[0] + hour
                 val = checks[pos]
-                string += '<td class="%s" title="%s" onpress="alert(this. onclick="change_cell(this)"><input type="text" name="sch" value="%da%s" /></td>\n' % (classes[val], titles[val], pos, val)
+                string += '<td class="%s" title="%s" onclick="change_cell(this)"><input type="text" name="sch" value="%da%s" /></td>\n' % (classes[val], titles[val], pos, val)
         string += """
    </tr><tr><td class="sch_row">24:00hs</td>\n</tr></table>
    <input type="hidden" name="user_id" value="%d"/>
