@@ -21,11 +21,15 @@ from twisted.internet import defer
 from WebTemplates import WebTemplates
 from beppo.server.DBConnect import DBConnect
 from twisted.python import log
-from mx.DateTime import DateTime
+from mx.DateTime import DateTime, DateTimeDelta
+
 from psycopg import QuotedString
 from beppo.server.utils import getTranslatorFromSession
 from beppo.server.DBConnect import DBConnect
 from beppo.Constants import TUTOR, ADMIN
+
+#for debbugging
+from twisted.trial.util import deferredResult, deferredError
 
 LASTDAY_MIDNIGHT = 24 * 7 * 2
 INSTANT = 1
@@ -79,7 +83,7 @@ class WebSchedules(Resource):
         # 3) Si es Tutor, administra sus propios horarios
         elif session.kind == TUTOR:
             user_id = session.userId
-            msg = """<h2>""" + _('Seleccion de horarios') + """</h2>""" + _('Indica los horarios en los que te encuentras disponible.')
+            msg = """<h2>""" + _('Seleccion de horarios') + """</h2>""" + _('Indica los horarios (en tu hora local) en los que te encuentras disponible.')
         # La función que imprime el contenido, pero con otros argumentos
             self.printContent(request, d, user_id, msg)
         else:
@@ -99,12 +103,12 @@ class WebSchedules(Resource):
         if "submit" in request.args.keys():
             op = "delete from tutor_schedule where fk_tutor = %d"
             d.addCallback(lambda a: self.db.db.runOperation(op, (userId, )))
-            instants = self.packSchedule(request.args.get('sch', []), str(INSTANT))
-            for sched in instants:
-                d.addCallback(self.addSchedule, userId, sched, INSTANT)
-            precoords = self.packSchedule(request.args.get('sch', []), str(PRECOORD))
-            for sched in precoords:
-                d.addCallback(self.addSchedule, userId, sched, PRECOORD)
+
+            instants = self.packSchedule(request.args.get('sch', []), str(INSTANT), userId)
+
+            instants.addCallback(self.addSched, userId,INSTANT,d)
+            precoords = self.packSchedule(request.args.get('sch', []), str(PRECOORD), userId)
+            precoords.addCallback(self.addSched, userId,PRECOORD,d)
             d.addCallback(lambda a: request.write("""<div class="message"><h2>""" + _('Cambios guardados.') + """</h2>""" + _('Se guardaron los cambios correctamente') + """</div>"""))
         # 2) Se imprime un mensaje de bienvenida configurable
         d.addCallback(lambda a: request.write(msg))
@@ -113,8 +117,15 @@ class WebSchedules(Resource):
         # 4) Se imprime un formulario con los datos actualizados
         d.addCallback(self.printForm, request, userId)
         return d
+        
+    def addSched(self, tipoH, userId,TIPO,d):
+        for sched in tipoH:
+            d.addCallback(self.addSchedule, userId, sched, TIPO)
+        return d
+    
+        
 
-    def packSchedule(self, checks, kind):
+    def packSchedule(self, checks, kind, userId):
         try: # Mapeamos a integer y filtramos valores inadecuados
             checks = [int(chk[:-2]) for chk in checks
                       if chk[-1] == kind]
@@ -148,18 +159,22 @@ class WebSchedules(Resource):
                 scheds.append((start_time, end_time))
         # Convertimos a DateTime
 
-        #print "scheds: " +  repr(scheds[0])
+        d = self.queryOffset(userId)
+        d.addCallback(self.getSpans, scheds)
+        return d
 
+    def getSpans(self, rows, scheds):
         spans = []
-        # Elejimos mayo del 2005 porque el 1ero cae domingo.
         
-        ####VEEEERRRR
-        mktimestamp = lambda x: DateTime(2005, 5, 1 + x / 48, x % 48) / 2, x % ) * 30)
-        
+        # Elegimos mayo del 2005 porque el 1ero cae domingo.
+        #creamos la fecha considerando el timezone
+
+        mktimestamp = lambda x: DateTime(2005, 5, 1 + x / 48, (x % 48) / 2, (x % 2) * 30) - DateTimeDelta(0,rows[0][0])
         for sched in scheds:
-            print sched[0],sched[1]
-            spans.append((mktimestamp(sched[0]), mktimestamp(sched[1])))
+            spans.append((mktimestamp(sched[0]), mktimestamp(sched[1])))            
         return spans
+
+
 
     def unpackSchedule(self, rows):
         checks = [''] * LASTDAY_MIDNIGHT
@@ -173,12 +188,11 @@ class WebSchedules(Resource):
         return checks
 
     def requestScheduleData(self, data, userId):
-        d = defer.maybeDeferred(lambda:None)
-        d.addCallback(self.getOffset, userId)
+        d = self.queryOffset(userId)
         d.addCallback(self.addOffset, data, userId)
         return d
     
-    def getOffset(self, request, userId):
+    def queryOffset(self, userId):
          query1 = 'select timezone.gmtoffset from timezone, person where \
                   timezone.id = person.fk_timezone and person.id = %d'                
          return self.db.db.runQuery(query1, (userId, ))
@@ -202,6 +216,7 @@ class WebSchedules(Resource):
                      extract(minute from time_end - interval '%i hour'), schedule_type \
                      from tutor_schedule where fk_tutor = %d"
         of = abs(rows[0][0])
+        print "offset = %i" % of
         return self.db.db.runQuery(query, (of,of,of,of,of,of,userId,))
 
         
