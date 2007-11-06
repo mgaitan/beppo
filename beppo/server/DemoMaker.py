@@ -14,9 +14,9 @@ class DemoMaker(object):
     def createDemo(self):
         self.pas = sha.new('demo').hexdigest()
         query = "insert into person (kind, username, password, first_name, last_name, email, language, fk_timezone, demo) \
-         values (%i, %s, %s, 'demo', 'demo', 'demo@demo.org', 1, 2, True)" 
+         values (%i, %s, %s, %s, 'demo', 'demo@demo.org', 1, 2, True)" 
        
-        d = self.db.db.runOperation(query, (self.tipo, self.username,self.pas,))
+        d = self.db.db.runOperation(query, (self.tipo, self.username,self.pas,self.username))
         d.addErrback(self.printError)
         
         query = "select id from person where username = %s"

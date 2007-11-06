@@ -181,10 +181,19 @@ alt="Except Powered" /></a>
             info = WebGetUserInfo(DBConnect(), session)
             now = DateTime.now()
             d = info.getPAFromTutor(session.userId, now)
-        elif session.kind in [PUPIL, CLIENT]:
+        elif session.kind == CLIENT:
             # si es alumno o cliente, se imprimen las horas disponibles (de ai y pc)
             info = WebGetUserInfo(DBConnect(), session)
             d = info.getHours(session.kind, session.userId)
+        elif session.kind == PUPIL:
+            #VER !!! ----------------------------------
+            #no imprime el cuadro de horas disponibles.
+            #------------------------------------------
+            info = WebGetUserInfo(DBConnect(), session)
+            d = info.getHours(session.kind, session.userId)
+            #tambien se imprimen la agenda de clases precoordinadas
+            now = DateTime.now()
+            d.addCallback(lambda a: info.getPAFromPupil(session.userId, now))
         else:
             content += '<p>' + _('Aqui se muestra alguna informacion general como horas disponibles u horarios en los que se tienen clases, y algunos links utiles.  Por ejemplo, se puede ver la lista de') + ' <a href="/roominfo/">' + \
             _('salas disponibles.') + '</a>' + ' ' + _('o las') + ' ' + \

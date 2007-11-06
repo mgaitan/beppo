@@ -22,7 +22,6 @@ from WebTemplates import WebTemplates
 from beppo.server.DBConnect import DBConnect
 from twisted.python import log
 from mx.DateTime import DateTime, DateTimeDelta
-
 from psycopg import QuotedString
 from beppo.server.utils import getTranslatorFromSession
 from beppo.server.DBConnect import DBConnect
@@ -104,12 +103,14 @@ class WebSchedules(Resource):
             op = "delete from tutor_schedule where fk_tutor = %d"
             d.addCallback(lambda a: self.db.db.runOperation(op, (userId, )))
 
-            instants = self.packSchedule(request.args.get('sch', []), str(INSTANT), userId)
-
-            instants.addCallback(self.addSched, userId,INSTANT,d)
-            precoords = self.packSchedule(request.args.get('sch', []), str(PRECOORD), userId)
-            precoords.addCallback(self.addSched, userId,PRECOORD,d)
+            d.addCallback(lambda a: self.packSchedule(request.args.get('sch', []), str(INSTANT), userId))
+            #instants = self.packSchedule(request.args.get('sch', []), str(INSTANT), userId)
+            d.addCallback(self.addSched, userId,INSTANT)
+            
+            d.addCallback(lambda a: self.packSchedule(request.args.get('sch', []), str(PRECOORD), userId))
+            d.addCallback(self.addSched, userId,PRECOORD)
             d.addCallback(lambda a: request.write("""<div class="message"><h2>""" + _('Cambios guardados.') + """</h2>""" + _('Se guardaron los cambios correctamente') + """</div>"""))
+            
         # 2) Se imprime un mensaje de bienvenida configurable
         d.addCallback(lambda a: request.write(msg))
         # 3) Se buscan los datos nuevos en la base
@@ -118,10 +119,10 @@ class WebSchedules(Resource):
         d.addCallback(self.printForm, request, userId)
         return d
         
-    def addSched(self, tipoH, userId,TIPO,d):
+    def addSched(self, tipoH, userId,TIPO):
         for sched in tipoH:
-            d.addCallback(self.addSchedule, userId, sched, TIPO)
-        return d
+            self.addSchedule(userId, sched, TIPO)
+        return None
     
         
 
@@ -174,8 +175,6 @@ class WebSchedules(Resource):
             spans.append((mktimestamp(sched[0]), mktimestamp(sched[1])))            
         return spans
 
-
-
     def unpackSchedule(self, rows):
         checks = [''] * LASTDAY_MIDNIGHT
         for row in rows:
@@ -191,6 +190,11 @@ class WebSchedules(Resource):
         d = self.queryOffset(userId)
         d.addCallback(self.addOffset, data, userId)
         return d
+    
+    
+    #VER refactoring de estos metodos! 
+    #resolver el gmtoffset directamente en una consulta
+    # ver WebGetUserInfo para ejemplo
     
     def queryOffset(self, userId):
          query1 = 'select timezone.gmtoffset from timezone, person where \
@@ -218,8 +222,6 @@ class WebSchedules(Resource):
         of = abs(rows[0][0])
         print "offset = %i" % of
         return self.db.db.runQuery(query, (of,of,of,of,of,of,userId,))
-
-        
 
 
     def printForm(self, rows, request, userId):
@@ -295,7 +297,7 @@ function change_cell (tag) {
         request.write(string)
         return
 
-    def addSchedule(self, data, userId, sched, kind):
+    def addSchedule(self,userId, sched, kind):
         operation = "insert into tutor_schedule \
                     (fk_tutor, time_start, time_end, schedule_type) \
                     values (%d, %s, %s, %d)"

@@ -25,6 +25,7 @@ from beppo.server.utils import timezoneToString
 from beppo.Constants import CLIENT, PUPIL, ADMIN, TUTOR
 from beppo.Constants import DATETIME_FORMAT
 
+
 class WebGetUserInfo:
     _ = dummyTranslator
     """ QUERY: diccionario de consultas. una consulta para cada tipo de usuario.
@@ -131,37 +132,64 @@ class WebGetUserInfo:
            clases precoordinadas del tutor que terminen despues
            de date
         """
-        query = "select p2.id, p2.username, time_start, \
-                 time_end, s.name from person p, person p2, subject s, \
-                 prearranged_classes c where c.fk_tutor = p.id and \
+        query = "select p2.id, p2.username, time_start + t.gmtoffset*interval '1 hours', \
+                 time_end + t.gmtoffset*interval '1 hours', s.name from person p, person p2, subject s, \
+                 prearranged_classes c, timezone t where c.fk_tutor = p.id and \
                  c.fk_pupil = p2.id and c.fk_subject = s.id and \
-                 p.id = %d and time_end > '%s' order by time_start asc"
+                 p.id = %d and p.fk_timezone = t.id and time_end > '%s' order by time_start asc "
         d = self.db.db.runQuery(query, (userId, date))
-        d.addCallback(self._getPATable)
+        d.addCallback(self._getPATable, TUTOR)
         return d
+        
+    def getPAFromPupil(self, userId, date):
+        """Dado un userId de pupil, busca la informacion de las
+           clases precoordinadas del tutor que terminen despues
+           de date
+        """
+        query = "select p2.id, p2.username, time_start + t.gmtoffset*interval '1 hours', \
+                 time_end + t.gmtoffset*interval '1 hours', s.name  from person p, person p2, subject s, \
+                 prearranged_classes c, timezone t where c.fk_tutor = p2.id and \
+                 c.fk_pupil = p.id and c.fk_subject = s.id and \
+                 p.id = %d and p.fk_timezone = t.id and time_end > '%s' order by time_start asc "
+        d = self.db.db.runQuery(query, (userId, date))
+        d.addCallback(self._getPATable, PUPIL)
+        return d
+     
+        
 
-    def _getPATable(self, rows):
+    def _getPATable(self, rows, tipo):
         """toma la informacion de las clases precoordinadas de un tutor,
            y arma una tabla con esta informacion.
            El contenido de cada fila row de rows es:
-           row[0] = pupil id
-           row[1] = pupil username
+           row[0] = pupil/tutor id
+           row[1] = pupil/tutor username
            row[2] = pa time_start
            row[3] = pa time_end
            row[4] = subject name
+           row[5] = offset
         """
+        
         _ = self.session._
         if len(rows) == 0:
             table = '<div class="client_info">' + _('No tienes clases precoodinadas para estos dias. Recuerda revisar periodicamente tus horarios para no perder ninguna clase.') + '</div>'
         else:
-            msg = _('Aqui hay una lista de las clases precoordinadas que tienes en estos dias, junto con los alumnos que la tomaran. Recuerda presentarte con anticipacion a tus clases.')
+        
+            if tipo == PUPIL:
+                titleType = _('Tutor')
+                msg = _('Aqui hay una lista de las clases precoordinadas que tienes en estos dias, junto con el tutor que la dará. Recuerda presentarte con anticipacion a tus clases.')                
+            else:
+                titleType = _('Alumno')
+                msg = _('Aqui hay una lista de las clases precoordinadas que tienes en estos dias, junto con los alumnos que la tomaran. Recuerda presentarte con anticipacion a tus clases.')                                
             table = '<div class="spaced">' + msg + '</div>'
             table += '<table class="table_info" id="pa_info">'
             table += '<caption>' + _('Tus clases precoordinadas') + '</caption>'
+            
+        
+            
             table += """<tr>
         <th class="header_list">""" + _('Fecha inicio') + """</th>
         <th class="header_list">""" + _('Fecha fin') + """</th>
-        <th class="header_list">""" + _('Alumno') + """</th>
+        <th class="header_list">""" + titleType + """</th>
         <th class="header_list">""" + _('Materia') + """</th>
        </tr>"""
             for row in rows:

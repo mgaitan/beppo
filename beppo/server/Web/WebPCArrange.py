@@ -24,7 +24,7 @@ from twisted.python import log
 from beppo.server.utils import getTranslatorFromSession
 from beppo.Constants import PUPIL, ADMIN, PACLASS
 from WebSchedules import schedule_change_cell
-from mx.DateTime import today, DateTime
+from mx.DateTime import today, DateTime, DateTimeDelta
 
 LASTDAY_MIDNIGHT = 24 * 7 * 2
 
@@ -148,6 +148,9 @@ class WebPCArrangeCommon(Resource):
         base = today() + 3
         def mktimestamp(x):
             day = base + x / 48
+
+            #VER 
+            #incluir DateTimeDelta del userId
             return DateTime(day.year, day.month, day.day, (x % 48) / 2, (x % 2) * 30)
         for sched in scheds:
             spans.append((mktimestamp(sched[0]), mktimestamp(sched[1])))
@@ -199,7 +202,7 @@ class WebPCArrange1(WebPCArrangeCommon):
         return d
 
     def requestTutorSubjectData(self, data, request):
-        d = self.db.db.runQuery('select s.id, p.first_name, p.last_name from tutor t, person p, subject s, tutor_subject ts where t.id = p.id and ts.fk_tutor = t.id and ts.fk_subject = s.id order by s.id')
+        d = self.db.db.runQuery('select s.id, p.first_name, p.last_name, p.id from tutor t, person p, subject s, tutor_subject ts where t.id = p.id and ts.fk_tutor = t.id and ts.fk_subject = s.id order by s.id')
         d.addCallback(self.printJavascript, request)
         return d
 
@@ -284,7 +287,7 @@ class WebPCArrange2(WebPCArrangeCommon):
         # 2) Se imprime un mensaje de bienvenida configurable
         d.addCallback(lambda a: request.write(msg))
         # 3) Se buscan los datos en la base
-        d.addCallback(self.requestTutorData, request, sbj)
+        d.addCallback(self.requestTutorData, request, sbj, userId)
         # 4) Se imprime un formulario
         d.addCallback(self.printForm, request, userId, sbj)
         return d
@@ -294,8 +297,13 @@ class WebPCArrange2(WebPCArrangeCommon):
         return '<h2>' + _('Elige el Tutor') + '</h2><p>' + \
               _('Selecciona el tutor de la lista a continuacion.  Cada tutor indica los horarios en los que esta disponible para dar clases.') + '</p>'
 
-    def requestTutorData(self, data, request, sbj):
-         d = self.db.db.runQuery('select p.id, p.first_name, p.last_name, tsch.time_start, tsch.time_end from tutor t, person p, tutor_subject ts, tutor_schedule tsch where t.id = p.id and ts.fk_tutor = t.id and tsch.fk_tutor = t.id and ts.fk_subject = %d and tsch.schedule_type = %s order by t.id', (sbj, PACLASS))
+    def requestTutorData(self, data, request, sbj,userId):
+         query = "SELECT p.id, p.first_name, p.last_name, tsch.time_start + tz.gmtoffset*interval '1 hours', \
+                 tsch.time_end + tz.gmtoffset*interval '1 hours'  FROM tutor t, person p, tutor_subject ts, \
+                 tutor_schedule tsch, timezone tz, person p2 WHERE t.id = p.id AND ts.fk_tutor = t.id \
+                 AND tsch.fk_tutor = t.id AND ts.fk_subject = %d AND tz.id = p2.fk_timezone\
+                 AND tsch.schedule_type = %s AND p2.id = %d ORDER BY t.id"    
+         d = self.db.db.runQuery(query, (sbj, PACLASS, userId))
          d.addCallback(self.concoctScheduleData, request)
          return d
 
@@ -380,21 +388,37 @@ class WebPCArrange3(WebPCArrangeCommon):
         # 2) Se imprime un mensaje de bienvenida configurable
         d.addCallback(lambda a: request.write(msg))
         # 3) Se buscan los datos en la base
-        d.addCallback(self.requestScheduleData, tutor)
+        d.addCallback(self.requestScheduleData, tutor, userId)
         # 4) Se imprime un formulario
         d.addCallback(self.printForm, request, userId, sbj, tutor)
         return d
 
 
-    def requestScheduleData(self, data, tutor):
-         d = self.db.db.runQuery('select time_start, time_end from tutor_schedule where fk_tutor = %d and schedule_type = %d', (tutor, PACLASS))
-         d.addCallback(self.requestCommitments, tutor)
-         return d
+    def requestScheduleData(self, data, tutor, userId):
+        """devuelve los lapsos de tiempo disponibles de PC para el tutor indicado
+        considerando el gmtoffset del userId.
+        El orden de las columnas es:  time_start+offset| time_end+offset """
 
-    def requestCommitments(self, rows, tutor):
-         d = self.db.db.runQuery("select time_start, time_end from prearranged_classes where fk_tutor = %d and time_end > current_date + interval '3 days' and time_start < current_date + interval '10 days'", (tutor,))
-         d.addCallback(lambda x, y: (x,y), rows)
-         return d
+        query = "SELECT time_start + tz.gmtoffset * interval '1 hours', \
+                 time_end + tz.gmtoffset * interval '1 hours'  FROM \
+                 tutor_schedule, person, timezone tz WHERE \
+                 fk_tutor = %d and schedule_type = %s AND person.id = %d \
+                 AND person.fk_timezone = tz.id"
+        d = self.db.db.runQuery(query, (tutor, PACLASS, userId))
+        d.addCallback(self.requestCommitments, tutor, userId)
+        return d
+
+    def requestCommitments(self, rows, tutor, userId):
+        query = "SELECT time_start + tz.gmtoffset*interval '1 hours', \
+                 time_end + tz.gmtoffset*interval '1 hours' FROM \
+                 prearranged_classes, timezone tz WHERE fk_tutor = %d \
+                 AND time_end > current_date + interval '3 days' \
+                 AND time_start < current_date + interval '10 days' \
+                 AND person.id = %d AND person.fk_timezone = tz.id "
+                 
+        d = self.db.db.runQuery(query, (tutor,userId))
+        d.addCallback(lambda x, y: (x,y), rows)
+        return d
 
     def unpackSchedule(self, data):
         checks = ['u'] * LASTDAY_MIDNIGHT
