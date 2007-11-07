@@ -564,7 +564,7 @@ class WhiteBoard(Canvas):
         elif kind == SYMBOL:
             newItem = self.createImg(points, width)
     	elif kind == GRAPH:
-    	    newItem = self.createGraph(points, outline, fill, width)
+    	    newItem = self.createGraph(points, outline)
 	    
         return newItem
     

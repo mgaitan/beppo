@@ -411,7 +411,7 @@ class WebPCArrange3(WebPCArrangeCommon):
     def requestCommitments(self, rows, tutor, userId):
         query = "SELECT time_start + tz.gmtoffset*interval '1 hours', \
                  time_end + tz.gmtoffset*interval '1 hours' FROM \
-                 prearranged_classes, timezone tz WHERE fk_tutor = %d \
+                 prearranged_classes, person, timezone tz WHERE fk_tutor = %d \
                  AND time_end > current_date + interval '3 days' \
                  AND time_start < current_date + interval '10 days' \
                  AND person.id = %d AND person.fk_timezone = tz.id "

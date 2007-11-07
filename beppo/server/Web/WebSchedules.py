@@ -28,7 +28,6 @@ from beppo.server.DBConnect import DBConnect
 from beppo.Constants import TUTOR, ADMIN
 
 #for debbugging
-from twisted.trial.util import deferredResult, deferredError
 
 LASTDAY_MIDNIGHT = 24 * 7 * 2
 INSTANT = 1
