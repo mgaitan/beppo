@@ -307,6 +307,7 @@ class WebPCArrange2(WebPCArrangeCommon):
          d.addCallback(self.concoctScheduleData, request)
          return d
 
+
     def concoctScheduleData(self, rows, request):
          string = ''
          current = None
@@ -547,8 +548,10 @@ class WebPCArrange4(WebPCArrangeCommon):
 
 
     def requestExplanationData(self, data, tutor, sbj):
-         d = self.db.db.runQuery('select first_name, last_name, name from person, subject where person.id = %d and subject.id = %d', (tutor, sbj))
-         return d
+        query = "SELECT first_name, last_name, name from person, subject \
+                WHERE person.id = %d and subject.id = %d"
+        d = self.db.db.runQuery(query,  (tutor, sbj))
+        return d
 
     def printForm(self, data, request, userId, tutor, sbj, scheds, checks):
         _ = request.getSession()._
@@ -586,19 +589,29 @@ class WebPCArrange5(WebPCArrangeCommon):
     def checkArgs(self, data, tutor, pupil, sbj, scheds, checks):
         # Revisa que el tutor, la materia y el alumno existan y que el
         # tutor sepa dar la materia en cuestion
-        d = self.db.db.runQuery('select tutor.id from tutor, pupil, subject, ' \
-            'tutor_subject where tutor.id = %d and subject.id = %d and ' \
-            'pupil.id = %d and tutor_subject.fk_tutor = %d and ' \
-            'tutor_subject.fk_subject = %d', (tutor, sbj, pupil, tutor, sbj))
+        query = "SELECT tutor.id FROM tutor, pupil, subject,  \
+            tutor_subject WHERE tutor.id = %d and subject.id = %d and  \
+            pupil.id = %d and tutor_subject.fk_tutor = %d and  \
+            tutor_subject.fk_subject = %d "
+        d = self.db.db.runQuery(query, (tutor, sbj, pupil, tutor, sbj))
         d.addCallback(self.checkArgs2, tutor, pupil, sbj, scheds, checks)
         return d
 
     def checkArgs2(self, data, tutor, pupil, sbj, scheds, checks):
         # Busca los horarios del tutor para ver que este disponible en
-        # los horarios solicitados
+        # los horarios solicitados. 
+        # contempla el offset del alumno, para comparar directamente con los rangos dados como
+        # parametros del request.  
+        
         if len(data) == 0: # Tutor, materia o alumno no existe, o ese tutor no está habilitado para esa materia
             return 1
-        d = self.db.db.runQuery('select time_start, time_end from tutor_schedule where fk_tutor = %d and schedule_type = %d', (tutor, PACLASS))
+        query = "SELECT time_start + timezone.gmtoffset*interval '1 hours', \
+                time_end + timezone.gmtoffset*interval '1 hours' FROM tutor_schedule, \
+                tutor, timezone, person WHERE tutor_schedule.fk_tutor = %d and \
+                tutor_schedule.schedule_type = %d AND timezone.id = person.fk_timezone \
+                AND person.id = %d and tutor.id = tutor_schedule.fk_tutor"
+                
+        d = self.db.db.runQuery(query, (tutor, PACLASS, pupil))
         d.addCallback(self.checkArgs3, tutor, pupil, sbj, scheds, checks)
         return d
 

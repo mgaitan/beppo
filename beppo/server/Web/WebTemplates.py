@@ -15,17 +15,19 @@
 # along with Beppo; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-from beppo.Constants import TUTOR, ADMIN, CLIENT, PUPIL
+from beppo.Constants import TUTOR, ADMIN, CLIENT, PUPIL, FACTOR_CANCELED_HOURS
 from WebGetUserInfo import WebGetUserInfo
 from beppo.server.DBConnect import DBConnect
 from mx import DateTime
 from twisted.internet import defer
+from DBDelete import DBDelete
 
 class WebTemplates:
     def __init__(self, title=''):
         self.title = title
 
     def headers(self, session, title='', header=''):
+        _ = session._
         if title == '':
             title = self.title
         return """<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
@@ -188,6 +190,7 @@ alt="Except Powered" /></a>
         elif session.kind == PUPIL:
             #VER !!! ----------------------------------
             #no imprime el cuadro de horas disponibles.
+            # razon: el segundo defered es un string que sobreescribe al primero (no se concatenan). 
             #------------------------------------------
             info = WebGetUserInfo(DBConnect(), session)
             d = info.getHours(session.kind, session.userId)

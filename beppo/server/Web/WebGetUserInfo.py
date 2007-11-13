@@ -23,8 +23,7 @@ from beppo.server.DBConnect import DBConnect
 from beppo.server.utils import dummyTranslator
 from beppo.server.utils import timezoneToString
 from beppo.Constants import CLIENT, PUPIL, ADMIN, TUTOR
-from beppo.Constants import DATETIME_FORMAT
-
+from beppo.Constants import DATETIME_FORMAT, FACTOR_CANCELED_HOURS
 
 class WebGetUserInfo:
     _ = dummyTranslator
@@ -136,18 +135,20 @@ class WebGetUserInfo:
                  time_end + t.gmtoffset*interval '1 hours', s.name from person p, person p2, subject s, \
                  prearranged_classes c, timezone t where c.fk_tutor = p.id and \
                  c.fk_pupil = p2.id and c.fk_subject = s.id and \
-                 p.id = %d and p.fk_timezone = t.id and time_end > '%s' order by time_start asc "
+                 p.id = %d and p.fk_timezone = t.id and time_end AT TIME ZONE 'Z'  > '%s' \
+                 order by time_start asc "
         d = self.db.db.runQuery(query, (userId, date))
         d.addCallback(self._getPATable, TUTOR)
         return d
         
     def getPAFromPupil(self, userId, date):
+        _ = self.session._
         """Dado un userId de pupil, busca la informacion de las
            clases precoordinadas del tutor que terminen despues
            de date
         """
         query = "select p2.id, p2.username, time_start + t.gmtoffset*interval '1 hours', \
-                 time_end + t.gmtoffset*interval '1 hours', s.name  from person p, person p2, subject s, \
+                 time_end + t.gmtoffset*interval '1 hours', s.name, c.id  from person p, person p2, subject s, \
                  prearranged_classes c, timezone t where c.fk_tutor = p2.id and \
                  c.fk_pupil = p.id and c.fk_subject = s.id and \
                  p.id = %d and p.fk_timezone = t.id and time_end > '%s' order by time_start asc "
@@ -155,9 +156,7 @@ class WebGetUserInfo:
         d.addCallback(self._getPATable, PUPIL)
         return d
      
-        
-
-    def _getPATable(self, rows, tipo):
+    def _getPATable(self, rows, tipo,):
         """toma la informacion de las clases precoordinadas de un tutor,
            y arma una tabla con esta informacion.
            El contenido de cada fila row de rows es:
@@ -166,12 +165,13 @@ class WebGetUserInfo:
            row[2] = pa time_start
            row[3] = pa time_end
            row[4] = subject name
-           row[5] = offset
+           row[5] = id de la clase precoordinada. 
+
         """
         
         _ = self.session._
         if len(rows) == 0:
-            table = '<div class="client_info">' + _('No tienes clases precoodinadas para estos dias. Recuerda revisar periodicamente tus horarios para no perder ninguna clase.') + '</div>'
+            return '<div class="client_info">' + _('No tienes clases precoodinadas para estos dias. Recuerda revisar periodicamente tus horarios para no perder ninguna clase.') + '</div>'
         else:
         
             if tipo == PUPIL:
@@ -187,21 +187,45 @@ class WebGetUserInfo:
         
             
             table += """<tr>
-        <th class="header_list">""" + _('Fecha inicio') + """</th>
-        <th class="header_list">""" + _('Fecha fin') + """</th>
-        <th class="header_list">""" + titleType + """</th>
-        <th class="header_list">""" + _('Materia') + """</th>
-       </tr>"""
+                    <th class="header_list">""" + _('Fecha inicio') + """</th>
+                    <th class="header_list">""" + _('Fecha fin') + """</th>
+                    <th class="header_list">""" + titleType + """</th>
+                    <th class="header_list">""" + _('Materia') + "</th>"
+            if tipo == PUPIL: 
+                table += """<th class="header_list"></th>"""
+                js = """   <script type="text/javascript">
+                        function del_confirm(clase){
+                    return confirm(" """ + _('Esta seguro de cancelar la clase') + """ "+clase+" ?  Se le devolverá el %d%% de sus horas");
+                    }
+                    </script>
+                """ % int(FACTOR_CANCELED_HOURS*100)
+            else: 
+                js = ""
+                
+            table += "</tr>"
             for row in rows:
                 start = row[2].Format(DATETIME_FORMAT)
                 end = row[3].Format(DATETIME_FORMAT)
-                table += """<tr class='row_list'>
-    <td> %s </td>
-    <td> %s </td>
-    <td><a href="pupil_info?user_id=%d"> %s </a></td>
-    <td> %s </td></tr>""" % (start, end, row[0], row[1], row[4])
+                if tipo == PUPIL: 
+                    link = "id"
+                    delete = """<td class="row_list"><a href="/lala" 
+                    class="link_image" onclick="return del_confirm('%s')"> 
+                    <img src="/static/graphics/delete.gif" width="16" 
+                    height="16" + alt="%s" title="%s" /></a></td> """ % (row[5], _('Cancelar'), _('Cancelar esta clase'), ) 
+                    
+                else:
+                    link = "href"
+                    delete = ""
+                    
+                table += """<tr class='row_list'> 
+                        <td> %s </td>
+                        <td> %s </td>
+                        <td><a %s="pupil_info?user_id=%d"> %s </a></td>
+                        <td> %s </td>""" % (start, end, link, row[0], row[1], row[4])
+                table += delete
             table += """</table>"""
-        return table
+         
+        return js + table
 
     def getHours(self, kind, userId):
         """Dado un userId (de alumno o cliente), busca la informacion de las horas

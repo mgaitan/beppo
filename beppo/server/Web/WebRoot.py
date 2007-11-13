@@ -89,6 +89,13 @@ class WebRoot(Resource):
             return static.File.childNotFound
 
     def render_GET(self, request):
+        #VEEER
+        #verificar borrado?
+        #de aqui se puede llamar a deletePA
+        keys = request.args.keys()
+        print keys
+        if "del" in keys:
+            print "lalala" + str(request.args['del'][0])
         d = defer.maybeDeferred(getTranslatorFromSession, request)
         d.addCallback(self.writeWelcomeMessage, request)
         return server.NOT_DONE_YET

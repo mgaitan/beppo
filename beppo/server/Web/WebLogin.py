@@ -63,9 +63,9 @@ class WebLogin(Resource):
             request.write("""<h2>""" + _('Inicio de Sesion') + """</h2> \
             <form action="" method="post"><div>""" + _('Nombre de Usuario') \
             + """: <label for="username"><input type="text" size="5" name="username" \
-            id="username" value="tutor"/></label><br/>""" + _('Contrasena') \
+            id="username" value="alumno"/></label><br/>""" + _('Contrasena') \
             + """: <label for="pwd"><input type="password" size="5" name="pwd" \
-            id="pwd" value="tutor"/></label><br/><input id="submit" type="submit" value=\"""" + \
+            id="pwd" value="alumno"/></label><br/><input id="submit" type="submit" value=\"""" + \
             _('Entrar!') + """\"/></div></form>""")
 
         d.addCallback(lambda a:request.write(self.template.finishPage(session)))
@@ -86,6 +86,10 @@ class WebLogin(Resource):
             session.lastname = row[4]
             d = defer.maybeDeferred(getTranslatorFromSession, request, refresh=True)
             d.addCallback(self.welcomeMessage, request, row[3], row[4])
+            
+          
+            
+            
             return d
         elif len(rows) == 0:
             request.write(self.template.startPage(session))

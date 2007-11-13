@@ -46,7 +46,7 @@ POST_PROCESS = 9
 
 #Formato de fecha
 DATE_FORMAT = "%d/%m/%Y" #dd/mm/aaaa
-DATETIME_FORMAT = "%d/%m/%Y %H:%M:%S" # dd/mm/aaaa hh:mm:ss
+DATETIME_FORMAT = "%a %d/%m/%Y %H:%M:%S" # dd/mm/aaaa hh:mm:ss
 HOUR_FORMAT = "%H:%M" # hh:mm
 
 #Schedule types
@@ -155,3 +155,6 @@ statusMsg = {IN_QUEUE:_("En cola"), IN_CLASS:_("En clase"), IN_VIEW:_("Observado
 #Horas de Modo Demo
 DEMO_AI = 20.0
 DEMO_PC = 20.0
+
+#Factor de devolucion  de horas para PA canceladas
+FACTOR_CANCELED_HOURS = 0.9
