@@ -44,6 +44,8 @@ from WebSendMail import WebSendMail
 from WebEditAdmin import WebEditAdmin
 from twisted.web import static, server
 from beppo.server.DBConnect import DBConnect
+from DBDelete import DBDelete
+from psycopg import QuotedString
 from twisted.python import log
 
 class WebRoot(Resource):
@@ -89,16 +91,30 @@ class WebRoot(Resource):
             return static.File.childNotFound
 
     def render_GET(self, request):
-        #VEEER
-        #verificar borrado?
-        #de aqui se puede llamar a deletePA
+
+        #verifico el parametro get por si hay que borrar una clase. 
+        
+
         keys = request.args.keys()
-        print keys
         if "del" in keys:
-            print "lalala" + str(request.args['del'][0])
+            d = defer.maybeDeferred(lambda: None)
+            alumno = request.getSession().userId
+            erase = DBDelete(self.db)
+            clase = int(request.args['del'][0])
+            d.addCallback(lambda a: erase.deletePA(clase, alumno)) #borramos la cosa.
+            
+            #falta imprimir mensaje de operacion correcta
+            #como llego a la funcion de internacionalizacion? 
+            
+            #d.addCallback(lambda a: request.write('<div class="message">' + \
+            #    _('La clase se ha cancelado correctamente') \
+            #    + '</div>'))
+            
         d = defer.maybeDeferred(getTranslatorFromSession, request)
         d.addCallback(self.writeWelcomeMessage, request)
         return server.NOT_DONE_YET
+
+
 
     def writeWelcomeMessage(self, trans, request):
         _ = trans

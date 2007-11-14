@@ -195,7 +195,7 @@ class WebGetUserInfo:
                 table += """<th class="header_list"></th>"""
                 js = """   <script type="text/javascript">
                         function del_confirm(clase){
-                    return confirm(" """ + _('Esta seguro de cancelar la clase') + """ "+clase+" ?  Se le devolverá el %d%% de sus horas");
+                    return confirm(" """ + _('Esta seguro de cancelar la clase') + """ ?\\n  Se le devolverá el %d%% de sus horas");
                     }
                     </script>
                 """ % int(FACTOR_CANCELED_HOURS*100)
@@ -208,11 +208,10 @@ class WebGetUserInfo:
                 end = row[3].Format(DATETIME_FORMAT)
                 if tipo == PUPIL: 
                     link = "id"
-                    delete = """<td class="row_list"><a href="/lala" 
-                    class="link_image" onclick="return del_confirm('%s')"> 
+                    delete = """<td class="row_list"><a href="/?del=%d" 
+                    class="link_image" onclick="return del_confirm('')"> 
                     <img src="/static/graphics/delete.gif" width="16" 
                     height="16" + alt="%s" title="%s" /></a></td> """ % (row[5], _('Cancelar'), _('Cancelar esta clase'), ) 
-                    
                 else:
                     link = "href"
                     delete = ""

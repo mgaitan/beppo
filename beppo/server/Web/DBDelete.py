@@ -23,6 +23,7 @@ from beppo.server.DBConnect import DBConnect
 from beppo.server.utils import getTranslatorFromSession, dummyTranslator
 from beppo.server.utils import timezoneToString
 from beppo.Constants import CLIENT, PUPIL, ADMIN, TUTOR, FACTOR_CANCELED_HOURS
+from twisted.trial.util import deferredResult, deferredError #for testing purpose only
 
 class DBDelete:
     # Clase para el borrado de la base de datos de los usuarios y materias
@@ -81,21 +82,22 @@ class DBDelete:
     def deletePA(self, id, pupil):
         """Verifica que el id corresponda con el usuario, devuelve las horas PA y 
         Borra la clase precoordinada por el alumno."""
-        d = self.db.db.runQuery("select * from prearranged_classes where id=%d and fk_pupil=%d", (id,pupil))
+        d = self.db.db.runQuery("select * from prearranged_classes where id=%d and fk_pupil=%d", (id,pupil,))
         d.addCallback(self._deletePA1, id, pupil)
         return d
-    def _deletePA1(self, clase, id, pupil):
-        if len(clase)<=0: #la clase no pertenece a este alumno o no existe
-            print "la clase no pertenece a este alumno o no existe" 
-            d = False
+        
+    def _deletePA1(self, rows, id, pupil):
+        if rows[0][0]!=id: #la clase no pertenece a este alumno o no existe
+            d = defer.maybeDeferred(lambda: 2)
+            return d            
         else:
-            d = self.db.db.runQuery("select extract(epoch from time_end - time_start)/3600 from  prearranged_classes where id=%d", (id))
+            d = self.db.db.runQuery("select extract(epoch from time_end - time_start)/3600 from  prearranged_classes where id=%d", (id,))
             d.addCallback(self._deletePA2, id, pupil)
         return d
+        
     def _deletePA2(self, duracion, id, pupil):
-        print "duracion = " + str(duracion[0][0])
-        d = self.db.db.runOperation("update pupil set pc_available=%f + \
-        (select pc_available from pupil where id=%d) where id=%d", (FACTOR_CANCELED_HOURS*duracion[0][0], id))
+        #print duracion[0][0]
+        d = self.db.db.runOperation("update pupil set pc_available=pc_available + %f where id=%d", (FACTOR_CANCELED_HOURS*duracion[0][0], pupil,))
         d.addCallback(self._deletePA3, id, pupil)
         return d
     def _deletePA3(self, ok, id, pupil):

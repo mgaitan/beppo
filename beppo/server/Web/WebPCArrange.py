@@ -637,8 +637,10 @@ class WebPCArrange5(WebPCArrangeCommon):
     def checkArgs5(self, tutor, pupil, sbj, scheds):
         # Revisa que el alumno tenga horas suficientes
         total = sum([sched[1] - sched[0] for sched in scheds]).hours
-        print "\nTotal:", total
-        d = self.db.db.runQuery("select pc_available >= %f from pupil where id = %d", (total, pupil))
+        query = "select pc_available >= %f, timezone.gmtoffset \
+                from pupil, person, timezone WHERE pupil.id = %d AND \
+                person.id = pupil.id AND person.fk_timezone = timezone.id"
+        d = self.db.db.runQuery(query, (total, pupil))
         d.addCallback(self.removeHours, tutor, pupil, sbj, scheds, total)
         return d
 
@@ -647,15 +649,19 @@ class WebPCArrange5(WebPCArrangeCommon):
         if data[0][0] == False: # No cuenta con horas suficientes de PC
             return 4
         d = self.db.db.runOperation("update pupil set pc_available = pc_available - %f where id = %d", (total, pupil))
-        d.addCallback(self.finallyArrange, tutor, pupil, sbj, scheds)
+        d.addCallback(self.finallyArrange, tutor, pupil, sbj, scheds, data[0][1])
         return d
 
-    def finallyArrange(self, data, tutor, pupil, sbj, scheds):
+    def finallyArrange(self, data, tutor, pupil, sbj, scheds, offset):
+        #VER!
+        #CORREGIR INSERT PARA QUE LO META EN UTC
         if len(scheds) > 0:
             sched = scheds.pop()
-            d = self.db.db.runOperation("insert into prearranged_classes (fk_tutor, fk_pupil, time_start, time_end, fk_subject) values (%d, %d, '%s', '%s', %d)", (tutor, pupil, sched[0], sched[1], sbj))
-            print "insert into prearranged_classes (fk_tutor, fk_pupil, time_start, time_end, fk_subject) values (%d, %d, '%s', '%s', %d)\n\n" % (tutor, pupil, sched[0], sched[1], sbj)
-            d.addCallback(self.finallyArrange, tutor, pupil, sbj, scheds)
+            query = "insert into prearranged_classes (fk_tutor, fk_pupil, time_start, time_end, fk_subject) \
+                     values (%d, %d, '%s', '%s', %d)"    
+             
+            d = self.db.db.runOperation(query, (tutor, pupil, sched[0]-DateTimeDelta(0,offset), sched[1]-DateTimeDelta(0,offset), sbj))
+            d.addCallback(self.finallyArrange, tutor, pupil, sbj, scheds,offset)
             return d
         else:
             return 0
