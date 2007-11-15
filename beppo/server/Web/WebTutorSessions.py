@@ -29,6 +29,7 @@ from beppo.Constants import NORMAL, TUTOR_ENTER, PUPIL_ENTER, TUTOR_END, PUPIL_E
 from beppo.Constants import TUTOR_QUIT, SERVER_RESTART, QUESTION_ANSWERED
 from beppo.Constants import DECIDING, ACCEPTED, REJECTED, QUESTION_NOT_ANSWERED
 from beppo.Constants import POST_PROCESS, CORRECTED, NOT_CORRECTED
+from beppo.Constants import ITEMS_PAG
 from beppo.server.DBConnect import DBConnect
 from mx import DateTime
 
@@ -104,22 +105,53 @@ class WebTutorSessions(Resource):
     def printContent(self, request, d, user_id, msg):
         """Consulta las sesiones del tutor user_id en la
          base de datos y las manda a imprimir
-        """
+         """
+        try:
+            pag = int(request.args['pag'][0])
+                    
+        except:
+            pag = 0
+        
         d.addCallback(lambda a: request.write(msg))
         now = DateTime.now()
         query =  """select s.session_type, s.time_start, s.time_end, s.error_code, \
-         p.username, p.id from session s left join person p on (p.id = s.fk_pupil) \
-         where fk_tutor = %d and s.time_end < '%s' order by time_start asc"""
-        d.addCallback(lambda a: self.db.db.runQuery(query, (user_id, now)))
-        d.addCallback(self.printData, request)
+         p.username, p.id, (select count(*) from session s left join person p on (p.id = s.fk_pupil) \
+         where fk_tutor = %d and s.time_end < '%s') from session s left join person p on (p.id = s.fk_pupil) \
+         where fk_tutor = %d and s.time_end < '%s' order by time_start desc LIMIT %d OFFSET %d"""
+        d.addCallback(lambda a: self.db.db.runQuery(query, (user_id, now,user_id, now,ITEMS_PAG, ITEMS_PAG*pag)))
+        d.addCallback(self.printData, request, pag)
         return d
 
-    def printData(self, rows, request):
+    def printData(self, rows, request,pag):
         _ = request.getSession()._
+                    
         if len(rows) == 0:
             string = _('No se registran sesiones') + '<br/>'
+            def paginacion(): pass
         else:
-            string = _('Informacion de %d sesiones:') % len(rows)
+            total = rows[0][-1:][0] #la ultima columna es el total de datos para la consulta
+            try:            
+                user_id = int(request.args['user_id'][0])
+            except:
+                pass
+                            
+            def paginacion():
+                actual = pag
+                if total > ITEMS_PAG:
+                    request.write('<div style="text-align: left;"> <strong>' + _('Página:') + '</strong>')
+                    for pagina in range(int(total/ITEMS_PAG)+1):
+                        tip = "href"
+                        if pagina == actual:
+                            tip = "id"
+                        link = "<a %s='/tutor_sessions?user_id=%d&pag=%d'>%d</a>&nbsp;" % (tip,user_id,pagina,pagina+1)
+                        request.write(link)
+                    request.write('</div><br />')
+                   
+            
+
+
+        
+            string = _('Mostrando %d a %d de %d sesiones:') % (ITEMS_PAG*pag+1, ITEMS_PAG*(pag+1), total)
             string += """
 <table class="table_list" id="sessions">
  <tr>
@@ -151,6 +183,7 @@ class WebTutorSessions(Resource):
 </tr>""" % (style, session_type, start, end, diff, reason, pupil_id, PUPIL, pupil)
             string += """</table>"""
         request.write(string)
+        paginacion()
         return
 
     def dateDiffFormat(self, date):

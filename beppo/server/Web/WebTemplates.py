@@ -188,15 +188,11 @@ alt="Except Powered" /></a>
             info = WebGetUserInfo(DBConnect(), session)
             d = info.getHours(session.kind, session.userId)
         elif session.kind == PUPIL:
-            #VER !!! ----------------------------------
-            #no imprime el cuadro de horas disponibles.
-            # razon: el segundo defered es un string que sobreescribe al primero (no se concatenan). 
-            #------------------------------------------
+
             info = WebGetUserInfo(DBConnect(), session)
             d = info.getHours(session.kind, session.userId)
             #tambien se imprimen la agenda de clases precoordinadas
-            now = DateTime.now()
-            d.addCallback(lambda a: info.getPAFromPupil(session.userId, now))
+            d.addCallback(self._getPAFromPupil, session.userId, info)
         else:
             content += '<p>' + _('Aqui se muestra alguna informacion general como horas disponibles u horarios en los que se tienen clases, y algunos links utiles.  Por ejemplo, se puede ver la lista de') + ' <a href="/roominfo/">' + \
             _('salas disponibles.') + '</a>' + ' ' + _('o las') + ' ' + \
@@ -204,6 +200,13 @@ alt="Except Powered" /></a>
             _('Tarifas actuales') + '</a></p>'
             d = defer.maybeDeferred(lambda: content)
         return d
+    
+    def _getPAFromPupil(self, a, userId, info):
+        now = DateTime.now()
+        d = info.getPAFromPupil(userId, now)
+        d.addCallback(lambda b: a + b)
+        return d
+
 
     def notFound(self, session):
         _ = session._

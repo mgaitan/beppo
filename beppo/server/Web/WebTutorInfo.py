@@ -26,6 +26,7 @@ from beppo.Constants import TUTOR, ADMIN, DATE_FORMAT
 from beppo.Constants import IACLASS, PACLASS, EXTRA_IACLASS, OFFLINE_QUESTION
 from beppo.Constants import WAITING, EXTRA_WAITING, ABSENT
 from beppo.Constants import POST_PROCESS, CORRECTED, NOT_CORRECTED
+from beppo.Constants import ITEMS_PAG
 from mx import DateTime
 
 class WebTutorInfo(Resource):
@@ -94,35 +95,77 @@ class WebTutorInfo(Resource):
         a imprimir
         """
         args = self.checkRequest(d, request)
+        try:
+            pag = int(request.args['pag'][0])
+        except:
+            pag = 0
+            
         d.addCallback(lambda a: request.write(msg))
         d.addCallback(lambda a: self.printForm(request, args))
-        d.addCallback(lambda a: self.requestData(request, args['start'], args['end']))
-        d.addCallback(self.printData, request)
+        d.addCallback(lambda a: self.requestData(request, args['start'], args['end'],pag))
+        d.addCallback(self.printData, request,pag)
         return d
 
 
-    def requestData(self, request, time_start, time_end):
+    def requestData(self, request, time_start, time_end, pag):
         """Consulta los datos de los tutores en la tabla session con los límites de
         fecha dados por time_start y time_end
         """
-
+        
         query = "select p.username, p.id, sum(dmin('%s', s.time_end) - \
-          dmax('%s', s.time_start)) as total, s.session_type from person p, \
+          dmax('%s', s.time_start)) as total, s.session_type, (select count(*) \
+          from person p, tutor t where p.id = t.id) from person p, \
           tutor t left join session s on (s.fk_tutor = t.id and \
           s.time_start < '%s' and s.time_end > '%s') where t.id = p.id \
           group by p.id, p.username, s.session_type \
           order by username, session_type"
-
+        
+        
+        query += " LIMIT %d OFFSET %d" %  (ITEMS_PAG, ITEMS_PAG*pag)
         d = self.db.db.runQuery(query, ((time_end, time_start) * 2))
+        d.addCallback(self.requestTotal, time_start, time_end)
         return d
 
-    def printData(self, rows, request):
+    def requestTotal(self, rows, time_start, time_end):
+        """recupera los totales de TODOS los tutores en una lista session_type | total"""
+        
+        query = "select  s.session_type, extract(epoch from sum(dmin('%s', s.time_end) \
+            - dmax('%s', s.time_start))/3600 ) as total  from person p, tutor t join session s on \
+            (s.fk_tutor = t.id and s.time_start < '%s' and s.time_end > '%s') where \
+            t.id = p.id group by s.session_type order by s.session_type"
+        d = self.db.db.runQuery(query, ((time_end, time_start) * 2))
+        d.addCallback(lambda b: (rows, b))
+        return d
+
+    def printData(self, rowsAndTotales, request, pag):
         _ = request.getSession()._
+        
+        rows, totales = rowsAndTotales
+        colDatos = {}
+        for col in totales:
+            colDatos[col[0]] = col[1]
+        
         length = len(rows)
         string = ""
         if length == 0:
             string += _('No hay resultados disponibles') + '<br/>'
         else:
+            def paginacion():
+                total = rows[0][-1:][0] #la ultima columna es el total de datos para la consulta
+                try:            
+                    actual = pag
+                except:
+                    actual = 0
+                if total > ITEMS_PAG:
+                    request.write('<div> <strong>' + _('Página:') + '</strong>')
+                    for pagina in range(int(total/ITEMS_PAG)+1):
+                        tip = "href"
+                        if pagina == actual:
+                            tip = "id"
+                        link = "<a %s='/tutor_info?pag=%d'>%d</a>&nbsp;" % (tip,pagina,pagina+1)
+                        request.write(link)
+                    request.write('</div><br />')
+
             #averiguo cuantos usuarios distintos hay
             i = 0
             current = rows[0][0]
@@ -151,7 +194,7 @@ class WebTutorInfo(Resource):
                     j = j + 1
                     res[j][0] = (rows[curr_row][0], rows[curr_row][1])
 
-            string = _('Informacion de %d tutores:') % count + '<br/>'
+            #string = _('Informacion de %d tutores:') % count + '<br/>'
             string += '<table class="table_list"><tr class="header_list"> '
             string += '<th>' + _('Tutor') + '</th>'
             for i in self.session_types:
@@ -169,12 +212,23 @@ class WebTutorInfo(Resource):
                     string += '<td>%.2f hs.</td>' % data
                 string += '</tr>'
             string += '<tr class="last_row">'
-            string += '<td>' + _('Totales') + '</td>'
+            string += '<td>' + _('Subtotal') + '</td>'
             for i in self.session_types:
                 string += '<td>%.2f hs.</td>' % sum[i['code']]
-            string += '</tr></table>'
+            string += '</tr>'
+            
+            #imprimo los totales. 
+            string += '<tr class="last_row">'
+            string += '<td>' + _('Total') + '</td>'
+            for i in self.session_types:
+                if i['code'] in colDatos.keys():
+                    string += '<td>%.2f hs.</td>' % colDatos[i['code']]
+                else:
+                    string += '<td>%.2f hs.</td>' % 0.0               
 
+            string += '</tr></table>'
         request.write(string)
+        paginacion()
         return
 
     def dateFormat(self, date):

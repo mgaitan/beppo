@@ -158,3 +158,6 @@ DEMO_PC = 20.0
 
 #Factor de devolucion  de horas para PA canceladas
 FACTOR_CANCELED_HOURS = 1.0
+
+#cantidad de items por pagina 
+ITEMS_PAG = 10

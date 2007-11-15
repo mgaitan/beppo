@@ -653,8 +653,6 @@ class WebPCArrange5(WebPCArrangeCommon):
         return d
 
     def finallyArrange(self, data, tutor, pupil, sbj, scheds, offset):
-        #VER!
-        #CORREGIR INSERT PARA QUE LO META EN UTC
         if len(scheds) > 0:
             sched = scheds.pop()
             query = "insert into prearranged_classes (fk_tutor, fk_pupil, time_start, time_end, fk_subject) \

@@ -24,6 +24,7 @@ from psycopg import QuotedString
 from DBDelete import DBDelete
 from beppo.server.utils import getTranslatorFromSession
 from beppo.Constants import TUTOR, PUPIL, ADMIN, CLIENT
+from beppo.Constants import ITEMS_PAG
 from beppo.server.DBConnect import DBConnect
 
 class WebListUsers(Resource):
@@ -102,32 +103,41 @@ class WebListUsers(Resource):
         y llama a printContent con el resultado de la busqueda
         """
         kind = int(request.args['kind'][0])
+        try:
+            pag = int(request.args['pag'][0])
+        except:
+            pag = 0
+        
         if kind == TUTOR:
-            query = "select tutor.id, username, first_name, last_name from tutor, \
-             person where tutor.id = person.id order by id asc"
-            d = self.db.db.runQuery(query)
+            cols = "tutor.id, username, first_name, last_name"
+            fromWhere = "from tutor, person where tutor.id = person.id"
+            order = "order by id asc"
         elif kind == PUPIL:
-            query = "select p.id, p1.username, p1.first_name, p1.last_name, \
-             p2.username, p.fk_client from person p1, person p2, pupil p \
-             where p.id = p1.id and p2.id = p.fk_client order by p.id asc"
-            d = self.db.db.runQuery(query)
+            cols = "p.id, p1.username, p1.first_name, p1.last_name, p2.username, p.fk_client"
+            fromWhere = "from person p1, person p2, pupil p where p.id = p1.id and p2.id = p.fk_client"
+            order = "order by p.id asc"
         elif kind == CLIENT:
-            query = "select client.id, username, first_name, \
+            cols = "client.id, username, first_name, \
              last_name, organization, client.ai_available, client.pc_available, \
-             count(pupil.id) from client left join pupil on \
+             count(pupil.id)"
+            fromWhere = "from client left join pupil on \
              (pupil.fk_client = client.id) left join person on (client.id = person.id) \
              group by client.id, person.username, person.first_name, person.last_name, \
-             client.organization, client.ai_available, client.pc_available \
-             order by id asc"
-            d = self.db.db.runQuery(query)
+             client.organization, client.ai_available, client.pc_available"
+            order = "order by id asc"
         elif kind == ADMIN:
-            query = "select person.id, username, first_name, last_name from person \
-             where kind = %s order by id asc"
-            d = self.db.db.runQuery(query, (ADMIN,))
+            cols = "person.id, username, first_name, last_name"
+            fromWhere = "from person  where kind = %s" % kind
+            order = "order by id asc"
         else: # kind desconocido
-            query = "select person.id, username, first_name, last_name from person \
-             where kind = %s order by id asc" % kind
-            d = self.db.db.runQuery(query, (kind,))
+            cols = "person.id, username, first_name, last_name"
+            fromWhere = "from person where kind = %s" % kind
+            order = "order by id asc" 
+        
+        cols += ", (SELECT count(*) %s)" % fromWhere
+        query = "SELECT %s %s %s LIMIT %d OFFSET %d" % (cols, fromWhere, order, ITEMS_PAG, ITEMS_PAG*pag)
+        print repr(query)
+        d = self.db.db.runQuery(query)            
         d.addCallback(self.printContent, kind, request)
         return d
 
@@ -137,6 +147,24 @@ class WebListUsers(Resource):
         """
         _ = request.getSession()._
         if len(rows) != 0:
+
+            def paginacion():
+                total = rows[0][-1:][0] #la ultima columna es el total de datos para la consulta
+                try:            
+                    actual = int(request.args['pag'][0])
+                except:
+                    actual = 0
+                if total > ITEMS_PAG:
+                    request.write('<div> <strong>' + _('Página:') + '</strong>')
+                    for pagina in range(int(total/ITEMS_PAG)+1):
+                        tip = "href"
+                        if pagina == actual:
+                            tip = "id"
+                        link = "<a %s='/list?kind=%d&pag=%d'>%d</a>&nbsp;" % (tip,kind,pagina,pagina+1)
+                        request.write(link)
+                    request.write('</div><br />')
+                    
+            
             request.write('<h2>' + _('Usuarios del sistema:') + '</h2>')
             if kind == TUTOR:
                 request.write("""
@@ -169,6 +197,7 @@ function del_confirm(tutor){
 <td class="row_list">%s</td>
 </tr>""" % (rows[i][0], TUTOR, rows[i][1], rows[i][3], rows[i][2]))
                 request.write('</table>')
+                paginacion()
                 request.write('<a href="/tutor"> ' + _('Agregar tutores') +'</a>')
 
             elif kind == PUPIL:
@@ -198,6 +227,7 @@ _('Modificar') + """\" title=\"""" + _('Modificar') + """\"/></a></td>
 <td class="row_list">%s</td>
 <td class="row_list">%s</td></tr>""" %(rows[i][0], PUPIL, rows[i][1], rows[i][3], rows[i][2], rows[i][4]))
                 request.write('</table>')
+                paginacion()
 
             elif kind == CLIENT:
                 request.write("""
@@ -254,6 +284,7 @@ function ask_hours(client, hour_type){
 <td class="row_list">%s</td>
 <td class="row_list"><a href="" class="link_image" onclick="ask_hours(\'%s\', \'pc\'); return false;"><img src="/static/graphics/schedule.gif" width="16" height="16" alt=\"""" % (self.hoursFormat(rows[i][5]), self.hoursFormat(rows[i][6]), rows[i][0]) + _('Asignar horas') + """\" title=\"""" + _('Asignar horas') + """\"/></a></td></tr>""")
                 request.write('</table>')
+                paginacion()
                 request.write('<a href="/client">' + _('Agregar clientes') + '</a>')
 
             elif kind == ADMIN:
@@ -273,6 +304,7 @@ function ask_hours(client, hour_type){
 <td class="row_list">%s</td>
 </tr>"""% (rows[i][0], ADMIN, rows[i][1], rows[i][3], rows[i][2]))
                 request.write('</table>')
+                paginacion()
 
             else:
                 for i in range(len(rows)):
