@@ -25,6 +25,7 @@ from psycopg import QuotedString
 from beppo.server.utils import getTranslatorFromSession
 from beppo.Constants import ADMIN
 from beppo.server.DBConnect import DBConnect
+from beppo.Constants import ITEMS_PAG
 
 class WebSubjectAdmin(Resource):
     def __init__(self):

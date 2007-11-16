@@ -23,7 +23,7 @@ from beppo.server.DBConnect import DBConnect
 from beppo.server.utils import getTranslatorFromSession, dummyTranslator
 from beppo.server.utils import timezoneToString
 from beppo.Constants import CLIENT, PUPIL, ADMIN, TUTOR, FACTOR_CANCELED_HOURS
-from twisted.trial.util import deferredResult, deferredError #for testing purpose only
+#from twisted.trial.util import deferredResult, deferredError #for testing purpose only
 
 class DBDelete:
     # Clase para el borrado de la base de datos de los usuarios y materias

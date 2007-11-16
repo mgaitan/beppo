@@ -305,6 +305,7 @@ function ask_hours(client, hour_type){
 </tr>"""% (rows[i][0], ADMIN, rows[i][1], rows[i][3], rows[i][2]))
                 request.write('</table>')
                 paginacion()
+                request.write('<a href="/editadmin"> ' + _('Agregar Administrador') +'</a>')            
 
             else:
                 for i in range(len(rows)):
@@ -312,6 +313,8 @@ function ask_hours(client, hour_type){
 
         else:
             request.write('<h2> ' + _('No hay usuarios de este tipo en el sistema') + '</h2>')
+        
+        
         request.write('<a href="/admin" id="back"> ' + _('Volver') + '</a>')
         return
 

@@ -149,6 +149,8 @@ class WebPupilInsert(Resource):
           ' %.1f' % row[0][1] + "</li></ul>"
         d = defer.maybeDeferred(lambda: request.write('<div class="client_info">' + \
           string + '</div>') or row)
+        d.addCallback(lambda a: row)
+        return d
 
 
     def printError(self, failure, request):
