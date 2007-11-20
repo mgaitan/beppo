@@ -150,22 +150,6 @@ class WebTutorInfo(Resource):
         if length == 0:
             string += _('No hay resultados disponibles') + '<br/>'
         else:
-            def paginacion():
-                total = rows[0][-1:][0] #la ultima columna es el total de datos para la consulta
-                try:            
-                    actual = pag
-                except:
-                    actual = 0
-                if total > ITEMS_PAG:
-                    request.write('<div> <strong>' + _('Página:') + '</strong>')
-                    for pagina in range(int(total/ITEMS_PAG)+1):
-                        tip = "href"
-                        if pagina == actual:
-                            tip = "id"
-                        link = "<a %s='/tutor_info?pag=%d'>%d</a>&nbsp;" % (tip,pagina,pagina+1)
-                        request.write(link)
-                    request.write('</div><br />')
-
             #averiguo cuantos usuarios distintos hay
             i = 0
             current = rows[0][0]
@@ -227,8 +211,29 @@ class WebTutorInfo(Resource):
                     string += '<td>%.2f hs.</td>' % 0.0               
 
             string += '</tr></table>'
+        
         request.write(string)
-        paginacion()
+        #PAGINACION
+        try:      
+            total = rows[0][-1:][0] #la ultima columna es el total de datos para la consulta
+            if total > ITEMS_PAG:
+                request.write('<div> <strong>' + _('Página:') + '</strong>')
+                if total % ITEMS_PAG == 0:
+                    una_mas = 0
+                else:
+                    una_mas = 1                
+                for pagina in range(int(total/ITEMS_PAG)+una_mas):
+                    tip = "href"
+                    if pagina == pag:
+                        tip = "id"
+                    link = "<a %s='/tutor_info?pag=%d'>%d</a>&nbsp;" % (tip,pagina,pagina+1)
+                    request.write(link)
+                request.write('</div><br />')
+        except IndexError:
+            pass
+        #FIN PAGINACION
+
+
         return
 
     def dateFormat(self, date):

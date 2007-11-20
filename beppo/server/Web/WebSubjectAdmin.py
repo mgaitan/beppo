@@ -70,6 +70,10 @@ class WebSubjectAdmin(Resource):
 
     def printContent(self, request, d, msg):
         # 1) Si se envían datos, se agrega
+        try:
+            pag = int(request.args['pag'][0])
+        except:
+            pag = 0        
         _ = request.getSession()._
         if "submit" in request.args.keys():
             op = "insert into subject (name) values (%s)"
@@ -89,16 +93,18 @@ class WebSubjectAdmin(Resource):
         # 2) Se imprime un mensaje de bienvenida configurable
         d.addCallback(lambda a: request.write(msg))
         # 3) Se buscan los datos nuevos en la base
-        op = "select s.id, s.name, count(fk_subject) from subject s \
+        op = "select s.id, s.name, count(fk_subject), (select count(*) from subject) from subject s \
               left join tutor_subject t on (s.id = t.fk_subject) \
               group by s.id, s.name order by name asc"
+              
+        op += " LIMIT %d OFFSET %d" %  (ITEMS_PAG, ITEMS_PAG*pag)              
         d.addCallback(lambda a: self.db.db.runQuery(op))
-        d.addCallback(self.printForm, request)
+        d.addCallback(self.printForm, request, pag)
         return d
 
 #return confirm("¿Está seguro de borrar la materia" + subject + "?\n (" + tutors + " " + "tutores la tienen como seleccionada)");
 
-    def printForm(self, rows, request):
+    def printForm(self, rows, request, pag):
         """recibe el resultado de una consulta de materias e imprime la tabla que las
            muestra y permite borrarlas. ademas imprime un formulario para agregar
            materias (y el codigo JavaScript de chequeo correspondiente)
@@ -152,6 +158,28 @@ function check_args(form){
 </form>
 """
         request.write(string)
+        #PAGINACION
+        try:        
+            total = rows[0][-1:][0] #la ultima columna es el total de datos para la consulta
+            print "total ", total
+            if total > ITEMS_PAG:
+                request.write('<div> <strong>' + _('Página:') + '</strong>')
+                if total % ITEMS_PAG == 0:
+                    una_mas = 0
+                else:
+                    una_mas = 1
+                for pagina in range((total/ITEMS_PAG) + una_mas):
+                    tip = "href"
+                    if pagina == pag:
+                        tip = "id"
+                    link = "<a %s='/subject_admin?pag=%d'>%d</a>&nbsp;" % (tip,pagina,pagina+1)
+                    request.write(link)
+                request.write('</div><br />')
+            #FIN PAGINACION
+        except IndexError:
+            pass        
+        
+        
         return
 
     def printSubjectDelete(self, result, request):
