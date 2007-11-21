@@ -411,12 +411,14 @@ class WhiteBoard(Canvas):
         itemId = item
         itemTag = self.gettags(item)
         kind = self._getItemKind(itemId)
-        if kind == INTEGRAL or kind == SQRT or kind == AXES:
+        if kind == INTEGRAL or kind == SQRT or kind == AXES or kind == GRAPH:
             itemId = int(itemTag[1][4:])
         return itemId
 
     def _getItemKind(self, item):
+        print item
         itemTag = self.gettags(item)
+        print itemTag
         kind = int(itemTag[0])
         return kind
 
@@ -612,7 +614,7 @@ class WhiteBoard(Canvas):
         self.itemconfig(newLine4, tags=(SQRT, tag, x1 - x0))
         return newLine2
 
-    def createGraph(self, points, color, width, foreignId=None):   
+    def createGraph(self, points, color, foreignId=None):   
         """recibe un area rectangular del canvas (definida en points) 
         y grafica la funcion respetando las coordenadas dadas""" 
         x0 = points[0]
@@ -627,7 +629,7 @@ class WhiteBoard(Canvas):
 
         dialog = GraphDialog(self.parent)
         
-        if hasattr(dialog, 'ret':
+        if hasattr(dialog, 'ret'):
             f1,minx,maxx,miny,maxy = dialog.ret
         else:
             return False

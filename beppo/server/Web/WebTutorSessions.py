@@ -150,8 +150,11 @@ class WebTutorSessions(Resource):
             
 
 
-        
-            string = _('Mostrando %d a %d de %d sesiones:') % (ITEMS_PAG*pag+1, ITEMS_PAG*(pag+1), total)
+            if total < ITEMS_PAG:
+                lim = total
+            else:
+                lim = ITEMS_PAG
+            string = _('Mostrando %d a %d de %d sesiones:') % (ITEMS_PAG*pag+1, lim*(pag+1), total)
             string += """
 <table class="table_list" id="sessions">
  <tr>

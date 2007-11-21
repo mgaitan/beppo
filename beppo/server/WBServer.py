@@ -386,11 +386,14 @@ class WBServer(pb.Viewable):
 
     def writeLog(self, roomId):
         """guarda el log del chat en un archivo"""
-        sessionId = self.sessions.sessionKey(roomId)
-        f = open(ARCHIVE_DIR + str(sessionId) + "-chat.txt", "w")
-        f.write(time.strftime('%x %X') + "\n\n")
-        f.write(self.wbRooms[roomId].logChat)
-        f.close()
+        try:
+		sessionId = self.sessions.sessionKey(roomId)
+        	f = open(ARCHIVE_DIR + str(sessionId) + "-chat.txt", "w")
+	        f.write(time.strftime('%x %X') + "\n\n")
+        	f.write(self.wbRooms[roomId].logChat)
+	        f.close()
+	except KeyError:
+		pass
 
 
             

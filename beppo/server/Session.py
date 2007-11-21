@@ -275,5 +275,9 @@ class SessionAdmin:
             self.newSession(roomId, kind, WAITING)
 
     def sessionKey(self, roomId):
-        session = self.openSessions[roomId]
-        return session.sessionKey()
+	print self.openSessions
+        try:
+		session = self.openSessions[roomId]
+		return session.sessionKey()
+	except KeyError:
+		return None
