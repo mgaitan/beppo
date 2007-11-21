@@ -25,10 +25,10 @@ class ScrolledWB:
     VIEWPORT_HEIGHT = 500
     def __init__(self, wbWidth=400, wbHeight=400, cliente=None):
         
-        self.frame = Frame(width=self.VIEWPORT_WIDTH, height=self.VIEWPORT_HEIGHT)
+        self.frame = Frame(width=self.VIEWPORT_WIDTH, height=self.VIEWPORT_HEIGHT, bg="#c098af")
         self.wb = WhiteBoard(self.frame, width=self.VIEWPORT_WIDTH, height=self.VIEWPORT_HEIGHT, cliente=cliente)
         self.tbar = WBToolbar(self.wb.changeTool, self.wb.changeColor, self.wb.changeWidth, self.wb.imgs, self.wb.putImg)
-        self.chat = ChatBox(self.frame, cliente=cliente)
+        self.chat = ChatBox(cliente=cliente)
         self.vscroll = Scrollbar(self.frame, orient=VERTICAL, command=self.wb.yview)
         self.hscroll = Scrollbar(self.frame, orient=HORIZONTAL, command=self.wb.xview)
         self.wb.config(xscrollcommand=self.hscroll.set, yscrollcommand=self.vscroll.set)
@@ -44,7 +44,7 @@ class ScrolledWB:
     def pack(self):
         self.tbar.pack(side=LEFT)
         self.hscroll.pack(side=BOTTOM, fill=X)
-        self.chat.pack(side=BOTTOM, fill=X, expand=YES)
+        self.chat.pack(side=BOTTOM, fill=X)
         self.vscroll.pack(side=RIGHT, fill=Y)
-        self.wb.pack(fill=BOTH, expand=YES)
+        self.wb.pack(fill=BOTH, expand=1)
         self.frame.pack(side=LEFT, fill=BOTH, expand=YES)

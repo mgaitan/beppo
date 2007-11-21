@@ -2250,9 +2250,9 @@ class WBToolbar(Frame):
 
         self.selectButton(self.tools[0])
         
-    	self.frame.pack(side=TOP)
-    	#self.frame.pack(side=BOTTOM)
+    	self.frame.pack(side=TOP) #la caja de herramientas va arriba.
 
+        #comienza la paleta de pinceles y colores.
         self.frame = Frame(self)
         self.frame["bg"] = self.BACKGROUND
         self.colorButton(TRANSPARENT, 1, 0, fill_clear)

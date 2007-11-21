@@ -24,9 +24,10 @@ class ChatBox(Frame):
     OTHER_COLOR = "#39b2c2"
     BACKGROUND = "#c098af"
     
-    def __init__(self, parent, cliente=None):
+    def __init__(self, cliente=None):
         Frame.__init__(self)
-        self.frame = Frame(parent, bg=self.BACKGROUND)
+        self["bg"] = self.BACKGROUND        
+        self.frame = Frame(bg=self.BACKGROUND)
         self.frame["bg"] = self.BACKGROUND
         
         self.client = cliente
