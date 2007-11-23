@@ -88,6 +88,9 @@ class WhiteBoard(Canvas):
         self.tool = tool
         if tool==TEXT:
             self.focus_set()
+        
+        if tool==GRAPH:
+            GraphDialog(self.parent)   
         else:
             self.focus("")
             
@@ -567,6 +570,7 @@ class WhiteBoard(Canvas):
             newItem = self.createImg(points, width)
     	elif kind == GRAPH:
     	    newItem = self.createGraph(points, outline)
+    	    print "pasa una vez por aca"
 	    
         return newItem
     
@@ -614,7 +618,7 @@ class WhiteBoard(Canvas):
         self.itemconfig(newLine4, tags=(SQRT, tag, x1 - x0))
         return newLine2
 
-    def createGraph(self, points, color, foreignId=None):   
+    def createGraph(self, points, color, grafico=None, foreignId=None):   
         """recibe un area rectangular del canvas (definida en points) 
         y grafica la funcion respetando las coordenadas dadas""" 
         x0 = points[0]
@@ -627,12 +631,11 @@ class WhiteBoard(Canvas):
         if y0 > y1:
             y0, y1 = y1, y0
 
-        dialog = GraphDialog(self.parent)
+        #dialog = GraphDialog(self.parent)
+        if grafico == None:
+            grafico = GraphDialog.default #atributo de clase. 
         
-        if hasattr(dialog, 'ret'):
-            f1,minx,maxx,miny,maxy = dialog.ret
-        else:
-            return False
+        f1,minx,maxx,miny,maxy = grafico
         
         minx = float(minx)
         maxx = float(maxx)

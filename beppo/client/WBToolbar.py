@@ -2303,7 +2303,7 @@ class WBToolbar(Frame):
         btn.grid(row=x, column=y)
         return btn
 
-    def toolButton(self, caption, tool, x, y, data = '', selected = ''):
+    def toolButton(self, caption, tool, x, y, data ='', selected = ''):
         global icons
         if data:
             img = PhotoImage(format='gif', data=data)
@@ -2399,3 +2399,5 @@ class WBToolbar(Frame):
             button["image"] = button.selected_img
         button["bg"] = self.BTN_ACTIVE
         button["activebackground"] = self.BTN_ACTIVE
+
+        
