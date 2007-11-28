@@ -419,9 +419,9 @@ class WhiteBoard(Canvas):
         return itemId
 
     def _getItemKind(self, item):
-        print item
+        print "item: " + repr(item)
         itemTag = self.gettags(item)
-        print itemTag
+        print "itemTag: " + repr(itemTag)
         kind = int(itemTag[0])
         return kind
 
@@ -534,7 +534,7 @@ class WhiteBoard(Canvas):
             result = defer.Deferred()
         return result
 
-    def createItem(self, kind, points, outline, fill, width):
+    def createItem(self, kind, points, outline, fill, width, graph=None):
         if kind == LINE:
             newItem = self.create_line(points, fill=outline, width=width)
             self.itemconfig(newItem, tags=(LINE,))
@@ -569,23 +569,29 @@ class WhiteBoard(Canvas):
         elif kind == SYMBOL:
             newItem = self.createImg(points, width)
     	elif kind == GRAPH:
-    	    newItem = self.createGraph(points, outline)
-    	    print "pasa una vez por aca"
-	    
+    	    newItem = self.createGraph(points, outline, graph=graph)
         return newItem
     
-    def addItem(self, kind, points, outline, fill, width, foreignId=None):
+    def addItem(self, kind, points, outline, fill, width, foreignId=None, graph=None):
         if foreignId == None:
-            if kind == SQRT or kind == INTEGRAL or kind == SYMBOL or kind == AXES or kind == GRAPH:
+            if kind == SQRT or kind == INTEGRAL or kind == SYMBOL or kind == AXES:
                 self.wbCurrentObject = self.createItem(kind, points, outline, fill, width)
-            result = self.client.broadcast_addItem(self.wbCurrentObject, kind, points, outline, fill, width)
+            if kind == GRAPH:
+                self.wbCurrentObject = self.createItem(kind, points, outline, fill, width, graph=GraphDialog.default)
+                result = self.client.broadcast_addItem(self.wbCurrentObject, kind, points, outline, fill, width, graph=GraphDialog.default)
+            else:
+                result = self.client.broadcast_addItem(self.wbCurrentObject, kind, points, outline, fill, width)
+            
         elif foreignId == PASTE or foreignId == POST:
             newItem = self.createItem(kind, points, outline, fill, width)
             result = self.client.broadcast_addItem(newItem, kind, points, outline, fill, width)
             if foreignId == PASTE:
                 self.addToSelection(newItem)
         else:
-            newItem = self.createItem(kind, points, outline, fill, width)
+            if kind == GRAPH:
+                newItem = self.createItem(kind, points, outline, fill, width, graph)
+            else:
+                newItem = self.createItem(kind, points, outline, fill, width)
             self.foreignObjects[foreignId] = newItem
             result = defer.Deferred()
 
@@ -618,7 +624,7 @@ class WhiteBoard(Canvas):
         self.itemconfig(newLine4, tags=(SQRT, tag, x1 - x0))
         return newLine2
 
-    def createGraph(self, points, color, grafico=None, foreignId=None):   
+    def createGraph(self, points, color, foreignId=None, graph=None):   
         """recibe un area rectangular del canvas (definida en points) 
         y grafica la funcion respetando las coordenadas dadas""" 
         x0 = points[0]
@@ -632,10 +638,10 @@ class WhiteBoard(Canvas):
             y0, y1 = y1, y0
 
         #dialog = GraphDialog(self.parent)
-        if grafico == None:
-            grafico = GraphDialog.default #atributo de clase. 
+        if graph== None:
+            graph = GraphDialog.default #atributo de clase. 
         
-        f1,minx,maxx,miny,maxy = grafico
+        f1,minx,maxx,miny,maxy = graph
         
         minx = float(minx)
         maxx = float(maxx)
@@ -675,7 +681,11 @@ class WhiteBoard(Canvas):
                 coords.append(x0+i*step)
                 coords.append(j)
         newgraph = self.create_line(*coords)
-        self.itemconfig(newgraph, tags=(GRAPH, f1, w))
+        tag = "grap" + repr(ejex)
+        self.itemconfig(newgraph, tags=(GRAPH, tag, w))
+        self.itemconfig(ejex, tags=(GRAPH, tag, w))
+        self.itemconfig(ejey, tags=(GRAPH, tag, w))                
+
         return newgraph
 
     def createIntegral(self, points, color, foreignId=None):
@@ -898,9 +908,9 @@ class GraphDialog(tkSimpleDialog.Dialog):
             inp.grid(row=GraphDialog.labels[key][0], column=1)
             inp.insert(0,GraphDialog.default[key])
             
-        var = IntVar()
-        self.cb = Checkbutton(master, text="Mostrar Etiquetas", variable=var)
-        self.cb.grid(row=5, columnspan=2, sticky=W)
+        #var = IntVar()
+        #self.cb = Checkbutton(master, text="Mostrar Etiquetas", variable=var)
+        #self.cb.grid(row=5, columnspan=2, sticky=W)
             
     def apply(self):
         self.ret = [i.get() for i in self.entries]

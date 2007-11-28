@@ -36,6 +36,7 @@ class WBStatus:
         return self.wbStatus[boxId]
 
     def statusMoveItems(self, itemsId, dx, dy, owner):
+        print "esteeeee " + repr(itemsId)
         for i in itemsId:
             for j in range(0, len(self.wbStatus[i]["points"])):
                 if j % 2 == 0:
@@ -45,8 +46,12 @@ class WBStatus:
 
     def statusEraseItem(self, itemsId, owner):
         for i in itemsId:
-            self.wbOrder.remove(i)
-            del(self.wbStatus[i])
+            #ver!
+            try:
+                self.wbOrder.remove(i)
+                del(self.wbStatus[i])
+            except: 
+                pass            
 
     def statusFillItem(self, itemId, color, owner):
         assert(itemId in self.wbStatus.keys())

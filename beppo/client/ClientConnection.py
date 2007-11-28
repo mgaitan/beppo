@@ -40,8 +40,8 @@ class ClientConnection(pb.Referenceable):
     def remote_wbPing(self):
         pass
 
-    def remote_wbAddItem(self, tagId, kind, points, outline, fill, width):
-        self.wb.addItem(kind, points, outline, fill, width, foreignId=tagId)
+    def remote_wbAddItem(self, tagId, kind, points, outline, fill, width, graph=None):
+        self.wb.addItem(kind, points, outline, fill, width, foreignId=tagId, graph=graph)
 
     def remote_wbMoveItems(self, tagId, selection, dx, dy):
         self.wb.moveItems(selection, dx, dy, foreignId=tagId)

@@ -281,7 +281,7 @@ class WBServer(pb.Viewable):
                     except (pb.DeadReferenceError):
                         pass
 
-    def view_addItem(self, perspective, tagId, kind, points, outline, fill, width):
+    def view_addItem(self, perspective, tagId, kind, points, outline, fill, width, graph=None):
         itemId = self.itemId(perspective.avId, tagId)
         wbStatus = self.getWorkingStatus(perspective)
         wbStatus.statusAddItem(itemId, kind, points, outline, fill, width, perspective.avId)
@@ -290,7 +290,7 @@ class WBServer(pb.Viewable):
                 if perspective.avId != clientId:
                     try:
                         wb = self.wbClients[clientId]
-                        d = wb.remote.callRemote("wbAddItem", itemId, kind, points, outline, fill, width)
+                        d = wb.remote.callRemote("wbAddItem", itemId, kind, points, outline, fill, width, graph=graph)
                     except (pb.DeadReferenceError):
                         pass
 

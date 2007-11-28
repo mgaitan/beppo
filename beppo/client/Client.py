@@ -75,8 +75,8 @@ class Client:
         deferred.addErrback(self.check_everything, "Error in broadcast_paste")
         return deferred
 
-    def broadcast_addItem(self, itemId, kind, points, outline, fill, width):
-        deferred = self.root.callRemote("addItem", itemId, kind, points, outline, fill, width)
+    def broadcast_addItem(self, itemId, kind, points, outline, fill, width, graph=None):
+        deferred = self.root.callRemote("addItem", itemId, kind, points, outline, fill, width, graph=graph)
         deferred.addErrback(self.check_everything, "Error in broadcast_addItem")
         return deferred
 
