@@ -419,9 +419,7 @@ class WhiteBoard(Canvas):
         return itemId
 
     def _getItemKind(self, item):
-        print "item: " + repr(item)
         itemTag = self.gettags(item)
-        print "itemTag: " + repr(itemTag)
         kind = int(itemTag[0])
         return kind
 
@@ -617,10 +615,10 @@ class WhiteBoard(Canvas):
         newLine2 = self.create_line(x2, y1, x2, y0, fill=color)
         newLine3 = self.create_line(x2, y0, dx, y0, fill=color)
         newLine4 = self.create_line(dx, y0, dx, y0 + h/10, fill=color)
-        tag = "sqrt" + str(newLine2)
-        self.itemconfig(newLine2, tags=(SQRT, tag, x1 - x0))
-        self.itemconfig(newLine3, tags=(SQRT, tag, x1 - x0))
+        tag = "sqrt" + str(newLine1)
         self.itemconfig(newLine1, tags=(SQRT, tag, x1 - x0))
+        self.itemconfig(newLine3, tags=(SQRT, tag, x1 - x0))        
+        self.itemconfig(newLine2, tags=(SQRT, tag, x1 - x0))
         self.itemconfig(newLine4, tags=(SQRT, tag, x1 - x0))
         return newLine2
 
@@ -637,12 +635,11 @@ class WhiteBoard(Canvas):
         if y0 > y1:
             y0, y1 = y1, y0
 
-        #dialog = GraphDialog(self.parent)
-        if graph== None:
+        if graph is None:
             graph = GraphDialog.default #atributo de clase. 
         
         f1,minx,maxx,miny,maxy = graph
-        
+
         minx = float(minx)
         maxx = float(maxx)
         miny = float(miny)                
@@ -685,8 +682,7 @@ class WhiteBoard(Canvas):
         self.itemconfig(newgraph, tags=(GRAPH, tag, w))
         self.itemconfig(ejex, tags=(GRAPH, tag, w))
         self.itemconfig(ejey, tags=(GRAPH, tag, w))                
-
-        return newgraph
+        return ejex
 
     def createIntegral(self, points, color, foreignId=None):
         x0 = points[0]

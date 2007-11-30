@@ -14,7 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Beppo; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
-
+from beppo.Constants import GRAPH
 import cPickle
 
 class WBStatus:
@@ -36,7 +36,6 @@ class WBStatus:
         return self.wbStatus[boxId]
 
     def statusMoveItems(self, itemsId, dx, dy, owner):
-        print "esteeeee " + repr(itemsId)
         for i in itemsId:
             for j in range(0, len(self.wbStatus[i]["points"])):
                 if j % 2 == 0:
@@ -94,6 +93,7 @@ class WBStatus:
         assert(itemId not in self.wbStatus.keys())
         self.wbStatus[itemId] = {"kind":kind, "points":points, "outline":outline, "fill":fill, "width":width, "owner": owner}
         self.wbOrder.append(itemId)
+
 
     def pickle(self):
         return cPickle.dumps((self.wbStatus, self.wbOrder))
