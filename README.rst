@@ -22,11 +22,16 @@ a renouned mathematician.
 History
 --------
 
-This project was developed at Except by Antonio Lenton, Matías Bordese
-and Walter Alini during 2006. In 2007 was open sourced and Martín Gaitán
-worked on it as part as its professional practices.  
+This project was developed at Except by `Anthony Lenton`_, `Matías Bordese`_
+and `Walter Alini`_ during 2006. In 2007 was open sourced and `Martín Gaitán`_
+worked on it as part as his professional practices.  
 
 Was original hosted at http://gna.org/projects/beppo
+
+.. _Anthony Lenton: https://github.com/elachuni
+.. _Matías Borderse: https://github.com/mbordese
+.. _Walter Alini: https://github.com/walteralini
+.. _Martín Gaitán: https://github.com/mgaitan
 
 License
 -------
