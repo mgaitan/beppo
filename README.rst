@@ -24,7 +24,7 @@ History
 
 This project was developed at Except by Antonio Lenton, Matías Bordese
 and Walter Alini during 2006. In 2007 was open sourced and Martín Gaitán
-worked on it as part as its profesional practices.  
+worked on it as part as its proffesional practices.  
 
 Was original hosted at http://gna.org/projects/beppo
 
