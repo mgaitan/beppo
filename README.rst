@@ -29,7 +29,7 @@ worked on it as part as his professional practices.
 Was original hosted at http://gna.org/projects/beppo
 
 .. _Anthony Lenton: https://github.com/elachuni
-.. _Matías Borderse: https://github.com/mbordese
+.. _Matías Bordese: https://github.com/mbordese
 .. _Walter Alini: https://github.com/walteralini
 .. _Martín Gaitán: https://github.com/mgaitan
 
